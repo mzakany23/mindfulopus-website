@@ -1224,6 +1224,31 @@ hr {
   }
 }
 
+.mo-bg-1 {}
+.mo-bg-2 {}
+
+.mo-bg-1::after {
+  content: "";
+  background: url("../backgrounds/winter/8.jpg");
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+
+.mo-bg-2::after{
+  content: "";
+  background: url("../backgrounds/winter/9.jpg");
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+
 .bg-home-2 {
   padding: 250px 0px 220px 0px;
   background-image: url("../images/bg-1.png");
