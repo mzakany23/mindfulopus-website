@@ -1,18 +1,16 @@
-<footer role="contentinfo">
-  <div id="footer--container">
-    <div id="footer--left">
-      <a href="{{ site.githubUrl }}">
-        {{ site.name | lower }} 
-      </a>
+<section class="bg-footer bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-6">
+                <div class="text-sm-start mt-3 mt-sm-0">
+                    <img src="images/logo-dark.png" alt="" height="25" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="text-sm-end mt-3 mt-sm-0">
+                    <p class="text-muted mb-0">2021 © MinfulOpus</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="footer--middle">
-      <a href="{{ site.githubUrl }}/tree/master/{{page.inputPath}}" title="Edit this page">
-        {% svgsprite %}
-        {% icon "github" %}
-      </a>
-    </div>
-    <div id="footer--right"> 
-      &copy; {{ site.copyright }}
-    </div>
-  </div>
-</footer>
+</section>
