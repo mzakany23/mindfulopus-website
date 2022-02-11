@@ -136,7 +136,7 @@ window.onload = function () {
         SELECTOR.DEMO.classList.remove(CLASSES.ANIMATED);
         clearInterval(timer)
       }, 700)
-  
+
 };
 
 //Counter
