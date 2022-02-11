@@ -1,4 +1,3 @@
-// const { DateTime } = require("luxon");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const svgSprite = require("eleventy-plugin-svg-sprite");
 const dateFilter = require('./src/filters/dateFilter.js');
@@ -11,18 +10,17 @@ module.exports = function (config) {
 
   // PASSTHROUGHS
   config.addPassthroughCopy("src/assets/images/");
-
-  config.addPassthroughCopy("src/assets/css/bootstrap.min.css");
-  config.addPassthroughCopy("src/assets/css/materialdesignicons.min.css");
-  config.addPassthroughCopy("src/assets/css/pe-icon-7-stroke.css");
-  config.addPassthroughCopy("src/assets/css/tiny-slider.css");
-  config.addPassthroughCopy("src/assets/css/style.css");
+  config.addPassthroughCopy("src/assets/vendor/css/bootstrap.min.css");
+  config.addPassthroughCopy("src/assets/vendor/css/materialdesignicons.min.css");
+  config.addPassthroughCopy("src/assets/vendor/css/pe-icon-7-stroke.css");
+  config.addPassthroughCopy("src/assets/vendor/css/tiny-slider.css");
+  config.addPassthroughCopy("src/assets/vendor/css/style.css");
+  config.addPassthroughCopy("src/assets/vendor/js");
   config.addPassthroughCopy("src/assets/js");
-  config.addPassthroughCopy("src/assets/fonts");
+  config.addPassthroughCopy({"src/assets/fonts" : "assets/vendor/fonts"});
 
   // LAYOUTS //
   config.addLayoutAlias("base", "layouts/base.njk");
-  config.addLayoutAlias("post", "layouts/post.njk");
 
   // FILTERS //
   config.addFilter('dateFilter', dateFilter);
