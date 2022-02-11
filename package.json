@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "cross-env ELEVENTY_ENV=development npx @11ty/eleventy --serve",
-    "prod": "cross-env ELEVENTY_ENV=production npx @11ty/eleventy --serve",
+    "build": "cross-env ELEVENTY_ENV=production npx @11ty/eleventy",
     "watch:sass": "sass --watch src/assets/styles:dist/assets/styles",
     "develop" : "npm run dev & npm run watch:sass"
   },
