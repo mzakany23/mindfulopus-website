@@ -25,9 +25,10 @@ Main Style Sheet
 13.responsive
 
 *****************************************/
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Kodchasan:wght@300&display=swap");
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Kodchasan', sans-serif;
   line-height: 30px;
   color: #1e304d;
   font-weight: 400;
@@ -78,8 +79,8 @@ p {
 }
 
 .bg-lightan {
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(30%, rgba(254, 154, 16, 0.1)), to(#ffffff));
-  background: linear-gradient(to top, rgba(254, 154, 16, 0.1) 30%, #ffffff 100%);
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(30%, rgba(181, 191, 182, 0.1)), to(#ffffff));
+  background: linear-gradient(to top, rgba(181, 191, 182, 0.1) 30%, #ffffff 100%);
 }
 
 .home-center {
@@ -113,8 +114,8 @@ p {
 }
 
 .overlay-gradient {
-  background: -webkit-gradient(linear, left top, right top, from(#4763cb), to(#fe9a10));
-  background: linear-gradient(to right, #4763cb, #fe9a10);
+  background: -webkit-gradient(linear, left top, right top, from(#4763cb), to(#b5bfb6));
+  background: linear-gradient(to right, #4763cb, #b5bfb6);
   opacity: 0.9;
   position: absolute;
   height: 100%;
@@ -240,7 +241,7 @@ hr {
 }
 
 .bg-primary {
-  background-color: #fe9a10 !important;
+  background-color: #b5bfb6 !important;
 }
 
 .bg-soft-primary {
@@ -248,16 +249,16 @@ hr {
 }
 
 .text-primary {
-  color: #fe9a10 !important;
+  color: #b5bfb6 !important;
 }
 
 .border-primary {
-  color: #fe9a10 !important;
+  color: #b5bfb6 !important;
 }
 
 .btn-soft-primary {
   background-color: rgba(254, 154, 16, 0.25) !important;
-  color: #fe9a10 !important;
+  color: #b5bfb6 !important;
 }
 
 .btn-soft-primary:hover, .btn-soft-primary:focus, .btn-soft-primary:active, .btn-soft-primary.active, .btn-soft-primary.focus, .btn-soft-primary:not(:disabled):not(.disabled):active, .btn-soft-primary:not(:disabled):not(.disabled):active:focus,
@@ -266,8 +267,8 @@ hr {
 }
 
 .btn-primary {
-  background: #fe9a10;
-  border-color: #fe9a10 !important;
+  background: #b5bfb6;
+  border-color: #b5bfb6 !important;
   color: #ffffff !important;
 }
 
@@ -278,14 +279,14 @@ hr {
 }
 
 .btn-outline-primary {
-  color: #fe9a10;
-  border-color: #fe9a10;
+  color: #b5bfb6;
+  border-color: #b5bfb6;
 }
 
 .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.focus, .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled):active:focus,
 .btn-outline-primary .open > .dropdown-toggle.btn-primary {
-  background: #fe9a10;
-  border-color: #fe9a10;
+  background: #b5bfb6;
+  border-color: #b5bfb6;
 }
 
 .bg-success {
@@ -998,7 +999,7 @@ hr {
 .navbar-custom.navbar-white .navbar-nav li a:hover,
 .navbar-custom.navbar-white .navbar-nav li a:focus,
 .navbar-custom.navbar-white .navbar-nav li a:active {
-  color: #fe9a10 !important;
+  color: #b5bfb6 !important;
 }
 
 /*---NAVBAR STICKY--*/
@@ -1026,7 +1027,7 @@ hr {
 .nav-sticky.navbar-custom .navbar-nav li a:hover,
 .nav-sticky.navbar-custom .navbar-nav li a:focus,
 .nav-sticky.navbar-custom .navbar-nav li a:active {
-  color: #fe9a10 !important;
+  color: #b5bfb6 !important;
 }
 
 .nav-sticky.navbar-custom .navbar-toggles {
@@ -1278,7 +1279,7 @@ hr {
 .video-icon-btn i {
   line-height: 60px;
   font-size: 30px;
-  color: #fe9a10;
+  color: #b5bfb6;
 }
 
 .bg-home-3 {
@@ -1333,7 +1334,7 @@ hr {
   display: inline-block;
   width: 40px;
   height: 40px;
-  background-color: #fe9a10;
+  background-color: #b5bfb6;
   background-size: 100% 40%;
   border-radius: 50%;
 }
@@ -1396,7 +1397,7 @@ hr {
 }
 
 .registration-input-box:focus {
-  border-color: #fe9a10 !important;
+  border-color: #b5bfb6 !important;
 }
 
 .services-box {
@@ -1410,7 +1411,7 @@ hr {
   position: relative;
   display: inline-block;
   border-radius: 50%;
-  background-color: #fe9a10;
+  background-color: #b5bfb6;
 }
 
 .services-box .services-icon i {
@@ -1422,7 +1423,7 @@ hr {
 .services-box .services-icon:before {
   position: absolute;
   content: "";
-  border: 1px solid #fe9a10;
+  border: 1px solid #b5bfb6;
   width: 70px;
   height: 70px;
   display: inline-block;
@@ -1440,7 +1441,7 @@ hr {
 }
 
 .services-box:hover .services-icon i {
-  color: #fe9a10;
+  color: #b5bfb6;
 }
 
 .services-box:hover .services-icon:before {
@@ -1453,7 +1454,7 @@ hr {
   height: 40px;
   display: inline-block;
   text-align: center;
-  border: 1px solid #fe9a10;
+  border: 1px solid #b5bfb6;
   border-radius: 50%;
   line-height: 38px;
 }
@@ -1525,7 +1526,7 @@ hr {
   border-radius: 50%;
   border: none;
   background-color: rgba(254, 154, 16, 0.2) !important;
-  color: #fe9a10;
+  color: #b5bfb6;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   font-size: 18px;
@@ -1535,7 +1536,7 @@ hr {
 
 .tns-outer .tns-controls button:focus, .tns-outer .tns-controls button:hover, .tns-outer .tns-controls button:active {
   outline: none;
-  background-color: #fe9a10 !important;
+  background-color: #b5bfb6 !important;
   color: #ffffff;
 }
 
@@ -1558,11 +1559,11 @@ hr {
 
 .tns-outer .tns-nav button:focus, .tns-outer .tns-nav button:hover, .tns-outer .tns-nav button:active, .tns-outer .tns-nav button.active {
   outline: none;
-  background-color: #fe9a10 !important;
+  background-color: #b5bfb6 !important;
 }
 
 .tns-outer .tns-nav button.tns-nav-active {
-  background-color: #fe9a10 !important;
+  background-color: #b5bfb6 !important;
 }
 
 .client-images img {
@@ -1604,7 +1605,7 @@ hr {
 
 .pricing-box .lable-name {
   position: relative;
-  background-color: #fe9a10;
+  background-color: #b5bfb6;
   color: #ffffff;
   font-size: 12px;
   display: -webkit-box;
@@ -1624,8 +1625,8 @@ hr {
 
 .pricing-box .lable-name:after {
   content: "";
-  border-top: 20px solid #fe9a10;
-  border-bottom: 20px solid #fe9a10;
+  border-top: 20px solid #b5bfb6;
+  border-bottom: 20px solid #b5bfb6;
   border-right: 11px solid transparent;
   border-left: 11px solid transparent;
   position: absolute;
@@ -1670,7 +1671,7 @@ textarea.form-control {
 }
 
 .contact-social a:hover {
-  color: #fe9a10;
+  color: #b5bfb6;
 }
 
 .contact-social a i {
@@ -1716,7 +1717,7 @@ textarea.form-control {
   .navbar-custom .navbar-nav li.active a,
   .navbar-custom .navbar-nav li a:hover,
   .navbar-custom .navbar-nav li a:active {
-    color: #fe9a10 !important;
+    color: #b5bfb6 !important;
   }
   .navbar-toggler {
     font-size: 24px;
