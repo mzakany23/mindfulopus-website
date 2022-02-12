@@ -1742,7 +1742,12 @@ textarea.form-control {
   .carousel-indicators {
     right: 0;
   }
-  
+  .logo .logo-light {
+    display: none;
+  }
+  .logo .logo-dark {
+    display: inline-block;
+  }
 }
 
 @media (min-width: 1200px) {
