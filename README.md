@@ -34,3 +34,4 @@ By offering tools from the physical practice of yoga, meditation, breath work an
 
 
 —to respond vs. react in situations.
+
