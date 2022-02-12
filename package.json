@@ -10,7 +10,7 @@
     "build:app": "run-p build:sass build:eleventy",
     "install:app": "rm -rf dist & npm install",
     "develop": "run-p watch:sass run:dev",
-    "build": "run-s install:app build:app"
+    "build": "npm install npm-run-all && run-s install:app build:app"
   },
   "author": "",
   "license": "",
