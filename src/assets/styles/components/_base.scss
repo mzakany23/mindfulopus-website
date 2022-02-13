@@ -27,6 +27,11 @@ Main Style Sheet
 *****************************************/
 
 @import url("https://fonts.googleapis.com/css2?family=Kodchasan:wght@300&display=swap");
+
+#mo-profile-1{
+  max-height: 450px;
+}
+
 body {
   font-family: 'Kodchasan', sans-serif;
   line-height: 30px;
@@ -104,7 +109,7 @@ p {
 }
 
 .color-overlay {
-  background-color: #4763cb;
+  background-color: #637b92;
   opacity: 0.9;
   position: absolute;
   height: 100%;
@@ -659,8 +664,8 @@ hr {
 }
 
 .btn-blue {
-  background: #4763cb;
-  border-color: #4763cb !important;
+  background: #637b92;
+  border-color: #637b92 !important;
   color: #ffffff !important;
 }
 
@@ -1246,7 +1251,7 @@ hr {
 .mo-bg-2::after{
   content: "";
   background: url("../images/backgrounds/winter/9.jpg");
-  opacity: 0.1;
+  opacity: 0.2;
   top: 0;
   left: 0;
   bottom: 0;
@@ -1265,8 +1270,37 @@ hr {
   position: absolute;
 }
 
+.mo-bg-4::after{
+  content: "";
+  background: url("../images/backgrounds/winter/7.jpg");
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+
+.mo-bg-5::after{
+  content: "";
+  background: url("../images/backgrounds/winter/8.jpg");
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+
 .bg-home-2 {
   padding: 250px 0px 220px 0px;
+  background-image: url("../images/bg-1.png");
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+}
+
+.bg-home-np {
   background-image: url("../images/bg-1.png");
   background-size: cover;
   background-position: center center;
