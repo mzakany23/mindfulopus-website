@@ -3,14 +3,35 @@
 ## 1. how to boot up the site
 
 ```bash
+Commnad + Space + "Terminal"
+cd ~/Desktop/mindfulopus-website
 npm run develop 
 ```
 
-## 2. how to change the site
+## 2. Helpful Commands
 
-command p to look for files
-change file
-save file (command s)
+```bash
+# search for page
+Command + P + "base.njk" 
+
+# save page
+Command + S 
+
+# cut text
+Command X
+
+# copy text
+Command C
+
+# paste text
+Command V
+
+# undo command
+Command Z
+
+# Highlight text
+Command + Shift + RightArrow
+```
 
 ## 3. how to push/deploy
 
