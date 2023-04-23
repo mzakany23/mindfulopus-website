@@ -1,0 +1,12 @@
+All notable changes to this project will be documented in this file.
+
+## 0.1.1
+
+### Added
+
+### Changed
+
+[2023-04-23]
+
+- edited wording of several sections
+
