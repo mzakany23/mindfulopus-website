@@ -1053,6 +1053,20 @@ hr {
   padding: 280px 0px 290px 0px;
 }
 
+.bg-1 {
+  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+  background-image: url("../images/bg-1.png");
+  background-size: cover;
+  background-position: center center;
+}
+
+.bg-2 {
+  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+  background-image: url("../images/bg-2.png");
+  background-size: cover;
+  background-position: center center;
+}
+
 .home-button {
   padding: 0.9rem 1.7rem;
   font-size: 15px;
