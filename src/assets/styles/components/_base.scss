@@ -29,7 +29,7 @@ Main Style Sheet
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300&display=swap');
 
 #mo-profile-1{
-  max-height: 450px;
+  max-height: 700px;
 }
 
 body {
@@ -109,7 +109,7 @@ p {
 }
 
 .color-overlay {
-  background-color: #637b92;
+  background-color: #90684f;
   opacity: 0.9;
   position: absolute;
   height: 100%;
@@ -1295,10 +1295,10 @@ hr {
   position: absolute;
 }
 
-.mo-bg-5::after{
+.mo-bg-5::after {
   content: "";
   background: url("../images/backgrounds/winter/8.jpg");
-  opacity: 0.1;
+  opacity: 0.2;
   top: 0;
   left: 0;
   bottom: 0;
@@ -1308,7 +1308,7 @@ hr {
 
 .bg-home-2 {
   padding: 250px 0px 220px 0px;
-  background-image: url("../images/bg-1.png");
+  background-image: url("../images/bg-2.png");
   background-size: cover;
   background-position: center center;
   position: relative;
@@ -1805,5 +1805,3 @@ textarea.form-control {
   }
 }
 /*# sourceMappingURL=style.css.map */
-
-
