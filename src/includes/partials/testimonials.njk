@@ -1,0 +1,73 @@
+<!-- Start Testimonials -->
+<section class="testimonial-section bg-1" id="testimonials">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h3>Testimonials</h3>
+            </div>
+        </div>
+
+        <div class="testimonial-carousel">
+            <!-- Navigation Dots -->
+            <div class="carousel-dots"></div>
+
+            <!-- Testimonial Container -->
+            <div class="carousel-container">
+                <div class="testimonial-track">
+                    {% for testimonial in testimonials.testimonials %}
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <blockquote class="testimonial-text">
+                                "{{ testimonial.quote }}"
+                            </blockquote>
+                            <div class="testimonial-author">
+                                {% if testimonial.anonymize %}
+                                    <h4>Anonymous</h4>
+                                {% else %}
+                                    {% if testimonial.author %}
+                                        <h4>{{ testimonial.author }}</h4>
+                                    {% endif %}
+                                    {% if testimonial.role %}
+                                        <p>{{ testimonial.role }}</p>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <button class="carousel-nav prev" aria-label="Previous">‹</button>
+            <button class="carousel-nav next" aria-label="Next">›</button>
+        </div>
+    </div>
+</section>
+<!-- End Testimonials -->
+
+<style>
+.tiny-three-item {
+    position: relative;
+}
+
+.tiny-slide {
+    padding: 1rem;
+}
+
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.text-muted {
+    color: #6c757d;
+}
+
+.fst-italic {
+    font-style: italic;
+}
+</style>
