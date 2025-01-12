@@ -34,9 +34,10 @@ Main Style Sheet
 
 body {
   font-family: 'Source Sans Pro', sans-serif;
-  line-height: 35px;
-  color: #1e304d;
-  font-weight: 600;
+  line-height: 1.8;
+  color: #000000;
+  font-weight: 400;
+  font-size: 18px;
 }
 
 h1,
@@ -46,7 +47,8 @@ h4,
 h5,
 h6 {
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.4;
+  color: #000000;
 }
 
 .btn,
@@ -62,7 +64,10 @@ a {
 }
 
 p {
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #000000;
+  margin-bottom: 1.25rem;
 }
 
 .section-sm {
@@ -205,7 +210,7 @@ hr {
 }
 
 .fw-normal {
-  font-weight: 300 !important;
+  font-weight: 400 !important;
 }
 
 .fw-bold {
@@ -695,11 +700,16 @@ hr {
 }
 
 .text-muted {
-  color: #79798b !important;
+  color: #000000 !important;
+  opacity: 0.85;
+}
+
+.text-accent {
+  color: #3c4b81 !important;
 }
 
 .border-muted {
-  color: #79798b !important;
+  color: #2d3748 !important;
 }
 
 .btn-soft-muted {
@@ -943,8 +953,8 @@ hr {
 }
 
 .navbar-custom .navbar-nav li a {
-  color: rgba(255, 255, 255, 0.6) !important;
-  font-size: 15px;
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 16px;
   background-color: transparent !important;
   margin: 0 10px;
   letter-spacing: 0.03em;
@@ -1762,7 +1772,7 @@ textarea.form-control {
     -webkit-transition: all 0.4s;
     transition: all 0.4s;
     margin: 6px;
-    color: #1e304d !important;
+    color: #000000 !important;
     padding: 6px 0;
   }
   .navbar-custom > .container {
