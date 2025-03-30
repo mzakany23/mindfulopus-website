@@ -21,8 +21,8 @@
                                 "{{ testimonial.quote }}"
                             </blockquote>
                             <div class="testimonial-author">
-                                {% if testimonial.anonymize %}
-                                    <h4>Anonymous</h4>
+                                {% if testimonial.author == "Anonymous" %}
+                                    <h4>{{ testimonial.role }}</h4>
                                 {% else %}
                                     {% if testimonial.author %}
                                         <h4>{{ testimonial.author }}</h4>
