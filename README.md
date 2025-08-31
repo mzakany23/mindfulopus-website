@@ -86,10 +86,42 @@ This will:
 
 ## Deployment
 
-To deploy site changes:
+This site is deployed automatically using Netlify's continuous deployment pipeline.
+
+### How It Works
+
+1. **Production Deployment**: 
+   - Any push to the `master` branch automatically triggers a production deployment
+   - Changes are live at your production URL within minutes
+
+2. **Preview Deployments**:
+   - Create a new branch for your changes: `git checkout -b feature/your-feature`
+   - Push the branch to GitHub: `git push -u origin feature/your-feature`
+   - Netlify automatically creates a preview deployment with a unique URL
+   - Preview URLs look like: `https://deploy-preview-{PR-number}--{your-site-name}.netlify.app`
+
+3. **Pull Request Workflow**:
+   - Open a pull request on GitHub
+   - Netlify adds a deployment preview link directly in the PR
+   - Review changes on the preview URL before merging
+   - Once merged to `master`, changes deploy to production automatically
+
+### Manual Deployment
+
+To deploy changes through the standard workflow:
 
 ```bash
-git add . && git commit -m "your commit message" && git push
+# Create a feature branch
+git checkout -b feature/your-update
+
+# Make your changes and commit
+git add .
+git commit -m "your commit message"
+
+# Push to GitHub (creates preview deployment)
+git push -u origin feature/your-update
+
+# After review, merge to master for production deployment
 ```
 
 ## Contributing
