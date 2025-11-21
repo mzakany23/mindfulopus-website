@@ -1,0 +1,48 @@
+{
+  "episodes": [
+    {
+      "id": 1,
+      "title": "Welcome to MindfulOpus",
+      "description": "In this inaugural episode, Jo introduces the podcast and shares her vision for creating a space where classical musicians can drop the grind and lean into well-being. Learn what to expect from the show and why well-being is essential to the life you love, on and off stage.",
+      "date": "2024-01-15",
+      "duration": "25:30",
+      "season": 1,
+      "episodeNumber": 1,
+      "links": {
+        "spotify": "https://open.spotify.com/episode/YOUR_EPISODE_ID",
+        "youtube": "https://www.youtube.com/watch?v=YOUR_VIDEO_ID",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/YOUR_PODCAST/YOUR_EPISODE_ID"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Kicking Toxic Grind Culture to the Curb",
+      "description": "What is toxic grind culture and why is it so prevalent in classical music? Jo explores how the hustle mentality impacts musicians and shares practical tools for creating healthier relationships with practice, performance, and success.",
+      "date": "2024-01-22",
+      "duration": "32:15",
+      "season": 1,
+      "episodeNumber": 2,
+      "links": {
+        "spotify": "https://open.spotify.com/episode/YOUR_EPISODE_ID",
+        "youtube": "https://www.youtube.com/watch?v=YOUR_VIDEO_ID",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/YOUR_PODCAST/YOUR_EPISODE_ID"
+      }
+    },
+    {
+      "id": 3,
+      "title": "Making Performing Fun Again",
+      "description": "Remember when playing your instrument was pure joy? In this episode, Jo discusses how to reclaim the fun in performing, manage performance anxiety, and reconnect with the artistry that drew you to music in the first place.",
+      "date": "2024-01-29",
+      "duration": "28:45",
+      "season": 1,
+      "episodeNumber": 3,
+      "links": {
+        "spotify": "https://open.spotify.com/episode/YOUR_EPISODE_ID",
+        "youtube": "https://www.youtube.com/watch?v=YOUR_VIDEO_ID",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/YOUR_PODCAST/YOUR_EPISODE_ID"
+      }
+    }
+  ]
+}
+
+
