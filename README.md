@@ -32,44 +32,83 @@ mindfulopus-website/
 └── .eleventy.js          # 11ty configuration
 ```
 
-## Quickstart Guide
+## Getting Started
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (Latest LTS version recommended)
-- npm (comes with Node.js)
+Before you begin, make sure you have the following installed:
 
-### Setup and Development
+- **Node.js** (version 16.x or higher) - [Download here](https://nodejs.org/)
+  - To check your version: `node --version`
+- **npm** (comes with Node.js)
+  - To check your version: `npm --version`
 
-1. Clone the repository:
+### Quick Setup (3 Steps)
+
+1. **Clone and navigate to the project:**
    ```bash
    git clone https://github.com/yourusername/mindfulopus-website.git
    cd mindfulopus-website
    ```
 
-2. Install dependencies:
+2. **Install dependencies:**
    ```bash
    npm install
    ```
+   This will install all required packages including 11ty, Sass, and other build tools.
 
-3. Start the development server:
+3. **Start the development server:**
    ```bash
    npm run develop
    ```
-   This will:
-   - Start the 11ty development server
-   - Watch for SASS changes
-   - Open the site at http://localhost:8080
 
-To stop the server at any time, press `Ctrl + C` in the terminal.
+**That's it!** The development server will:
+- ✅ Start the 11ty development server with live reload
+- ✅ Watch and compile SASS files automatically
+- ✅ Open your browser to `http://localhost:8080`
 
-### Available Scripts
+### Verify Everything is Working
 
-- `npm run develop` - Start development server with hot reload
-- `npm run build` - Build site for production
-- `npm run build:sass` - Compile SASS files only
-- `npm run build:eleventy` - Build 11ty site only
-- `npm run watch:sass` - Watch SASS files for changes
+After running `npm run develop`, you should see:
+1. Terminal output showing "Local: http://localhost:8080"
+2. Your browser automatically opens to the site
+3. The MindfulOpus website loads correctly
+4. Changes to files in `src/` automatically refresh the browser
+
+**To stop the server:** Press `Ctrl + C` in the terminal.
+
+### Available Development Scripts
+
+| Command | What it does |
+|---------|-------------|
+| `npm run develop` | **Main development command** - Starts dev server + SASS watching |
+| `npm run run:dev` | Start 11ty dev server only (without SASS watching) |
+| `npm run watch:sass` | Watch and compile SASS files only |
+| `npm run build:sass` | Compile SASS files once |
+| `npm run build:eleventy` | Build 11ty site once |
+| `npm run build` | **Production build** - Full build for deployment |
+
+### Troubleshooting
+
+**Port 8080 already in use?**
+```bash
+# Kill any process using port 8080
+lsof -ti:8080 | xargs kill -9
+# Then try npm run develop again
+```
+
+**SASS compilation errors?**
+- Check that all SASS files in `src/assets/styles/` have valid syntax
+- Look for missing semicolons or unclosed brackets
+
+**Site not loading?**
+- Ensure you're in the correct directory (`mindfulopus-website`)
+- Try deleting `node_modules` and running `npm install` again
+- Check that no other process is using port 8080
+
+**Need help?**
+- Check the terminal output for specific error messages
+- Ensure all prerequisites are installed with the correct versions
 
 ### Build for Production
 
@@ -90,7 +129,7 @@ This site is deployed automatically using Netlify's continuous deployment pipeli
 
 ### How It Works
 
-1. **Production Deployment**: 
+1. **Production Deployment**:
    - Any push to the `master` branch automatically triggers a production deployment
    - Changes are live at your production URL within minutes
 

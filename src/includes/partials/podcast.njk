@@ -1,0 +1,94 @@
+<!-- Start Podcast Section -->
+<section class="section podcast-section" id="podcast">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+                <h3>{{ podcast.name }}</h3>
+                <p class="text-muted mt-3">{{ podcast.tagline }}</p>
+            </div>
+        </div>
+
+        <div class="row align-items-center">
+            <!-- Podcast Cover Art -->
+            <div class="col-lg-3 col-md-4 mb-4 mb-lg-0">
+                <div class="podcast-cover-wrapper">
+                    <div class="podcast-cover">
+                        <img src="{{ podcast.coverImage }}" alt="{{ podcast.name }} Cover" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Podcast Description -->
+            <div class="col-lg-9 col-md-8">
+                <div class="podcast-content">
+                    <h4 class="mb-4">About the Podcast</h4>
+                    <p class="podcast-description">{{ podcast.description }}</p>
+
+                    <!-- Host Info -->
+                    <div class="podcast-host mt-4">
+                        <h5>Hosted by {{ podcast.host.name }}</h5>
+                        <p class="text-muted">{{ podcast.host.bio }}</p>
+                    </div>
+
+                    <!-- Listen Buttons -->
+                    <div class="podcast-listen-buttons mt-4">
+                        <h5 class="mb-3">Listen Now</h5>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="{{ site.podcast.spotify }}" target="_blank" rel="noopener noreferrer" class="btn btn-podcast btn-spotify">
+                                <i class="mdi mdi-spotify"></i>
+                                Spotify
+                            </a>
+                            <a href="{{ site.podcast.youtube }}" target="_blank" rel="noopener noreferrer" class="btn btn-podcast btn-youtube">
+                                <i class="mdi mdi-youtube"></i>
+                                YouTube
+                            </a>
+                            <a href="{{ site.podcast.applePodcast }}" target="_blank" rel="noopener noreferrer" class="btn btn-podcast btn-apple">
+                                <i class="mdi mdi-podcast"></i>
+                                Apple Podcasts
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Episodes Section -->
+        <div class="row justify-content-center mt-5 pt-5">
+            <div class="col-lg-12">
+                <h4 class="text-center mb-5">Recent Episodes</h4>
+                <div class="row">
+                    {% for episode in episodes.episodes %}
+                    <div class="col-lg-6 mb-4">
+                        <div class="episode-card">
+                            <div class="episode-header">
+                                <div class="episode-meta">
+                                    <span class="episode-number">Episode {{ episode.episodeNumber }}</span>
+                                    <span class="episode-duration">
+                                        <i class="mdi mdi-clock-outline"></i>
+                                        {{ episode.duration }}
+                                    </span>
+                                </div>
+                                <div class="episode-date">{{ episode.date }}</div>
+                            </div>
+                            <h5 class="episode-title">{{ episode.title }}</h5>
+                            <p class="episode-description">{{ episode.description }}</p>
+                            <div class="episode-links">
+                                <a href="{{ episode.links.spotify }}" target="_blank" rel="noopener noreferrer" class="episode-link episode-link-spotify" title="Listen on Spotify">
+                                    <i class="mdi mdi-spotify"></i>
+                                </a>
+                                <a href="{{ episode.links.youtube }}" target="_blank" rel="noopener noreferrer" class="episode-link episode-link-youtube" title="Watch on YouTube">
+                                    <i class="mdi mdi-youtube"></i>
+                                </a>
+                                <a href="{{ episode.links.applePodcast }}" target="_blank" rel="noopener noreferrer" class="episode-link episode-link-apple" title="Listen on Apple Podcasts">
+                                    <i class="mdi mdi-podcast"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Podcast Section -->
