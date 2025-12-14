@@ -1,0 +1,17 @@
+{
+  "name": "MindfulOpus Podcast",
+  "tagline": "Where classical musicians drop the grind and lean into well-being",
+  "description": "Welcome to the MindfulOpus Podcast — where your artistry doesn't have to come at the cost of your humanity. I'm your host, Jo Zakany — violist with The Cleveland Orchestra, yoga teacher, and coach for classical musicians. Here, we see well-being as essential to creating the life you love, on and off stage. Through honest conversations, reflections, and sharing tools you can use, we'll explore how to thrive as a musician — so your art shines, performing stays fun, and you can kick toxic grind culture to the curb. Time to drop the grind, and lean into well-being… I'm so glad you're here, and let's get to it!",
+  "host": {
+    "name": "Jo Zakany",
+    "bio": "Violist with The Cleveland Orchestra, yoga teacher, and coach for classical musicians. Helping performers thrive on and off stage by kicking toxic grind culture to the curb."
+  },
+  "coverImage": "assets/images/logos/podcast.png",
+  "features": [
+    "Honest conversations about thriving as a musician",
+    "Tools you can actually use to improve your well-being",
+    "Reflections on artistry without sacrificing your humanity",
+    "How to make performing fun again",
+    "Kicking toxic grind culture to the curb"
+  ]
+}

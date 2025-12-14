@@ -1,0 +1,103 @@
+{
+  "episodes": [
+    {
+      "id": 7,
+      "title": "The Cost of Being Your Own Worst Critic",
+      "description": "When your worth depends on your results, and how that pressure leads to burnout. If your inner-critic has been running the show — the one that tells you you're only as worthy as your latest performance, audition result, or practice session — this episode is for you. We explore the real cost of being your own worst critic and how to shift from inner-critic to inner-coach.",
+      "date": "2024-12-02",
+      "duration": "24:00",
+      "season": 1,
+      "episodeNumber": 7,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/@mindfulopus",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      }
+    },
+    {
+      "id": 6,
+      "title": "Inside the Genius of Joshua Smith",
+      "description": "A conversation around vulnerability, long-haul artistry, and the case for communication over perfection — through the lens of a 35-year run in one of the most high-pressure chairs in the orchestral world. I sit down with Joshua Smith, Grammy-nominated Principal Flute of The Cleveland Orchestra, to explore curiosity, freedom, and sustainable excellence.",
+      "date": "2024-11-18",
+      "duration": "1:03:00",
+      "season": 1,
+      "episodeNumber": 6,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/@mindfulopus",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      }
+    },
+    {
+      "id": 5,
+      "title": "The Well-Being Wheel: A Whole-Human Approach to Music",
+      "description": "If you've ever felt like music has taken over your entire life — the long hours, the pressure, the constant fear of not doing enough — this episode is for you. I introduce The MindfulOpus Well-Being Wheel — a framework designed to help musicians move from burnout to balance by nurturing all parts of your life.",
+      "date": "2024-11-04",
+      "duration": "25:00",
+      "season": 1,
+      "episodeNumber": 5,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/@mindfulopus",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      }
+    },
+    {
+      "id": 4,
+      "title": "The Mindful Audition: How Feeling Good Became James Patterson's Secret to Winning",
+      "description": "A conversation around mindfulness, perfectionism, well-being, and rewriting the audition story from the inside out. I sit down with James Patterson, Tredjestilling Horn (3rd/1st horn) player with the Oslo Philharmonic, to explore how he completely reimagined his approach to auditions — with his well-being front and center.",
+      "date": "2024-10-21",
+      "duration": "1:05:00",
+      "season": 1,
+      "episodeNumber": 4,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/@mindfulopus",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      }
+    },
+    {
+      "id": 3,
+      "title": "The Perfection Trap",
+      "description": "Are you chasing perfection...or pursuing excellence? In this episode, I dive into one of the most common — and costly — mindsets musicians face: perfectionism. I share why perfection isn't sustainable and how excellence becomes the foundation for a career and life you can sustain, with the Excellence over Perfection Framework.",
+      "date": "2024-10-07",
+      "duration": "19:00",
+      "season": 1,
+      "episodeNumber": 3,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/@mindfulopus",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Winning, But at What Cost?",
+      "description": "In the classical music world, we're often taught that struggle is the price of greatness. But what if our artistry didn't have to come at the cost of our humanity? I take you behind the curtain of my own journey — from grueling childhood auditions in France, to winning my dream job at 21 and facing career-threatening injuries.",
+      "date": "2024-10-07",
+      "duration": "13:00",
+      "season": 1,
+      "episodeNumber": 2,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/@mindfulopus",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      }
+    },
+    {
+      "id": 1,
+      "title": "Welcome to The MindfulOpus Podcast",
+      "description": "Hello and welcome to the MindfulOpus podcast! I'm your host, Jo Zakany — violist with The Cleveland Orchestra, yoga teacher, and coach for classical musicians. Here, we switch from Grind to Kind in our artistic process – so that artists like you can avoid burnout, ditch performance anxiety, and create a thriving, healthy life - on and off stage.",
+      "date": "2024-09-30",
+      "duration": "3:00",
+      "season": 1,
+      "episodeNumber": 1,
+      "isTrailer": true,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/@mindfulopus",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      }
+    }
+  ]
+}

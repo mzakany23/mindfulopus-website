@@ -24,8 +24,68 @@ window.addEventListener('scroll', (ev) => {
 
 // Smooth scroll
 var scroll = new SmoothScroll('#navbar-navlist a', {
-    speed: 300,
+    speed: 100,
+    speedAsDuration: true,
     offset: 60
+});
+
+// Well-Being Wheel button smooth scroll and menu collapse
+document.addEventListener('DOMContentLoaded', function() {
+    const wellbeingButton = document.getElementById('wellbeing-nav-button');
+    const navbarCollapse = document.getElementById('navbarCollapse');
+    const navbarToggler = document.querySelector('.navbar-toggler');
+
+    // Sync hamburger menu animation with Bootstrap collapse state
+    if (navbarCollapse && navbarToggler) {
+        navbarCollapse.addEventListener('shown.bs.collapse', function() {
+            navbarToggler.setAttribute('aria-expanded', 'true');
+        });
+
+        navbarCollapse.addEventListener('hidden.bs.collapse', function() {
+            navbarToggler.setAttribute('aria-expanded', 'false');
+        });
+    }
+
+    if (wellbeingButton) {
+        wellbeingButton.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Get target element
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                // Collapse menu if it's open (mobile)
+                if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                    // Try Bootstrap collapse method first
+                    if (typeof bootstrap !== 'undefined' && bootstrap.Collapse) {
+                        const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                            toggle: false
+                        });
+                        bsCollapse.hide();
+                    } else {
+                        // Fallback: manually collapse
+                        navbarCollapse.classList.remove('show');
+                        if (navbarToggler) {
+                            navbarToggler.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                }
+
+                // Small delay to allow menu collapse animation
+                setTimeout(function() {
+                    // Smooth scroll to target
+                    const offset = 60;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }, 100);
+            }
+        });
+    }
 });
 
 // Navbar Active Class

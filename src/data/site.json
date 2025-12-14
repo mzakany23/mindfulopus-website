@@ -1,5 +1,11 @@
 {
     "name": "MindfulOpus",
     "yearCreated": 2022,
-    "copyright": "2022 to present"
+    "copyright": "2022 to present",
+    "podcast": {
+        "name": "MindfulOpus Podcast",
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/@mindfulopus",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+    }
 }

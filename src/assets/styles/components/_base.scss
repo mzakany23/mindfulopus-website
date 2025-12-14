@@ -969,6 +969,131 @@ hr {
   margin-top: 5px;
   margin-bottom: 0px;
   color: #1e304d;
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+// Animated Hamburger Menu
+.hamburger-menu {
+  width: 30px;
+  height: 24px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .hamburger-box {
+    width: 30px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+  }
+
+  .hamburger-inner {
+    display: block;
+    top: 50%;
+    margin-top: -2px;
+
+    &,
+    &::before,
+    &::after {
+      width: 30px;
+      height: 3px;
+      background-color: #1e304d;
+      border-radius: 3px;
+      position: absolute;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+    }
+
+    &::before {
+      top: -10px;
+    }
+
+    &::after {
+      bottom: -10px;
+    }
+  }
+
+  // Active state (when menu is open)
+  &[aria-expanded="true"] {
+    .hamburger-inner {
+      background-color: transparent;
+
+      &::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        bottom: 0;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  &:hover {
+    .hamburger-inner {
+      &,
+      &::before,
+      &::after {
+        background-color: #b5bfb6;
+      }
+    }
+  }
+}
+
+// Well-Being Wheel Button
+.wellbeing-button-wrapper {
+  padding: 0 15px;
+  margin-top: 20px;
+
+  @media (min-width: 992px) {
+    margin-top: 0;
+    padding-left: 20px;
+  }
+}
+
+.wellbeing-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+  white-space: nowrap;
+
+  .wellbeing-button-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    i {
+      font-size: 18px;
+    }
+
+    span {
+      font-size: 16px;
+    }
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
 }
 
 .navbar-custom.nav-sticky .custom-menu {
@@ -1753,6 +1878,114 @@ textarea.form-control {
   padding: 25px 0px 25px 0px;
 }
 
+// Podcast Dropdown Menu
+.podcast-dropdown {
+  min-width: 220px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: none;
+  padding: 8px 0;
+  margin-top: 8px;
+
+  .dropdown-divider {
+    margin: 8px 0;
+  }
+
+  .podcast-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    transition: all 0.3s ease-in-out;
+
+    i {
+      font-size: 24px;
+      width: 24px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    span {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    &:hover {
+      background-color: #f8f9fa;
+      padding-left: 24px;
+    }
+  }
+
+  // About the Podcast - first item
+  li:nth-child(1) .podcast-dropdown-item {
+    i {
+      color: #b5bfb6;
+    }
+
+    &:hover {
+      background-color: rgba(181, 191, 182, 0.1);
+    }
+  }
+
+  // Spotify styling - third item (after divider)
+  li:nth-child(3) .podcast-dropdown-item {
+    i {
+      color: #1DB954;
+    }
+
+    &:hover {
+      background-color: rgba(29, 185, 84, 0.1);
+    }
+  }
+
+  // YouTube styling - fourth item
+  li:nth-child(4) .podcast-dropdown-item {
+    i {
+      color: #FF0000;
+    }
+
+    &:hover {
+      background-color: rgba(255, 0, 0, 0.1);
+    }
+  }
+
+  // Apple Podcast styling - fifth item
+  li:nth-child(5) .podcast-dropdown-item {
+    i {
+      color: #9933CC;
+    }
+
+    &:hover {
+      background-color: rgba(153, 51, 204, 0.1);
+    }
+  }
+}
+
+// Dropdown toggle styling
+.navbar-custom .navbar-nav .dropdown-toggle::after {
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+// Mobile responsive adjustments
+@media (max-width: 1024px) {
+  .podcast-dropdown {
+    border: 1px solid #efefef;
+    margin-top: 0;
+
+    .podcast-dropdown-item {
+      padding: 14px 20px;
+
+      i {
+        font-size: 26px;
+      }
+
+      span {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
 @media (min-width: 200px) and (max-width: 1024px) {
   .navbar-custom {
     margin-top: 0px;
@@ -1797,6 +2030,17 @@ textarea.form-control {
   .navbar-toggler:focus {
     -webkit-box-shadow: none;
             box-shadow: none;
+  }
+
+  .wellbeing-button-wrapper {
+    width: 100%;
+    padding: 0 6px;
+    margin-top: 15px;
+
+    .wellbeing-button {
+      width: 100%;
+      justify-content: center;
+    }
   }
   .carousel-indicators {
     right: 0;
