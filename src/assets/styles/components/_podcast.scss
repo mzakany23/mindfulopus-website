@@ -3,38 +3,36 @@
 .podcast-section {
   background: linear-gradient(to bottom, #ffffff, #f8f9fa);
   position: relative;
-  overflow: hidden;
 }
 
-// Podcast Cover Wrapper
-.podcast-cover-wrapper {
+// Podcast Video Wrapper (YouTube Embed)
+.podcast-video-wrapper {
   position: relative;
-  max-width: 320px;
+  width: 100%;
   margin: 0 auto;
 
-  .podcast-cover {
+  .podcast-video {
     position: relative;
+    padding-bottom: 56.25%; // 16:9 aspect ratio
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
 
-    img {
-      border-radius: 12px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease-in-out;
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: auto;
-      aspect-ratio: 1/1;
-      object-fit: cover;
-
-      &:hover {
-        transform: translateY(-5px);
-      }
+      height: 100%;
+      border-radius: 12px;
     }
   }
 }
 
-// For larger screens, make the image slightly smaller
+// For larger screens
 @media (min-width: 992px) {
-  .podcast-cover-wrapper {
-    max-width: 300px;
+  .podcast-video-wrapper {
     margin: 0;
   }
 }
@@ -323,16 +321,41 @@
   }
 }
 
+// Episode Pagination
+.episode-hidden {
+  display: none;
+}
+
+.btn-show-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 25px;
+  border: 2px solid #b5bfb6;
+  color: #333;
+  background-color: transparent;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #b5bfb6;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  i {
+    font-size: 20px;
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
 // Responsive Adjustments
 @media (max-width: 991px) {
-  .podcast-cover-wrapper {
-    text-align: center;
+  .podcast-video-wrapper {
     margin-bottom: 30px;
-    max-width: 280px;
-
-    img {
-      width: 100%;
-    }
   }
 
   .podcast-content {

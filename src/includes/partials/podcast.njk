@@ -9,17 +9,24 @@
         </div>
 
         <div class="row align-items-center">
-            <!-- Podcast Cover Art -->
-            <div class="col-lg-3 col-md-4 mb-4 mb-lg-0">
-                <div class="podcast-cover-wrapper">
-                    <div class="podcast-cover">
-                        <img src="{{ podcast.coverImage }}" alt="{{ podcast.name }} Cover" class="img-fluid rounded shadow">
+            <!-- Podcast Trailer Video -->
+            <div class="col-lg-5 col-md-5 mb-4 mb-lg-0">
+                <div class="podcast-video-wrapper">
+                    <div class="podcast-video">
+                        <iframe
+                            src="https://www.youtube.com/embed/n74KezrDJ_A"
+                            title="{{ podcast.name }} Trailer"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen>
+                        </iframe>
                     </div>
                 </div>
             </div>
 
             <!-- Podcast Description -->
-            <div class="col-lg-9 col-md-8">
+            <div class="col-lg-7 col-md-7">
                 <div class="podcast-content">
                     <h4 class="mb-4">About the Podcast</h4>
                     <p class="podcast-description">{{ podcast.description }}</p>
@@ -56,19 +63,19 @@
         <div class="row justify-content-center mt-5 pt-5">
             <div class="col-lg-12">
                 <h4 class="text-center mb-5">Recent Episodes</h4>
-                <div class="row">
+                <div class="row" id="episodes-container">
                     {% for episode in episodes.episodes %}
-                    <div class="col-lg-6 mb-4">
+                    <div class="col-lg-6 mb-4 episode-item{% if loop.index > 6 %} episode-paginated episode-hidden{% endif %}">
                         <div class="episode-card">
                             <div class="episode-header">
                                 <div class="episode-meta">
-                                    <span class="episode-number">Episode {{ episode.episodeNumber }}</span>
+                                    <span class="episode-number">{% if episode.isTrailer %}Trailer{% else %}Episode {{ episode.episodeNumber }}{% endif %}</span>
                                     <span class="episode-duration">
                                         <i class="mdi mdi-clock-outline"></i>
                                         {{ episode.duration }}
                                     </span>
                                 </div>
-                                <div class="episode-date">{{ episode.date }}</div>
+                                <div class="episode-date">{{ episode.date | dateFilter }}</div>
                             </div>
                             <h5 class="episode-title">{{ episode.title }}</h5>
                             <p class="episode-description">{{ episode.description }}</p>
@@ -87,6 +94,54 @@
                     </div>
                     {% endfor %}
                 </div>
+                {% if episodes.episodes.length > 6 %}
+                <div class="text-center mt-4">
+                    <button class="btn btn-outline-secondary btn-show-more" id="show-more-episodes" onclick="toggleEpisodes()">
+                        <span class="show-more-text">Show More Episodes</span>
+                        <span class="show-less-text" style="display: none;">Show Less</span>
+                        <i class="mdi mdi-chevron-down show-more-icon"></i>
+                        <i class="mdi mdi-chevron-up show-less-icon" style="display: none;"></i>
+                    </button>
+                </div>
+                <script>
+                    function toggleEpisodes() {
+                        const paginatedEpisodes = document.querySelectorAll('.episode-paginated');
+                        const btn = document.getElementById('show-more-episodes');
+                        const isExpanded = btn.classList.contains('expanded');
+
+                        paginatedEpisodes.forEach(ep => {
+                            if (isExpanded) {
+                                // Collapse: hide the episodes
+                                ep.classList.add('episode-hidden');
+                            } else {
+                                // Expand: show the episodes
+                                ep.classList.remove('episode-hidden');
+                            }
+                        });
+
+                        // Toggle button state
+                        btn.classList.toggle('expanded');
+
+                        // Toggle button text/icons
+                        const showMoreText = btn.querySelector('.show-more-text');
+                        const showLessText = btn.querySelector('.show-less-text');
+                        const showMoreIcon = btn.querySelector('.show-more-icon');
+                        const showLessIcon = btn.querySelector('.show-less-icon');
+
+                        if (isExpanded) {
+                            showMoreText.style.display = '';
+                            showLessText.style.display = 'none';
+                            showMoreIcon.style.display = '';
+                            showLessIcon.style.display = 'none';
+                        } else {
+                            showMoreText.style.display = 'none';
+                            showLessText.style.display = '';
+                            showMoreIcon.style.display = 'none';
+                            showLessIcon.style.display = '';
+                        }
+                    }
+                </script>
+                {% endif %}
             </div>
         </div>
     </div>
