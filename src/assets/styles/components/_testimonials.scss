@@ -206,47 +206,67 @@
     }
 
     .testimonial-carousel {
-        padding: 0 20px;
+        padding: 0 8px;
+        padding-bottom: 60px; /* Space for nav buttons below */
+    }
+
+    .testimonial-card {
+        min-height: auto; /* Let content dictate height */
+        padding: 1rem 0.5rem;
     }
 
     .testimonial-content {
-        padding: 2rem;
-        margin: 0 0.5rem;
+        padding: 1.5rem 1.25rem;
+        margin: 0;
+        min-height: auto; /* Remove fixed height */
 
         .testimonial-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
+            font-size: 1.1rem;
+            line-height: 1.75;
             color: #000000;
+
+            &::before {
+                font-size: 3rem;
+                left: -0.5rem;
+                top: -0.75rem;
+            }
         }
     }
 
+    /* Move nav buttons below the card on mobile */
     .carousel-nav {
-        width: 36px;
-        height: 36px;
-        font-size: 1rem;
-        background: rgba(255, 255, 255, 0.9);
+        top: auto;
+        bottom: 0;
+        transform: none;
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+        background: #ffffff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
     }
 
     .prev {
-        left: -5px;
+        left: calc(50% - 60px);
     }
     .next {
-        right: -5px;
+        right: calc(50% - 60px);
     }
 
     /* Adjust dots for mobile */
     .carousel-dots {
         margin-top: 1rem;
-        gap: 8px;
+        gap: 10px;
 
         .dot {
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
         }
     }
 
     /* Adjust author text size */
     .testimonial-author {
+        margin-top: 1.25rem;
+        
         h4 {
             font-size: 1rem;
         }
@@ -271,7 +291,7 @@
 /* Add smaller screen adjustments */
 @media (max-width: 480px) {
     .testimonial-section {
-        padding: 2rem 0.25rem;
+        padding: 2rem 0;
 
         h2 {
             font-size: 1.85rem;
@@ -286,30 +306,46 @@
         }
     }
 
+    .testimonial-carousel {
+        padding: 0 4px;
+        padding-bottom: 56px;
+    }
+
     .testimonial-card {
-        min-height: 300px;
+        min-height: auto;
+        padding: 0.75rem 0.25rem;
     }
 
     .testimonial-content {
-        min-height: 200px;
-        padding: 1.75rem;
+        min-height: auto;
+        padding: 1.25rem 1rem;
 
         .testimonial-text {
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             line-height: 1.7;
             color: #000000;
+
+            &::before {
+                font-size: 2.5rem;
+                left: -0.25rem;
+                top: -0.5rem;
+            }
         }
     }
 
     .carousel-nav {
-        width: 32px;
-        height: 32px;
+        width: 40px;
+        height: 40px;
     }
 
     .prev {
-        left: -3px;
+        left: calc(50% - 54px);
     }
     .next {
-        right: -3px;
+        right: calc(50% - 54px);
+    }
+
+    .testimonial-author {
+        margin-top: 1rem;
     }
 }
