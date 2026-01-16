@@ -1,6 +1,48 @@
 {
   "episodes": [
     {
+      "id": 10,
+      "title": "Befriending Performance Nerves",
+      "description": "7 tools to help you actually enjoy performing again. Performance nerves are universal, unavoidable… and often hard to manage. In this episode, I share a compassionate, practical, and research-informed approach to one of the biggest challenges we face as performers.",
+      "date": "2026-01-13",
+      "duration": "18:51",
+      "season": 1,
+      "episodeNumber": 10,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=04yws5zTewA",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      }
+    },
+    {
+      "id": 9,
+      "title": "Stuck, Scattered, or Overthinking Your Prep?",
+      "description": "My two-part process to help you find clarity, confidence, and calm before any big artistic event. What if preparing for a big performance didn't have to feel overwhelming, rigid, or all-consuming?",
+      "date": "2025-12-30",
+      "duration": "17:47",
+      "season": 1,
+      "episodeNumber": 9,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=IZ5sYGJwhbI",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      }
+    },
+    {
+      "id": 8,
+      "title": "Finding Freedom: Lauren Roth-Gómez's Journey of Self-Worth",
+      "description": "A story of reconnection, self-belief, and coming home to your art. What happens when you've spent years feeling like your playing is never good enough? Violinist Lauren Roth-Gómez, Acting Associate Concertmaster of the Atlanta Symphony, shares the inner transformation that led her back to herself and her artistry.",
+      "date": "2025-12-16",
+      "duration": "49:24",
+      "season": 1,
+      "episodeNumber": 8,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=Q1BCS2VysJg",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      }
+    },
+    {
       "id": 7,
       "title": "The Cost of Being Your Own Worst Critic",
       "description": "When your worth depends on your results, and how that pressure leads to burnout. If your inner-critic has been running the show — the one that tells you you're only as worthy as your latest performance, audition result, or practice session — this episode is for you. We explore the real cost of being your own worst critic and how to shift from inner-critic to inner-coach.",
