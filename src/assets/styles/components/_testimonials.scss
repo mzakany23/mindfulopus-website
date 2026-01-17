@@ -39,8 +39,8 @@
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 60px; // Space for nav buttons on desktop
-    overflow: hidden;
+    padding: 0 80px; // More space for nav buttons on desktop
+    overflow: visible; // Allow buttons to be visible
     box-sizing: border-box;
 }
 
@@ -175,8 +175,12 @@
     }
 }
 
-.prev { left: -24px; }
-.next { right: -24px; }
+.prev { 
+    left: 10px; // Position inside padding area, fully visible
+}
+.next { 
+    right: 10px; // Position inside padding area, fully visible
+}
 
 /* Dots navigation */
 .carousel-dots {
