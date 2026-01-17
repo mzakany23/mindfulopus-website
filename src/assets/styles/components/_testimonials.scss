@@ -71,7 +71,7 @@
     box-sizing: border-box;
     min-height: auto;
     display: flex;
-    align-items: center;
+    align-items: flex-start; // Align to top for consistent positioning
     user-select: none;
 }
 
@@ -267,6 +267,7 @@
         min-height: auto;
         padding: 0.5rem 1rem;
         box-sizing: border-box;
+        align-items: flex-start; // Consistent top alignment
     }
 
     .testimonial-content {
