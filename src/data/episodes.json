@@ -7,7 +7,7 @@
       "date": "2026-01-13",
       "duration": "18:51",
       "season": 1,
-      "episodeNumber": 10,
+      "episodeNumber": 9,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=04yws5zTewA",
@@ -21,7 +21,7 @@
       "date": "2025-12-30",
       "duration": "17:47",
       "season": 1,
-      "episodeNumber": 9,
+      "episodeNumber": 8,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=IZ5sYGJwhbI",
@@ -35,7 +35,7 @@
       "date": "2025-12-16",
       "duration": "49:24",
       "season": 1,
-      "episodeNumber": 8,
+      "episodeNumber": 7,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=Q1BCS2VysJg",
@@ -49,7 +49,7 @@
       "date": "2025-12-02",
       "duration": "24:00",
       "season": 1,
-      "episodeNumber": 7,
+      "episodeNumber": 6,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=aMueqqmJYsw",
@@ -63,7 +63,7 @@
       "date": "2025-11-18",
       "duration": "1:03:00",
       "season": 1,
-      "episodeNumber": 6,
+      "episodeNumber": 5,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=4iRLuVkVpC4",
@@ -77,7 +77,7 @@
       "date": "2025-11-04",
       "duration": "25:00",
       "season": 1,
-      "episodeNumber": 5,
+      "episodeNumber": 4,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=w85ec4r-Usc",
@@ -91,7 +91,7 @@
       "date": "2025-10-21",
       "duration": "1:05:00",
       "season": 1,
-      "episodeNumber": 4,
+      "episodeNumber": 3,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=O70Hr3r-pKQ",
@@ -105,7 +105,7 @@
       "date": "2025-10-07",
       "duration": "19:00",
       "season": 1,
-      "episodeNumber": 3,
+      "episodeNumber": 2,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=C5XoOJ6Xc5o",
@@ -119,7 +119,7 @@
       "date": "2025-10-07",
       "duration": "13:00",
       "season": 1,
-      "episodeNumber": 2,
+      "episodeNumber": 1,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=-87ViiwM2y4",
@@ -133,7 +133,6 @@
       "date": "2025-10-07",
       "duration": "3:00",
       "season": 1,
-      "episodeNumber": 1,
       "isTrailer": true,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
