@@ -184,7 +184,7 @@ if (clientSliderElement) {
 class TestimonialCarousel {
     constructor(element) {
         if (!element) return;
-        
+
         this.carousel = element;
         this.track = element.querySelector('.testimonial-track');
         this.container = element.querySelector('.carousel-container');
@@ -278,19 +278,19 @@ class TestimonialCarousel {
 
     handleDragMove(e) {
         if (!this.isDragging) return;
-        
+
         this.currentX = this.getPositionX(e);
         this.dragOffset = this.currentX - this.startX;
-        
+
         // Calculate the base position
         const baseOffset = -(this.currentIndex * 100);
         // Calculate drag as percentage of container width
         const containerWidth = this.container.offsetWidth;
         const dragPercent = (this.dragOffset / containerWidth) * 100;
-        
+
         // Apply transform with drag offset
         this.track.style.transform = `translateX(${baseOffset + dragPercent}%)`;
-        
+
         // Prevent vertical scroll when dragging horizontally
         if (Math.abs(this.dragOffset) > 10) {
             e.preventDefault();
@@ -299,10 +299,10 @@ class TestimonialCarousel {
 
     handleDragEnd(e) {
         if (!this.isDragging) return;
-        
+
         this.isDragging = false;
         this.track.classList.remove('is-dragging');
-        
+
         // Determine if we should change slides
         if (Math.abs(this.dragOffset) > this.threshold) {
             if (this.dragOffset < 0) {
@@ -316,9 +316,9 @@ class TestimonialCarousel {
             // Snap back to current slide
             this.updateCarouselState();
         }
-        
+
         this.dragOffset = 0;
-        
+
         // Restart autoplay after a delay
         setTimeout(() => {
             if (!this.isDragging) this.startAutoplay();
@@ -351,7 +351,7 @@ class TestimonialCarousel {
     updateCarouselState() {
         // Re-enable transition for smooth animation
         this.track.style.transition = 'transform 0.3s ease';
-        
+
         // Move track using percentage
         const offset = -(this.currentIndex * 100);
         this.track.style.transform = `translateX(${offset}%)`;

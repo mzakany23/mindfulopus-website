@@ -56,7 +56,7 @@
     will-change: transform;
     cursor: grab;
     width: 100%;
-    
+
     &.is-dragging {
         cursor: grabbing;
         transition: none !important;
@@ -324,7 +324,7 @@
     /* Adjust author text size */
     .testimonial-author {
         margin-top: 1rem;
-        
+
         h4 {
             font-size: 1rem;
         }
@@ -402,7 +402,7 @@
 
     .testimonial-author {
         margin-top: 0.875rem;
-        
+
         h4 {
             font-size: 0.95rem;
         }
