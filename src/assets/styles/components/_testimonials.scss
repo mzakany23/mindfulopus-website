@@ -79,7 +79,7 @@
     max-width: 800px;
     margin: 0 auto;
     text-align: left;
-    background-color: #f5f7f5; // Light sage-tinted background for better text contrast
+    background-color: rgba(181, 191, 182, 0.1); // Match bg-lightan sage tint
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -90,7 +90,7 @@
     width: 100%;
     box-sizing: border-box;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(181, 191, 182, 0.3); // Subtle border for definition
+    border: 1px solid rgba(0, 0, 0, 0.08); // Subtle neutral border
 
     &:hover {
         transform: translateY(-3px);
@@ -111,19 +111,9 @@
         width: 100%;
         max-width: 100%;
         text-align: left;
-        padding-left: 0.5rem;
+        padding-left: 0;
         box-sizing: border-box;
 
-        &::before {
-            content: '"';
-            font-size: 3.5rem;
-            color: #b5bfb6; // Sage accent color
-            position: absolute;
-            left: -0.75rem;
-            top: -0.75rem;
-            font-family: Georgia, serif;
-            opacity: 0.7;
-        }
     }
 
     .testimonial-author {
@@ -193,8 +183,9 @@
     display: flex;
     justify-content: center;
     gap: 12px;
-    margin-top: 0;
+    margin-top: 0.5rem;
     margin-bottom: 1.5rem; // Space between dots and testimonial card
+    padding-top: 0.5rem; // Extra breathing room
 
     .dot {
         width: 10px;
@@ -279,9 +270,9 @@
         box-sizing: border-box;
         border-radius: 10px;
         // Enhanced mobile styling for better readability
-        background-color: #f7faf7; // Very light sage - subtle but visible
-        border: 1px solid rgba(181, 191, 182, 0.35);
-        border-left: 4px solid #a8b5a9; // Muted sage accent
+        background-color: rgba(181, 191, 182, 0.1); // Match bg-lightan sage tint
+        border: 1px solid rgba(181, 191, 182, 0.3);
+        border-left: 4px solid rgba(181, 191, 182, 0.5); // Subtle sage accent
         box-shadow:
             0 2px 8px rgba(0, 0, 0, 0.06),
             0 8px 24px rgba(0, 0, 0, 0.1);
@@ -290,23 +281,16 @@
             font-size: 1.05rem;
             line-height: 1.8;
             color: #000000; // Pure black for maximum contrast
-            padding-left: 0.5rem;
+            padding-left: 0;
             font-weight: 600; // Bold for italic text readability
             letter-spacing: 0.005em;
 
-            &::before {
-                font-size: 3rem;
-                left: -0.25rem;
-                top: -0.5rem;
-                color: #8a9a8b;
-                opacity: 0.9;
-            }
         }
 
         .testimonial-author {
             padding-top: 1rem;
             margin-top: 1.25rem;
-            border-top: 1px solid rgba(181, 191, 182, 0.4);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
 
             h4 {
                 color: #000000;
@@ -341,10 +325,10 @@
 
     /* Adjust dots for mobile */
     .carousel-dots {
-        margin-top: 0;
+        margin-top: 0.5rem;
         margin-bottom: 1.25rem; // Space between dots and card
         gap: 10px;
-        padding: 0 1rem;
+        padding: 0.5rem 1rem 0; // Top padding to prevent cutoff
 
         .dot {
             width: 10px;
@@ -409,13 +393,8 @@
         .testimonial-text {
             font-size: 1rem;
             line-height: 1.7;
-            padding-left: 0.125rem;
+            padding-left: 0;
 
-            &::before {
-                font-size: 2.25rem;
-                left: -0.25rem;
-                top: -0.375rem;
-            }
         }
 
         .testimonial-author {
@@ -447,7 +426,7 @@
     }
 
     .carousel-dots {
-        padding: 0 0.75rem;
+        padding: 0.5rem 0.75rem 0;
         margin-bottom: 1rem;
     }
 }
