@@ -28,6 +28,12 @@ Main Style Sheet
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300&display=swap');
 
+// Prevent horizontal scroll on mobile
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 #mo-profile-1{
   max-height: 700px;
 }
@@ -38,6 +44,7 @@ body {
   color: #000000;
   font-weight: 400;
   font-size: 18px;
+  position: relative;
 }
 
 h1,

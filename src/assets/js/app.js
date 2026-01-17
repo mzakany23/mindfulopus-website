@@ -180,11 +180,14 @@ if (clientSliderElement) {
     });
 }
 
-// Testimonial Carousel Class
+// Testimonial Carousel Class with Touch Dragging
 class TestimonialCarousel {
     constructor(element) {
+        if (!element) return;
+        
         this.carousel = element;
         this.track = element.querySelector('.testimonial-track');
+        this.container = element.querySelector('.carousel-container');
         this.slides = Array.from(element.querySelectorAll('.testimonial-card'));
         this.nextButton = element.querySelector('.next');
         this.prevButton = element.querySelector('.prev');
@@ -193,6 +196,13 @@ class TestimonialCarousel {
         this.currentIndex = 0;
         this.autoplayInterval = null;
         this.autoplayDelay = 25000;
+
+        // Drag state
+        this.isDragging = false;
+        this.startX = 0;
+        this.currentX = 0;
+        this.dragOffset = 0;
+        this.threshold = 50; // Minimum drag distance to trigger slide change
 
         this.initializeCarousel();
     }
@@ -203,6 +213,7 @@ class TestimonialCarousel {
 
         // Set initial styles
         this.track.style.display = 'flex';
+        this.track.style.transition = 'transform 0.3s ease';
 
         // Add event listeners
         this.addEventListeners();
@@ -229,31 +240,89 @@ class TestimonialCarousel {
         this.prevButton.addEventListener('click', () => this.prevSlide());
 
         this.carousel.addEventListener('mouseenter', () => this.pauseAutoplay());
-        this.carousel.addEventListener('mouseleave', () => this.startAutoplay());
-
-        // Touch events
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        this.carousel.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
+        this.carousel.addEventListener('mouseleave', () => {
+            if (!this.isDragging) this.startAutoplay();
         });
 
-        this.carousel.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            this.handleSwipe(touchStartX, touchEndX);
+        // Touch events for mobile dragging
+        this.container.addEventListener('touchstart', (e) => this.handleDragStart(e), { passive: true });
+        this.container.addEventListener('touchmove', (e) => this.handleDragMove(e), { passive: false });
+        this.container.addEventListener('touchend', (e) => this.handleDragEnd(e));
+        this.container.addEventListener('touchcancel', (e) => this.handleDragEnd(e));
+
+        // Mouse events for desktop dragging
+        this.container.addEventListener('mousedown', (e) => this.handleDragStart(e));
+        this.container.addEventListener('mousemove', (e) => this.handleDragMove(e));
+        this.container.addEventListener('mouseup', (e) => this.handleDragEnd(e));
+        this.container.addEventListener('mouseleave', (e) => {
+            if (this.isDragging) this.handleDragEnd(e);
+        });
+
+        // Prevent image dragging
+        this.carousel.querySelectorAll('img').forEach(img => {
+            img.addEventListener('dragstart', (e) => e.preventDefault());
         });
     }
 
-    handleSwipe(startX, endX) {
-        const diff = startX - endX;
-        if (Math.abs(diff) > 50) { // Minimum swipe distance
-            if (diff > 0) {
+    getPositionX(e) {
+        return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+    }
+
+    handleDragStart(e) {
+        this.isDragging = true;
+        this.startX = this.getPositionX(e);
+        this.dragOffset = 0;
+        this.track.classList.add('is-dragging');
+        this.pauseAutoplay();
+    }
+
+    handleDragMove(e) {
+        if (!this.isDragging) return;
+        
+        this.currentX = this.getPositionX(e);
+        this.dragOffset = this.currentX - this.startX;
+        
+        // Calculate the base position
+        const baseOffset = -(this.currentIndex * 100);
+        // Calculate drag as percentage of container width
+        const containerWidth = this.container.offsetWidth;
+        const dragPercent = (this.dragOffset / containerWidth) * 100;
+        
+        // Apply transform with drag offset
+        this.track.style.transform = `translateX(${baseOffset + dragPercent}%)`;
+        
+        // Prevent vertical scroll when dragging horizontally
+        if (Math.abs(this.dragOffset) > 10) {
+            e.preventDefault();
+        }
+    }
+
+    handleDragEnd(e) {
+        if (!this.isDragging) return;
+        
+        this.isDragging = false;
+        this.track.classList.remove('is-dragging');
+        
+        // Determine if we should change slides
+        if (Math.abs(this.dragOffset) > this.threshold) {
+            if (this.dragOffset < 0) {
+                // Dragged left - go to next slide
                 this.nextSlide();
             } else {
+                // Dragged right - go to previous slide
                 this.prevSlide();
             }
+        } else {
+            // Snap back to current slide
+            this.updateCarouselState();
         }
+        
+        this.dragOffset = 0;
+        
+        // Restart autoplay after a delay
+        setTimeout(() => {
+            if (!this.isDragging) this.startAutoplay();
+        }, 1000);
     }
 
     goToSlide(index) {
@@ -280,6 +349,9 @@ class TestimonialCarousel {
     }
 
     updateCarouselState() {
+        // Re-enable transition for smooth animation
+        this.track.style.transition = 'transform 0.3s ease';
+        
         // Move track using percentage
         const offset = -(this.currentIndex * 100);
         this.track.style.transform = `translateX(${offset}%)`;
@@ -312,9 +384,10 @@ class TestimonialCarousel {
 
 // Initialize carousel when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    const carousel = new TestimonialCarousel(
-        document.querySelector('.testimonial-carousel')
-    );
+    const carouselElement = document.querySelector('.testimonial-carousel');
+    if (carouselElement) {
+        new TestimonialCarousel(carouselElement);
+    }
 });
 
 // HOME TITLE ANIMATION
