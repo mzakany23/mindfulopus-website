@@ -42,35 +42,35 @@
   padding-left: 30px;
 
   h4 {
-    font-size: 28px;
+    font-size: 1.5rem; // 24px - subheading size
     font-weight: 600;
     color: #000000;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
   }
 
   .podcast-description {
-    font-size: 17px;
+    font-size: 1.125rem; // 18px - matches site body text
     line-height: 1.8;
     color: #333;
     margin-bottom: 1.5rem;
   }
 
   .podcast-host {
-    padding: 20px;
+    padding: 1.25rem;
     background-color: #f8f9fa;
     border-left: 4px solid #b5bfb6;
     border-radius: 4px;
 
     h5 {
-      font-size: 18px;
-      margin-bottom: 10px;
+      font-size: 1.125rem; // 18px - consistent
+      margin-bottom: 0.625rem;
       color: #000000;
       font-weight: 600;
     }
 
     p {
       margin-bottom: 0;
-      font-size: 15px;
+      font-size: 1rem; // 16px - meta text
       line-height: 1.6;
     }
   }
@@ -85,7 +85,7 @@
 // Listen Buttons
 .podcast-listen-buttons {
   h5 {
-    font-size: 20px;
+    font-size: 1.125rem; // 18px - consistent subheading
     font-weight: 600;
     color: #000000;
   }
@@ -93,16 +93,16 @@
   .btn-podcast {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    font-size: 16px;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem; // 16px - button text
     font-weight: 600;
     border-radius: 25px;
     transition: all 0.3s ease-in-out;
     border: none;
 
     i {
-      font-size: 20px;
+      font-size: 1.25rem; // 20px
     }
 
     &:hover {
@@ -145,12 +145,12 @@
 // Podcast Features
 .podcast-features {
   background-color: #ffffff;
-  padding: 30px;
+  padding: 1.875rem;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 
   h5 {
-    font-size: 24px;
+    font-size: 1.25rem; // 20px - card title size
     font-weight: 600;
     color: #000000;
   }
@@ -158,16 +158,16 @@
   .podcast-feature-item {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 0.75rem;
 
     i {
-      font-size: 24px;
+      font-size: 1.5rem; // 24px
       margin-top: 2px;
       flex-shrink: 0;
     }
 
     span {
-      font-size: 17px;
+      font-size: 1.125rem; // 18px - body text
       line-height: 1.6;
       color: #000000;
     }
@@ -208,46 +208,46 @@
 }
 
 .episode-number {
-  font-size: 13px;
+  font-size: 0.8125rem; // 13px - badge text
   font-weight: 600;
   color: #ffffff;
   background-color: #b5bfb6;
-  padding: 4px 12px;
+  padding: 0.25rem 0.75rem;
   border-radius: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .episode-duration {
-  font-size: 14px;
+  font-size: 0.875rem; // 14px - meta text
   color: #666;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.25rem;
 
   i {
-    font-size: 16px;
+    font-size: 1rem; // 16px
   }
 }
 
 .episode-date {
-  font-size: 14px;
+  font-size: 0.875rem; // 14px - meta text
   color: #999;
 }
 
 .episode-title {
-  font-size: 20px;
+  font-size: 1.25rem; // 20px - card title (consistent)
   font-weight: 600;
   color: #000000;
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
   line-height: 1.4;
 }
 
 .episode-description {
-  font-size: 16px;
+  font-size: 1.125rem; // 18px - body text (consistent)
   line-height: 1.6;
   color: #555;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   flex-grow: 1;
 }
 
@@ -380,11 +380,11 @@
 @media (max-width: 767px) {
   .podcast-content {
     h4 {
-      font-size: 24px;
+      font-size: 1.375rem; // 22px on mobile
     }
 
     .podcast-description {
-      font-size: 16px;
+      font-size: 1rem; // 16px on mobile
     }
   }
 
@@ -396,24 +396,24 @@
   }
 
   .podcast-features {
-    padding: 20px;
+    padding: 1.25rem;
 
     .podcast-feature-item {
       span {
-        font-size: 16px;
+        font-size: 1rem; // 16px on mobile
       }
     }
   }
 
   .episode-card {
-    padding: 20px;
+    padding: 1.25rem;
   }
 
   .episode-title {
-    font-size: 18px;
+    font-size: 1.125rem; // 18px on mobile
   }
 
   .episode-description {
-    font-size: 15px;
+    font-size: 1rem; // 16px on mobile
   }
 }

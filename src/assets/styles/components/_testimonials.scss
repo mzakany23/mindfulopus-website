@@ -5,19 +5,18 @@
     width: 100%;
     max-width: 100vw; // Never exceed viewport
 
-    h2 {
+    // Section title - matches other sections
+    h3 {
         text-align: center;
-        font-size: 2.5rem;
         color: #000000;
         margin-bottom: 1.25rem;
         font-weight: 600;
-        font-family: 'Source Sans Pro', sans-serif;
     }
 
     p.subtitle {
         text-align: center;
         color: #000000;
-        font-size: 1.2rem;
+        font-size: 1.125rem; // 18px - matches site body text
         margin-bottom: 3rem;
         max-width: 700px;
         margin-left: auto;
@@ -98,7 +97,7 @@
     }
 
     .testimonial-text {
-        font-size: 1.2rem;
+        font-size: 1.125rem; // 18px - matches site body text
         line-height: 1.8;
         color: #1a1a1a; // Near-black for maximum readability
         font-weight: 500; // Heavier weight for italic text
@@ -113,7 +112,6 @@
         text-align: left;
         padding-left: 0;
         box-sizing: border-box;
-
     }
 
     .testimonial-author {
@@ -122,18 +120,16 @@
 
         h4 {
             margin: 0;
-            font-size: 1.1rem;
+            font-size: 1.125rem; // 18px - consistent
             color: #1a1a1a;
             font-weight: 600;
             margin-bottom: 0.25rem;
-            font-family: 'Source Sans Pro', sans-serif;
         }
 
         p {
             margin: 0.25rem 0 0;
             color: #2d3748;
-            font-size: 1rem;
-            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 1rem; // 16px - meta/role text
         }
     }
 }
@@ -220,8 +216,8 @@
         width: 100%;
         max-width: 100vw;
 
-        h2, h3 {
-            font-size: 1.75rem;
+        h3 {
+            font-size: 1.5rem; // Scaled down for mobile
             line-height: 1.4;
             margin-bottom: 1.25rem;
             color: #000000;
@@ -229,7 +225,7 @@
         }
 
         p.subtitle {
-            font-size: 1.1rem;
+            font-size: 1rem; // 16px on mobile
             line-height: 1.7;
             color: #000000;
             padding: 0 1rem;
@@ -360,7 +356,7 @@
     }
 
     .testimonial-text {
-        font-size: 1.2rem;
+        font-size: 1.125rem; // 18px - consistent
         line-height: 1.8;
     }
 }
@@ -370,14 +366,14 @@
     .testimonial-section {
         padding: 2rem 0;
 
-        h2, h3 {
-            font-size: 1.5rem;
+        h3 {
+            font-size: 1.375rem; // ~22px on small phones
             line-height: 1.4;
             margin-bottom: 1rem;
         }
 
         p.subtitle {
-            font-size: 1rem;
+            font-size: 0.9375rem; // 15px on small phones
             line-height: 1.7;
         }
     }
