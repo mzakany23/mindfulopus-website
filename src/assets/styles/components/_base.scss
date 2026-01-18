@@ -2068,6 +2068,67 @@ textarea.form-control {
   }
 }
 
+// Content Dropdown Menu (Podcast, Newsletter, Well-Being Wheel)
+.content-dropdown {
+  min-width: 220px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: none;
+  padding: 8px 0;
+  margin-top: 8px;
+
+  .dropdown-divider {
+    margin: 8px 0;
+  }
+
+  .content-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    transition: all 0.3s ease-in-out;
+    color: #1e304d;
+
+    i {
+      font-size: 22px;
+      width: 24px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    span {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    &:hover {
+      background-color: #f8f9fa;
+      padding-left: 24px;
+    }
+  }
+
+}
+
+// Mobile responsive adjustments for content dropdown
+@media (max-width: 1024px) {
+  .content-dropdown {
+    border: 1px solid #efefef;
+    margin-top: 0;
+    box-shadow: none;
+
+    .content-dropdown-item {
+      padding: 14px 20px;
+
+      i {
+        font-size: 24px;
+      }
+
+      span {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
 // Dropdown toggle styling
 .navbar-custom .navbar-nav .dropdown-toggle::after {
   margin-left: 6px;
