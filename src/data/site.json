@@ -7,5 +7,12 @@
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/@mindfulopus",
         "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+    },
+    "newsletter": {
+        "name": "MindfulOpus Newsletter",
+        "tagline": "Insights on mindfulness, well-being, and thriving as a classical musician",
+        "medium": "https://medium.com/@MindfulOpus",
+        "rssFeed": "https://medium.com/feed/@MindfulOpus",
+        "subscribe": "https://6b81c6e8.sibforms.com/serve/MUIFAOLEJJ7fftviuBz-GnGNRVIcHuEWVyPtkUc4qtqVofOn2PM1Bvi8upIyIOcd5boh_TBpkGGY1Fh0oB44Fi6gh_HPqCmaLxk3xL4mE2dJNEYpAhQyU9XtivcIeBEOIh3L8X2R6kcIK0Z5A7O9Kc4Lm-kCL1NnS8GLf40eLIyRxmahI6sDU7DyfkH6BGGjf0gyngLs4_W5JvM3"
     }
 }

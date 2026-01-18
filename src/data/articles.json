@@ -1,0 +1,60 @@
+{
+  "articles": [
+    {
+      "id": "7711b84fce0a",
+      "title": "Equanimity: Where It Can All Be True",
+      "excerpt": "What is equanimity, and why is it important? Instead of avoiding the bad and craving the good, we learn to be with what is. Here are practical suggestions for developing this powerful skill.",
+      "date": "2023-12-22",
+      "categories": ["mindfulness", "equanimity", "mindset"],
+      "link": "https://medium.com/@MindfulOpus/equanimity-where-it-can-all-be-true-7711b84fce0a"
+    },
+    {
+      "id": "cb76370452ed",
+      "title": "Mindfulness: Broken Bone vs. Bugging Brain?",
+      "excerpt": "How do you check your thoughts, shift the feeling, and change the course of your human experience? By becoming aware of what's happening in the present moment.",
+      "date": "2023-04-15",
+      "categories": ["mindfulness", "wellbeing", "classical-music"],
+      "link": "https://medium.com/@MindfulOpus/mindfulness-broken-bone-vs-bugging-brain-cb76370452ed"
+    },
+    {
+      "id": "d25a1a6a86c0",
+      "title": "Winter Blues: Recognizing and Tending to Yourself This Season",
+      "excerpt": "Practical tips for managing winter blues: getting outside for sunlight, using a happy light, moving your body, resting, and reaching out to loved ones.",
+      "date": "2023-01-18",
+      "categories": ["wellbeing", "self-care", "mental-health"],
+      "link": "https://medium.com/@MindfulOpus/winter-blues-recognizing-and-tending-to-yourself-this-season-d25a1a6a86c0"
+    },
+    {
+      "id": "811e959c05a8",
+      "title": "Progress over Perfection: A Shame-Free Mindset That Works",
+      "excerpt": "Perfectionism isn't the best way to achieve success. Self-criticism shuts down learning centers of the brain. Learn how celebrating progress cultivates a kinder relationship with yourself.",
+      "date": "2022-12-07",
+      "categories": ["mindset", "performance", "classical-music"],
+      "link": "https://medium.com/@MindfulOpus/progress-over-perfection-a-shame-free-mindset-that-works-811e959c05a8"
+    },
+    {
+      "id": "4d7ebb8463ea",
+      "title": "Pleasant, Unpleasant or Neutral — Which Is It?",
+      "excerpt": "A simple trick for mindfulness beginners: categorize feelings into pleasant, unpleasant, or neutral. This builds a foundation for self-compassion without needing the perfect emotional vocabulary.",
+      "date": "2022-09-27",
+      "categories": ["mindfulness", "awareness"],
+      "link": "https://medium.com/@MindfulOpus/pleasant-unpleasant-or-neutral-which-is-it-4d7ebb8463ea"
+    },
+    {
+      "id": "40b1d500c7f5",
+      "title": "Are You Getting Results 'Because Of' or 'In Spite Of' How You Treat Yourself?",
+      "excerpt": "Self-criticism isn't a sustainable motivator. Self-compassion allows us to reach our full potential by nurturing ourselves. Which option would you choose to run a race?",
+      "date": "2022-06-14",
+      "categories": ["coaching", "performance", "mindfulness"],
+      "link": "https://medium.com/@MindfulOpus/are-you-getting-the-results-you-want-because-of-or-in-spite-of-how-youre-treating-yourself-40b1d500c7f5"
+    },
+    {
+      "id": "f925e50c8636",
+      "title": "What Does Balance Look Like for You?",
+      "excerpt": "Balance doesn't mean 'do less.' A mosaic-inspired life has each piece serving and strengthening the other. When you choose your version of balance, you show up as the best version of yourself.",
+      "date": "2022-06-07",
+      "categories": ["balance", "coaching", "classical-music"],
+      "link": "https://medium.com/@MindfulOpus/what-does-balance-look-like-for-you-f925e50c8636"
+    }
+  ]
+}
