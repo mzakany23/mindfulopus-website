@@ -156,6 +156,94 @@ p {
   border-radius: 30px;
 }
 
+// Hero CTA Button - The main call to action on the landing page
+// Uses deep teal - calming yet action-oriented, associated with wellness/healing
+.hero-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #2a7d7d 0%, #1f6666 100%);
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 18px 48px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(42, 125, 125, 0.35);
+  transition: all 0.3s ease-in-out;
+  border: none;
+  cursor: pointer;
+
+  .hero-cta-text {
+    letter-spacing: 0.02em;
+  }
+
+  i {
+    font-size: 24px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, #358f8f 0%, #2a7d7d 100%);
+    color: #ffffff;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(42, 125, 125, 0.45);
+    text-decoration: none;
+
+    i {
+      transform: translateY(4px);
+    }
+  }
+
+  &:active {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(42, 125, 125, 0.35);
+  }
+}
+
+// Responsive hero button
+@media (max-width: 767px) {
+  .hero-cta-button {
+    font-size: 18px;
+    padding: 16px 36px;
+  }
+}
+
+// Standard CTA Button - Used for secondary CTAs throughout the site
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #2a7d7d 0%, #1f6666 100%) !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  padding: 16px 36px;
+  font-size: 17px;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 15px rgba(42, 125, 125, 0.3);
+
+  i {
+    font-size: 22px;
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, #358f8f 0%, #2a7d7d 100%) !important;
+    color: #ffffff !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(42, 125, 125, 0.4);
+  }
+
+  &:focus,
+  &:active {
+    color: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(42, 125, 125, 0.3);
+  }
+}
+
 .row > * {
   position: relative;
 }
@@ -961,14 +1049,27 @@ hr {
 
 .navbar-custom .navbar-nav li a {
   color: rgba(255, 255, 255, 0.9) !important;
-  font-size: 16px;
+  font-size: 15px;
   background-color: transparent !important;
-  margin: 0 10px;
+  margin: 0 8px;
   letter-spacing: 0.03em;
   line-height: 24px;
   font-weight: 500;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  i {
+    font-size: 18px;
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover i {
+    opacity: 1;
+  }
 }
 
 .navbar-toggler {
@@ -1963,6 +2064,67 @@ textarea.form-control {
 
     &:hover {
       background-color: rgba(153, 51, 204, 0.1);
+    }
+  }
+}
+
+// Content Dropdown Menu (Podcast, Newsletter, Well-Being Wheel)
+.content-dropdown {
+  min-width: 220px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: none;
+  padding: 8px 0;
+  margin-top: 8px;
+
+  .dropdown-divider {
+    margin: 8px 0;
+  }
+
+  .content-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    transition: all 0.3s ease-in-out;
+    color: #1e304d;
+
+    i {
+      font-size: 22px;
+      width: 24px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    span {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    &:hover {
+      background-color: #f8f9fa;
+      padding-left: 24px;
+    }
+  }
+
+}
+
+// Mobile responsive adjustments for content dropdown
+@media (max-width: 1024px) {
+  .content-dropdown {
+    border: 1px solid #efefef;
+    margin-top: 0;
+    box-shadow: none;
+
+    .content-dropdown-item {
+      padding: 14px 20px;
+
+      i {
+        font-size: 24px;
+      }
+
+      span {
+        font-size: 16px;
+      }
     }
   }
 }

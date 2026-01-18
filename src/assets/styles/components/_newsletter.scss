@@ -1,0 +1,188 @@
+// Newsletter Section Styles
+
+.newsletter-section {
+  background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+  position: relative;
+}
+
+// Article Cards
+.article-card-link {
+  text-decoration: none;
+  display: block;
+  height: 100%;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.article-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  height: 100%;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid transparent;
+
+  &:hover {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+    border-color: #1a8917;
+
+    .article-read-more {
+      color: #1a8917;
+
+      i {
+        transform: translateX(4px);
+      }
+    }
+  }
+}
+
+.article-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.article-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.article-category {
+  font-size: 0.75rem; // 12px - badge text (consistent with podcast)
+  font-weight: 600;
+  color: #1a8917;
+  background-color: rgba(26, 137, 23, 0.1);
+  padding: 0.25rem 0.625rem;
+  border-radius: 12px;
+  text-transform: capitalize;
+}
+
+.article-date {
+  font-size: 0.875rem; // 14px - meta text
+  color: #999;
+}
+
+.article-title {
+  font-size: 1.25rem; // 20px - card title (consistent with podcast)
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.article-excerpt {
+  font-size: 1.125rem; // 18px - body text (consistent)
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.article-read-more {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem; // 15px - action text
+  font-weight: 600;
+  color: #666;
+  padding-top: 1rem;
+  border-top: 1px solid #efefef;
+  transition: color 0.3s ease-in-out;
+
+  i {
+    font-size: 1.125rem; // 18px
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
+// Article Pagination
+.article-hidden {
+  display: none;
+}
+
+// Newsletter Buttons
+.newsletter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.btn-newsletter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 2rem;
+  font-size: 1.0625rem; // 17px - matches podcast buttons
+  font-weight: 600;
+  border-radius: 25px;
+  transition: all 0.3s ease-in-out;
+  border: none;
+
+  i {
+    font-size: 1.375rem; // 22px
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.btn-subscribe {
+  background: linear-gradient(135deg, #2a7d7d 0%, #1f6666 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(42, 125, 125, 0.3);
+
+  &:hover {
+    background: linear-gradient(135deg, #358f8f 0%, #2a7d7d 100%);
+    color: #ffffff;
+    box-shadow: 0 8px 25px rgba(42, 125, 125, 0.4);
+  }
+}
+
+.btn-medium {
+  background-color: #000000;
+  color: #ffffff;
+
+  &:hover {
+    background-color: #1a8917;
+    color: #ffffff;
+  }
+}
+
+// Responsive Adjustments
+@media (max-width: 767px) {
+  .article-card {
+    padding: 1.25rem;
+  }
+
+  .article-title {
+    font-size: 1.125rem; // 18px on mobile
+  }
+
+  .article-excerpt {
+    font-size: 1rem; // 16px on mobile (matches podcast)
+  }
+
+  .newsletter-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-newsletter {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+}

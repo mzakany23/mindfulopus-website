@@ -1,0 +1,107 @@
+<!-- Start Newsletter Section -->
+<section class="section newsletter-section" id="newsletter">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+                <h3>{{ site.newsletter.name }}</h3>
+                <p class="text-muted mt-3">{{ site.newsletter.tagline }}</p>
+            </div>
+        </div>
+
+        <!-- Articles Section -->
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                {% if articles.articles.length > 0 %}
+                <div class="row" id="articles-container">
+                    {% for article in articles.articles %}
+                    <div class="col-lg-6 col-md-6 mb-4 article-item{% if loop.index > 4 %} article-paginated article-hidden{% endif %}">
+                        <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="article-card-link">
+                            <div class="article-card">
+                                <div class="article-header">
+                                    <div class="article-categories">
+                                        {% for category in article.categories %}
+                                        {% if loop.index <= 2 %}
+                                        <span class="article-category">{{ category }}</span>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="article-date">{{ article.date | dateFilter }}</div>
+                                </div>
+                                <h5 class="article-title">{{ article.title }}</h5>
+                                <p class="article-excerpt">{{ article.excerpt }}</p>
+                                <div class="article-read-more">
+                                    <span>Read on Medium</span>
+                                    <i class="mdi mdi-arrow-right"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% if articles.articles.length > 4 %}
+                <div class="text-center mt-4">
+                    <button class="btn btn-outline-secondary btn-show-more" id="show-more-articles" onclick="toggleArticles()">
+                        <span class="show-more-text">Show More Articles</span>
+                        <span class="show-less-text" style="display: none;">Show Less</span>
+                        <i class="mdi mdi-chevron-down show-more-icon"></i>
+                        <i class="mdi mdi-chevron-up show-less-icon" style="display: none;"></i>
+                    </button>
+                </div>
+                <script>
+                    function toggleArticles() {
+                        const paginatedArticles = document.querySelectorAll('.article-paginated');
+                        const btn = document.getElementById('show-more-articles');
+                        const isExpanded = btn.classList.contains('expanded');
+
+                        paginatedArticles.forEach(article => {
+                            if (isExpanded) {
+                                article.classList.add('article-hidden');
+                            } else {
+                                article.classList.remove('article-hidden');
+                            }
+                        });
+
+                        btn.classList.toggle('expanded');
+
+                        const showMoreText = btn.querySelector('.show-more-text');
+                        const showLessText = btn.querySelector('.show-less-text');
+                        const showMoreIcon = btn.querySelector('.show-more-icon');
+                        const showLessIcon = btn.querySelector('.show-less-icon');
+
+                        if (isExpanded) {
+                            showMoreText.style.display = '';
+                            showLessText.style.display = 'none';
+                            showMoreIcon.style.display = '';
+                            showLessIcon.style.display = 'none';
+                        } else {
+                            showMoreText.style.display = 'none';
+                            showLessText.style.display = '';
+                            showMoreIcon.style.display = 'none';
+                            showLessIcon.style.display = '';
+                        }
+                    }
+                </script>
+                {% endif %}
+                {% else %}
+                <!-- No articles yet - show Medium link -->
+                <div class="text-center">
+                    <p class="text-muted mb-4">Explore mindfulness insights, well-being tips, and stories from the classical music world.</p>
+                </div>
+                {% endif %}
+
+                <!-- Newsletter Buttons -->
+                <div class="text-center mt-5 newsletter-buttons">
+                    <a href="{{ site.newsletter.subscribe }}" target="_blank" rel="noopener noreferrer" class="btn btn-newsletter btn-subscribe">
+                        <i class="mdi mdi-email-outline"></i>
+                        Subscribe to Newsletter
+                    </a>
+                    <a href="{{ site.newsletter.medium }}" target="_blank" rel="noopener noreferrer" class="btn btn-newsletter btn-medium">
+                        <i class="mdi mdi-medium"></i>
+                        Read on Medium
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Newsletter Section -->
