@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindfulOpus Podcast — Guest Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Offset for sticky nav when scrolling to sections */
+    [id] {
+      scroll-margin-top: 80px;
+    }
+
+    body {
+      font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #ffffff;
+      min-height: 100vh;
+    }
+
+    /* Background blobs container */
+    .bg-blobs {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+    }
+
+    .blob-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(181, 191, 182, 0.5) 0%, rgba(181, 191, 182, 0) 70%);
+      top: -100px;
+      left: -100px;
+    }
+
+    .blob-2 {
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(42, 125, 125, 0.35) 0%, rgba(42, 125, 125, 0) 70%);
+      bottom: -150px;
+      right: -150px;
+    }
+
+    .blob-3 {
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(123, 94, 167, 0.2) 0%, rgba(123, 94, 167, 0) 70%);
+      top: 55%;
+      left: -100px;
+    }
+
+    .blob-4 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(181, 191, 182, 0.25) 0%, rgba(181, 191, 182, 0) 70%);
+      top: 30%;
+      right: -80px;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 32px 0 24px;
+    }
+
+    .logo {
+      width: 580px;
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+      mix-blend-mode: multiply;
+    }
+
+    .welcome {
+      font-size: 26px;
+      font-weight: 300;
+      color: #2a7d7d;
+      letter-spacing: -0.5px;
+    }
+
+    .welcome strong {
+      font-weight: 600;
+    }
+
+    /* Intro card */
+    .intro-card {
+      background: linear-gradient(135deg, rgba(42, 125, 125, 0.08) 0%, rgba(181, 191, 182, 0.12) 100%);
+      border-radius: 20px;
+      padding: 28px;
+      margin: 20px 0 40px;
+      text-align: center;
+    }
+
+    .intro-card p {
+      font-size: 18px;
+      color: #333;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* Page Navigation */
+    .page-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 16px 24px;
+      margin: 0 0 40px;
+      background: rgba(181, 191, 182, 0.25);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .page-nav a {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #555;
+      text-decoration: none;
+      border: 1px solid rgba(181, 191, 182, 0.5);
+      border-radius: 25px;
+      transition: all 0.2s ease;
+    }
+
+    .page-nav a:hover {
+      color: #2a7d7d;
+      border-color: #2a7d7d;
+      background: rgba(42, 125, 125, 0.05);
+    }
+
+    .page-nav a.active {
+      background: linear-gradient(135deg, #7b5ea7 0%, #5c4686 100%);
+      color: #ffffff;
+      border-color: transparent;
+    }
+
+    .page-nav a.active:hover {
+      background: linear-gradient(135deg, #8b6eb7 0%, #6c5696 100%);
+      color: #ffffff;
+    }
+
+    /* Journey Sections */
+    .journey-section {
+      margin: 48px 0;
+      padding: 32px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(181, 191, 182, 0.3);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(181, 191, 182, 0.3);
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2a7d7d 0%, #358f8f 100%);
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 12px rgba(42, 125, 125, 0.3);
+    }
+
+    .section-header h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+    }
+
+    .section-header p {
+      font-size: 15px;
+      color: #666;
+      margin: 0;
+    }
+
+    .section-content {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .section-content > p {
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .section-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    .section-list li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 12px;
+      font-size: 15px;
+      color: #444;
+    }
+
+    .section-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2a7d7d;
+    }
+
+    .section-note {
+      font-size: 14px;
+      color: #666;
+      font-style: italic;
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .section-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 280px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #2a7d7d 0%, #1f6666 100%);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 30px;
+      box-shadow: 0 4px 15px rgba(42, 125, 125, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      margin: 0 auto;
+      display: flex;
+    }
+
+    .section-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(42, 125, 125, 0.45);
+    }
+
+    .section-button svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+    }
+
+    /* Checklist in Record section */
+    .checklist-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin: 28px 0 16px;
+      text-align: center;
+    }
+
+    .checklist-items {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 18px;
+      background: rgba(42, 125, 125, 0.06);
+      border-radius: 25px;
+      border: 1px solid rgba(42, 125, 125, 0.12);
+      transition: background 0.2s ease;
+    }
+
+    .check-item:hover {
+      background: rgba(42, 125, 125, 0.1);
+    }
+
+    .check-item svg {
+      width: 20px;
+      height: 20px;
+      fill: #2a7d7d;
+    }
+
+    .check-item span {
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    /* Share section cards */
+    .share-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .share-card {
+      background: rgba(42, 125, 125, 0.04);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid rgba(42, 125, 125, 0.1);
+      text-align: center;
+    }
+
+    .share-card .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(42, 125, 125, 0.08);
+      border: 1px solid rgba(42, 125, 125, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .share-card .card-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: #2a7d7d;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .share-card .card-icon svg .filled {
+      fill: #2a7d7d;
+      stroke: none;
+    }
+
+    .share-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+
+    .share-card p {
+      font-size: 14px;
+      color: #555;
+      margin: 0;
+    }
+
+    .share-card.highlight {
+      background: linear-gradient(135deg, #2a7d7d 0%, #1f6666 100%);
+      border: none;
+    }
+
+    .share-card.highlight .card-icon {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .share-card.highlight .card-icon svg {
+      stroke: #ffffff;
+    }
+
+    .share-card.highlight .card-icon svg .filled {
+      fill: #ffffff;
+    }
+
+    .share-card.highlight h3,
+    .share-card.highlight p {
+      color: #ffffff;
+    }
+
+    /* Sign off */
+    .signoff {
+      text-align: center;
+      padding: 48px 0;
+      margin-top: 32px;
+      border-top: 1px solid rgba(181, 191, 182, 0.4);
+    }
+
+    .signoff-text {
+      font-size: 19px;
+      color: #333;
+      margin-bottom: 32px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .signature {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .host-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: 50% 25%;
+      border: 3px solid #b5bfb6;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .signature-text {
+      text-align: center;
+    }
+
+    /* Meet Your Host */
+    .meet-host {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 40px;
+      align-items: center;
+      margin: 56px 0;
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(42, 125, 125, 0.06) 0%, rgba(181, 191, 182, 0.1) 100%);
+      border-radius: 24px;
+    }
+
+    .meet-host-photo {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .meet-host-content h2 {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #2a7d7d;
+      margin-bottom: 12px;
+    }
+
+    .meet-host-content h3 {
+      font-size: 26px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 16px;
+    }
+
+    .meet-host-content p {
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 12px;
+    }
+
+    .signature-text .warmly {
+      font-size: 15px;
+      color: #666;
+      margin-bottom: 2px;
+    }
+
+    .signature-text .name {
+      font-size: 28px;
+      font-weight: 300;
+      font-style: italic;
+      color: #2a7d7d;
+      letter-spacing: 0.5px;
+    }
+
+    /* Connect footer */
+    .connect {
+      background: linear-gradient(135deg, #2a7d7d 0%, #1f6666 100%);
+      border-radius: 20px;
+      padding: 40px 32px;
+      margin: 48px 0;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .connect h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .connect-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .connect-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 25px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      transition: background 0.2s ease;
+    }
+
+    .connect-link:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .connect-link svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .connect-divider {
+      width: 50px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.25);
+      margin: 20px auto;
+    }
+
+    .listen-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      opacity: 0.8;
+      margin-bottom: 16px;
+    }
+
+    .platforms {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .platform {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 13px;
+      transition: background 0.2s ease;
+    }
+
+    .platform:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .platform svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 24px 0 48px;
+      font-size: 14px;
+      color: #888;
+    }
+
+    footer a {
+      color: #2a7d7d;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .logo {
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .welcome {
+        font-size: 20px;
+      }
+
+      .page-nav {
+        gap: 8px;
+      }
+
+      .page-nav a {
+        padding: 8px 16px;
+        font-size: 13px;
+      }
+
+      .signature-text {
+        text-align: center;
+      }
+
+      .meet-host {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 32px 24px;
+      }
+
+      .meet-host-photo {
+        max-width: 220px;
+        margin: 0 auto;
+      }
+
+      .timeline-steps {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .timeline-steps::before {
+        display: none;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .checklist-items {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .connect-row {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .journey-section {
+        padding: 24px 20px;
+        margin: 32px 0;
+      }
+
+      .section-header h2 {
+        font-size: 20px;
+      }
+
+      .share-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Print */
+    @media print {
+      body {
+        background: #ffffff;
+        font-size: 11pt;
+      }
+
+      .bg-blobs {
+        display: none;
+      }
+
+      .page {
+        max-width: 100%;
+        padding: 0;
+      }
+
+      header {
+        padding: 24pt 0;
+      }
+
+      .logo {
+        width: 400px;
+      }
+
+      .host-photo {
+        width: 60px;
+        height: 60px;
+      }
+
+      .card, .intro-card, .connect {
+        break-inside: avoid;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .card:hover {
+        transform: none;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+      }
+
+      .step-dot {
+        background: #2a7d7d !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .connect {
+        background: #2a7d7d !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .card.highlight {
+        background: #2a7d7d !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+  <div class="page">
+    <header>
+      <picture>
+        <source srcset="/assets/images/logos/podcast-header.webp" type="image/webp">
+        <img src="/assets/images/logos/podcast-header.png" alt="MindfulOpus Podcast" class="logo">
+      </picture>
+      <p class="welcome">Welcome to the <strong>MindfulOpus Podcast</strong></p>
+    </header>
+
+    <div class="intro-card">
+      <p>I'm so glad you're here. This guide will walk you through everything you need to know so you can feel calm and ready for our episode.</p>
+    </div>
+
+    <nav class="page-nav">
+      <a href="#meet-jo" class="active">Meet Jo</a>
+      <a href="#prepare">Prepare</a>
+      <a href="#connect">Connect</a>
+      <a href="#record">Record</a>
+      <a href="#share">Share</a>
+    </nav>
+
+    <section class="meet-host" id="meet-jo">
+      <picture>
+        <source srcset="/assets/images/headshot-full.webp" type="image/webp">
+        <img src="/assets/images/headshot-full.png" alt="Jo Zakany" class="meet-host-photo">
+      </picture>
+      <div class="meet-host-content">
+        <h2>Meet Your Host</h2>
+        <h3>Jo Zakany</h3>
+        <p>Violist with The Cleveland Orchestra, yoga teacher, and coach for classical musicians — exploring the inner life and well-being of performing artists.</p>
+      </div>
+    </section>
+
+    <!-- Step 1: Prepare -->
+    <section class="journey-section" id="prepare">
+      <div class="section-header">
+        <div class="step-number">1</div>
+        <h2>Prepare</h2>
+        <p>Fill out the guest intake form</p>
+      </div>
+      <div class="section-content">
+        <p>This short form helps me learn about you — your background, what you're passionate about, and what you'd like to explore in our conversation. It ensures we make the most of our time together.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd6fHrfcjo9QW4M-O6E29eI_8_EALEy-cJ0pFMdnsTKpLGdCw/viewform" class="section-button" target="_blank">
+          <svg viewBox="0 0 24 24">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <path d="M14 2v6h6"/>
+            <path d="M16 13H8"/>
+            <path d="M16 17H8"/>
+            <path d="M10 9H8"/>
+          </svg>
+          Complete Intake Form
+        </a>
+      </div>
+    </section>
+
+    <!-- Step 2: Connect -->
+    <section class="journey-section" id="connect">
+      <div class="section-header">
+        <div class="step-number">2</div>
+        <h2>Connect</h2>
+        <p>A relaxed 15-minute call</p>
+      </div>
+      <div class="section-content">
+        <p>After you submit the intake form, we'll schedule a brief connection call. This is a chance to:</p>
+        <ul class="section-list">
+          <li>Align on the direction of our conversation</li>
+          <li>Answer any questions you have</li>
+          <li>Make sure everything feels clear and comfortable</li>
+        </ul>
+        <p class="section-note">No prep needed — just show up as yourself.</p>
+      </div>
+    </section>
+
+    <!-- Step 3: Record -->
+    <section class="journey-section" id="record">
+      <div class="section-header">
+        <div class="step-number">3</div>
+        <h2>Record</h2>
+        <p>~60 minutes via Zoom</p>
+      </div>
+      <div class="section-content">
+        <p>Our conversation is rooted in curiosity and exploration — unscripted, with perhaps a little fun like some rapid fires.</p>
+
+        <h3 class="checklist-title">Recording Day Checklist</h3>
+        <div class="checklist-items">
+          <div class="check-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span>Quiet space</span>
+          </div>
+          <div class="check-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span>Stable internet</span>
+          </div>
+          <div class="check-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span>Headphones (corded preferred)</span>
+          </div>
+          <div class="check-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span>Just be yourself</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 4: Share -->
+    <section class="journey-section" id="share">
+      <div class="section-header">
+        <div class="step-number">4</div>
+        <h2>Share</h2>
+        <p>I handle everything from here</p>
+      </div>
+      <div class="section-content">
+        <div class="share-cards">
+          <div class="share-card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5" class="filled"/>
+                <path d="M21 15l-5-5L5 21"/>
+              </svg>
+            </div>
+            <h3>Send Me 1-2 Photos</h3>
+            <p>I'll use these to create episode artwork and social posts. You'll always be tagged and credited.</p>
+          </div>
+          <div class="share-card highlight">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <path d="M22 4L12 14.01l-3-3"/>
+              </svg>
+            </div>
+            <h3>I Handle the Rest</h3>
+            <p>All editing and production is on me. You'll get the episode link plus shareables when it goes live.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="signoff">
+      <p class="signoff-text">I'm really looking forward to our conversation. Thank you for being part of MindfulOpus.</p>
+      <div class="signature">
+        <picture>
+          <source srcset="/assets/images/headshot-1.webp" type="image/webp">
+          <img src="/assets/images/headshot-1.png" alt="Jo Zakany" class="host-photo">
+        </picture>
+        <div class="signature-text">
+          <p class="warmly">Warmly,</p>
+          <p class="name">Jo</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="connect">
+      <h3>Let's Connect</h3>
+      <div class="connect-row">
+        <a href="mailto:contact@mindfulopus.com" class="connect-link">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          contact@mindfulopus.com
+        </a>
+        <a href="https://instagram.com/mindfulopus" class="connect-link" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @mindfulopus
+        </a>
+      </div>
+      <div class="connect-divider"></div>
+      <p class="listen-label">Listen on your favorite platform</p>
+      <div class="platforms">
+        <a href="https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943" class="platform" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.59.12 2.2.007 2.864a8.506 8.506 0 01-3.24 5.296c-.608.46-1.063.727-1.072.632-.003-.037.078-.238.182-.444.56-1.126.696-2.32.393-3.504-.164-.636-.793-1.776-1.306-2.367a13.089 13.089 0 00-.985-1.001c-.017 0-.062.108-.099.24-.295.996-.932 1.79-1.8 2.24l-.295.153-.16.492c-.227.702-.39.97-.785 1.323a2.27 2.27 0 01-.683.414c-.149.05-.173.046-.296-.044-.127-.094-.137-.12-.137-.35 0-.386.108-.64.535-1.262.24-.35.376-.61.45-.852.105-.349.095-.853-.025-1.22l-.065-.192-.243.08c-.94.303-1.777.366-2.672.197-1.04-.197-1.913-.677-2.67-1.467-.748-.781-1.155-1.558-1.36-2.62-.112-.581-.123-1.541-.025-2.068.326-1.74 1.251-3.29 2.62-4.38 1.477-1.18 3.474-1.79 5.436-1.65z"/></svg>
+          Apple
+        </a>
+        <a href="https://open.spotify.com/show/7FKRbpCFdCmZn4Xma6y9O0" class="platform" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          Spotify
+        </a>
+        <a href="https://www.youtube.com/@mindfulopus" class="platform" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      <a href="https://mindfulopus.com">mindfulopus.com</a>
+    </footer>
+  </div>
+
+  <script>
+    // Navigation scroll tracking
+    (function() {
+      const nav = document.querySelector('.page-nav');
+      const navLinks = nav.querySelectorAll('a');
+      const sections = [];
+
+      // Build sections array
+      navLinks.forEach(link => {
+        const id = link.getAttribute('href').substring(1);
+        const section = document.getElementById(id);
+        if (section) {
+          sections.push({ id, element: section, link });
+        }
+      });
+
+      // Update active state based on scroll position
+      function updateActiveLink() {
+        const navHeight = nav.offsetHeight;
+        const scrollY = window.scrollY + navHeight + 50;
+
+        let currentSection = sections[0];
+
+        for (const section of sections) {
+          if (section.element.offsetTop <= scrollY) {
+            currentSection = section;
+          }
+        }
+
+        navLinks.forEach(link => link.classList.remove('active'));
+        currentSection.link.classList.add('active');
+      }
+
+      // Throttle scroll events
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            updateActiveLink();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+
+      // Handle click - update active immediately
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        });
+      });
+
+      // Initial check
+      updateActiveLink();
+    })();
+  </script>
+</body>
+</html>
