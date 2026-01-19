@@ -172,219 +172,163 @@
       color: #ffffff;
     }
 
-    /* Timeline */
-    .timeline {
-      margin: 56px 0;
+    /* Journey Sections */
+    .journey-section {
+      margin: 48px 0;
+      padding: 32px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(181, 191, 182, 0.3);
     }
 
-    .timeline-header {
+    .section-header {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(181, 191, 182, 0.3);
     }
 
-    .timeline-header h2 {
-      font-size: 22px;
-      font-weight: 600;
-      color: #1a1a1a;
-      margin-bottom: 8px;
-    }
-
-    .timeline-header p {
-      font-size: 15px;
-      color: #666;
-    }
-
-    /* Timeline steps */
-    .timeline-steps {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      position: relative;
-      margin-bottom: 40px;
-      padding: 0 10px;
-    }
-
-    .timeline-steps::before {
-      content: '';
-      position: absolute;
-      top: 24px;
-      left: 60px;
-      right: 60px;
-      height: 2px;
-      background: linear-gradient(90deg, #2a7d7d 0%, #5a9e9e 50%, #b5bfb6 100%);
-    }
-
-    .timeline-step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-      flex: 1;
-    }
-
-    .step-dot {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #2a7d7d 0%, #358f8f 100%);
-      display: flex;
+    .step-number {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2a7d7d 0%, #358f8f 100%);
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 600;
       margin-bottom: 12px;
       box-shadow: 0 4px 12px rgba(42, 125, 125, 0.3);
     }
 
-    .step-dot svg {
-      width: 22px;
-      height: 22px;
-      fill: #ffffff;
-    }
-
-    .step-label {
-      font-size: 13px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #2a7d7d;
-    }
-
-    /* Cards grid */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      margin-bottom: 48px;
-    }
-
-    .card {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 28px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-      border: 1px solid rgba(181, 191, 182, 0.3);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    }
-
-    .card-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      background: rgba(42, 125, 125, 0.08);
-      border: 1px solid rgba(42, 125, 125, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-      transition: transform 0.2s ease, background 0.2s ease;
-    }
-
-    .card:hover .card-icon {
-      transform: scale(1.05);
-      background: rgba(42, 125, 125, 0.12);
-    }
-
-    .card-icon svg {
-      width: 26px;
-      height: 26px;
-      fill: none;
-      stroke: #2a7d7d;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .card-icon svg .filled {
-      fill: #2a7d7d;
-      stroke: none;
-    }
-
-    .card.highlight .card-icon svg .filled {
-      fill: #ffffff;
-    }
-
-    .card h3 {
-      font-size: 17px;
+    .section-header h2 {
+      font-size: 24px;
       font-weight: 600;
       color: #1a1a1a;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
-    .card p {
+    .section-header p {
       font-size: 15px;
-      color: #555;
+      color: #666;
       margin: 0;
     }
 
-    .card.highlight {
+    .section-content {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .section-content > p {
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .section-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    .section-list li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 12px;
+      font-size: 15px;
+      color: #444;
+    }
+
+    .section-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2a7d7d;
+    }
+
+    .section-note {
+      font-size: 14px;
+      color: #666;
+      font-style: italic;
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .section-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 280px;
+      padding: 14px 28px;
       background: linear-gradient(135deg, #2a7d7d 0%, #1f6666 100%);
-      border: none;
-    }
-
-    .card.highlight .card-icon {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.25);
-    }
-
-    .card.highlight:hover .card-icon {
-      transform: scale(1.05);
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .card.highlight .card-icon svg {
-      stroke: #ffffff;
-    }
-
-    .card.highlight h3,
-    .card.highlight p {
       color: #ffffff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 30px;
+      box-shadow: 0 4px 15px rgba(42, 125, 125, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      margin: 0 auto;
+      display: flex;
     }
 
-    /* Checklist */
-    .checklist {
-      margin: 48px 0;
+    .section-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(42, 125, 125, 0.45);
     }
 
-    .checklist h2 {
-      font-size: 18px;
+    .section-button svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+    }
+
+    /* Checklist in Record section */
+    .checklist-title {
+      font-size: 16px;
       font-weight: 600;
       color: #1a1a1a;
-      margin-bottom: 20px;
+      margin: 28px 0 16px;
       text-align: center;
     }
 
     .checklist-items {
       display: flex;
       justify-content: center;
-      gap: 16px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
     .check-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 14px 22px;
-      background: #ffffff;
-      border-radius: 30px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-      border: 1px solid rgba(181, 191, 182, 0.3);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      gap: 8px;
+      padding: 12px 18px;
+      background: rgba(42, 125, 125, 0.06);
+      border-radius: 25px;
+      border: 1px solid rgba(42, 125, 125, 0.12);
+      transition: background 0.2s ease;
     }
 
     .check-item:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(42, 125, 125, 0.12);
+      background: rgba(42, 125, 125, 0.1);
     }
 
     .check-item svg {
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       fill: #2a7d7d;
     }
 
@@ -394,53 +338,82 @@
       color: #333;
     }
 
-    /* CTA Section */
-    .cta {
-      text-align: center;
-      padding: 40px 32px;
-      margin: 48px 0 0;
-      background: linear-gradient(135deg, rgba(123, 94, 167, 0.06) 0%, rgba(181, 191, 182, 0.08) 100%);
-      border-radius: 16px;
-      border: 1px solid rgba(123, 94, 167, 0.2);
+    /* Share section cards */
+    .share-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
     }
 
-    .cta h3 {
-      font-size: 20px;
+    .share-card {
+      background: rgba(42, 125, 125, 0.04);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid rgba(42, 125, 125, 0.1);
+      text-align: center;
+    }
+
+    .share-card .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(42, 125, 125, 0.08);
+      border: 1px solid rgba(42, 125, 125, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .share-card .card-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: #2a7d7d;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .share-card .card-icon svg .filled {
+      fill: #2a7d7d;
+      stroke: none;
+    }
+
+    .share-card h3 {
+      font-size: 16px;
       font-weight: 600;
       color: #1a1a1a;
       margin-bottom: 8px;
     }
 
-    .cta p {
-      font-size: 15px;
+    .share-card p {
+      font-size: 14px;
       color: #555;
-      margin-bottom: 24px;
+      margin: 0;
     }
 
-    .cta-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 28px;
-      background: linear-gradient(135deg, #7b5ea7 0%, #5c4686 100%);
+    .share-card.highlight {
+      background: linear-gradient(135deg, #2a7d7d 0%, #1f6666 100%);
+      border: none;
+    }
+
+    .share-card.highlight .card-icon {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .share-card.highlight .card-icon svg {
+      stroke: #ffffff;
+    }
+
+    .share-card.highlight .card-icon svg .filled {
+      fill: #ffffff;
+    }
+
+    .share-card.highlight h3,
+    .share-card.highlight p {
       color: #ffffff;
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: 600;
-      border-radius: 30px;
-      box-shadow: 0 4px 15px rgba(123, 94, 167, 0.35);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(123, 94, 167, 0.45);
-    }
-
-    .cta-button svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
     }
 
     /* Sign off */
@@ -706,6 +679,19 @@
         flex-direction: column;
         align-items: center;
       }
+
+      .journey-section {
+        padding: 24px 20px;
+        margin: 32px 0;
+      }
+
+      .section-header h2 {
+        font-size: 20px;
+      }
+
+      .share-cards {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Print */
@@ -787,9 +773,10 @@
 
     <nav class="page-nav">
       <a href="#meet-jo" class="active">Meet Jo</a>
-      <a href="#journey">The Journey</a>
-      <a href="#checklist">Checklist</a>
-      <a href="#get-started">Get Started</a>
+      <a href="#prepare">Prepare</a>
+      <a href="#connect">Connect</a>
+      <a href="#record">Record</a>
+      <a href="#share">Share</a>
     </nav>
 
     <section class="meet-host" id="meet-jo">
@@ -802,118 +789,110 @@
       </div>
     </section>
 
-    <section class="timeline" id="journey">
-      <div class="timeline-header">
-        <h2>Your Guest Journey</h2>
-        <p>Four simple steps from hello to published</p>
+    <!-- Step 1: Prepare -->
+    <section class="journey-section" id="prepare">
+      <div class="section-header">
+        <div class="step-number">1</div>
+        <h2>Prepare</h2>
+        <p>Fill out the guest intake form</p>
       </div>
+      <div class="section-content">
+        <p>This short form helps me learn about you — your background, what you're passionate about, and what you'd like to explore in our conversation. It ensures we make the most of our time together.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd6fHrfcjo9QW4M-O6E29eI_8_EALEy-cJ0pFMdnsTKpLGdCw/viewform" class="section-button" target="_blank">
+          <svg viewBox="0 0 24 24">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <path d="M14 2v6h6"/>
+            <path d="M16 13H8"/>
+            <path d="M16 17H8"/>
+            <path d="M10 9H8"/>
+          </svg>
+          Complete Intake Form
+        </a>
+      </div>
+    </section>
 
-      <div class="timeline-steps">
-        <div class="timeline-step">
-          <div class="step-dot">
-            <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1.02 1.02 0 0 0-1.02.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21a.96.96 0 0 0 .25-1A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
+    <!-- Step 2: Connect -->
+    <section class="journey-section" id="connect">
+      <div class="section-header">
+        <div class="step-number">2</div>
+        <h2>Connect</h2>
+        <p>A relaxed 15-minute call</p>
+      </div>
+      <div class="section-content">
+        <p>After you submit the intake form, we'll schedule a brief connection call. This is a chance to:</p>
+        <ul class="section-list">
+          <li>Align on the direction of our conversation</li>
+          <li>Answer any questions you have</li>
+          <li>Make sure everything feels clear and comfortable</li>
+        </ul>
+        <p class="section-note">No prep needed — just show up as yourself.</p>
+      </div>
+    </section>
+
+    <!-- Step 3: Record -->
+    <section class="journey-section" id="record">
+      <div class="section-header">
+        <div class="step-number">3</div>
+        <h2>Record</h2>
+        <p>~60 minutes via Zoom</p>
+      </div>
+      <div class="section-content">
+        <p>Our conversation is conversational, spacious, and natural — not scripted or rapid-fire. Think of it as a meaningful chat between two people who care about the same things.</p>
+
+        <h3 class="checklist-title">Recording Day Checklist</h3>
+        <div class="checklist-items">
+          <div class="check-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span>Quiet space</span>
           </div>
-          <span class="step-label">Connect</span>
-        </div>
-        <div class="timeline-step">
-          <div class="step-dot">
-            <svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-2 14l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+          <div class="check-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span>Stable internet</span>
           </div>
-          <span class="step-label">Prepare</span>
-        </div>
-        <div class="timeline-step">
-          <div class="step-dot">
-            <svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15a.998.998 0 0 0-.98-.85c-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08a6.993 6.993 0 0 0 5.91-5.78c.1-.6-.39-1.14-1-1.14z"/></svg>
+          <div class="check-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span>Headphones (corded preferred)</span>
           </div>
-          <span class="step-label">Record</span>
-        </div>
-        <div class="timeline-step">
-          <div class="step-dot">
-            <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+          <div class="check-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span>Just be yourself</span>
           </div>
-          <span class="step-label">Share</span>
         </div>
       </div>
     </section>
 
-    <section class="cards">
-      <div class="card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
-        </div>
-        <h3>Connection Call</h3>
-        <p>A relaxed 15-minute chat to align on direction, answer questions, and make sure everything feels clear.</p>
+    <!-- Step 4: Share -->
+    <section class="journey-section" id="share">
+      <div class="section-header">
+        <div class="step-number">4</div>
+        <h2>Share</h2>
+        <p>I handle everything from here</p>
       </div>
-
-      <div class="card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 6v6l4 2"/>
-          </svg>
-        </div>
-        <h3>Recording Day</h3>
-        <p>~60 minutes via Zoom. Conversational, spacious, and natural — not scripted or rapid-fire.</p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-            <circle cx="8.5" cy="8.5" r="1.5" class="filled"/>
-            <path d="M21 15l-5-5L5 21"/>
-          </svg>
-        </div>
-        <h3>Share 1-2 Photos</h3>
-        <p>For episode promotion on social media. You'll always be tagged and credited.</p>
-      </div>
-
-      <div class="card highlight">
-        <div class="card-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-            <path d="M22 4L12 14.01l-3-3"/>
-          </svg>
-        </div>
-        <h3>I Handle the Rest</h3>
-        <p>All editing and production is on me. You'll get the episode link plus shareables when it goes live.</p>
-      </div>
-    </section>
-
-    <section class="checklist" id="checklist">
-      <h2>Recording Day Checklist</h2>
-      <div class="checklist-items">
-        <div class="check-item">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-          <span>Quiet space</span>
-        </div>
-        <div class="check-item">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-          <span>Stable internet</span>
-        </div>
-        <div class="check-item">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-          <span>Headphones (corded preferred)</span>
-        </div>
-        <div class="check-item">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-          <span>Just be yourself</span>
+      <div class="section-content">
+        <div class="share-cards">
+          <div class="share-card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5" class="filled"/>
+                <path d="M21 15l-5-5L5 21"/>
+              </svg>
+            </div>
+            <h3>Send Me 1-2 Photos</h3>
+            <p>I'll use these to create episode artwork and social posts. You'll always be tagged and credited.</p>
+          </div>
+          <div class="share-card highlight">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <path d="M22 4L12 14.01l-3-3"/>
+              </svg>
+            </div>
+            <h3>I Handle the Rest</h3>
+            <p>All editing and production is on me. You'll get the episode link plus shareables when it goes live.</p>
+          </div>
         </div>
       </div>
-    </section>
-
-    <section class="cta" id="get-started">
-      <h3>Ready to Get Started?</h3>
-      <p>Complete the guest intake form so we can tailor our conversation to you.</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd6fHrfcjo9QW4M-O6E29eI_8_EALEy-cJ0pFMdnsTKpLGdCw/viewform" class="cta-button" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M14 2v6h6M9 13h6M9 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Guest Intake Form
-      </a>
     </section>
 
     <section class="signoff">
