@@ -5,3 +5,4 @@ dist
 conversation
 # Conversation logs (local development tracking)
 conversation/
+.playwright-mcp/

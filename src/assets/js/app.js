@@ -135,8 +135,8 @@ var scroll = new SmoothScroll('#navbar-navlist a', {
     offset: 60
 });
 
-// Initialize AOS (Animate on Scroll)
-document.addEventListener('DOMContentLoaded', function() {
+// Initialize AOS (Animate on Scroll) on window load to avoid layout shift issues
+window.addEventListener('load', function() {
     // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: 800,
             easing: 'ease-out-cubic',
             once: true, // Animation happens only once
-            offset: 50, // Offset from the trigger point
+            offset: 120, // Trigger when element is 120px into viewport
             delay: 0,
             disable: prefersReducedMotion // Respect accessibility preferences
         });
