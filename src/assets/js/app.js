@@ -511,6 +511,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (carouselElement) {
         new TestimonialCarousel(carouselElement);
     }
+
+    // Initialize Typed.js for hero headline
+    const typedElement = document.getElementById('typed-headline');
+    if (typedElement && typeof Typed !== 'undefined') {
+        new Typed('#typed-headline', {
+            strings: ['Play from a place of peace.'],
+            typeSpeed: 50,
+            startDelay: 800,
+            showCursor: false
+        });
+    }
 });
 
 // HOME TITLE ANIMATION
