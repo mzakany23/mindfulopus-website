@@ -58,16 +58,30 @@ h6 {
   color: #000000;
 }
 
+// Ensure focus states are visible for accessibility
 .btn,
-.btn:focus,
-button,
-button:focus {
+button {
   outline: none !important;
+
+  &:focus,
+  &:focus-visible {
+    outline: 2px solid #2a7d7d !important;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(42, 125, 125, 0.2);
+  }
 }
 
 a {
   text-decoration: none !important;
   outline: none;
+  position: relative;
+  
+  &:focus,
+  &:focus-visible {
+    outline: 2px solid #2a7d7d;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
 }
 
 p {
@@ -77,22 +91,42 @@ p {
   margin-bottom: 1.25rem;
 }
 
+// Modular spacing scale (1rem = 16px)
+// 1rem (16px), 1.5rem (24px), 2rem (32px), 3rem (48px), 4rem (64px)
 .section-sm {
-  padding-bottom: 80px;
-  padding-top: 80px;
+  padding-bottom: 3rem; // 48px
+  padding-top: 3rem;
   position: relative;
 }
 
 .section {
-  padding-bottom: 100px;
-  padding-top: 100px;
+  padding-bottom: 4rem; // 64px
+  padding-top: 4rem;
   position: relative;
 }
 
 .section-lg {
-  padding-bottom: 110px;
-  padding-top: 110px;
+  padding-bottom: 4.5rem; // 72px
+  padding-top: 4.5rem;
   position: relative;
+}
+
+// Mobile responsive section padding
+@media (max-width: 768px) {
+  .section-sm {
+    padding-bottom: 2rem; // 32px
+    padding-top: 2rem;
+  }
+
+  .section {
+    padding-bottom: 3rem; // 48px
+    padding-top: 3rem;
+  }
+
+  .section-lg {
+    padding-bottom: 3rem; // 48px
+    padding-top: 3rem;
+  }
 }
 
 .bg-lightan {
@@ -205,6 +239,7 @@ p {
   font-size: 18px;
   font-weight: 600;
   padding: 16px 44px;
+  min-height: 48px; // Touch target size
   border-radius: 50px;
   text-decoration: none;
   box-shadow: 0 8px 25px rgba(42, 125, 125, 0.3);
@@ -252,6 +287,13 @@ p {
     i {
       transform: translateY(5px);
     }
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(42, 125, 125, 0.3), 0 8px 25px rgba(42, 125, 125, 0.3);
   }
 
   &:active {
@@ -304,6 +346,7 @@ p {
   color: #ffffff !important;
   font-weight: 600;
   padding: 16px 36px;
+  min-height: 48px; // Touch target size
   font-size: 17px;
   border-radius: 50px;
   transition: all 0.3s ease-in-out;
@@ -321,6 +364,12 @@ p {
   }
 
   &:focus,
+  &:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(42, 125, 125, 0.3), 0 4px 15px rgba(42, 125, 125, 0.3);
+  }
+
   &:active {
     color: #ffffff !important;
     box-shadow: 0 4px 15px rgba(42, 125, 125, 0.3);
@@ -1207,9 +1256,21 @@ hr {
   margin-bottom: 0px;
   color: #1e304d;
   border: none;
-  padding: 0;
+  padding: 8px;
   background: transparent;
   cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+
+  &:focus,
+  &:focus-visible {
+    outline: 2px solid #2a7d7d;
+    outline-offset: 2px;
+  }
+
+  &:hover {
+    background-color: rgba(42, 125, 125, 0.1);
+  }
 }
 
 // Animated Hamburger Menu

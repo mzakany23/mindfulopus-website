@@ -3,6 +3,18 @@
 .podcast-section {
   background: linear-gradient(to bottom, #ffffff, #f8f9fa);
   position: relative;
+
+  h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+      margin-bottom: 1.25rem;
+    }
+  }
 }
 
 // Podcast Video Wrapper (YouTube Embed)
@@ -17,7 +29,13 @@
     height: 0;
     overflow: hidden;
     border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      transform: scale(1.01);
+    }
 
     iframe {
       position: absolute;
@@ -56,22 +74,34 @@
   }
 
   .podcast-host {
-    padding: 1.25rem;
-    background-color: #f8f9fa;
-    border-left: 4px solid #b5bfb6;
-    border-radius: 4px;
+    padding: 1.5rem;
+    background-color: rgba(42, 125, 125, 0.08); // Subtle teal tint
+    border-left: 4px solid #2a7d7d; // Teal accent
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     h5 {
-      font-size: 1.125rem; // 18px - consistent
+      font-size: 1.125rem; // 18px
       margin-bottom: 0.625rem;
       color: #000000;
-      font-weight: 600;
+      font-weight: 700;
+      transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     p {
       margin-bottom: 0;
       font-size: 1rem; // 16px - meta text
       line-height: 1.6;
+      color: #555;
+    }
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+      h5 {
+        color: #2a7d7d;
+      }
     }
   }
 }
@@ -95,19 +125,29 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
+    min-height: 44px; // Touch target size
     font-size: 1rem; // 16px - button text
     font-weight: 600;
     border-radius: 25px;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 
     i {
       font-size: 1.25rem; // 20px
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    &:focus,
+    &:focus-visible {
+      outline: 2px solid #2a7d7d;
+      outline-offset: 2px;
+      box-shadow: 0 0 0 4px rgba(42, 125, 125, 0.2);
     }
   }
 
@@ -147,12 +187,25 @@
   background-color: #ffffff;
   padding: 1.875rem;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); // Subtle default shadow
+  border: 2px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); // Elevated shadow on hover
+    transform: scale(1.02);
+    border-color: #2a7d7d;
+  }
 
   h5 {
     font-size: 1.25rem; // 20px - card title size
-    font-weight: 600;
+    font-weight: 700; // Bolder for better hierarchy
     color: #000000;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &:hover h5 {
+    color: #2a7d7d;
   }
 
   .podcast-feature-item {
@@ -180,14 +233,16 @@
   border-radius: 12px;
   padding: 24px;
   height: 100%;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); // Subtle default shadow
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
+  border: 2px solid transparent;
 
   &:hover {
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
-    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); // Elevated shadow on hover
+    transform: scale(1.02); // Subtle scale lift effect
+    border-color: #2a7d7d;
   }
 }
 
@@ -211,11 +266,16 @@
   font-size: 0.8125rem; // 13px - badge text
   font-weight: 600;
   color: #ffffff;
-  background-color: #b5bfb6;
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
+  background-color: #2a7d7d; // Teal background
+  padding: 0.35rem 0.875rem;
+  border-radius: 16px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  .episode-card:hover & {
+    background-color: #1f6666;
+  }
 }
 
 .episode-duration {
@@ -236,11 +296,16 @@
 }
 
 .episode-title {
-  font-size: 1.25rem; // 20px - card title (consistent)
-  font-weight: 600;
+  font-size: 1.25rem; // 20px - card title
+  font-weight: 700; // Bolder for better hierarchy
   color: #000000;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.875rem;
   line-height: 1.4;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  .episode-card:hover & {
+    color: #2a7d7d;
+  }
 }
 
 .episode-description {
@@ -266,16 +331,17 @@
   justify-content: center;
   border-radius: 50%;
   background-color: #f5f5f5;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
 
   i {
     font-size: 22px;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
   }
 }
 
@@ -331,24 +397,33 @@
   align-items: center;
   gap: 8px;
   padding: 12px 28px;
+  min-height: 44px; // Touch target size
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   border-radius: 25px;
-  border: 2px solid #b5bfb6;
-  color: #333;
+  border: 2px solid #2a7d7d;
+  color: #2a7d7d;
   background-color: transparent;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 
   &:hover {
-    background-color: #b5bfb6;
+    background-color: #2a7d7d;
     color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 6px 16px rgba(42, 125, 125, 0.3);
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 2px solid #2a7d7d;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(42, 125, 125, 0.2);
   }
 
   i {
     font-size: 20px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 

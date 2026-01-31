@@ -1,5 +1,5 @@
 .testimonial-section {
-    padding: 4rem 0;
+    padding: 4rem 0; // Consistent with modular scale
     position: relative;
     overflow: hidden; // Prevent any horizontal scroll
     width: 100%;
@@ -9,8 +9,15 @@
     h3 {
         text-align: center;
         color: #000000;
-        margin-bottom: 1.25rem;
+        margin-bottom: 1.5rem;
         font-weight: 600;
+        font-size: 2.5rem;
+        line-height: 1.2;
+
+        @media (max-width: 768px) {
+            font-size: 2rem;
+            margin-bottom: 1.25rem;
+        }
     }
 
     p.subtitle {
@@ -22,6 +29,11 @@
         margin-left: auto;
         margin-right: auto;
         line-height: 1.8;
+
+        @media (max-width: 768px) {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
     }
 
     // Override container padding on mobile for full-width carousel
@@ -81,19 +93,21 @@
     background-color: rgba(181, 191, 182, 0.1); // Match bg-lightan sage tint
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); // Subtle default shadow
     min-height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
     box-sizing: border-box;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid rgba(0, 0, 0, 0.08); // Subtle neutral border
+    border-bottom: 4px solid #2a7d7d; // Teal accent bar
 
     &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        transform: scale(1.02);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); // Elevated shadow on hover
+        border-color: #2a7d7d;
     }
 
     .testimonial-text {
@@ -144,6 +158,8 @@
     border-radius: 50%;
     width: 48px;
     height: 48px;
+    min-height: 48px; // Ensure touch target is at least 44x44px (44 is minimum, 48 is better)
+    min-width: 48px;
     cursor: pointer;
     font-size: 1.25rem;
     display: flex;
@@ -160,9 +176,11 @@
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     }
 
-    &:focus {
-        outline: none;
-        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+    &:focus,
+    &:focus-visible {
+        outline: 2px solid #2a7d7d;
+        outline-offset: 2px;
+        box-shadow: 0 0 0 4px rgba(42, 125, 125, 0.2);
     }
 
     &:disabled {
@@ -272,10 +290,14 @@
         // Enhanced mobile styling for better readability
         background-color: rgba(181, 191, 182, 0.1); // Match bg-lightan sage tint
         border: 1px solid rgba(181, 191, 182, 0.3);
-        border-left: 4px solid rgba(181, 191, 182, 0.5); // Subtle sage accent
-        box-shadow:
-            0 2px 8px rgba(0, 0, 0, 0.06),
-            0 8px 24px rgba(0, 0, 0, 0.1);
+        border-bottom: 4px solid #2a7d7d; // Teal accent bar on mobile
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); // Subtle default shadow
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
 
         .testimonial-text {
             font-size: 1.05rem;
