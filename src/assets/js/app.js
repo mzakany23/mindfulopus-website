@@ -15,6 +15,15 @@ function windowScroll() {
     } else {
         navbar.classList.remove("nav-sticky");
     }
+
+    // Update scroll progress bar
+    const scrollProgress = document.getElementById("scrollProgress");
+    if (scrollProgress) {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercent = (scrollTop / scrollHeight) * 100;
+        scrollProgress.style.width = scrollPercent + "%";
+    }
 }
 
 // ====================================
@@ -124,6 +133,23 @@ var scroll = new SmoothScroll('#navbar-navlist a', {
     speed: 100,
     speedAsDuration: true,
     offset: 60
+});
+
+// Initialize AOS (Animate on Scroll)
+document.addEventListener('DOMContentLoaded', function() {
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true, // Animation happens only once
+            offset: 50, // Offset from the trigger point
+            delay: 0,
+            disable: prefersReducedMotion // Respect accessibility preferences
+        });
+    }
 });
 
 // Well-Being Wheel button smooth scroll and menu collapse

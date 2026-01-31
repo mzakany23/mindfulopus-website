@@ -34,6 +34,26 @@ html, body {
   max-width: 100vw;
 }
 
+// Scroll Progress Bar
+.scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: transparent;
+  z-index: 9999;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #2a7d7d 0%, #358f8f 50%, #2a7d7d 100%);
+  background-size: 200% 100%;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px rgba(42, 125, 125, 0.5);
+}
+
 #mo-profile-1{
   max-height: 700px;
 }
@@ -75,7 +95,7 @@ a {
   text-decoration: none !important;
   outline: none;
   position: relative;
-  
+
   &:focus,
   &:focus-visible {
     outline: 2px solid #2a7d7d;
@@ -1174,7 +1194,7 @@ hr {
 
     &:hover {
       color: rgba(255, 255, 255, 1) !important;
-      
+
       &::after {
         width: calc(100% - 24px);
       }
