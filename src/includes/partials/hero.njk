@@ -4,6 +4,11 @@
     <div class="hero-float hero-float--2" aria-hidden="true"></div>
     <div class="hero-float hero-float--3" aria-hidden="true"></div>
 
+    <!-- Floating Jo portrait -->
+    <a href="#me" class="hero-jo-float" data-aos="fade-left" data-aos-delay="300">
+        <img src="{{ 'assets/images/headshot-full.png' }}" alt="Jo Zakany - Performance Coach">
+    </a>
+
     <div class="container">
         <!-- Main hero content -->
         <div class="hero-content" data-aos="fade-up">
@@ -28,30 +33,39 @@
             </div>
         </div>
 
-        <!-- Fanned article cards -->
+        <!-- Hero action cards -->
         <div class="hero-cards" data-aos="fade-up" data-aos-delay="200">
-            {% set featuredArticles = [
-                articles.articles[0],
-                articles.articles[1],
-                articles.articles[3]
-            ] %}
-
-            {% for article in featuredArticles %}
-            <a href="{{ article.link }}" class="hero-card hero-card--{{ loop.index }}" target="_blank" rel="noopener">
+            <!-- Card 1: Latest from Medium -->
+            <a href="{{ articles.articles[0].link }}" class="hero-card hero-card--1" target="_blank" rel="noopener">
                 <div class="hero-card__icon">
-                    {% if loop.index == 1 %}
-                    <i class="mdi mdi-meditation"></i>
-                    {% elif loop.index == 2 %}
-                    <i class="mdi mdi-head-heart-outline"></i>
-                    {% else %}
-                    <i class="mdi mdi-chart-line"></i>
-                    {% endif %}
+                    <i class="mdi mdi-post-outline"></i>
                 </div>
-                <h3 class="hero-card__title">{{ article.title }}</h3>
-                <p class="hero-card__excerpt">{{ article.excerpt | truncate(80) }}</p>
-                <span class="hero-card__read">Read on Medium →</span>
+                <h3 class="hero-card__title">{{ articles.articles[0].title }}</h3>
+                <p class="hero-card__excerpt">{{ articles.articles[0].excerpt | truncate(80) }}</p>
+                <span class="hero-card__cta">Read on Medium →</span>
             </a>
-            {% endfor %}
+
+            <!-- Card 2: Work With Me -->
+            <a href="#contact" class="hero-card hero-card--2">
+                <div class="hero-card__icon">
+                    <i class="mdi mdi-calendar-check"></i>
+                </div>
+                <h3 class="hero-card__title">Work With Me</h3>
+                <p class="hero-card__excerpt">Book a free consultation and start your journey to balanced performance.</p>
+                <span class="hero-card__cta">Book a Consult →</span>
+            </a>
+
+            <!-- Card 3: Podcast -->
+            <a href="#podcast" class="hero-card hero-card--3">
+                <div class="hero-card__icon hero-card__icon--podcast">
+                    <i class="mdi mdi-youtube"></i>
+                    <i class="mdi mdi-apple"></i>
+                    <i class="mdi mdi-spotify"></i>
+                </div>
+                <h3 class="hero-card__title">The Podcast</h3>
+                <p class="hero-card__excerpt">Conversations on mindfulness, music, and thriving as a performer.</p>
+                <span class="hero-card__cta">Listen Now →</span>
+            </a>
         </div>
     </div>
 </section>

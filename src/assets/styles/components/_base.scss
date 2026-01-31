@@ -106,6 +106,70 @@ Main Style Sheet
   50% { transform: translateY(-20px) rotate(3deg); }
 }
 
+// Floating Jo portrait - larger square format with hover animation
+.hero-jo-float {
+  position: absolute;
+  right: 12%;
+  top: 32%;
+  z-index: 5;
+  text-decoration: none;
+  animation: float-gentle 6s ease-in-out infinite;
+  transition: box-shadow 0.4s ease;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+
+  img {
+    width: 260px;
+    height: 300px;
+    border-radius: 16px;
+    object-fit: cover;
+    object-position: center top;
+    box-shadow:
+      0 12px 40px rgba(42, 125, 125, 0.15),
+      0 4px 16px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+  }
+
+  &:hover img {
+    box-shadow:
+      0 16px 50px rgba(42, 125, 125, 0.25),
+      0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+}
+
+// Responsive floating Jo
+@media (max-width: 1400px) {
+  .hero-jo-float {
+    right: 8%;
+    top: 30%;
+
+    img {
+      width: 220px;
+      height: 260px;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .hero-jo-float {
+    right: 4%;
+    top: 28%;
+
+    img {
+      width: 180px;
+      height: 220px;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-jo-float {
+    display: none;
+  }
+}
+
 // Hero content
 .hero-content {
   text-align: center;
@@ -264,6 +328,24 @@ Main Style Sheet
       font-size: 24px;
       color: #2a7d7d;
     }
+
+    // Podcast card with multiple icons
+    &--podcast {
+      width: auto;
+      padding: 0 16px;
+      gap: 12px;
+
+      i {
+        font-size: 20px;
+        opacity: 0.85;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+
+        &:hover {
+          opacity: 1;
+          transform: scale(1.15);
+        }
+      }
+    }
   }
 
   &__title {
@@ -292,7 +374,7 @@ Main Style Sheet
     overflow: hidden;
   }
 
-  &__read {
+  &__cta {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 0.85rem;
     font-weight: 600;
@@ -300,7 +382,7 @@ Main Style Sheet
     transition: color 0.3s ease;
   }
 
-  &:hover &__read {
+  &:hover &__cta {
     color: #1f6666;
   }
 }
