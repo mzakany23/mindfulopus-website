@@ -744,6 +744,213 @@ Main Style Sheet
 // END INTRO SECTION
 // ============================================
 
+// ============================================
+// MISSION SECTION
+// ============================================
+
+.mission-section {
+  padding: 100px 0;
+  background: #f8f8f8;
+}
+
+.mission-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.mission-lotus {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(42, 125, 125, 0.08) 0%, rgba(42, 125, 125, 0.04) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(42, 125, 125, 0.08);
+
+  img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    opacity: 0.85;
+  }
+}
+
+.mission-label {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #666666;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.mission-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: 400;
+  font-optical-sizing: none;
+  color: #2a7d7d;
+  letter-spacing: 0;
+}
+
+.mission-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.mission-block {
+  text-align: center;
+  margin-bottom: 50px;
+
+  p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #333333;
+
+    em {
+      color: #2a7d7d;
+      font-style: italic;
+    }
+  }
+
+  &--highlight {
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    border-left: 4px solid #2a7d7d;
+  }
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.mission-card {
+  position: relative;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(42, 125, 125, 0.1);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.02),
+    0 8px 24px rgba(0, 0, 0, 0.06),
+    0 16px 40px rgba(42, 125, 125, 0.06);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s ease;
+
+  // Subtle gradient accent on left edge
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20px;
+    bottom: 20px;
+    width: 3px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #2a7d7d 0%, rgba(42, 125, 125, 0.3) 100%);
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: rgba(42, 125, 125, 0.2);
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.04),
+      0 16px 32px rgba(0, 0, 0, 0.08),
+      0 24px 48px rgba(42, 125, 125, 0.1);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &__icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(42, 125, 125, 0.12) 0%, rgba(42, 125, 125, 0.06) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(42, 125, 125, 0.1);
+
+    i {
+      font-size: 26px;
+      color: #2a7d7d;
+    }
+  }
+
+  p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #444444;
+    margin: 0;
+
+    strong {
+      color: #2a7d7d;
+      font-weight: 600;
+    }
+  }
+}
+
+.mission-cta {
+  text-align: center;
+  padding: 40px;
+  background: linear-gradient(135deg, rgba(42, 125, 125, 0.06) 0%, rgba(42, 125, 125, 0.02) 100%);
+  border-radius: 20px;
+
+  p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #333333;
+    margin: 0;
+  }
+
+  &__accent {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    color: #2a7d7d;
+    font-size: 1.25rem;
+  }
+}
+
+// Mission responsive
+@media (max-width: 768px) {
+  .mission-section {
+    padding: 70px 0;
+  }
+
+  .mission-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .mission-block--highlight {
+    padding: 30px 24px;
+  }
+
+  .mission-cta {
+    padding: 30px 24px;
+  }
+}
+
+// ============================================
+// END MISSION SECTION
+// ============================================
+
 // Prevent horizontal scroll on mobile
 html, body {
   overflow-x: hidden;
