@@ -36,31 +36,37 @@
         <!-- Hero action cards -->
         <div class="hero-cards" data-aos="fade-up" data-aos-delay="200">
             <!-- Card 1: Latest from Medium -->
-            <a href="{{ articles.articles[0].link }}" class="hero-card hero-card--1" target="_blank" rel="noopener">
-                <div class="hero-card__icon">
-                    <i class="mdi mdi-post-outline"></i>
+            <a href="{{ articles.articles[0].link }}" class="hero-card hero-card--1 hero-card--medium" target="_blank" rel="noopener">
+                <div class="hero-card__icon hero-card__icon--medium">
+                    <i class="mdi mdi-alpha-m-box"></i>
                 </div>
                 <h3 class="hero-card__title">{{ articles.articles[0].title }}</h3>
                 <p class="hero-card__excerpt">{{ articles.articles[0].excerpt | truncate(80) }}</p>
-                <span class="hero-card__cta">Read on Medium →</span>
+                <span class="hero-card__cta hero-card__cta--medium">
+                    <i class="mdi mdi-alpha-m-box"></i>
+                    Read on Medium
+                </span>
             </a>
 
-            <!-- Card 2: Work With Me -->
-            <a href="#contact" class="hero-card hero-card--2">
-                <div class="hero-card__icon">
+            <!-- Card 2: Work With Me (Calendly) -->
+            <a href="https://calendly.com/mindfulopus/30min" class="hero-card hero-card--2 hero-card--calendly" target="_blank" rel="noopener">
+                <div class="hero-card__icon hero-card__icon--calendly">
                     <i class="mdi mdi-calendar-check"></i>
                 </div>
                 <h3 class="hero-card__title">Work With Me</h3>
-                <p class="hero-card__excerpt">Book a free consultation and start your journey to balanced performance.</p>
-                <span class="hero-card__cta">Book a Consult →</span>
+                <p class="hero-card__excerpt">Book a free 30-minute consultation to start your journey.</p>
+                <span class="hero-card__btn hero-card__btn--calendly">
+                    <i class="mdi mdi-calendar-clock"></i>
+                    Schedule on Calendly
+                </span>
             </a>
 
             <!-- Card 3: Podcast -->
-            <a href="#podcast" class="hero-card hero-card--3">
-                <div class="hero-card__icon hero-card__icon--podcast">
-                    <i class="mdi mdi-youtube"></i>
-                    <i class="mdi mdi-apple"></i>
-                    <i class="mdi mdi-spotify"></i>
+            <a href="#podcast" class="hero-card hero-card--3 hero-card--podcast">
+                <div class="hero-card__icon hero-card__icon--platforms">
+                    <i class="mdi mdi-youtube icon--youtube"></i>
+                    <i class="mdi mdi-apple icon--apple"></i>
+                    <i class="mdi mdi-spotify icon--spotify"></i>
                 </div>
                 <h3 class="hero-card__title">The Podcast</h3>
                 <p class="hero-card__excerpt">Conversations on mindfulness, music, and thriving as a performer.</p>
