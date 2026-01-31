@@ -1,0 +1,57 @@
+<section class="hero-landing" id="home">
+    <!-- Floating decorative elements -->
+    <div class="hero-float hero-float--1" aria-hidden="true"></div>
+    <div class="hero-float hero-float--2" aria-hidden="true"></div>
+    <div class="hero-float hero-float--3" aria-hidden="true"></div>
+
+    <div class="container">
+        <!-- Main hero content -->
+        <div class="hero-content" data-aos="fade-up">
+            <h1 class="hero-headline">
+                Find your balance.<br>
+                <span class="hero-headline--accent">Play from a place of peace.</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Performance and well-being coaching for classical musicians who want
+                to thrive—on stage and in life.
+            </p>
+
+            <div class="hero-ctas">
+                <a href="#services" class="hero-btn hero-btn--primary">
+                    <span>Start Your Journey</span>
+                    <i class="mdi mdi-arrow-right"></i>
+                </a>
+                <a href="#me" class="hero-btn hero-btn--secondary">
+                    <span>Meet Jo</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Fanned article cards -->
+        <div class="hero-cards" data-aos="fade-up" data-aos-delay="200">
+            {% set featuredArticles = [
+                articles.articles[0],
+                articles.articles[1],
+                articles.articles[3]
+            ] %}
+
+            {% for article in featuredArticles %}
+            <a href="{{ article.link }}" class="hero-card hero-card--{{ loop.index }}" target="_blank" rel="noopener">
+                <div class="hero-card__icon">
+                    {% if loop.index == 1 %}
+                    <i class="mdi mdi-meditation"></i>
+                    {% elif loop.index == 2 %}
+                    <i class="mdi mdi-head-heart-outline"></i>
+                    {% else %}
+                    <i class="mdi mdi-chart-line"></i>
+                    {% endif %}
+                </div>
+                <h3 class="hero-card__title">{{ article.title }}</h3>
+                <p class="hero-card__excerpt">{{ article.excerpt | truncate(80) }}</p>
+                <span class="hero-card__read">Read on Medium →</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
