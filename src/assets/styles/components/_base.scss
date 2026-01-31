@@ -28,6 +28,7 @@ Main Style Sheet
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600&display=swap');
 
 // ============================================
 // HERO LANDING SECTION
@@ -473,6 +474,81 @@ Main Style Sheet
       color: #1DB954;
     }
   }
+
+  // ===== CAROUSEL CONTENT =====
+  &__content {
+    position: relative;
+    min-height: 72px; // Reserve space for 2 lines title + 2 lines excerpt
+
+    .hero-card__title,
+    .hero-card__excerpt {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    &.is-fading {
+      .hero-card__title,
+      .hero-card__excerpt {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  &__dots {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    &.is-active {
+      background: #2a7d7d;
+      width: 16px;
+      border-radius: 3px;
+    }
+  }
+
+  // Carousel progress indicator
+  &[data-carousel] {
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #2a7d7d var(--progress, 0%), transparent var(--progress, 0%));
+      border-radius: 0 0 20px 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &.is-animating::after {
+      opacity: 0.6;
+    }
+
+    &:hover::after {
+      opacity: 0.8;
+    }
+  }
 }
 
 // Hero responsive
@@ -823,6 +899,87 @@ Main Style Sheet
     border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     border-left: 4px solid #2a7d7d;
+  }
+}
+
+// Mission quote with author image
+.mission-quote {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.02),
+    0 8px 24px rgba(0, 0, 0, 0.06);
+  border-left: 4px solid #2a7d7d;
+  margin-bottom: 50px;
+
+  &__text {
+    p {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.8;
+      color: #333333;
+      margin: 0 0 16px 0;
+
+      em {
+        color: #2a7d7d;
+        font-style: italic;
+      }
+    }
+  }
+
+  &__name {
+    display: block;
+    text-align: right;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #2a7d7d;
+  }
+
+  &__image {
+    img {
+      width: 140px;
+      height: 140px;
+      border-radius: 12px;
+      object-fit: cover;
+      object-position: center top;
+      box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.1),
+        0 8px 24px rgba(42, 125, 125, 0.1);
+    }
+  }
+}
+
+// Mission quote responsive
+@media (max-width: 768px) {
+  .mission-quote {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+
+    &__text p {
+      margin-bottom: 12px;
+    }
+
+    &__name {
+      text-align: center;
+    }
+
+    &__image {
+      order: -1;
+
+      img {
+        width: 120px;
+        height: 120px;
+      }
+    }
   }
 }
 

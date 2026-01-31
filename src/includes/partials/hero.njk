@@ -13,7 +13,7 @@
         <!-- Main hero content -->
         <div class="hero-content" data-aos="fade-up">
             <h1 class="hero-headline">
-                Find your balance.<br>
+                Create your own mindful life,<br>
                 <span class="hero-headline--accent" id="typed-headline"></span>
             </h1>
 
@@ -35,20 +35,29 @@
 
         <!-- Hero action cards -->
         <div class="hero-cards" data-aos="fade-up" data-aos-delay="200">
-            <!-- Card 1: Latest from Medium -->
-            <a href="{{ articles.articles[0].link }}" class="hero-card hero-card--1 hero-card--medium" target="_blank" rel="noopener">
+            <!-- Card 1: Latest from Medium (Auto-carousel) -->
+            <a href="{{ articles.articles[0].link }}"
+               class="hero-card hero-card--1 hero-card--medium"
+               target="_blank"
+               rel="noopener"
+               data-carousel="medium">
                 <div class="hero-card__icon hero-card__icon--medium">
                     <i class="mdi mdi-alpha-m-box"></i>
                 </div>
-                <h3 class="hero-card__title">{{ articles.articles[0].title }}</h3>
-                <p class="hero-card__excerpt">{{ articles.articles[0].excerpt | truncate(80) }}</p>
-                <span class="hero-card__cta hero-card__cta--medium">
-                    <i class="mdi mdi-alpha-m-box"></i>
-                    Read on Medium
-                </span>
+                <div class="hero-card__content">
+                    <h3 class="hero-card__title">{{ articles.articles[0].title }}</h3>
+                    <p class="hero-card__excerpt">{{ articles.articles[0].excerpt | truncate(80) }}</p>
+                </div>
+                <div class="hero-card__footer">
+                    <span class="hero-card__cta hero-card__cta--medium">
+                        <i class="mdi mdi-alpha-m-box"></i>
+                        Read on Medium
+                    </span>
+                    <div class="hero-card__dots"></div>
+                </div>
             </a>
 
-            <!-- Card 2: Work With Me (Calendly) -->
+            <!-- Card 2: Work With Me (Calendly) - Static -->
             <a href="https://calendly.com/mindfulopus/30min" class="hero-card hero-card--2 hero-card--calendly" target="_blank" rel="noopener">
                 <div class="hero-card__icon hero-card__icon--calendly">
                     <i class="mdi mdi-calendar-check"></i>
@@ -61,17 +70,39 @@
                 </span>
             </a>
 
-            <!-- Card 3: Podcast -->
-            <a href="#podcast" class="hero-card hero-card--3 hero-card--podcast">
+            <!-- Card 3: Podcast (Auto-carousel) -->
+            {# Filter out trailer for carousel #}
+            {% set regularEpisodes = [] %}
+            {% for ep in episodes.episodes %}
+                {% if not ep.isTrailer %}
+                    {% set regularEpisodes = (regularEpisodes.push(ep), regularEpisodes) %}
+                {% endif %}
+            {% endfor %}
+            <a href="#podcast"
+               class="hero-card hero-card--3 hero-card--podcast"
+               data-carousel="podcast">
                 <div class="hero-card__icon hero-card__icon--platforms">
                     <i class="mdi mdi-youtube icon--youtube"></i>
                     <i class="mdi mdi-apple icon--apple"></i>
                     <i class="mdi mdi-spotify icon--spotify"></i>
                 </div>
-                <h3 class="hero-card__title">The Podcast</h3>
-                <p class="hero-card__excerpt">Conversations on mindfulness, music, and thriving as a performer.</p>
-                <span class="hero-card__cta">Listen Now →</span>
+                <div class="hero-card__content">
+                    <h3 class="hero-card__title">{{ regularEpisodes[0].title }}</h3>
+                    <p class="hero-card__excerpt">{{ regularEpisodes[0].description | truncate(80) }}</p>
+                </div>
+                <div class="hero-card__footer">
+                    <span class="hero-card__cta">Listen Now →</span>
+                    <div class="hero-card__dots"></div>
+                </div>
             </a>
         </div>
     </div>
+
+    <!-- Carousel data for JavaScript -->
+    <script id="hero-carousel-data" type="application/json">
+    {
+        "medium": {{ articles.articles | dump | safe }},
+        "podcast": {{ regularEpisodes | dump | safe }}
+    }
+    </script>
 </section>

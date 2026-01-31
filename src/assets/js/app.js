@@ -505,6 +505,173 @@ class TestimonialCarousel {
     }
 }
 
+// ====================================
+// HERO CARD CAROUSEL
+// ====================================
+// Auto-rotating content carousel for hero cards (Medium articles, Podcast episodes)
+class HeroCardCarousel {
+    constructor(card, carouselData) {
+        this.card = card;
+        this.type = card.dataset.carousel; // 'medium' or 'podcast'
+        this.items = carouselData[this.type] || [];
+        this.contentWrapper = card.querySelector('.hero-card__content');
+        this.titleEl = card.querySelector('.hero-card__title');
+        this.excerptEl = card.querySelector('.hero-card__excerpt');
+        this.dotsContainer = card.querySelector('.hero-card__dots');
+
+        if (this.items.length <= 1) return;
+
+        this.currentIndex = 0;
+        this.interval = 6000; // 6 seconds per item
+        this.progressInterval = 50; // Update progress every 50ms
+        this.progress = 0;
+        this.isPaused = false;
+        this.autoplayTimer = null;
+        this.progressTimer = null;
+
+        this.init();
+    }
+
+    init() {
+        // Create dot indicators (max 5 shown)
+        this.createDots();
+
+        // Event listeners for pause on hover
+        this.card.addEventListener('mouseenter', () => this.pause());
+        this.card.addEventListener('mouseleave', () => this.resume());
+        this.card.addEventListener('focusin', () => this.pause());
+        this.card.addEventListener('focusout', () => this.resume());
+
+        // Start autoplay
+        this.start();
+    }
+
+    createDots() {
+        const maxDots = Math.min(this.items.length, 5);
+        for (let i = 0; i < maxDots; i++) {
+            const dot = document.createElement('span');
+            dot.className = 'hero-card__dot' + (i === 0 ? ' is-active' : '');
+            dot.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.goTo(i);
+            });
+            this.dotsContainer.appendChild(dot);
+        }
+        this.dots = Array.from(this.dotsContainer.children);
+    }
+
+    start() {
+        this.card.classList.add('is-animating');
+        this.startProgress();
+        this.scheduleNext();
+    }
+
+    pause() {
+        this.isPaused = true;
+        this.card.classList.remove('is-animating');
+        this.clearTimers();
+    }
+
+    resume() {
+        if (!this.isPaused) return;
+        this.isPaused = false;
+        this.card.classList.add('is-animating');
+        this.startProgress();
+        this.scheduleNext();
+    }
+
+    clearTimers() {
+        if (this.autoplayTimer) {
+            clearTimeout(this.autoplayTimer);
+            this.autoplayTimer = null;
+        }
+        if (this.progressTimer) {
+            clearInterval(this.progressTimer);
+            this.progressTimer = null;
+        }
+    }
+
+    startProgress() {
+        this.progress = 0;
+        this.updateProgressBar();
+
+        this.progressTimer = setInterval(() => {
+            this.progress += (this.progressInterval / this.interval) * 100;
+            this.updateProgressBar();
+        }, this.progressInterval);
+    }
+
+    updateProgressBar() {
+        this.card.style.setProperty('--progress', `${Math.min(this.progress, 100)}%`);
+    }
+
+    scheduleNext() {
+        const remainingTime = this.interval * (1 - this.progress / 100);
+        this.autoplayTimer = setTimeout(() => {
+            if (!this.isPaused) {
+                this.next();
+            }
+        }, remainingTime);
+    }
+
+    next() {
+        const nextIndex = (this.currentIndex + 1) % this.items.length;
+        this.goTo(nextIndex);
+    }
+
+    goTo(index) {
+        if (index === this.currentIndex) return;
+
+        this.clearTimers();
+        this.currentIndex = index;
+
+        // Fade out content
+        this.contentWrapper.classList.add('is-fading');
+
+        // After fade out, update content and fade in
+        setTimeout(() => {
+            this.updateContent();
+            this.contentWrapper.classList.remove('is-fading');
+
+            // Reset progress and continue
+            if (!this.isPaused) {
+                this.startProgress();
+                this.scheduleNext();
+            }
+        }, 400); // Match CSS transition duration
+
+        // Update dots
+        this.updateDots();
+    }
+
+    updateContent() {
+        const item = this.items[this.currentIndex];
+
+        if (this.type === 'medium') {
+            this.titleEl.textContent = item.title;
+            this.excerptEl.textContent = this.truncate(item.excerpt, 80);
+            this.card.href = item.link;
+        } else if (this.type === 'podcast') {
+            this.titleEl.textContent = item.title;
+            this.excerptEl.textContent = this.truncate(item.description, 80);
+        }
+    }
+
+    updateDots() {
+        const dotIndex = this.currentIndex % this.dots.length;
+        this.dots.forEach((dot, i) => {
+            dot.classList.toggle('is-active', i === dotIndex);
+        });
+    }
+
+    truncate(str, length) {
+        if (!str) return '';
+        if (str.length <= length) return str;
+        return str.substring(0, length).trim() + '...';
+    }
+}
+
 // Initialize carousel when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     const carouselElement = document.querySelector('.testimonial-carousel');
@@ -516,11 +683,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const typedElement = document.getElementById('typed-headline');
     if (typedElement && typeof Typed !== 'undefined') {
         new Typed('#typed-headline', {
-            strings: ['Play from a place of peace.'],
+            strings: ['one opus at a time.'],
             typeSpeed: 50,
             startDelay: 800,
             showCursor: false
         });
+    }
+
+    // Initialize Hero Card Carousels
+    const carouselDataScript = document.getElementById('hero-carousel-data');
+    if (carouselDataScript) {
+        try {
+            const carouselData = JSON.parse(carouselDataScript.textContent);
+            const heroCarouselCards = document.querySelectorAll('.hero-card[data-carousel]');
+            heroCarouselCards.forEach(card => {
+                new HeroCardCarousel(card, carouselData);
+            });
+        } catch (e) {
+            console.warn('Could not parse carousel data:', e);
+        }
     }
 });
 
