@@ -17,6 +17,103 @@ function windowScroll() {
     }
 }
 
+// ====================================
+// PARALLAX SCROLL EFFECT
+// ====================================
+// Parallax effect handler for hero sections
+class ParallaxHandler {
+    constructor() {
+        this.parallaxElements = document.querySelectorAll('[data-parallax="true"]');
+        this.parallaxIntensity = 0.35; // Subtle parallax intensity (0.3-0.5)
+        this.isMobile = window.innerWidth < 768;
+        this.isTablet = window.innerWidth >= 768 && window.innerWidth <= 1024;
+        this.scrollTimeout = null;
+        
+        if (this.parallaxElements.length > 0) {
+            this.init();
+        }
+    }
+
+    init() {
+        // Listen for window resize to update device detection
+        window.addEventListener('resize', () => this.handleResize(), { passive: true });
+        
+        // Apply parallax on scroll - using requestAnimationFrame for smooth performance
+        window.addEventListener('scroll', () => this.scheduleScroll(), { passive: true });
+        
+        // Initial parallax application
+        this.updateParallax();
+    }
+
+    handleResize() {
+        const wasDesktop = !this.isMobile && !this.isTablet;
+        this.isMobile = window.innerWidth < 768;
+        this.isTablet = window.innerWidth >= 768 && window.innerWidth <= 1024;
+        const isNowDesktop = !this.isMobile && !this.isTablet;
+
+        // Reset parallax if changing between device types
+        if (wasDesktop !== isNowDesktop) {
+            this.updateParallax();
+        }
+    }
+
+    scheduleScroll() {
+        // Cancel previous scheduled update
+        if (this.scrollTimeout) {
+            cancelAnimationFrame(this.scrollTimeout);
+        }
+        
+        // Schedule new update for next animation frame
+        this.scrollTimeout = requestAnimationFrame(() => {
+            this.updateParallax();
+        });
+    }
+
+    updateParallax() {
+        this.parallaxElements.forEach(element => {
+            // Skip parallax on mobile devices (for performance)
+            if (this.isMobile) {
+                // Reset to no parallax on mobile
+                element.style.setProperty('--bg-transform', 'translate3d(0, 0, 0)');
+                return;
+            }
+
+            // Get element's position relative to viewport
+            const elementRect = element.getBoundingClientRect();
+            const elementTop = elementRect.top;
+            const viewportHeight = window.innerHeight;
+            const elementHeight = elementRect.height;
+
+            // Calculate how much of the element is visible in viewport
+            // When element is at top of viewport: -1
+            // When element is centered in viewport: 0
+            // When element is at bottom of viewport: 1
+            const visibleProgress = (viewportHeight / 2 - elementTop) / (viewportHeight / 2 + elementHeight / 2);
+
+            // Calculate parallax offset using subtle intensity
+            let intensity = this.parallaxIntensity;
+
+            // Reduce intensity on tablets for better mobile performance
+            if (this.isTablet) {
+                intensity = this.parallaxIntensity * 0.65;
+            }
+
+            // Apply parallax offset - background moves slower than scroll
+            // Using negative value so background appears to move slower
+            const offset = visibleProgress * 50 * intensity; // ±25px max on desktop
+
+            // Apply CSS transform for GPU acceleration
+            const transform = `translate3d(0, ${offset}px, 0)`;
+            element.style.setProperty('--bg-transform', transform);
+        });
+    }
+}
+
+// Initialize parallax when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    new ParallaxHandler();
+});
+
 window.addEventListener('scroll', (ev) => {
     ev.preventDefault();
     windowScroll();
