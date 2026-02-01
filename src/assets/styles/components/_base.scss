@@ -1108,6 +1108,646 @@ Main Style Sheet
 // END MISSION SECTION
 // ============================================
 
+// ============================================
+// SERVICES SECTION
+// ============================================
+
+.services-section {
+  padding: 100px 0;
+  background: #faf9f7;
+
+  // Subtle section indicator
+  &::before {
+    content: '';
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(42, 125, 125, 0.08) 0%, rgba(42, 125, 125, 0.03) 60%, transparent 70%);
+    pointer-events: none;
+  }
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.services-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(42, 125, 125, 0.1) 0%, rgba(42, 125, 125, 0.04) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(42, 125, 125, 0.08);
+
+  i {
+    font-size: 32px;
+    color: #2a7d7d;
+  }
+
+  img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    opacity: 0.85;
+  }
+}
+
+.services-label {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #666666;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.services-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: 400;
+  font-optical-sizing: none;
+  color: #2a7d7d;
+  letter-spacing: 0;
+}
+
+.services-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.services-intro {
+  text-align: center;
+  margin-bottom: 40px;
+
+  p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #333333;
+
+    em {
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      color: #2a7d7d;
+      font-weight: 400;
+    }
+  }
+}
+
+// Partnership card with visual element
+.services-partnership {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: center;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.02),
+    0 8px 24px rgba(0, 0, 0, 0.06);
+  border-left: 4px solid #2a7d7d;
+  margin-bottom: 50px;
+
+  &__content {
+    h3 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      font-optical-sizing: none;
+      color: #2a7d7d;
+      margin-bottom: 16px;
+      letter-spacing: 0;
+    }
+
+    p {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.7;
+      color: #444444;
+      margin: 0;
+
+      strong {
+        color: #2a7d7d;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__visual {
+    flex-shrink: 0;
+  }
+
+  &__circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(42, 125, 125, 0.1) 0%, rgba(42, 125, 125, 0.05) 100%);
+    border: 2px dashed rgba(42, 125, 125, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+
+    span {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #2a7d7d;
+
+      &:nth-child(2) {
+        font-family: 'Dancing Script', cursive;
+        font-size: 1.1rem;
+        color: rgba(42, 125, 125, 0.6);
+      }
+    }
+  }
+}
+
+// Partnership responsive
+@media (max-width: 768px) {
+  .services-partnership {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+
+    &__visual {
+      order: -1;
+    }
+
+    &__circle {
+      margin: 0 auto;
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+// Services offerings - unified 3x2 grid with sleek teal icons
+.services-offerings {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 50px;
+
+  &__card {
+    text-align: center;
+    padding: 28px 20px;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid rgba(42, 125, 125, 0.08);
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.02),
+      0 6px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s ease;
+
+    &:hover {
+      transform: translateY(-6px);
+      border-color: rgba(42, 125, 125, 0.15);
+      box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.04),
+        0 12px 28px rgba(0, 0, 0, 0.08),
+        0 20px 40px rgba(42, 125, 125, 0.08);
+    }
+
+    h4 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-optical-sizing: none;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+      letter-spacing: 0;
+    }
+
+    p {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #666666;
+      margin: 0;
+    }
+  }
+
+  // Sleek teal icon style (matching mission cards)
+  &__icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(42, 125, 125, 0.12) 0%, rgba(42, 125, 125, 0.06) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+    box-shadow: 0 2px 8px rgba(42, 125, 125, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    i {
+      font-size: 26px;
+      color: #2a7d7d;
+    }
+  }
+
+  &__card:hover &__icon {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(42, 125, 125, 0.15);
+  }
+
+  // Keep illustration for backwards compatibility
+  &__illustration {
+    width: 100%;
+    max-width: 160px;
+    height: 110px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &__card:hover &__illustration img {
+    transform: scale(1.05);
+  }
+}
+
+// Services offerings responsive
+@media (max-width: 992px) {
+  .services-offerings {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .services-offerings {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .services-offerings__card {
+    padding: 20px 16px;
+  }
+
+  .services-offerings__illustration {
+    max-width: 140px;
+    height: 95px;
+  }
+}
+
+// Group programs callout
+.services-group {
+  text-align: center;
+  padding: 40px;
+  background: linear-gradient(135deg, rgba(42, 125, 125, 0.06) 0%, rgba(42, 125, 125, 0.02) 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(42, 125, 125, 0.08);
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(42, 125, 125, 0.1);
+    border-radius: 20px;
+    margin-bottom: 20px;
+
+    i {
+      font-size: 18px;
+      color: #2a7d7d;
+    }
+
+    span {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #2a7d7d;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #333333;
+    margin: 0 0 16px 0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+
+    em {
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      color: #2a7d7d;
+    }
+  }
+
+  &__signature {
+    display: block;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2a7d7d;
+  }
+}
+
+// Services section responsive
+@media (max-width: 768px) {
+  .services-section {
+    padding: 70px 0;
+  }
+
+  .services-group {
+    padding: 30px 24px;
+  }
+}
+
+// ============================================
+// END SERVICES SECTION
+// ============================================
+
+// ============================================
+// RESULTS SECTION
+// ============================================
+.results-section {
+  padding: 100px 0;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafa 100%);
+}
+
+.results-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+// Shared section header icon style - used by Mission, Services, Results
+.section-header-icon {
+  width: 110px;
+  height: 110px;
+  min-width: 110px;
+  min-height: 110px;
+  max-width: 110px;
+  max-height: 110px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(42, 125, 125, 0.08) 0%, rgba(42, 125, 125, 0.03) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(42, 125, 125, 0.06);
+  overflow: hidden;
+
+  img {
+    width: 75px !important;
+    height: 75px !important;
+    max-width: 75px !important;
+    max-height: 75px !important;
+    object-fit: contain;
+  }
+}
+
+.results-label {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #666666;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.results-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 400;
+  font-optical-sizing: none;
+  color: #2a7d7d;
+  letter-spacing: 0;
+  margin-bottom: 16px;
+}
+
+.results-subtitle {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #555555;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.results-content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.results-card {
+  position: relative;
+  padding: 28px 24px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(42, 125, 125, 0.08);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.02),
+    0 6px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: rgba(42, 125, 125, 0.15);
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.04),
+      0 12px 28px rgba(0, 0, 0, 0.08),
+      0 20px 40px rgba(42, 125, 125, 0.08);
+  }
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(42, 125, 125, 0.12) 0%, rgba(42, 125, 125, 0.06) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 6px rgba(42, 125, 125, 0.08);
+
+    i {
+      font-size: 24px;
+      color: #2a7d7d;
+    }
+  }
+
+  h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-optical-sizing: none;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    letter-spacing: 0;
+  }
+
+  p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #555555;
+    margin: 0;
+  }
+
+  // Featured card (first one, spans larger or has accent)
+  &--featured {
+    grid-column: span 1;
+    border-left: 3px solid #2a7d7d;
+  }
+}
+
+// Additional benefits section
+.results-extras {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(42, 125, 125, 0.08);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.02),
+    0 8px 24px rgba(0, 0, 0, 0.06);
+
+  &__content {
+    flex: 1;
+
+    h4 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      font-optical-sizing: none;
+      color: #2a7d7d;
+      margin-bottom: 20px;
+      letter-spacing: 0;
+    }
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: linear-gradient(135deg, rgba(42, 125, 125, 0.08) 0%, rgba(42, 125, 125, 0.04) 100%);
+      border-radius: 20px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #333333;
+      transition: background 0.3s ease, transform 0.3s ease;
+
+      i {
+        font-size: 16px;
+        color: #2a7d7d;
+      }
+
+      &:hover {
+        background: linear-gradient(135deg, rgba(42, 125, 125, 0.12) 0%, rgba(42, 125, 125, 0.06) 100%);
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  &__image {
+    flex: 0 0 280px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+    img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+  }
+}
+
+// Results section responsive
+@media (max-width: 992px) {
+  .results-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .results-extras {
+    flex-direction: column;
+    text-align: center;
+
+    &__image {
+      flex: none;
+      width: 100%;
+      max-width: 400px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .results-section {
+    padding: 70px 0;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .results-card--featured {
+    grid-column: span 1;
+  }
+
+  .results-extras {
+    padding: 24px;
+
+    &__tags {
+      justify-content: center;
+    }
+
+    &__image img {
+      height: 180px;
+    }
+  }
+}
+
+// ============================================
+// END RESULTS SECTION
+// ============================================
+
 // Prevent horizontal scroll on mobile
 html, body {
   overflow-x: hidden;
@@ -2654,6 +3294,32 @@ hr {
   display: none;
 }
 
+// Logo icon and text
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo .logo-icon {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateY(2px);
+}
+
+.logo .logo-text {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.nav-sticky .logo .logo-icon {
+  height: 38px !important;
+}
+
+.nav-sticky .logo .logo-text {
+  height: 18px !important;
+}
+
 .nav-button {
   margin-left: 20px;
 }
@@ -2682,7 +3348,8 @@ hr {
 /*---NAVBAR STICKY--*/
 .nav-sticky.navbar-custom {
   margin-top: 0px;
-  padding: 20px 0px;
+  padding: 16px 0px;
+  min-height: 70px;
   background-color: #ffffff;
   -webkit-box-shadow: 0px 3px 10px 0px rgba(38, 107, 193, 0.08);
           box-shadow: 0px 3px 10px 0px rgba(38, 107, 193, 0.08);
