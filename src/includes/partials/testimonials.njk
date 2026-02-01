@@ -1,73 +1,140 @@
-<!-- Start Testimonials -->
-<section class="testimonial-section section bg-lightan bg-home-np" id="testimonials">
-    <div class="container" data-aos="fade-up">
+<!-- Start Testimonials Waterfall -->
+<section class="testimonial-waterfall-section" id="testimonials">
+    <!-- Zigzag edges -->
+    <div class="zigzag-edge zigzag-edge--top"></div>
+    <div class="zigzag-edge zigzag-edge--bottom"></div>
+
+    <!-- Modal for full testimonial -->
+    <div class="testimonial-modal" id="testimonialModal" aria-hidden="true">
+        <div class="testimonial-modal__backdrop"></div>
+        <div class="testimonial-modal__container" role="dialog" aria-modal="true" aria-labelledby="modalAuthor">
+            <button class="testimonial-modal__close" aria-label="Close modal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="testimonial-modal__content">
+                <blockquote class="testimonial-modal__quote" id="modalQuote"></blockquote>
+                <footer class="testimonial-modal__author">
+                    <span class="testimonial-modal__name" id="modalAuthor"></span>
+                    <span class="testimonial-modal__role" id="modalRole"></span>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center">
-                <h3>Testimonials</h3>
+                <h3 class="testimonial-waterfall__title" data-aos="fade-up">What Clients Say</h3>
+                <p class="testimonial-waterfall__subtitle" data-aos="fade-up" data-aos-delay="100">
+                    Real stories from musicians transforming their mindset and performance
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="testimonial-waterfall" data-aos="fade-up" data-aos-delay="200">
+        <!-- Fade masks -->
+        <div class="waterfall-fade waterfall-fade--top"></div>
+        <div class="waterfall-fade waterfall-fade--bottom"></div>
+
+        <!-- Column 1 - scrolls up, parallax speed 0.15 -->
+        <div class="waterfall-column waterfall-column--up" data-parallax-speed="0.15">
+            <div class="waterfall-track">
+                {% set col1 = [testimonials.testimonials[0], testimonials.testimonials[3], testimonials.testimonials[6]] %}
+                {% for i in range(2) %}
+                    {% for testimonial in col1 %}
+                    <article class="waterfall-card"
+                             data-quote="{{ testimonial.quote }}"
+                             data-author="{{ testimonial.author }}"
+                             data-role="{{ testimonial.role }}"
+                             tabindex="0"
+                             role="button"
+                             aria-label="Read full testimonial from {{ testimonial.author if testimonial.author != 'Anonymous' else testimonial.role }}">
+                        <blockquote class="waterfall-card__quote">
+                            "{{ testimonial.quote }}"
+                        </blockquote>
+                        <footer class="waterfall-card__author">
+                            {% if testimonial.author == "Anonymous" %}
+                                <span class="waterfall-card__name">{{ testimonial.role }}</span>
+                            {% else %}
+                                <span class="waterfall-card__name">{{ testimonial.author }}</span>
+                                {% if testimonial.role %}
+                                    <span class="waterfall-card__role">{{ testimonial.role }}</span>
+                                {% endif %}
+                            {% endif %}
+                        </footer>
+                    </article>
+                    {% endfor %}
+                {% endfor %}
             </div>
         </div>
 
-        <div class="testimonial-carousel">
-            <!-- Navigation Dots -->
-            <div class="carousel-dots"></div>
-
-            <!-- Testimonial Container -->
-            <div class="carousel-container">
-                <div class="testimonial-track">
-                    {% for testimonial in testimonials.testimonials %}
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <blockquote class="testimonial-text">
-                                "{{ testimonial.quote }}"
-                            </blockquote>
-                            <div class="testimonial-author">
-                                {% if testimonial.author == "Anonymous" %}
-                                    <h4>{{ testimonial.role }}</h4>
-                                {% else %}
-                                    {% if testimonial.author %}
-                                        <h4>{{ testimonial.author }}</h4>
-                                    {% endif %}
-                                    {% if testimonial.role %}
-                                        <p>{{ testimonial.role }}</p>
-                                    {% endif %}
+        <!-- Column 2 - scrolls down, parallax speed -0.1 (opposite direction) -->
+        <div class="waterfall-column waterfall-column--down" data-parallax-speed="-0.1">
+            <div class="waterfall-track">
+                {% set col2 = [testimonials.testimonials[1], testimonials.testimonials[4], testimonials.testimonials[7]] %}
+                {% for i in range(2) %}
+                    {% for testimonial in col2 %}
+                    <article class="waterfall-card"
+                             data-quote="{{ testimonial.quote }}"
+                             data-author="{{ testimonial.author }}"
+                             data-role="{{ testimonial.role }}"
+                             tabindex="0"
+                             role="button"
+                             aria-label="Read full testimonial from {{ testimonial.author if testimonial.author != 'Anonymous' else testimonial.role }}">
+                        <blockquote class="waterfall-card__quote">
+                            "{{ testimonial.quote }}"
+                        </blockquote>
+                        <footer class="waterfall-card__author">
+                            {% if testimonial.author == "Anonymous" %}
+                                <span class="waterfall-card__name">{{ testimonial.role }}</span>
+                            {% else %}
+                                <span class="waterfall-card__name">{{ testimonial.author }}</span>
+                                {% if testimonial.role %}
+                                    <span class="waterfall-card__role">{{ testimonial.role }}</span>
                                 {% endif %}
-                            </div>
-                        </div>
-                    </div>
+                            {% endif %}
+                        </footer>
+                    </article>
                     {% endfor %}
-                </div>
+                {% endfor %}
             </div>
+        </div>
 
-            <!-- Navigation Buttons -->
-            <button class="carousel-nav prev" aria-label="Previous">‹</button>
-            <button class="carousel-nav next" aria-label="Next">›</button>
+        <!-- Column 3 - scrolls up, parallax speed 0.12 -->
+        <div class="waterfall-column waterfall-column--up" data-parallax-speed="0.12">
+            <div class="waterfall-track">
+                {% set col3 = [testimonials.testimonials[2], testimonials.testimonials[5], testimonials.testimonials[8]] %}
+                {% for i in range(2) %}
+                    {% for testimonial in col3 %}
+                    <article class="waterfall-card"
+                             data-quote="{{ testimonial.quote }}"
+                             data-author="{{ testimonial.author }}"
+                             data-role="{{ testimonial.role }}"
+                             tabindex="0"
+                             role="button"
+                             aria-label="Read full testimonial from {{ testimonial.author if testimonial.author != 'Anonymous' else testimonial.role }}">
+                        <blockquote class="waterfall-card__quote">
+                            "{{ testimonial.quote }}"
+                        </blockquote>
+                        <footer class="waterfall-card__author">
+                            {% if testimonial.author == "Anonymous" %}
+                                <span class="waterfall-card__name">{{ testimonial.role }}</span>
+                            {% else %}
+                                <span class="waterfall-card__name">{{ testimonial.author }}</span>
+                                {% if testimonial.role %}
+                                    <span class="waterfall-card__role">{{ testimonial.role }}</span>
+                                {% endif %}
+                            {% endif %}
+                        </footer>
+                    </article>
+                    {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 </section>
-<!-- End Testimonials -->
-
-<style>
-.tiny-three-item {
-    position: relative;
-}
-
-.tiny-slide {
-    padding: 1rem;
-}
-
-.card {
-    transition: all 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.text-muted {
-    color: #6c757d;
-}
-
-.fst-italic {
-    font-style: italic;
-}
-</style>
+<!-- End Testimonials Waterfall -->

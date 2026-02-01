@@ -24,6 +24,70 @@ function windowScroll() {
         const scrollPercent = (scrollTop / scrollHeight) * 100;
         scrollProgress.style.width = scrollPercent + "%";
     }
+
+    // Hero wave parallax effect
+    const waveContainer = document.querySelector('.hero-wave-container');
+    if (waveContainer) {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const heroHeight = document.querySelector('.hero-landing')?.offsetHeight || 800;
+
+        // Only apply parallax when in the hero section area
+        if (scrollTop < heroHeight * 1.5) {
+            const waveBack = waveContainer.querySelector('.hero-wave--back');
+            const waveMid = waveContainer.querySelector('.hero-wave--mid');
+            const waveFront = waveContainer.querySelector('.hero-wave--front');
+
+            // Different parallax speeds for depth effect
+            if (waveBack) waveBack.style.transform = `translateY(${scrollTop * 0.15}px)`;
+            if (waveMid) waveMid.style.transform = `translateY(${scrollTop * 0.08}px)`;
+            if (waveFront) waveFront.style.transform = `translateY(${scrollTop * 0.03}px)`;
+        }
+    }
+
+    // Services floating cards parallax effect - enhanced with rotation and depth
+    const servicesSection = document.querySelector('.services-section');
+    if (servicesSection && window.innerWidth > 768) {
+        const floatingCards = servicesSection.querySelectorAll('.services-floating__card');
+        const sectionRect = servicesSection.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+
+        // Only apply when section is in viewport
+        if (sectionRect.top < viewportHeight && sectionRect.bottom > 0) {
+            const progress = (viewportHeight - sectionRect.top) / (viewportHeight + sectionRect.height);
+
+            floatingCards.forEach((card, index) => {
+                const speed = parseFloat(card.dataset.parallaxSpeed) || 0.1;
+                // Strong vertical movement for dramatic floating effect
+                const offsetY = (progress - 0.5) * 400 * speed;
+                // Horizontal sway based on card position (left vs right)
+                const isLeftSide = index < 3;
+                const offsetX = (progress - 0.5) * 60 * speed * (isLeftSide ? 1 : -1);
+                // Rotation for floating feel
+                const rotate = (progress - 0.5) * 8 * speed * (isLeftSide ? 1 : -1);
+
+                card.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0) rotate(${rotate}deg)`;
+            });
+        }
+    }
+
+    // Testimonial waterfall parallax effect
+    const testimonialWaterfall = document.querySelector('.testimonial-waterfall');
+    if (testimonialWaterfall && window.innerWidth > 768) {
+        const columns = testimonialWaterfall.querySelectorAll('.waterfall-column');
+        const sectionRect = testimonialWaterfall.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+
+        // Only apply when section is in viewport
+        if (sectionRect.top < viewportHeight && sectionRect.bottom > 0) {
+            const progress = (viewportHeight - sectionRect.top) / (viewportHeight + sectionRect.height);
+
+            columns.forEach(column => {
+                const speed = parseFloat(column.dataset.parallaxSpeed) || 0.1;
+                const offset = (progress - 0.5) * 150 * speed; // Stronger effect (150 vs 100)
+                column.style.transform = `translateY(${offset}px)`;
+            });
+        }
+    }
 }
 
 // ====================================
@@ -303,207 +367,212 @@ if (clientSliderElement) {
     });
 }
 
-// Testimonial Carousel Class with Touch Dragging
-class TestimonialCarousel {
-    constructor(element) {
-        if (!element) return;
+// ====================================
+// TESTIMONIAL WATERFALL SCROLL
+// ====================================
+class TestimonialWaterfallScroll {
+    constructor() {
+        this.waterfall = document.querySelector('.testimonial-waterfall');
+        if (!this.waterfall) return;
 
-        this.carousel = element;
-        this.track = element.querySelector('.testimonial-track');
-        this.container = element.querySelector('.carousel-container');
-        this.slides = Array.from(element.querySelectorAll('.testimonial-card'));
-        this.nextButton = element.querySelector('.next');
-        this.prevButton = element.querySelector('.prev');
-        this.dotsContainer = element.querySelector('.carousel-dots');
+        this.columns = this.waterfall.querySelectorAll('.waterfall-column');
+        this.scrollPositions = Array.from(this.columns).map(() => 0);
+        this.isHovering = false;
 
-        this.currentIndex = 0;
-        this.autoplayInterval = null;
-        this.autoplayDelay = 25000;
-
-        // Drag state
-        this.isDragging = false;
-        this.startX = 0;
-        this.currentX = 0;
-        this.dragOffset = 0;
-        this.threshold = 50; // Minimum drag distance to trigger slide change
-
-        this.initializeCarousel();
+        this.init();
     }
 
-    initializeCarousel() {
-        // Create dots
-        this.createDots();
-
-        // Set initial styles
-        this.track.style.display = 'flex';
-        this.track.style.transition = 'transform 0.3s ease';
-
-        // Add event listeners
-        this.addEventListeners();
-
-        // Start autoplay
-        this.startAutoplay();
-
-        // Update initial state
-        this.updateCarouselState();
-    }
-
-    createDots() {
-        this.slides.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            dot.addEventListener('click', () => this.goToSlide(index));
-            this.dotsContainer.appendChild(dot);
-        });
-        this.dots = Array.from(this.dotsContainer.children);
-    }
-
-    addEventListeners() {
-        this.nextButton.addEventListener('click', () => this.nextSlide());
-        this.prevButton.addEventListener('click', () => this.prevSlide());
-
-        this.carousel.addEventListener('mouseenter', () => this.pauseAutoplay());
-        this.carousel.addEventListener('mouseleave', () => {
-            if (!this.isDragging) this.startAutoplay();
+    init() {
+        // Track hover state
+        this.waterfall.addEventListener('mouseenter', () => {
+            this.isHovering = true;
+            // Pause CSS animation and capture current visual position
+            this.columns.forEach((col, i) => {
+                const track = col.querySelector('.waterfall-track');
+                // Get computed transform to maintain visual position
+                const style = window.getComputedStyle(track);
+                const matrix = new DOMMatrix(style.transform);
+                this.scrollPositions[i] = matrix.m42; // translateY value
+                track.style.animation = 'none';
+                track.style.transform = `translateY(${this.scrollPositions[i]}px)`;
+            });
         });
 
-        // Touch events for mobile dragging
-        this.container.addEventListener('touchstart', (e) => this.handleDragStart(e), { passive: true });
-        this.container.addEventListener('touchmove', (e) => this.handleDragMove(e), { passive: false });
-        this.container.addEventListener('touchend', (e) => this.handleDragEnd(e));
-        this.container.addEventListener('touchcancel', (e) => this.handleDragEnd(e));
-
-        // Mouse events for desktop dragging
-        this.container.addEventListener('mousedown', (e) => this.handleDragStart(e));
-        this.container.addEventListener('mousemove', (e) => this.handleDragMove(e));
-        this.container.addEventListener('mouseup', (e) => this.handleDragEnd(e));
-        this.container.addEventListener('mouseleave', (e) => {
-            if (this.isDragging) this.handleDragEnd(e);
+        this.waterfall.addEventListener('mouseleave', () => {
+            this.isHovering = false;
+            // Resume CSS animation
+            this.columns.forEach((col, i) => {
+                const track = col.querySelector('.waterfall-track');
+                track.style.animation = '';
+                track.style.transform = '';
+            });
         });
 
-        // Prevent image dragging
-        this.carousel.querySelectorAll('img').forEach(img => {
-            img.addEventListener('dragstart', (e) => e.preventDefault());
-        });
-    }
-
-    getPositionX(e) {
-        return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-    }
-
-    handleDragStart(e) {
-        this.isDragging = true;
-        this.startX = this.getPositionX(e);
-        this.dragOffset = 0;
-        this.track.classList.add('is-dragging');
-        this.pauseAutoplay();
-    }
-
-    handleDragMove(e) {
-        if (!this.isDragging) return;
-
-        this.currentX = this.getPositionX(e);
-        this.dragOffset = this.currentX - this.startX;
-
-        // Calculate the base position
-        const baseOffset = -(this.currentIndex * 100);
-        // Calculate drag as percentage of container width
-        const containerWidth = this.container.offsetWidth;
-        const dragPercent = (this.dragOffset / containerWidth) * 100;
-
-        // Apply transform with drag offset
-        this.track.style.transform = `translateX(${baseOffset + dragPercent}%)`;
-
-        // Prevent vertical scroll when dragging horizontally
-        if (Math.abs(this.dragOffset) > 10) {
+        // Mouse wheel scrolling
+        this.waterfall.addEventListener('wheel', (e) => {
+            if (!this.isHovering) return;
             e.preventDefault();
-        }
-    }
 
-    handleDragEnd(e) {
-        if (!this.isDragging) return;
+            const delta = e.deltaY * 0.8; // Scroll sensitivity
 
-        this.isDragging = false;
-        this.track.classList.remove('is-dragging');
+            this.columns.forEach((col, i) => {
+                const track = col.querySelector('.waterfall-track');
+                const trackHeight = track.scrollHeight / 2; // Half because content is duplicated
+                const direction = col.classList.contains('waterfall-column--down') ? -1 : 1;
 
-        // Determine if we should change slides
-        if (Math.abs(this.dragOffset) > this.threshold) {
-            if (this.dragOffset < 0) {
-                // Dragged left - go to next slide
-                this.nextSlide();
-            } else {
-                // Dragged right - go to previous slide
-                this.prevSlide();
-            }
-        } else {
-            // Snap back to current slide
-            this.updateCarouselState();
-        }
+                // Update scroll position
+                this.scrollPositions[i] += delta * direction;
 
-        this.dragOffset = 0;
+                // Loop the scroll position
+                if (this.scrollPositions[i] > 0) {
+                    this.scrollPositions[i] = -trackHeight;
+                } else if (this.scrollPositions[i] < -trackHeight) {
+                    this.scrollPositions[i] = 0;
+                }
 
-        // Restart autoplay after a delay
-        setTimeout(() => {
-            if (!this.isDragging) this.startAutoplay();
-        }, 1000);
-    }
+                track.style.transform = `translateY(${this.scrollPositions[i]}px)`;
+            });
+        }, { passive: false });
 
-    goToSlide(index) {
-        this.currentIndex = index;
-        this.updateCarouselState();
-    }
+        // Touch scrolling for mobile
+        let touchStartY = 0;
+        let lastTouchY = 0;
 
-    nextSlide() {
-        if (this.currentIndex === this.slides.length - 1) {
-            this.currentIndex = 0;
-        } else {
-            this.currentIndex++;
-        }
-        this.updateCarouselState();
-    }
+        this.waterfall.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+            lastTouchY = touchStartY;
+            this.isHovering = true;
 
-    prevSlide() {
-        if (this.currentIndex === 0) {
-            this.currentIndex = this.slides.length - 1;
-        } else {
-            this.currentIndex--;
-        }
-        this.updateCarouselState();
-    }
+            this.columns.forEach((col, i) => {
+                const track = col.querySelector('.waterfall-track');
+                const style = window.getComputedStyle(track);
+                const matrix = new DOMMatrix(style.transform);
+                this.scrollPositions[i] = matrix.m42;
+                track.style.animation = 'none';
+                track.style.transform = `translateY(${this.scrollPositions[i]}px)`;
+            });
+        }, { passive: true });
 
-    updateCarouselState() {
-        // Re-enable transition for smooth animation
-        this.track.style.transition = 'transform 0.3s ease';
+        this.waterfall.addEventListener('touchmove', (e) => {
+            if (!this.isHovering) return;
 
-        // Move track using percentage
-        const offset = -(this.currentIndex * 100);
-        this.track.style.transform = `translateX(${offset}%)`;
+            const touchY = e.touches[0].clientY;
+            const delta = (lastTouchY - touchY) * 1.5;
+            lastTouchY = touchY;
 
-        // Update dots
-        this.dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === this.currentIndex);
+            this.columns.forEach((col, i) => {
+                const track = col.querySelector('.waterfall-track');
+                const trackHeight = track.scrollHeight / 2;
+                const direction = col.classList.contains('waterfall-column--down') ? -1 : 1;
+
+                this.scrollPositions[i] += delta * direction;
+
+                if (this.scrollPositions[i] > 0) {
+                    this.scrollPositions[i] = -trackHeight;
+                } else if (this.scrollPositions[i] < -trackHeight) {
+                    this.scrollPositions[i] = 0;
+                }
+
+                track.style.transform = `translateY(${this.scrollPositions[i]}px)`;
+            });
+        }, { passive: true });
+
+        this.waterfall.addEventListener('touchend', () => {
+            // Resume animation after a short delay
+            setTimeout(() => {
+                if (!this.isHovering) return;
+                this.isHovering = false;
+                this.columns.forEach(col => {
+                    const track = col.querySelector('.waterfall-track');
+                    track.style.animation = '';
+                    track.style.transform = '';
+                });
+            }, 2000);
         });
-    }
-
-    startAutoplay() {
-        if (this.autoplayInterval) return;
-        this.autoplayInterval = setInterval(() => {
-            if (this.currentIndex === this.slides.length - 1) {
-                this.currentIndex = 0;
-            } else {
-                this.currentIndex++;
-            }
-            this.updateCarouselState();
-        }, this.autoplayDelay);
-    }
-
-    pauseAutoplay() {
-        if (this.autoplayInterval) {
-            clearInterval(this.autoplayInterval);
-            this.autoplayInterval = null;
-        }
     }
 }
+
+// Initialize waterfall scroll
+document.addEventListener('DOMContentLoaded', () => {
+    new TestimonialWaterfallScroll();
+});
+
+// ====================================
+// TESTIMONIAL WATERFALL MODAL
+// ====================================
+class TestimonialModal {
+    constructor() {
+        this.modal = document.getElementById('testimonialModal');
+        if (!this.modal) return;
+
+        this.backdrop = this.modal.querySelector('.testimonial-modal__backdrop');
+        this.closeBtn = this.modal.querySelector('.testimonial-modal__close');
+        this.quoteEl = document.getElementById('modalQuote');
+        this.authorEl = document.getElementById('modalAuthor');
+        this.roleEl = document.getElementById('modalRole');
+        this.cards = document.querySelectorAll('.waterfall-card');
+
+        this.init();
+    }
+
+    init() {
+        // Card click handlers
+        this.cards.forEach(card => {
+            card.addEventListener('click', (e) => this.openModal(card));
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.openModal(card);
+                }
+            });
+        });
+
+        // Close handlers
+        this.closeBtn.addEventListener('click', () => this.closeModal());
+        this.backdrop.addEventListener('click', () => this.closeModal());
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modal.getAttribute('aria-hidden') === 'false') {
+                this.closeModal();
+            }
+        });
+    }
+
+    openModal(card) {
+        const quote = card.dataset.quote;
+        const author = card.dataset.author;
+        const role = card.dataset.role;
+
+        // Populate content
+        this.quoteEl.textContent = `"${quote}"`;
+
+        if (author === 'Anonymous') {
+            this.authorEl.textContent = role;
+            this.roleEl.textContent = '';
+            this.roleEl.style.display = 'none';
+        } else {
+            this.authorEl.textContent = author;
+            this.roleEl.textContent = role;
+            this.roleEl.style.display = 'block';
+        }
+
+        // Show modal
+        this.modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+
+        // Focus close button for accessibility
+        setTimeout(() => this.closeBtn.focus(), 100);
+    }
+
+    closeModal() {
+        this.modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+}
+
+// Initialize testimonial modal when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new TestimonialModal();
+});
 
 // ====================================
 // HERO CARD CAROUSEL
@@ -672,13 +741,8 @@ class HeroCardCarousel {
     }
 }
 
-// Initialize carousel when DOM is loaded
+// Initialize components when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    const carouselElement = document.querySelector('.testimonial-carousel');
-    if (carouselElement) {
-        new TestimonialCarousel(carouselElement);
-    }
-
     // Initialize Typed.js for hero headline
     const typedElement = document.getElementById('typed-headline');
     if (typedElement && typeof Typed !== 'undefined') {

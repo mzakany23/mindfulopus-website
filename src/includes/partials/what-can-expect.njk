@@ -1,86 +1,94 @@
-<section class="results-section" id="results">
+<section class="bento-section" id="results">
     <div class="container">
-        <div class="results-header" data-aos="fade-up">
-            <div class="section-header-icon" style="width: 110px; height: 110px; margin: 0 auto 20px; border-radius: 50%; background: linear-gradient(135deg, rgba(42, 125, 125, 0.08) 0%, rgba(42, 125, 125, 0.03) 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(42, 125, 125, 0.06); overflow: hidden;">
-                <img src="{{ 'assets/images/icon-performance.png' }}" alt="Results" style="width: 75px; height: 75px; object-fit: contain;">
-            </div>
-            <p class="results-label">Your Transformation</p>
-            <h2 class="results-title">What results can my clients expect?</h2>
-            <p class="results-subtitle">It will vary depending on what we decide to work on, but here's a sample of what to expect:</p>
+        <div class="bento-header" data-aos="fade-up">
+            <p class="bento-label">Your Transformation</p>
+            <h2 class="bento-title">What results can my clients expect?</h2>
+            <p class="bento-subtitle">From stress management to peak performance—coaching designed to help you thrive.</p>
         </div>
 
-        <div class="results-content">
-            <!-- Main results grid - organized into themed groups -->
-            <div class="results-grid" data-aos="fade-up" data-aos-delay="100">
-                <!-- Mental & Emotional -->
-                <div class="results-card results-card--featured">
-                    <div class="results-card__icon">
-                        <i class="mdi mdi-heart-pulse"></i>
-                    </div>
-                    <h3>Self-Compassion & Acceptance</h3>
-                    <p>Learn the powerful tools of self-acceptance and self-compassion as a way to work kinder and smarter towards your results.</p>
+        <div class="bento-grid" data-aos="fade-up" data-aos-delay="100">
+            <!-- Row 1 -->
+            <div class="bento-card bento-card--tall bento-card--cream">
+                <div class="bento-card__icon bento-card__icon--3d">
+                    <i class="mdi mdi-heart-pulse"></i>
                 </div>
+                <h3>Self-Compassion</h3>
+                <p>Learn the powerful tools of self-acceptance as a way to work kinder and smarter towards your goals.</p>
+            </div>
 
-                <div class="results-card">
-                    <div class="results-card__icon">
-                        <i class="mdi mdi-shield-check-outline"></i>
-                    </div>
-                    <h3>Stress Management</h3>
+            <div class="bento-card bento-card--wide bento-card--accent">
+                <div class="bento-card__content">
+                    <h3>Stress<br>Management</h3>
                     <p>Methods for managing stress from both a mental and physical approach.</p>
                 </div>
-
-                <div class="results-card">
-                    <div class="results-card__icon">
-                        <i class="mdi mdi-sprout-outline"></i>
-                    </div>
-                    <h3>Resiliency Development</h3>
-                    <p>Build inner strength to navigate challenges with confidence and grace.</p>
-                </div>
-
-                <div class="results-card">
-                    <div class="results-card__icon">
-                        <i class="mdi mdi-lightning-bolt-outline"></i>
-                    </div>
-                    <h3>Performance Anxiety</h3>
-                    <p>Decreased performance-related anxiety through proven techniques.</p>
-                </div>
-
-                <div class="results-card">
-                    <div class="results-card__icon">
-                        <i class="mdi mdi-human-handsup"></i>
-                    </div>
-                    <h3>Mind/Body Connection</h3>
-                    <p>Stronger connection between your mental and physical well-being.</p>
-                </div>
-
-                <div class="results-card">
-                    <div class="results-card__icon">
-                        <i class="mdi mdi-spa-outline"></i>
-                    </div>
-                    <h3>Self-Care Routine</h3>
-                    <p>A manageable self-care routine that fits your lifestyle.</p>
+                <div class="bento-card__visual">
+                    <i class="mdi mdi-shield-check-outline"></i>
                 </div>
             </div>
 
-            <!-- Additional benefits list -->
-            <div class="results-extras" data-aos="fade-up" data-aos-delay="200">
-                <div class="results-extras__content">
-                    <h4>Plus you'll gain:</h4>
-                    <div class="results-extras__tags">
-                        <span><i class="mdi mdi-check"></i> Mindful practicing tips</span>
-                        <span><i class="mdi mdi-check"></i> Improved body posture</span>
-                        <span><i class="mdi mdi-check"></i> Increased flexibility</span>
-                        <span><i class="mdi mdi-check"></i> Concert preparation</span>
-                        <span><i class="mdi mdi-check"></i> Audition readiness</span>
-                        <span><i class="mdi mdi-check"></i> Burnout support</span>
-                        <span><i class="mdi mdi-check"></i> Life transitions guidance</span>
-                        <span><i class="mdi mdi-check"></i> Increased life satisfaction</span>
-                        <span><i class="mdi mdi-check"></i> Daily mindfulness</span>
-                    </div>
+            <div class="bento-card bento-card--cream">
+                <div class="bento-card__icon">
+                    <i class="mdi mdi-sprout-outline"></i>
                 </div>
-                <div class="results-extras__image">
-                    <img src="{{ 'assets/images/jpz-computer.jpg' }}" alt="Jo Zakany providing coaching">
+                <h3>Resiliency</h3>
+                <p>Build inner strength to navigate challenges with confidence.</p>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="bento-card bento-card--cream">
+                <div class="bento-card__icon bento-card__icon--floating">
+                    <i class="mdi mdi-lightning-bolt-outline"></i>
                 </div>
+                <h3>Performance Anxiety</h3>
+                <p>Decreased performance-related anxiety through proven techniques.</p>
+            </div>
+
+            <div class="bento-card bento-card--small bento-card--cream">
+                <div class="bento-card__icon">
+                    <i class="mdi mdi-spa-outline"></i>
+                </div>
+                <h3>Self-Care</h3>
+                <p>A manageable routine that fits your lifestyle.</p>
+            </div>
+
+            <div class="bento-card bento-card--small bento-card--light">
+                <div class="bento-card__icon">
+                    <i class="mdi mdi-yoga"></i>
+                </div>
+                <h3>Flexibility</h3>
+                <p>Increased physical and mental flexibility.</p>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="bento-card bento-card--wide bento-card--dark">
+                <div class="bento-card__content">
+                    <h3>Mind/Body<br>Connection</h3>
+                    <p>Stronger connection between your mental and physical well-being for peak performance.</p>
+                </div>
+                <div class="bento-card__visual">
+                    <i class="mdi mdi-human-handsup"></i>
+                </div>
+            </div>
+
+            <div class="bento-card bento-card--tall bento-card--cream">
+                <div class="bento-card__icon bento-card__icon--3d">
+                    <i class="mdi mdi-music-note"></i>
+                </div>
+                <h3>Audition Ready</h3>
+                <p>Concert preparation and audition readiness with mental performance strategies.</p>
+            </div>
+        </div>
+
+        <!-- Extras tags -->
+        <div class="bento-extras" data-aos="fade-up" data-aos-delay="200">
+            <h4>Plus you'll gain:</h4>
+            <div class="bento-extras__tags">
+                <span>Mindful practicing</span>
+                <span>Improved posture</span>
+                <span>Burnout support</span>
+                <span>Life transitions</span>
+                <span>Daily mindfulness</span>
+                <span>Increased satisfaction</span>
             </div>
         </div>
     </div>

@@ -1,25 +1,87 @@
 <section class="services-section" id="services">
-    <div class="container">
-        <div class="services-header" data-aos="fade-up">
-            <div class="section-header-icon" style="width: 110px; height: 110px; margin: 0 auto 20px; border-radius: 50%; background: linear-gradient(135deg, rgba(42, 125, 125, 0.08) 0%, rgba(42, 125, 125, 0.03) 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(42, 125, 125, 0.06); overflow: hidden;">
-                <img src="{{ 'assets/images/icon-mindset.png' }}" alt="Services" style="width: 75px; height: 75px; object-fit: contain;">
+    <!-- Floating offerings - staggered parallax layout -->
+    <div class="services-floating">
+        <!-- Left side cards -->
+        <div class="services-floating__card services-floating__card--1" data-parallax-speed="0.08">
+            <div class="services-floating__frame">
+                <div class="services-floating__icon">
+                    <i class="mdi mdi-head-lightbulb-outline"></i>
+                </div>
+                <h4>Mindset Training</h4>
+                <p>Develop mental frameworks for clarity and focus</p>
             </div>
-            <p class="services-label">How I Can Help</p>
-            <h2 class="services-title">What do I offer?</h2>
         </div>
 
-        <div class="services-content">
-            <!-- Intro statement -->
-            <div class="services-intro" data-aos="fade-up">
-                <p>I work <em>1-on-1</em> with clients (in person or over Zoom) to empower you through the process of coaching.</p>
+        <div class="services-floating__card services-floating__card--2" data-parallax-speed="0.12">
+            <div class="services-floating__frame">
+                <div class="services-floating__icon">
+                    <i class="mdi mdi-bullseye-arrow"></i>
+                </div>
+                <h4>Performance Coaching</h4>
+                <p>Optimize your creative output</p>
             </div>
+        </div>
 
+        <div class="services-floating__card services-floating__card--3" data-parallax-speed="0.05">
+            <div class="services-floating__frame">
+                <div class="services-floating__icon">
+                    <i class="mdi mdi-clock-check-outline"></i>
+                </div>
+                <h4>Time Management</h4>
+                <p>Balance art with life</p>
+            </div>
+        </div>
+
+        <!-- Right side cards -->
+        <div class="services-floating__card services-floating__card--4" data-parallax-speed="0.1">
+            <div class="services-floating__frame">
+                <div class="services-floating__icon">
+                    <i class="mdi mdi-yoga"></i>
+                </div>
+                <h4>Yoga & Movement</h4>
+                <p>Reconnect body and mind</p>
+            </div>
+        </div>
+
+        <div class="services-floating__card services-floating__card--5" data-parallax-speed="0.06">
+            <div class="services-floating__frame">
+                <div class="services-floating__icon">
+                    <i class="mdi mdi-meditation"></i>
+                </div>
+                <h4>Meditation</h4>
+                <p>Cultivate calm and presence</p>
+            </div>
+        </div>
+
+        <div class="services-floating__card services-floating__card--6" data-parallax-speed="0.14">
+            <div class="services-floating__frame">
+                <div class="services-floating__icon">
+                    <i class="mdi mdi-weather-windy"></i>
+                </div>
+                <h4>Breathwork</h4>
+                <p>Harness conscious breathing</p>
+            </div>
+        </div>
+
+        <!-- Center content -->
+        <div class="services-center">
+            <p class="services-label">How I Can Help</p>
+            <h2 class="services-title">What do I offer?</h2>
+            <p class="services-subtitle">I work <em>1-on-1</em> with clients to empower you through the process of coaching—combining mindset training, performance coaching, and well-being practices.</p>
+            <a href="https://calendly.com/mindfulopus/30min" class="services-cta-btn" target="_blank" rel="noopener">
+                <span>Book a Free Consultation</span>
+                <i class="mdi mdi-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="services-content">
             <!-- Partnership card -->
-            <div class="services-partnership" data-aos="fade-up" data-aos-delay="100">
+            <div class="services-partnership" data-aos="fade-up">
                 <div class="services-partnership__content">
                     <h3>Coaching is a Partnership</h3>
                     <p>I provide the strategies and thought work, while you provide the direction and goals we set. Together, we explore where your life feels out of balance and come up with <strong>concrete solutions</strong> to recalibrate your well-being.</p>
-                    <p>Our coaching sessions are fully customizable and include mindset training, performance coaching, time-management, decision-making and well-being offerings of yoga, meditation and breathwork.</p>
                 </div>
                 <div class="services-partnership__visual">
                     <div class="services-partnership__circle">
@@ -30,59 +92,8 @@
                 </div>
             </div>
 
-            <!-- All offerings grid (3x2) -->
-            <div class="services-offerings" data-aos="fade-up" data-aos-delay="150">
-                <div class="services-offerings__card">
-                    <div class="services-offerings__icon">
-                        <i class="mdi mdi-head-lightbulb-outline"></i>
-                    </div>
-                    <h4>Mindset Training</h4>
-                    <p>Develop mental frameworks for clarity and focus</p>
-                </div>
-
-                <div class="services-offerings__card">
-                    <div class="services-offerings__icon">
-                        <i class="mdi mdi-bullseye-arrow"></i>
-                    </div>
-                    <h4>Performance Coaching</h4>
-                    <p>Optimize your creative output and workflow</p>
-                </div>
-
-                <div class="services-offerings__card">
-                    <div class="services-offerings__icon">
-                        <i class="mdi mdi-clock-check-outline"></i>
-                    </div>
-                    <h4>Time Management</h4>
-                    <p>Balance your art with the rest of your life</p>
-                </div>
-
-                <div class="services-offerings__card">
-                    <div class="services-offerings__icon">
-                        <i class="mdi mdi-yoga"></i>
-                    </div>
-                    <h4>Yoga & Movement</h4>
-                    <p>Reconnect body and mind through practice</p>
-                </div>
-
-                <div class="services-offerings__card">
-                    <div class="services-offerings__icon">
-                        <i class="mdi mdi-meditation"></i>
-                    </div>
-                    <h4>Meditation</h4>
-                    <p>Cultivate calm and presence in daily life</p>
-                </div>
-
-                <div class="services-offerings__card">
-                    <div class="services-offerings__icon">
-                        <i class="mdi mdi-weather-windy"></i>
-                    </div>
-                    <h4>Breathwork</h4>
-                    <p>Harness the power of conscious breathing</p>
-                </div>
-            </div>
-
             <!-- Group programs callout -->
-            <div class="services-group" data-aos="fade-up" data-aos-delay="200">
+            <div class="services-group" data-aos="fade-up" data-aos-delay="100">
                 <div class="services-group__badge">
                     <i class="mdi mdi-account-group"></i>
                     <span>Group Programs</span>

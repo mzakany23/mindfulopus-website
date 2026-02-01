@@ -105,4 +105,16 @@
         "podcast": {{ regularEpisodes | dump | safe }}
     }
     </script>
+    <!-- Flowing wave transition -->
+    <div class="hero-wave-container" aria-hidden="true" style="position: absolute; bottom: 0; left: 0; right: 0; width: 100%; height: 200px; z-index: 10; pointer-events: none; overflow: visible;">
+        <svg class="hero-wave hero-wave--back" viewBox="0 0 1440 320" preserveAspectRatio="none" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;">
+            <path d="M0,96 C320,192 480,32 720,128 C960,224 1120,64 1440,160 L1440,320 L0,320 Z" fill="rgba(42, 125, 125, 0.15)"/>
+        </svg>
+        <svg class="hero-wave hero-wave--mid" viewBox="0 0 1440 320" preserveAspectRatio="none" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;">
+            <path d="M0,160 C360,64 540,256 900,128 C1080,64 1260,192 1440,96 L1440,320 L0,320 Z" fill="#ebe8e3"/>
+        </svg>
+        <svg class="hero-wave hero-wave--front" viewBox="0 0 1440 320" preserveAspectRatio="none" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;">
+            <path d="M0,192 C240,96 480,224 720,160 C960,96 1200,192 1440,128 L1440,320 L0,320 Z" fill="#faf9f7"/>
+        </svg>
+    </div>
 </section>
