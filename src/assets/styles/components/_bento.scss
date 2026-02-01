@@ -1,0 +1,430 @@
+// ============================================
+// BENTO GRID SECTION
+// Asymmetric card layout inspired by modern bento-box designs
+// ============================================
+
+// Color palette
+$bento-bg: #f5f3ef;
+$bento-cream: #e8e4dc;
+$bento-light: #f0ede7;
+$bento-accent: #2a7d7d;
+$bento-dark: #2d2d2d;
+$bento-text: #1a1a1a;
+$bento-text-muted: #5a5a5a;
+
+.bento-section {
+    padding: 100px 0;
+    background: $bento-bg;
+}
+
+// Header
+.bento-header {
+    text-align: center;
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bento-label {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: $bento-accent;
+    margin-bottom: 12px;
+}
+
+.bento-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    color: $bento-text;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+}
+
+.bento-subtitle {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.125rem;
+    color: $bento-text-muted;
+    line-height: 1.6;
+}
+
+// Bento Grid
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+
+    // Define grid areas for asymmetric layout
+    // Row 1: tall card | wide card spanning 2 | regular card
+    // Row 2: regular | small | small | tall card continues
+    // Row 3: wide card spanning 2 | tall card continues
+
+    .bento-card:nth-child(1) { // Self-Compassion (tall)
+        grid-column: 1;
+        grid-row: 1 / 3;
+    }
+
+    .bento-card:nth-child(2) { // Stress Management (wide)
+        grid-column: 2 / 4;
+        grid-row: 1;
+    }
+
+    .bento-card:nth-child(3) { // Resiliency
+        grid-column: 4;
+        grid-row: 1;
+    }
+
+    .bento-card:nth-child(4) { // Performance Anxiety
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .bento-card:nth-child(5) { // Self-Care (small)
+        grid-column: 3;
+        grid-row: 2;
+    }
+
+    .bento-card:nth-child(6) { // Flexibility (small)
+        grid-column: 4;
+        grid-row: 2;
+    }
+
+    .bento-card:nth-child(7) { // Mind/Body (wide)
+        grid-column: 1 / 3;
+        grid-row: 3;
+    }
+
+    .bento-card:nth-child(8) { // Audition Ready (tall)
+        grid-column: 3 / 5;
+        grid-row: 3;
+    }
+}
+
+// Base card styles
+.bento-card {
+    border-radius: 20px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: inherit;
+        margin-bottom: 10px;
+        line-height: 1.2;
+    }
+
+    p {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: inherit;
+        opacity: 0.85;
+        margin: 0;
+    }
+}
+
+// Card color variants
+.bento-card--cream {
+    background: $bento-cream;
+    color: $bento-text;
+}
+
+.bento-card--light {
+    background: $bento-light;
+    color: $bento-text;
+}
+
+.bento-card--accent {
+    background: $bento-accent;
+    color: #ffffff;
+
+    p {
+        opacity: 0.9;
+    }
+}
+
+.bento-card--dark {
+    background: $bento-dark;
+    color: #ffffff;
+
+    p {
+        opacity: 0.8;
+    }
+}
+
+// Card size variants
+.bento-card--tall {
+    min-height: 320px;
+    justify-content: flex-end;
+}
+
+.bento-card--wide {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 180px;
+
+    .bento-card__content {
+        flex: 1;
+        max-width: 60%;
+    }
+
+    .bento-card__visual {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+            font-size: 5rem;
+            opacity: 0.3;
+        }
+    }
+}
+
+.bento-card--small {
+    min-height: 160px;
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    p {
+        font-size: 0.875rem;
+    }
+}
+
+// Icon styles
+.bento-card__icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    background: rgba(0, 0, 0, 0.08);
+
+    i {
+        font-size: 28px;
+        color: inherit;
+    }
+
+    .bento-card--accent &,
+    .bento-card--dark & {
+        background: rgba(255, 255, 255, 0.15);
+    }
+}
+
+// 3D-style icon (for tall cards)
+.bento-card__icon--3d {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(42, 125, 125, 0.9) 0%, rgba(42, 125, 125, 0.7) 100%);
+    box-shadow:
+        0 8px 24px rgba(42, 125, 125, 0.3),
+        0 2px 4px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 28px;
+    left: 28px;
+
+    i {
+        font-size: 36px;
+        color: #ffffff;
+    }
+}
+
+// Floating icon effect
+.bento-card__icon--floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+// Extras section
+.bento-extras {
+    max-width: 1100px;
+    margin: 50px auto 0;
+    text-align: center;
+
+    h4 {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        color: $bento-text-muted;
+        margin-bottom: 20px;
+    }
+}
+
+.bento-extras__tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+
+    span {
+        display: inline-block;
+        padding: 10px 20px;
+        background: #ffffff;
+        border-radius: 50px;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: $bento-text;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        transition: all 0.2s ease;
+
+        &:hover {
+            background: $bento-accent;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+    }
+}
+
+// Responsive
+@media (max-width: 992px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+
+        // Reset grid positioning for 2-column layout
+        .bento-card:nth-child(1) {
+            grid-column: 1;
+            grid-row: 1;
+        }
+        .bento-card:nth-child(2) {
+            grid-column: 2;
+            grid-row: 1;
+        }
+        .bento-card:nth-child(3) {
+            grid-column: 1;
+            grid-row: 2;
+        }
+        .bento-card:nth-child(4) {
+            grid-column: 2;
+            grid-row: 2;
+        }
+        .bento-card:nth-child(5) {
+            grid-column: 1;
+            grid-row: 3;
+        }
+        .bento-card:nth-child(6) {
+            grid-column: 2;
+            grid-row: 3;
+        }
+        .bento-card:nth-child(7) {
+            grid-column: 1 / 3;
+            grid-row: 4;
+        }
+        .bento-card:nth-child(8) {
+            grid-column: 1 / 3;
+            grid-row: 5;
+        }
+    }
+
+    .bento-card--tall {
+        min-height: 220px;
+    }
+
+    .bento-card--wide {
+        min-height: 160px;
+    }
+}
+
+@media (max-width: 576px) {
+    .bento-section {
+        padding: 60px 0;
+    }
+
+    .bento-header {
+        margin-bottom: 40px;
+    }
+
+    .bento-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+
+        // Single column - all cards stack
+        .bento-card {
+            grid-column: 1 !important;
+            grid-row: auto !important;
+        }
+    }
+
+    .bento-card {
+        padding: 24px;
+        border-radius: 16px;
+
+        h3 {
+            font-size: 1.25rem;
+        }
+    }
+
+    .bento-card--tall {
+        min-height: 180px;
+    }
+
+    .bento-card--wide {
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: auto;
+
+        .bento-card__content {
+            max-width: 100%;
+        }
+
+        .bento-card__visual {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            opacity: 0.3;
+
+            i {
+                font-size: 4rem;
+            }
+        }
+    }
+
+    .bento-card__icon--3d {
+        width: 60px;
+        height: 60px;
+        top: 20px;
+        left: 20px;
+
+        i {
+            font-size: 28px;
+        }
+    }
+
+    .bento-extras__tags {
+        gap: 8px;
+
+        span {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+        }
+    }
+}

@@ -1,224 +1,513 @@
-// Newsletter Section Styles
+// ============================================
+// NEWSLETTER SECTION - Editorial Wellness Design
+// Inspired by modern subscription UX patterns
+// ============================================
 
 .newsletter-section {
-  background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+  position: relative;
+  overflow: hidden;
+}
+
+// ============================================
+// HERO SUBSCRIBE AREA
+// ============================================
+
+.newsletter-hero {
+  background: linear-gradient(180deg, #faf9f7 0%, #f5f2ed 60%, #ffffff 100%);
+  padding: 100px 24px 80px;
+  text-align: center;
   position: relative;
 
-  h3 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-    line-height: 1.2;
+  // Subtle texture overlay
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+  }
 
-    @media (max-width: 768px) {
-      font-size: 2rem;
-      margin-bottom: 1.25rem;
+  &__content {
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #2a7d7d;
+    margin-bottom: 24px;
+
+    i {
+      font-size: 1.1rem;
+    }
+  }
+
+  &__title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(2rem, 4vw + 1rem, 3rem);
+    font-weight: 500;
+    color: #1a1a1a;
+    line-height: 1.2;
+    margin: 0 0 20px;
+  }
+
+  &__subtitle {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: clamp(1rem, 1.2vw + 0.5rem, 1.15rem);
+    font-weight: 400;
+    color: #555;
+    line-height: 1.7;
+    margin: 0 auto 40px;
+    max-width: 560px;
+  }
+
+  &__privacy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.875rem;
+    color: #888;
+    margin-top: 24px;
+
+    i {
+      color: #2a7d7d;
+      font-size: 1rem;
     }
   }
 }
 
-// Article Cards
-.article-card-link {
-  text-decoration: none;
-  display: block;
-  height: 100%;
+// ============================================
+// INLINE SUBSCRIBE FORM
+// ============================================
 
-  &:hover {
+.newsletter-form {
+  max-width: 540px;
+  margin: 0 auto;
+
+  &__input-group {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 50px;
+    padding: 6px 6px 6px 28px;
+    box-shadow:
+      0 4px 20px rgba(0, 0, 0, 0.06),
+      0 1px 3px rgba(0, 0, 0, 0.04),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+    &:focus-within {
+      box-shadow:
+        0 8px 32px rgba(42, 125, 125, 0.12),
+        0 2px 8px rgba(0, 0, 0, 0.06),
+        inset 0 0 0 2px rgba(42, 125, 125, 0.3);
+      transform: translateY(-2px);
+    }
+  }
+
+  &__input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.0625rem;
+    color: #1a1a1a;
+    padding: 14px 16px 14px 0;
+    min-width: 0;
+
+    &::placeholder {
+      color: #aaa;
+    }
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #1a1a1a;
+    color: #ffffff;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 50px;
     text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    i {
+      font-size: 1.1rem;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      background: #2a7d7d;
+      color: #ffffff;
+      transform: scale(1.02);
+
+      i {
+        transform: translateX(3px);
+      }
+    }
+
+    &:focus {
+      outline: 2px solid #2a7d7d;
+      outline-offset: 2px;
+    }
   }
 }
 
-.article-card {
-  background-color: #ffffff;
-  border-radius: 12px;
-  padding: 24px;
-  height: 100%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); // Subtle default shadow
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  flex-direction: column;
-  border: 2px solid transparent;
-  position: relative;
+// Mobile form layout
+@media (max-width: 540px) {
+  .newsletter-form {
+    &__input-group {
+      flex-direction: column;
+      border-radius: 24px;
+      padding: 20px;
+      gap: 16px;
+    }
 
-  &:hover {
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); // Elevated shadow on hover
-    transform: scale(1.02); // Subtle scale lift effect
-    border-color: #2a7d7d;
+    &__input {
+      width: 100%;
+      text-align: center;
+      padding: 8px 0;
+    }
 
-    .article-read-more {
-      color: #2a7d7d;
-      opacity: 1;
+    &__button {
+      width: 100%;
+      justify-content: center;
+      padding: 16px 28px;
+    }
+  }
+
+  .newsletter-hero {
+    padding: 80px 20px 60px;
+
+    &__privacy {
+      flex-direction: column;
+      text-align: center;
+      gap: 6px;
+    }
+  }
+}
+
+// ============================================
+// ARTICLES BENTO GRID
+// ============================================
+
+.newsletter-articles {
+  background: #ffffff;
+  padding: 60px 0 80px;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  &__title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin: 0;
+  }
+
+  &__view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #2a7d7d;
+    text-decoration: none;
+    transition: gap 0.3s ease;
+
+    i {
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      gap: 10px;
 
       i {
+        transform: translateX(2px);
+      }
+    }
+  }
+
+  &__more {
+    text-align: center;
+    margin-top: 40px;
+  }
+}
+
+// ============================================
+// BENTO CARD GRID
+// ============================================
+
+.newsletter-bento {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto;
+  gap: 20px;
+
+  &__card {
+    display: block;
+    text-decoration: none;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+
+    // Default card style
+    background: #f8f9fa;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+
+      .newsletter-bento__card-title {
+        color: #2a7d7d;
+      }
+
+      .newsletter-bento__read-more i {
         transform: translateX(4px);
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+    }
+
+    // Featured card spans full width on first row
+    &--featured {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #2a7d7d 0%, #1f6666 100%);
+      min-height: 280px;
+
+      .newsletter-bento__category {
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+      }
+
+      .newsletter-bento__card-title {
+        color: #ffffff;
+        font-size: 1.75rem;
+      }
+
+      .newsletter-bento__card-excerpt {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 1.0625rem;
+      }
+
+      .newsletter-bento__date {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .newsletter-bento__read-more {
+        color: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.15);
+        padding: 8px 16px;
+        border-radius: 20px;
+      }
+
+      &:hover {
+        .newsletter-bento__card-title {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  &__card-inner {
+    padding: 28px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__category {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: #2a7d7d;
+    background: rgba(42, 125, 125, 0.1);
+    padding: 5px 12px;
+    border-radius: 12px;
+  }
+
+  &__card-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    line-height: 1.35;
+    margin: 0 0 12px;
+    transition: color 0.3s ease;
+  }
+
+  &__card-excerpt {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.9375rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    flex-grow: 1;
+
+    // Clamp to 3 lines
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  &__date {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.8125rem;
+    color: #999;
+  }
+
+  &__read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #2a7d7d;
+    transition: gap 0.3s ease;
+
+    i {
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+    }
+  }
+}
+
+// Tablet layout
+@media (max-width: 900px) {
+  .newsletter-bento {
+    grid-template-columns: 1fr;
+
+    &__card--featured {
+      min-height: 240px;
+
+      .newsletter-bento__card-title {
+        font-size: 1.5rem;
       }
     }
   }
 }
 
-.article-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-  gap: 12px;
-}
+// Mobile layout
+@media (max-width: 600px) {
+  .newsletter-articles {
+    padding: 40px 0 60px;
 
-.article-categories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
 
-.article-category {
-  font-size: 0.75rem; // 12px - badge text
-  font-weight: 600;
-  color: #ffffff;
-  background-color: #2a7d7d; // Teal background
-  padding: 0.35rem 0.75rem;
-  border-radius: 16px;
-  text-transform: capitalize;
-  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  display: inline-block;
+  .newsletter-bento {
+    gap: 16px;
 
-  .article-card:hover & {
-    background-color: #1f6666;
+    &__card-inner {
+      padding: 22px;
+    }
+
+    &__card--featured {
+      min-height: auto;
+
+      .newsletter-bento__card-title {
+        font-size: 1.35rem;
+      }
+
+      .newsletter-bento__card-excerpt {
+        font-size: 1rem;
+      }
+    }
+
+    &__card-footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
   }
 }
 
-.article-date {
-  font-size: 0.875rem; // 14px - meta text
-  color: #999;
-  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
+// ============================================
+// EXPLORE MORE BUTTON
+// ============================================
 
-.article-title {
-  font-size: 1.25rem; // 20px - card title
-  font-weight: 700; // Bolder for better hierarchy
-  color: #000000;
-  margin-bottom: 0.875rem;
-  line-height: 1.4;
-  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-  .article-card:hover & {
-    color: #2a7d7d;
-  }
-}
-
-.article-excerpt {
-  font-size: 1.125rem; // 18px - body text (consistent)
-  line-height: 1.6;
-  color: #555;
-  margin-bottom: 1.25rem;
-  flex-grow: 1;
-}
-
-.article-read-more {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9375rem; // 15px - action text
-  font-weight: 600;
-  color: #666;
-  padding-top: 1rem;
-  border-top: 1px solid #efefef;
-  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-  i {
-    font-size: 1.125rem; // 18px
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-}
-
-// Article Pagination
-.article-hidden {
-  display: none;
-}
-
-// Newsletter Buttons
-.newsletter-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-}
-
-.btn-newsletter {
+.btn-explore-more {
   display: inline-flex;
   align-items: center;
-  gap: 0.625rem;
-  padding: 0.875rem 2rem;
-  min-height: 44px; // Touch target size
-  font-size: 1.0625rem; // 17px - matches podcast buttons
+  gap: 10px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1rem;
   font-weight: 600;
-  border-radius: 25px;
-  transition: all 0.3s ease-in-out;
-  border: none;
-  cursor: pointer;
+  color: #1a1a1a;
+  background: #f5f2ed;
+  padding: 16px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 
   i {
-    font-size: 1.375rem; // 22px
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
   }
 
   &:hover {
+    background: #2a7d7d;
+    color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  }
+    box-shadow: 0 8px 24px rgba(42, 125, 125, 0.25);
 
-  &:focus,
-  &:focus-visible {
-    outline: 2px solid #2a7d7d;
-    outline-offset: 2px;
-    box-shadow: 0 0 0 4px rgba(42, 125, 125, 0.2);
-  }
-}
-
-.btn-subscribe {
-  background: linear-gradient(135deg, #2a7d7d 0%, #1f6666 100%);
-  color: #ffffff;
-  box-shadow: 0 4px 15px rgba(42, 125, 125, 0.3);
-
-  &:hover {
-    background: linear-gradient(135deg, #358f8f 0%, #2a7d7d 100%);
-    color: #ffffff;
-    box-shadow: 0 8px 25px rgba(42, 125, 125, 0.4);
-  }
-}
-
-.btn-medium {
-  background-color: #000000;
-  color: #ffffff;
-
-  &:hover {
-    background-color: #1a8917;
-    color: #ffffff;
-  }
-}
-
-// Responsive Adjustments
-@media (max-width: 767px) {
-  .article-card {
-    padding: 1.25rem;
-  }
-
-  .article-title {
-    font-size: 1.125rem; // 18px on mobile
-  }
-
-  .article-excerpt {
-    font-size: 1rem; // 16px on mobile (matches podcast)
-  }
-
-  .newsletter-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .btn-newsletter {
-    width: 100%;
-    max-width: 300px;
-    justify-content: center;
+    i {
+      transform: translateX(4px);
+    }
   }
 }

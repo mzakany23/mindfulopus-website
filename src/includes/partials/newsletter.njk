@@ -1,107 +1,89 @@
 <!-- Start Newsletter Section -->
-<section class="section newsletter-section" id="newsletter">
-    <div class="container" data-aos="fade-up">
-        <div class="row justify-content-center mb-5">
-            <div class="col-lg-8 text-center">
-                <h3>{{ site.newsletter.name }}</h3>
-                <p class="text-muted mt-3">{{ site.newsletter.tagline }}</p>
-            </div>
-        </div>
+<section class="newsletter-section" id="newsletter">
+    <!-- Subscribe Hero -->
+    <div class="newsletter-hero" data-aos="fade-up">
+        <div class="newsletter-hero__content">
+            <span class="newsletter-hero__badge">
+                <i class="mdi mdi-email-heart-outline"></i>
+                Join the Community
+            </span>
+            <h2 class="newsletter-hero__title">Subscribe to Our Newsletter</h2>
+            <p class="newsletter-hero__subtitle">
+                Receive mindfulness insights, well-being practices, and behind-the-scenes stories from the classical music world — delivered to your inbox.
+            </p>
 
-        <!-- Articles Section -->
-        <div class="row justify-content-center">
-            <div class="col-lg-12">
-                {% if articles.articles.length > 0 %}
-                <div class="row" id="articles-container">
-                    {% for article in articles.articles %}
-                    <div class="col-lg-6 col-md-6 mb-4 article-item{% if loop.index > 4 %} article-paginated article-hidden{% endif %}">
-                        <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="article-card-link">
-                            <div class="article-card">
-                                <div class="article-header">
-                                    <div class="article-categories">
-                                        {% for category in article.categories %}
-                                        {% if loop.index <= 2 %}
-                                        <span class="article-category">{{ category }}</span>
-                                        {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                    <div class="article-date">{{ article.date | dateFilter }}</div>
-                                </div>
-                                <h5 class="article-title">{{ article.title }}</h5>
-                                <p class="article-excerpt">{{ article.excerpt }}</p>
-                                <div class="article-read-more">
-                                    <span>Read on Medium</span>
-                                    <i class="mdi mdi-arrow-right"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    {% endfor %}
-                </div>
-                {% if articles.articles.length > 4 %}
-                <div class="text-center mt-4">
-                    <button class="btn btn-outline-secondary btn-show-more" id="show-more-articles" onclick="toggleArticles()">
-                        <span class="show-more-text">Show More Articles</span>
-                        <span class="show-less-text" style="display: none;">Show Less</span>
-                        <i class="mdi mdi-chevron-down show-more-icon"></i>
-                        <i class="mdi mdi-chevron-up show-less-icon" style="display: none;"></i>
-                    </button>
-                </div>
-                <script>
-                    function toggleArticles() {
-                        const paginatedArticles = document.querySelectorAll('.article-paginated');
-                        const btn = document.getElementById('show-more-articles');
-                        const isExpanded = btn.classList.contains('expanded');
-
-                        paginatedArticles.forEach(article => {
-                            if (isExpanded) {
-                                article.classList.add('article-hidden');
-                            } else {
-                                article.classList.remove('article-hidden');
-                            }
-                        });
-
-                        btn.classList.toggle('expanded');
-
-                        const showMoreText = btn.querySelector('.show-more-text');
-                        const showLessText = btn.querySelector('.show-less-text');
-                        const showMoreIcon = btn.querySelector('.show-more-icon');
-                        const showLessIcon = btn.querySelector('.show-less-icon');
-
-                        if (isExpanded) {
-                            showMoreText.style.display = '';
-                            showLessText.style.display = 'none';
-                            showMoreIcon.style.display = '';
-                            showLessIcon.style.display = 'none';
-                        } else {
-                            showMoreText.style.display = 'none';
-                            showLessText.style.display = '';
-                            showMoreIcon.style.display = 'none';
-                            showLessIcon.style.display = '';
-                        }
-                    }
-                </script>
-                {% endif %}
-                {% else %}
-                <!-- No articles yet - show Medium link -->
-                <div class="text-center">
-                    <p class="text-muted mb-4">Explore mindfulness insights, well-being tips, and stories from the classical music world.</p>
-                </div>
-                {% endif %}
-
-                <!-- Newsletter Buttons -->
-                <div class="text-center mt-5 newsletter-buttons">
-                    <a href="{{ site.newsletter.subscribe }}" target="_blank" rel="noopener noreferrer" class="btn btn-newsletter btn-subscribe">
-                        <i class="mdi mdi-email-outline"></i>
-                        Subscribe to Newsletter
-                    </a>
-                    <a href="{{ site.newsletter.medium }}" target="_blank" rel="noopener noreferrer" class="btn btn-newsletter btn-medium">
-                        <i class="mdi mdi-medium"></i>
-                        Read on Medium
+            <!-- Inline Subscribe Form -->
+            <div class="newsletter-form">
+                <div class="newsletter-form__input-group">
+                    <input
+                        type="email"
+                        class="newsletter-form__input"
+                        placeholder="name@email.com"
+                        aria-label="Email address"
+                    >
+                    <a href="{{ site.newsletter.subscribe }}" target="_blank" rel="noopener noreferrer" class="newsletter-form__button">
+                        Subscribe Now
+                        <i class="mdi mdi-arrow-right"></i>
                     </a>
                 </div>
             </div>
+
+            <p class="newsletter-hero__privacy">
+                <i class="mdi mdi-shield-check-outline"></i>
+                Your information will never be shared with third parties, and you can unsubscribe at any time.
+            </p>
         </div>
     </div>
+
+    <!-- Articles Bento Grid -->
+    {% if articles.articles.length > 0 %}
+    <div class="newsletter-articles" data-aos="fade-up" data-aos-delay="100">
+        <div class="container">
+            <div class="newsletter-articles__header">
+                <h3 class="newsletter-articles__title">Recent Insights</h3>
+                <a href="{{ site.newsletter.medium }}" target="_blank" rel="noopener noreferrer" class="newsletter-articles__view-all">
+                    View all on Medium
+                    <i class="mdi mdi-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="newsletter-bento" id="articles-container">
+                {% for article in articles.articles %}
+                {% if loop.index <= 4 %}
+                <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="newsletter-bento__card {% if loop.index == 1 %}newsletter-bento__card--featured{% endif %}">
+                    <div class="newsletter-bento__card-inner">
+                        <div class="newsletter-bento__categories">
+                            {% for category in article.categories %}
+                            {% if loop.index <= 2 %}
+                            <span class="newsletter-bento__category">{{ category }}</span>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        <h4 class="newsletter-bento__card-title">{{ article.title }}</h4>
+                        <p class="newsletter-bento__card-excerpt">{{ article.excerpt }}</p>
+                        <div class="newsletter-bento__card-footer">
+                            <span class="newsletter-bento__date">{{ article.date | dateFilter }}</span>
+                            <span class="newsletter-bento__read-more">
+                                Read article
+                                <i class="mdi mdi-arrow-right"></i>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+            {% if articles.articles.length > 4 %}
+            <div class="newsletter-articles__more">
+                <a href="{{ site.newsletter.medium }}" target="_blank" rel="noopener noreferrer" class="btn-explore-more">
+                    <span>Explore More Articles</span>
+                    <i class="mdi mdi-arrow-right"></i>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
 </section>
 <!-- End Newsletter Section -->

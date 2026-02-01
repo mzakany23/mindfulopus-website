@@ -1,148 +1,213 @@
-<!-- Start Podcast Section -->
-<section class="section podcast-section" id="podcast">
+<!-- Start Podcast Section - Dynamic Bento Layout -->
+<section class="section podcast-bento" id="podcast">
+    <!-- Organic Background Shapes -->
+    <div class="podcast-blob podcast-blob--1"></div>
+    <div class="podcast-blob podcast-blob--2"></div>
+    <div class="podcast-blob podcast-blob--3"></div>
+
     <div class="container" data-aos="fade-up">
-        <div class="row justify-content-center mb-5">
-            <div class="col-lg-8 text-center">
-                <h3>{{ podcast.name }}</h3>
-                <p class="text-muted mt-3">{{ podcast.tagline }}</p>
-            </div>
-        </div>
+        <!-- Section Header -->
+        <header class="podcast-header">
+            <span class="podcast-label">The Podcast</span>
+            <h2 class="podcast-title">{{ podcast.name }}</h2>
+            <p class="podcast-tagline">{{ podcast.tagline }}</p>
+        </header>
 
-        <div class="row align-items-center">
-            <!-- Podcast Trailer Video -->
-            <div class="col-lg-5 col-md-5 mb-4 mb-lg-0">
-                <div class="podcast-video-wrapper">
-                    <div class="podcast-video">
-                        <iframe
-                            src="https://www.youtube.com/embed/n74KezrDJ_A"
-                            title="{{ podcast.name }} Trailer"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allowfullscreen>
-                        </iframe>
+        <!-- Bento Grid Layout -->
+        <div class="podcast-grid">
+            <!-- Hero Card: Video + Description -->
+            <article class="podcast-card podcast-card--hero">
+                <div class="podcast-card__video">
+                    <div class="video-glow"></div>
+                    <iframe
+                        src="https://www.youtube.com/embed/n74KezrDJ_A"
+                        title="{{ podcast.name }} Trailer"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <div class="podcast-card__content">
+                    <h3>Watch the Trailer</h3>
+                    <p>{{ podcast.description | truncate(180) }}</p>
+                </div>
+            </article>
+
+            <!-- Host Card -->
+            <article class="podcast-card podcast-card--host">
+                <div class="host-avatar">
+                    <img src="assets/images/headshot-1.webp" alt="{{ podcast.host.name }}" loading="lazy">
+                </div>
+                <div class="podcast-card__content">
+                    <span class="host-label">Your Host</span>
+                    <h3>{{ podcast.host.name }}</h3>
+                    <p>{{ podcast.host.bio | truncate(120) }}</p>
+                </div>
+            </article>
+
+            <!-- Listen Platforms Card -->
+            <article class="podcast-card podcast-card--platforms">
+                <h3>Listen Anywhere</h3>
+                <div class="platform-buttons">
+                    <a href="{{ site.podcast.spotify }}" target="_blank" rel="noopener noreferrer" class="platform-btn platform-btn--spotify">
+                        <i class="mdi mdi-spotify"></i>
+                        <span>Spotify</span>
+                    </a>
+                    <a href="{{ site.podcast.youtube }}" target="_blank" rel="noopener noreferrer" class="platform-btn platform-btn--youtube">
+                        <i class="mdi mdi-youtube"></i>
+                        <span>YouTube</span>
+                    </a>
+                    <a href="{{ site.podcast.applePodcast }}" target="_blank" rel="noopener noreferrer" class="platform-btn platform-btn--apple">
+                        <i class="mdi mdi-podcast"></i>
+                        <span>Apple</span>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Featured Episode (Latest) -->
+            {% set featured = episodes.episodes[0] %}
+            <article class="podcast-card podcast-card--featured">
+                <div class="featured-badge">
+                    <i class="mdi mdi-star"></i>
+                    Latest Episode
+                </div>
+                <div class="podcast-card__content">
+                    <span class="episode-number">Episode {{ featured.episodeNumber }}</span>
+                    <h3>{{ featured.title }}</h3>
+                    <p>{{ featured.description | truncate(150) }}</p>
+                    <div class="episode-meta">
+                        <span class="episode-duration">
+                            <i class="mdi mdi-clock-outline"></i>
+                            {{ featured.duration }}
+                        </span>
+                        <span class="episode-date">{{ featured.date | dateFilter }}</span>
                     </div>
                 </div>
-            </div>
+                <div class="episode-actions">
+                    <a href="{{ featured.links.spotify }}" target="_blank" rel="noopener noreferrer" class="action-btn" title="Listen on Spotify">
+                        <i class="mdi mdi-spotify"></i>
+                    </a>
+                    <a href="{{ featured.links.youtube }}" target="_blank" rel="noopener noreferrer" class="action-btn" title="Watch on YouTube">
+                        <i class="mdi mdi-youtube"></i>
+                    </a>
+                </div>
+            </article>
 
-            <!-- Podcast Description -->
-            <div class="col-lg-7 col-md-7">
-                <div class="podcast-content">
-                    <h4 class="mb-4">About the Podcast</h4>
-                    <p class="podcast-description">{{ podcast.description }}</p>
-
-                    <!-- Host Info -->
-                    <div class="podcast-host mt-4">
-                        <h5>Hosted by {{ podcast.host.name }}</h5>
-                        <p class="text-muted">{{ podcast.host.bio }}</p>
+            <!-- Second Featured Episode -->
+            {% set second = episodes.episodes[1] %}
+            <article class="podcast-card podcast-card--secondary">
+                <div class="podcast-card__content">
+                    <span class="episode-number">Episode {{ second.episodeNumber }}</span>
+                    <h3>{{ second.title }}</h3>
+                    <div class="episode-meta">
+                        <span class="episode-duration">
+                            <i class="mdi mdi-clock-outline"></i>
+                            {{ second.duration }}
+                        </span>
                     </div>
+                </div>
+                <div class="episode-actions">
+                    <a href="{{ second.links.spotify }}" target="_blank" rel="noopener noreferrer" class="action-btn action-btn--small" title="Listen on Spotify">
+                        <i class="mdi mdi-spotify"></i>
+                    </a>
+                    <a href="{{ second.links.youtube }}" target="_blank" rel="noopener noreferrer" class="action-btn action-btn--small" title="Watch">
+                        <i class="mdi mdi-youtube"></i>
+                    </a>
+                </div>
+            </article>
 
-                    <!-- Listen Buttons -->
-                    <div class="podcast-listen-buttons mt-4">
-                        <h5 class="mb-3">Listen Now</h5>
-                        <div class="d-flex flex-wrap gap-3">
-                            <a href="{{ site.podcast.spotify }}" target="_blank" rel="noopener noreferrer" class="btn btn-podcast btn-spotify">
+            <!-- Stats/Quote Card -->
+            <article class="podcast-card podcast-card--stats">
+                <div class="stat-number">{{ episodes.episodes.length }}</div>
+                <div class="stat-label">Episodes</div>
+                <p class="stat-tagline">New episodes every two weeks</p>
+            </article>
+        </div>
+
+        <!-- All Episodes Section -->
+        <div class="episodes-section">
+            <header class="episodes-header">
+                <h3>All Episodes</h3>
+                <p>Conversations, reflections, and tools for thriving musicians</p>
+            </header>
+
+            <div class="episodes-grid" id="episodes-container">
+                {% for episode in episodes.episodes %}
+                {% if not loop.first and not (loop.index == 2) %}
+                <article class="episode-card{% if loop.index > 6 %} episode-paginated episode-hidden{% endif %}">
+                    <div class="episode-card__header">
+                        <span class="episode-badge">
+                            {% if episode.isTrailer %}Trailer{% else %}Ep {{ episode.episodeNumber }}{% endif %}
+                        </span>
+                        <span class="episode-duration">{{ episode.duration }}</span>
+                    </div>
+                    <h4 class="episode-card__title">{{ episode.title }}</h4>
+                    <p class="episode-card__desc">{{ episode.description | truncate(100) }}</p>
+                    <div class="episode-card__footer">
+                        <span class="episode-date">{{ episode.date | dateFilter }}</span>
+                        <div class="episode-links">
+                            <a href="{{ episode.links.spotify }}" target="_blank" rel="noopener noreferrer" class="episode-link episode-link--spotify" title="Spotify">
                                 <i class="mdi mdi-spotify"></i>
-                                Spotify
                             </a>
-                            <a href="{{ site.podcast.youtube }}" target="_blank" rel="noopener noreferrer" class="btn btn-podcast btn-youtube">
+                            <a href="{{ episode.links.youtube }}" target="_blank" rel="noopener noreferrer" class="episode-link episode-link--youtube" title="YouTube">
                                 <i class="mdi mdi-youtube"></i>
-                                YouTube
                             </a>
-                            <a href="{{ site.podcast.applePodcast }}" target="_blank" rel="noopener noreferrer" class="btn btn-podcast btn-apple">
+                            <a href="{{ episode.links.applePodcast }}" target="_blank" rel="noopener noreferrer" class="episode-link episode-link--apple" title="Apple">
                                 <i class="mdi mdi-podcast"></i>
-                                Apple Podcasts
                             </a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Episodes Section -->
-        <div class="row justify-content-center mt-5 pt-5">
-            <div class="col-lg-12">
-                <h4 class="text-center mb-5">Recent Episodes</h4>
-                <div class="row" id="episodes-container">
-                    {% for episode in episodes.episodes %}
-                    <div class="col-lg-6 mb-4 episode-item{% if loop.index > 6 %} episode-paginated episode-hidden{% endif %}">
-                        <div class="episode-card">
-                            <div class="episode-header">
-                                <div class="episode-meta">
-                                    <span class="episode-number">{% if episode.isTrailer %}Trailer{% else %}Episode {{ episode.episodeNumber }}{% endif %}</span>
-                                    <span class="episode-duration">
-                                        <i class="mdi mdi-clock-outline"></i>
-                                        {{ episode.duration }}
-                                    </span>
-                                </div>
-                                <div class="episode-date">{{ episode.date | dateFilter }}</div>
-                            </div>
-                            <h5 class="episode-title">{{ episode.title }}</h5>
-                            <p class="episode-description">{{ episode.description }}</p>
-                            <div class="episode-links">
-                                <a href="{{ episode.links.spotify }}" target="_blank" rel="noopener noreferrer" class="episode-link episode-link-spotify" title="Listen on Spotify">
-                                    <i class="mdi mdi-spotify"></i>
-                                </a>
-                                <a href="{{ episode.links.youtube }}" target="_blank" rel="noopener noreferrer" class="episode-link episode-link-youtube" title="Watch on YouTube">
-                                    <i class="mdi mdi-youtube"></i>
-                                </a>
-                                <a href="{{ episode.links.applePodcast }}" target="_blank" rel="noopener noreferrer" class="episode-link episode-link-apple" title="Listen on Apple Podcasts">
-                                    <i class="mdi mdi-podcast"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-                {% if episodes.episodes.length > 6 %}
-                <div class="text-center mt-4">
-                    <button class="btn btn-outline-secondary btn-show-more" id="show-more-episodes" onclick="toggleEpisodes()">
-                        <span class="show-more-text">Show More Episodes</span>
-                        <span class="show-less-text" style="display: none;">Show Less</span>
-                        <i class="mdi mdi-chevron-down show-more-icon"></i>
-                        <i class="mdi mdi-chevron-up show-less-icon" style="display: none;"></i>
-                    </button>
-                </div>
-                <script>
-                    function toggleEpisodes() {
-                        const paginatedEpisodes = document.querySelectorAll('.episode-paginated');
-                        const btn = document.getElementById('show-more-episodes');
-                        const isExpanded = btn.classList.contains('expanded');
-
-                        paginatedEpisodes.forEach(ep => {
-                            if (isExpanded) {
-                                // Collapse: hide the episodes
-                                ep.classList.add('episode-hidden');
-                            } else {
-                                // Expand: show the episodes
-                                ep.classList.remove('episode-hidden');
-                            }
-                        });
-
-                        // Toggle button state
-                        btn.classList.toggle('expanded');
-
-                        // Toggle button text/icons
-                        const showMoreText = btn.querySelector('.show-more-text');
-                        const showLessText = btn.querySelector('.show-less-text');
-                        const showMoreIcon = btn.querySelector('.show-more-icon');
-                        const showLessIcon = btn.querySelector('.show-less-icon');
-
-                        if (isExpanded) {
-                            showMoreText.style.display = '';
-                            showLessText.style.display = 'none';
-                            showMoreIcon.style.display = '';
-                            showLessIcon.style.display = 'none';
-                        } else {
-                            showMoreText.style.display = 'none';
-                            showLessText.style.display = '';
-                            showMoreIcon.style.display = 'none';
-                            showLessIcon.style.display = '';
-                        }
-                    }
-                </script>
+                </article>
                 {% endif %}
+                {% endfor %}
             </div>
+
+            {% if episodes.episodes.length > 6 %}
+            <div class="episodes-more">
+                <button class="btn-expand" id="show-more-episodes" onclick="toggleEpisodes()">
+                    <span class="show-more-text">Show All Episodes</span>
+                    <span class="show-less-text" style="display: none;">Show Less</span>
+                    <i class="mdi mdi-chevron-down show-more-icon"></i>
+                    <i class="mdi mdi-chevron-up show-less-icon" style="display: none;"></i>
+                </button>
+            </div>
+            <script>
+                function toggleEpisodes() {
+                    const paginatedEpisodes = document.querySelectorAll('.episode-paginated');
+                    const btn = document.getElementById('show-more-episodes');
+                    const isExpanded = btn.classList.contains('expanded');
+
+                    paginatedEpisodes.forEach(ep => {
+                        if (isExpanded) {
+                            ep.classList.add('episode-hidden');
+                        } else {
+                            ep.classList.remove('episode-hidden');
+                        }
+                    });
+
+                    btn.classList.toggle('expanded');
+
+                    const showMoreText = btn.querySelector('.show-more-text');
+                    const showLessText = btn.querySelector('.show-less-text');
+                    const showMoreIcon = btn.querySelector('.show-more-icon');
+                    const showLessIcon = btn.querySelector('.show-less-icon');
+
+                    if (isExpanded) {
+                        showMoreText.style.display = '';
+                        showLessText.style.display = 'none';
+                        showMoreIcon.style.display = '';
+                        showLessIcon.style.display = 'none';
+                    } else {
+                        showMoreText.style.display = 'none';
+                        showLessText.style.display = '';
+                        showMoreIcon.style.display = 'none';
+                        showLessIcon.style.display = '';
+                    }
+                }
+            </script>
+            {% endif %}
         </div>
     </div>
 </section>
