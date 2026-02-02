@@ -24,6 +24,8 @@
       "duration": "18:51",
       "season": 1,
       "episodeNumber": 9,
+      "guestImage": "assets/images/instagram/tool.png",
+      "guestName": "Episode Art",
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=04yws5zTewA",

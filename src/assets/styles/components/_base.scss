@@ -902,8 +902,26 @@ Main Style Sheet
 // ============================================
 
 .mission-section {
-  padding: 80px 0 100px;
-  background: #f8f8f8;
+  padding: 80px 0 280px; // Extra bottom padding for very long fade zone
+  background: linear-gradient(to bottom,
+    #f8f8f8 0%,
+    #f8f8f8 40%,
+    #f6f7f6 45%,
+    #f2f4f3 48%,
+    #eaedeb 52%,
+    #dfe4e1 56%,
+    #d0d8d4 60%,
+    #bfcac4 64%,
+    #adbbb4 68%,
+    #98a9a0 72%,
+    #82968c 76%,
+    #6d8378 80%,
+    #5a7065 84%,
+    #485d53 88%,
+    #374a41 92%,
+    #283832 96%,
+    #1a2420 100%
+  );
 }
 
 .mission-layout {
@@ -1218,15 +1236,8 @@ $services-bg: #1a2420; // Darker, moodier green-gray
 
 .services-section {
   position: relative;
-  padding: 180px 0 100px;
-  background: linear-gradient(to bottom,
-    #faf9f7 0%,
-    #e8ebe9 8%,
-    #c5d0cb 15%,
-    #7a9188 25%,
-    $services-bg 40%,
-    $services-bg 100%
-  );
+  padding: 80px 0 100px; // Reduced top padding - mission handles the fade
+  background: $services-bg;
   overflow: hidden;
 
   // Tree texture background - very subtle
@@ -1246,7 +1257,7 @@ $services-bg: #1a2420; // Darker, moodier green-gray
     filter: grayscale(50%) brightness(0.8);
   }
 
-  // Fade-top is no longer needed - gradient is in section background
+  // No longer needed - mission section handles the fade
   &__fade-top {
     display: none;
   }
