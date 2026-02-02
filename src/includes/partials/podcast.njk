@@ -73,25 +73,22 @@
                     <i class="mdi mdi-star"></i>
                     Latest Episode
                 </div>
-                <div class="podcast-card__content">
-                    <span class="episode-number">Episode {{ featured.episodeNumber }}</span>
-                    <h3>{{ featured.title }}</h3>
-                    <p>{{ featured.description | truncate(150) }}</p>
-                    <div class="episode-meta">
-                        <span class="episode-duration">
-                            <i class="mdi mdi-clock-outline"></i>
-                            {{ featured.duration }}
-                        </span>
-                        <span class="episode-date">{{ featured.date | dateFilter }}</span>
+                <span class="episode-number">Episode {{ featured.episodeNumber }}</span>
+                <h3>{{ featured.title }}</h3>
+                <p>{{ featured.description | truncate(120) }}</p>
+                <div class="featured-footer">
+                    <span class="episode-duration">
+                        <i class="mdi mdi-clock-outline"></i>
+                        {{ featured.duration }}
+                    </span>
+                    <div class="episode-actions">
+                        <a href="{{ featured.links.spotify }}" target="_blank" rel="noopener noreferrer" class="action-btn" title="Spotify">
+                            <i class="mdi mdi-spotify"></i>
+                        </a>
+                        <a href="{{ featured.links.youtube }}" target="_blank" rel="noopener noreferrer" class="action-btn" title="YouTube">
+                            <i class="mdi mdi-youtube"></i>
+                        </a>
                     </div>
-                </div>
-                <div class="episode-actions">
-                    <a href="{{ featured.links.spotify }}" target="_blank" rel="noopener noreferrer" class="action-btn" title="Listen on Spotify">
-                        <i class="mdi mdi-spotify"></i>
-                    </a>
-                    <a href="{{ featured.links.youtube }}" target="_blank" rel="noopener noreferrer" class="action-btn" title="Watch on YouTube">
-                        <i class="mdi mdi-youtube"></i>
-                    </a>
                 </div>
             </article>
 
@@ -118,11 +115,22 @@
                 </div>
             </article>
 
-            <!-- Stats/Quote Card -->
-            <article class="podcast-card podcast-card--stats">
-                <div class="stat-number">{{ episodes.episodes.length }}</div>
-                <div class="stat-label">Episodes</div>
-                <p class="stat-tagline">New episodes every two weeks</p>
+            <!-- Season One Guests Card -->
+            <article class="podcast-card podcast-card--guests">
+                <span class="guests-label">Season One</span>
+                <h3 class="guests-title">Featured Guests</h3>
+                <div class="guests-avatars">
+                    <div class="guest-avatar">
+                        <img src="{{ 'assets/images/instagram/roth-1.png' }}" alt="Lauren Roth-Gómez">
+                    </div>
+                    <div class="guest-avatar">
+                        <img src="{{ 'assets/images/instagram/smith.png' }}" alt="Joshua Smith">
+                    </div>
+                    <div class="guest-avatar">
+                        <img src="{{ 'assets/images/instagram/overthinking.png' }}" alt="Jo">
+                    </div>
+                </div>
+                <p class="guests-tagline">{{ episodes.episodes.length }} episodes & counting</p>
             </article>
         </div>
 
@@ -135,32 +143,37 @@
 
             <div class="episodes-grid" id="episodes-container">
                 {% for episode in episodes.episodes %}
-                {% if not loop.first and not (loop.index == 2) %}
-                <article class="episode-card{% if loop.index > 6 %} episode-paginated episode-hidden{% endif %}">
-                    <div class="episode-card__header">
-                        <span class="episode-badge">
-                            {% if episode.isTrailer %}Trailer{% else %}Ep {{ episode.episodeNumber }}{% endif %}
-                        </span>
-                        <span class="episode-duration">{{ episode.duration }}</span>
+                <article class="episode-card{% if loop.index > 4 %} episode-paginated episode-hidden{% endif %}{% if episode.guestImage %} episode-card--has-guest{% endif %}">
+                    {% if episode.guestImage %}
+                    <div class="episode-card__guest">
+                        <img src="{{ episode.guestImage }}" alt="{{ episode.guestName }}" loading="lazy">
                     </div>
-                    <h4 class="episode-card__title">{{ episode.title }}</h4>
-                    <p class="episode-card__desc">{{ episode.description | truncate(100) }}</p>
-                    <div class="episode-card__footer">
-                        <span class="episode-date">{{ episode.date | dateFilter }}</span>
-                        <div class="episode-links">
-                            <a href="{{ episode.links.spotify }}" target="_blank" rel="noopener noreferrer" class="episode-link episode-link--spotify" title="Spotify">
-                                <i class="mdi mdi-spotify"></i>
-                            </a>
-                            <a href="{{ episode.links.youtube }}" target="_blank" rel="noopener noreferrer" class="episode-link episode-link--youtube" title="YouTube">
-                                <i class="mdi mdi-youtube"></i>
-                            </a>
-                            <a href="{{ episode.links.applePodcast }}" target="_blank" rel="noopener noreferrer" class="episode-link episode-link--apple" title="Apple">
-                                <i class="mdi mdi-podcast"></i>
-                            </a>
+                    {% endif %}
+                    <div class="episode-card__body">
+                        <div class="episode-card__header">
+                            <span class="episode-badge">
+                                {% if episode.isTrailer %}Trailer{% else %}Ep {{ episode.episodeNumber }}{% endif %}
+                            </span>
+                            <span class="episode-duration">{{ episode.duration }}</span>
+                        </div>
+                        <h4 class="episode-card__title">{{ episode.title }}</h4>
+                        <p class="episode-card__desc">{{ episode.description | truncate(100) }}</p>
+                        <div class="episode-card__footer">
+                            <span class="episode-date">{{ episode.date | dateFilter }}</span>
+                            <div class="episode-links">
+                                <a href="{{ episode.links.spotify }}" target="_blank" rel="noopener noreferrer" class="episode-link episode-link--spotify" title="Spotify">
+                                    <i class="mdi mdi-spotify"></i>
+                                </a>
+                                <a href="{{ episode.links.youtube }}" target="_blank" rel="noopener noreferrer" class="episode-link episode-link--youtube" title="YouTube">
+                                    <i class="mdi mdi-youtube"></i>
+                                </a>
+                                <a href="{{ episode.links.applePodcast }}" target="_blank" rel="noopener noreferrer" class="episode-link episode-link--apple" title="Apple">
+                                    <i class="mdi mdi-podcast"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </article>
-                {% endif %}
                 {% endfor %}
             </div>
 

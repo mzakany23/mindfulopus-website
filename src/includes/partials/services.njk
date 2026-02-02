@@ -1,8 +1,14 @@
 <section class="services-section" id="services">
+    <!-- Tree texture background -->
+    <div class="services-section__bg-image"></div>
+    <!-- Edge fades for scroll transition -->
+    <div class="services-section__fade-top"></div>
+    <div class="services-section__fade-bottom"></div>
+
     <!-- Floating offerings - staggered parallax layout -->
     <div class="services-floating">
         <!-- Left side cards -->
-        <div class="services-floating__card services-floating__card--1" data-parallax-speed="0.08">
+        <div class="services-floating__card services-floating__card--1" data-parallax-speed="0.08" data-aos="fade-right" data-aos-delay="0" data-aos-duration="800">
             <div class="services-floating__frame">
                 <div class="services-floating__icon">
                     <i class="mdi mdi-head-lightbulb-outline"></i>
@@ -12,7 +18,7 @@
             </div>
         </div>
 
-        <div class="services-floating__card services-floating__card--2" data-parallax-speed="0.12">
+        <div class="services-floating__card services-floating__card--2" data-parallax-speed="0.12" data-aos="fade-right" data-aos-delay="100" data-aos-duration="800">
             <div class="services-floating__frame">
                 <div class="services-floating__icon">
                     <i class="mdi mdi-bullseye-arrow"></i>
@@ -22,7 +28,7 @@
             </div>
         </div>
 
-        <div class="services-floating__card services-floating__card--3" data-parallax-speed="0.05">
+        <div class="services-floating__card services-floating__card--3" data-parallax-speed="0.05" data-aos="fade-right" data-aos-delay="200" data-aos-duration="800">
             <div class="services-floating__frame">
                 <div class="services-floating__icon">
                     <i class="mdi mdi-clock-check-outline"></i>
@@ -33,7 +39,7 @@
         </div>
 
         <!-- Right side cards -->
-        <div class="services-floating__card services-floating__card--4" data-parallax-speed="0.1">
+        <div class="services-floating__card services-floating__card--4" data-parallax-speed="0.1" data-aos="fade-left" data-aos-delay="50" data-aos-duration="800">
             <div class="services-floating__frame">
                 <div class="services-floating__icon">
                     <i class="mdi mdi-yoga"></i>
@@ -43,7 +49,7 @@
             </div>
         </div>
 
-        <div class="services-floating__card services-floating__card--5" data-parallax-speed="0.06">
+        <div class="services-floating__card services-floating__card--5" data-parallax-speed="0.06" data-aos="fade-left" data-aos-delay="150" data-aos-duration="800">
             <div class="services-floating__frame">
                 <div class="services-floating__icon">
                     <i class="mdi mdi-meditation"></i>
@@ -53,7 +59,7 @@
             </div>
         </div>
 
-        <div class="services-floating__card services-floating__card--6" data-parallax-speed="0.14">
+        <div class="services-floating__card services-floating__card--6" data-parallax-speed="0.14" data-aos="fade-left" data-aos-delay="250" data-aos-duration="800">
             <div class="services-floating__frame">
                 <div class="services-floating__icon">
                     <i class="mdi mdi-weather-windy"></i>
@@ -73,14 +79,39 @@
                 <i class="mdi mdi-arrow-right"></i>
             </a>
         </div>
-            <!-- Group programs callout -->
-            <div class="services-group" data-aos="fade-up" data-aos-delay="100">
+    </div>
+
+    <!-- Group programs - two column with image carousel -->
+    <div class="services-group-wrapper">
+        <div class="services-group" data-aos="fade-up">
+            <div class="services-group__content">
                 <div class="services-group__badge">
                     <i class="mdi mdi-account-group"></i>
                     <span>Group Programs</span>
                 </div>
                 <p>In addition to my 1-1 sessions, I also work with colleges, universities and conservatories in my group programs where I offer the first all-in-one <em>music, coaching and yoga workshops</em> for classical music students.</p>
                 <span class="services-group__signature">— Jo</span>
+            </div>
+            <div class="services-group__carousel">
+                <div class="services-group__slides">
+                    <div class="services-group__slide is-active">
+                        <img src="{{ 'assets/images/instagram/case.png' }}" alt="Workshop at Case Western Reserve University">
+                        <span>Case Western Reserve</span>
+                    </div>
+                    <div class="services-group__slide">
+                        <img src="{{ 'assets/images/instagram/oberlin.png' }}" alt="Workshop at Oberlin Conservatory">
+                        <span>Oberlin Conservatory</span>
+                    </div>
+                    <div class="services-group__slide">
+                        <img src="{{ 'assets/images/instagram/cim.png' }}" alt="Workshop at Cleveland Institute of Music">
+                        <span>Cleveland Institute of Music</span>
+                    </div>
+                </div>
+                <div class="services-group__dots">
+                    <button class="services-group__dot is-active" data-slide="0"></button>
+                    <button class="services-group__dot" data-slide="1"></button>
+                    <button class="services-group__dot" data-slide="2"></button>
+                </div>
             </div>
         </div>
     </div>

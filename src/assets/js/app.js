@@ -572,6 +572,52 @@ class TestimonialModal {
 // Initialize testimonial modal when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new TestimonialModal();
+
+    // Services Group Image Carousel
+    const groupCarousel = document.querySelector('.services-group__carousel');
+    if (groupCarousel) {
+        const slides = groupCarousel.querySelectorAll('.services-group__slide');
+        const dots = groupCarousel.querySelectorAll('.services-group__dot');
+        let currentSlide = 0;
+        let autoplayInterval;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('is-active'));
+            dots.forEach(dot => dot.classList.remove('is-active'));
+            slides[index].classList.add('is-active');
+            dots[index].classList.add('is-active');
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            const next = (currentSlide + 1) % slides.length;
+            showSlide(next);
+        }
+
+        function startAutoplay() {
+            autoplayInterval = setInterval(nextSlide, 4000);
+        }
+
+        function stopAutoplay() {
+            clearInterval(autoplayInterval);
+        }
+
+        // Dot click handlers
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+                stopAutoplay();
+                startAutoplay();
+            });
+        });
+
+        // Pause on hover
+        groupCarousel.addEventListener('mouseenter', stopAutoplay);
+        groupCarousel.addEventListener('mouseleave', startAutoplay);
+
+        // Start autoplay
+        startAutoplay();
+    }
 });
 
 // ====================================

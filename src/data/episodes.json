@@ -1,6 +1,22 @@
 {
   "episodes": [
     {
+      "id": 11,
+      "title": "Stay in Your Boat: Stories on Life and Music with Ron Patterson",
+      "description": "A concertmaster's perspective on perfectionism, nerves, and the permission to be human. In the Season 1 finale, Jo sits down with her father, Ron Patterson — former concertmaster of the Toledo Symphony and violinist with The Cleveland Orchestra — for an intimate conversation about the lessons music has taught them both.",
+      "date": "2026-01-27",
+      "duration": "55:00",
+      "season": 1,
+      "episodeNumber": 10,
+      "guestImage": "assets/images/instagram/ron.png",
+      "guestName": "Ron Patterson",
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/@mindfulopus",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      }
+    },
+    {
       "id": 10,
       "title": "Befriending Performance Nerves",
       "description": "7 tools to help you actually enjoy performing again. Performance nerves are universal, unavoidable… and often hard to manage. In this episode, I share a compassionate, practical, and research-informed approach to one of the biggest challenges we face as performers.",
@@ -22,6 +38,8 @@
       "duration": "17:47",
       "season": 1,
       "episodeNumber": 8,
+      "guestImage": "assets/images/instagram/overthinking.png",
+      "guestName": "Episode Art",
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=IZ5sYGJwhbI",
@@ -36,6 +54,8 @@
       "duration": "49:24",
       "season": 1,
       "episodeNumber": 7,
+      "guestImage": "assets/images/instagram/roth-1.png",
+      "guestName": "Lauren Roth-Gómez",
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=Q1BCS2VysJg",
@@ -50,6 +70,8 @@
       "duration": "24:00",
       "season": 1,
       "episodeNumber": 6,
+      "guestImage": "assets/images/instagram/worst-critic.png",
+      "guestName": "Episode Art",
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=aMueqqmJYsw",
@@ -64,6 +86,8 @@
       "duration": "1:03:00",
       "season": 1,
       "episodeNumber": 5,
+      "guestImage": "assets/images/instagram/smith.png",
+      "guestName": "Joshua Smith",
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=4iRLuVkVpC4",
@@ -78,6 +102,8 @@
       "duration": "25:00",
       "season": 1,
       "episodeNumber": 4,
+      "guestImage": "assets/images/instagram/tool.png",
+      "guestName": "Episode Art",
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=w85ec4r-Usc",
@@ -92,6 +118,8 @@
       "duration": "1:05:00",
       "season": 1,
       "episodeNumber": 3,
+      "guestImage": "assets/images/instagram/james.png",
+      "guestName": "James Patterson",
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=O70Hr3r-pKQ",
@@ -106,6 +134,8 @@
       "duration": "19:00",
       "season": 1,
       "episodeNumber": 2,
+      "guestImage": "assets/images/instagram/perfection-trap.png",
+      "guestName": "Episode Art",
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=C5XoOJ6Xc5o",
@@ -120,6 +150,8 @@
       "duration": "13:00",
       "season": 1,
       "episodeNumber": 1,
+      "guestImage": "assets/images/instagram/winning.png",
+      "guestName": "Episode Art",
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=-87ViiwM2y4",
@@ -134,6 +166,8 @@
       "duration": "3:00",
       "season": 1,
       "isTrailer": true,
+      "guestImage": "assets/images/instagram/trailer.png",
+      "guestName": "Trailer",
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=n74KezrDJ_A",

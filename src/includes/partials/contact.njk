@@ -1,29 +1,69 @@
-<div class="section-sm" id="contact">
-    <div class="color-overlay mo-bg-2"></div>
-    <div class="container" data-aos="fade-up">
-        <div class="row justify-content-center">
+<section class="booking-section" id="contact">
+    <!-- Tree texture background -->
+    <div class="booking-section__bg-image"></div>
 
-            <div class="col-lg-8">
+    <div class="booking-wrapper" data-aos="fade-up">
+        <!-- Two column layout -->
+        <div class="booking-layout">
+            <!-- Left: Content -->
+            <div class="booking-content">
+                <span class="booking-content__badge">
+                    <i class="mdi mdi-calendar-check"></i>
+                    Free Consultation
+                </span>
 
-                <div class="heading-box text-white text-center">
-                    <h3 class="heading-title">Like what you see? Feel free to reach out for a complimentary consultation!</h3>
-                    
-                    <p>
-                        email: contact@mindfulopus.com
-                        <br>
-                        instagram: @mindfulopus
-                    </p>
+                <h2 class="booking-content__title">Book a Meeting</h2>
 
+                <p class="booking-content__desc">
+                    Ready to take the next step? Schedule a complimentary 30-minute consultation to discuss your goals and how we can work together.
+                </p>
 
-                    <p class="mt-4 mb-0">Or feel free to book an online zoom call below!                   
+                <ul class="booking-content__features">
+                    <li>
+                        <i class="mdi mdi-check-circle"></i>
+                        <span>Personalized assessment of your needs</span>
+                    </li>
+                    <li>
+                        <i class="mdi mdi-check-circle"></i>
+                        <span>Overview of coaching approach</span>
+                    </li>
+                    <li>
+                        <i class="mdi mdi-check-circle"></i>
+                        <span>Q&A about the process</span>
+                    </li>
+                    <li>
+                        <i class="mdi mdi-check-circle"></i>
+                        <span>No obligation, no pressure</span>
+                    </li>
+                </ul>
+
+                <div class="booking-content__contact">
+                    <p class="booking-content__contact-label">Prefer to reach out directly?</p>
+                    <div class="booking-content__contact-links">
+                        <a href="mailto:contact@mindfulopus.com" class="booking-content__link">
+                            <i class="mdi mdi-email-outline"></i>
+                            contact@mindfulopus.com
+                        </a>
+                        <a href="https://instagram.com/mindfulopus" target="_blank" rel="noopener" class="booking-content__link">
+                            <i class="mdi mdi-instagram"></i>
+                            @mindfulopus
+                        </a>
+                    </div>
                 </div>
-                <!-- Calendly inline widget begin -->
-                <div class="calendly-inline-widget" data-url="https://calendly.com/mindfulopus/30min" style="min-width:320px;height:630px;"></div>
-                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-                <!-- Calendly inline widget end -->
-
             </div>
 
+            <!-- Right: Calendly widget -->
+            <div class="booking-calendar">
+                <div class="booking-calendar__card">
+                    <div class="booking-calendar__header">
+                        <i class="mdi mdi-video-outline"></i>
+                        <span>30 min Zoom Call</span>
+                    </div>
+                    <div class="calendly-inline-widget" data-url="https://calendly.com/mindfulopus/30min?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:100%;height:580px;"></div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</section>

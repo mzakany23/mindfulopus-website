@@ -158,6 +158,15 @@ Main Style Sheet
     opacity: 0.15;
     animation: float-gentle 5s ease-in-out infinite 1s;
   }
+
+  &--4 {
+    width: 120px;
+    height: 120px;
+    top: 8%;
+    left: 35%;
+    background: radial-gradient(circle, rgba(234, 196, 110, 0.45) 0%, rgba(218, 175, 75, 0.25) 40%, transparent 70%);
+    animation: float-gentle 7s ease-in-out infinite 0.5s;
+  }
 }
 
 @keyframes float-gentle {
@@ -654,6 +663,13 @@ Main Style Sheet
 
   .hero-float--3 {
     display: none;
+  }
+
+  .hero-float--4 {
+    width: 80px;
+    height: 80px;
+    top: 5%;
+    left: 25%;
   }
 }
 
@@ -1197,40 +1213,58 @@ Main Style Sheet
 // SERVICES SECTION - Floating Staggered Layout
 // ============================================
 
-// Services section background color
-$services-bg: #faf9f7;
+// Services section - dark organic theme with tree texture
+$services-bg: #1a2420; // Darker, moodier green-gray
 
 .services-section {
   position: relative;
-  padding: 0 0 100px;
-  background: $services-bg;
+  padding: 180px 0 100px;
+  background: linear-gradient(to bottom,
+    #faf9f7 0%,
+    #e8ebe9 8%,
+    #c5d0cb 15%,
+    #7a9188 25%,
+    $services-bg 40%,
+    $services-bg 100%
+  );
   overflow: hidden;
 
-  // Vertical zigzag edges on left and right (like Brandby reference)
-  &::before,
-  &::after {
-    content: '';
+  // Tree texture background - very subtle
+  &__bg-image {
     position: absolute;
     top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
-    width: 16px;
+    background-image: url('../images/tree.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    opacity: 0.06;
+    z-index: 0;
+    pointer-events: none;
+    filter: grayscale(50%) brightness(0.8);
+  }
+
+  // Fade-top is no longer needed - gradient is in section background
+  &__fade-top {
+    display: none;
+  }
+
+  // Soft gradient fade at bottom edge
+  &__fade-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to top,
+      $services-bg 0%,
+      rgba(26, 36, 32, 0.6) 40%,
+      transparent 100%
+    );
     z-index: 3;
     pointer-events: none;
-    // SVG zigzag pattern - gray triangles
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='24' viewBox='0 0 16 24'%3E%3Cpath d='M0 0 L16 12 L0 24 Z' fill='%23e0deda'/%3E%3C/svg%3E");
-    background-repeat: repeat-y;
-    background-size: 16px 24px;
-  }
-
-  // Left zigzag edge
-  &::before {
-    left: 0;
-  }
-
-  // Right zigzag edge - flipped
-  &::after {
-    right: 0;
-    transform: scaleX(-1);
   }
 }
 
@@ -1247,86 +1281,108 @@ $services-bg: #faf9f7;
     position: absolute;
     z-index: 1;
     will-change: transform;
-    transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-    // Staggered positions for 6 cards
-    &--1 { top: 8%; left: 3%; }
-    &--2 { top: 35%; left: 8%; }
-    &--3 { top: 65%; left: 2%; }
-    &--4 { top: 5%; right: 5%; }
+    // Staggered positions for 6 cards - bumped down to avoid top cutoff
+    &--1 { top: 12%; left: 3%; }
+    &--2 { top: 36%; left: 8%; }
+    &--3 { top: 62%; left: 2%; }
+    &--4 { top: 8%; right: 5%; }
     &--5 { top: 40%; right: 3%; }
-    &--6 { top: 70%; right: 8%; }
-  }
+    &--6 { top: 66%; right: 8%; }
 
-  &__frame {
-    position: relative;
-    display: inline-block;
-    padding: 20px;
-    background: #ffffff;
+    // Pause frame animation on card hover
+    &:hover .services-floating__frame {
+      animation-play-state: paused;
+    }
+
+    // Apply floating animation to inner frames with staggered timing
+    &--1 .services-floating__frame { animation: service-float 6s ease-in-out infinite; }
+    &--2 .services-floating__frame { animation: service-float 7s ease-in-out infinite 0.5s; }
+    &--3 .services-floating__frame { animation: service-float 5s ease-in-out infinite 1s; }
+    &--4 .services-floating__frame { animation: service-float 6.5s ease-in-out infinite 0.3s; }
+    &--5 .services-floating__frame { animation: service-float 5.5s ease-in-out infinite 0.8s; }
+    &--6 .services-floating__frame { animation: service-float 7s ease-in-out infinite 1.2s; }
+  }
+}
+
+// Gentle floating animation for service cards
+@keyframes service-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(1deg);
+  }
+}
+
+.services-floating__frame {
+  position: relative;
+  display: inline-block;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 16px;
+  text-align: center;
+  min-width: 150px;
+  max-width: 180px;
+  border: 1px solid rgba(42, 125, 125, 0.08);
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.04),
+    0 12px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+  // 3D offset frame effect
+  &::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 100%;
+    height: 100%;
     border-radius: 16px;
-    text-align: center;
-    min-width: 150px;
-    max-width: 180px;
-    border: 1px solid rgba(42, 125, 125, 0.08);
-    box-shadow:
-      0 4px 6px rgba(0, 0, 0, 0.04),
-      0 12px 30px rgba(0, 0, 0, 0.08);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-
-    // 3D offset frame effect
-    &::after {
-      content: '';
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      width: 100%;
-      height: 100%;
-      border-radius: 16px;
-      background: rgba(42, 125, 125, 0.06);
-      z-index: -1;
-      pointer-events: none;
-    }
+    background: rgba(42, 125, 125, 0.06);
+    z-index: -1;
+    pointer-events: none;
   }
+}
 
-  &__card:hover &__frame {
-    transform: translateY(-6px);
-    box-shadow:
-      0 8px 12px rgba(0, 0, 0, 0.06),
-      0 20px 40px rgba(0, 0, 0, 0.1);
+.services-floating__card:hover .services-floating__frame {
+  transform: translateY(-6px);
+  box-shadow:
+    0 8px 12px rgba(0, 0, 0, 0.06),
+    0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.services-floating__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(42, 125, 125, 0.12) 0%, rgba(42, 125, 125, 0.06) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+
+  i {
+    font-size: 24px;
+    color: #2a7d7d;
   }
+}
 
-  &__icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, rgba(42, 125, 125, 0.12) 0%, rgba(42, 125, 125, 0.06) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 12px;
+.services-floating__frame h4 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
 
-    i {
-      font-size: 24px;
-      color: #2a7d7d;
-    }
-  }
-
-  h4 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 1rem;
-    font-weight: 400;
-    color: #1a1a1a;
-    margin-bottom: 6px;
-  }
-
-  p {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 400;
-    line-height: 1.4;
-    color: #666666;
-    margin: 0;
-  }
+.services-floating__frame p {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #666666;
+  margin: 0;
 }
 
 // Center content (title, subtitle, CTA)
@@ -1343,9 +1399,9 @@ $services-bg: #faf9f7;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
-  color: #666666;
+  color: rgba(255, 255, 255, 0.6);
   margin-bottom: 24px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 
@@ -1354,7 +1410,7 @@ $services-bg: #faf9f7;
   font-size: clamp(2.25rem, 5vw, 3rem);
   font-weight: 400;
   font-optical-sizing: none;
-  color: #2a7d7d;
+  color: #ffffff;
   letter-spacing: -0.01em;
   margin-bottom: 40px;
 }
@@ -1364,13 +1420,13 @@ $services-bg: #faf9f7;
   font-size: 1.1rem;
   font-weight: 300;
   line-height: 1.75;
-  color: #444444;
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: 0;
 
   em {
     font-family: 'Fraunces', Georgia, serif;
     font-style: italic;
-    color: #2a7d7d;
+    color: #7bc9c9; // Lighter teal for dark background
   }
 }
 
@@ -1434,11 +1490,14 @@ $services-bg: #faf9f7;
 
 @media (max-width: 768px) {
   .services-section {
-    // Hide zigzag edges on mobile
-    &::before,
-    &::after {
-      display: none;
+    // Keep fade but adjust for mobile
+    &::before {
+      height: 80px;
     }
+  }
+
+  .services-section__bg-image {
+    opacity: 0.1;
   }
 
   .services-floating {
@@ -1454,6 +1513,11 @@ $services-bg: #faf9f7;
       margin: 8px;
       // Reset parallax transforms on mobile
       transform: none !important;
+
+      // Disable floating animation on frame for mobile
+      .services-floating__frame {
+        animation: none !important;
+      }
     }
 
     display: flex;
@@ -1702,20 +1766,243 @@ $services-bg: #faf9f7;
   }
 }
 
-// Group programs callout
-.services-group {
+// Featured action showcase
+.services-showcase {
+  position: relative;
+  z-index: 5;
+  max-width: 900px;
+  margin: 0 auto 60px;
+  padding: 0 24px;
   text-align: center;
-  padding: 40px;
-  background: linear-gradient(135deg, rgba(42, 125, 125, 0.06) 0%, rgba(42, 125, 125, 0.02) 100%);
-  border-radius: 20px;
-  border: 1px solid rgba(42, 125, 125, 0.08);
+
+  &__image {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+      0 8px 30px rgba(0, 0, 0, 0.12),
+      0 4px 12px rgba(0, 0, 0, 0.08);
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  &__caption {
+    display: inline-block;
+    margin-top: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #666666;
+    font-style: italic;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-showcase {
+    margin-bottom: 40px;
+    padding: 0 16px;
+
+    &__image {
+      border-radius: 12px;
+    }
+
+    &__caption {
+      font-size: 0.85rem;
+    }
+  }
+}
+
+// Full-width Group Programs with carousel
+.services-group-fullwidth {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  background: linear-gradient(180deg, transparent 0%, rgba(42, 125, 125, 0.04) 100%);
+  padding: 60px 0 80px;
+
+  &__content {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    padding: 0 24px;
+    text-align: center;
+
+    p {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: #444444;
+      margin-bottom: 16px;
+
+      em {
+        font-family: 'Fraunces', Georgia, serif;
+        font-style: italic;
+        color: #2a7d7d;
+      }
+    }
+  }
+
+  &__carousel {
+    width: 100%;
+    overflow: hidden;
+  }
+}
+
+// Image carousel
+.services-carousel {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__track {
+    display: flex;
+    gap: 24px;
+    padding: 0 24px;
+    // Center the slides
+    justify-content: center;
+  }
+
+  &__slide {
+    flex: 0 0 auto;
+    width: 340px;
+    text-align: center;
+
+    img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.1),
+        0 2px 8px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    &:hover img {
+      transform: translateY(-4px);
+      box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.15),
+        0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  &__caption {
+    display: block;
+    margin-top: 12px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #2a7d7d;
+  }
+}
+
+@media (max-width: 1100px) {
+  .services-carousel__track {
+    justify-content: flex-start;
+    padding: 0 24px;
+    // Allow horizontal scroll
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-group-fullwidth {
+    padding: 40px 0 60px;
+
+    &__content {
+      margin-bottom: 32px;
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .services-carousel {
+    &__track {
+      gap: 16px;
+      padding: 0 16px;
+    }
+
+    &__slide {
+      width: 280px;
+
+      img {
+        height: 200px;
+        border-radius: 12px;
+      }
+    }
+
+    &__caption {
+      font-size: 0.85rem;
+    }
+  }
+}
+
+// Group programs wrapper
+.services-group-wrapper {
+  position: relative;
+  z-index: 10;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+// Group programs callout - light card with sharp edges and accent border
+.services-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 48px;
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 0; // Sharp corners
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+
+  // Teal accent line on left edge
+  &::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    bottom: 24px;
+    left: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #2a7d7d 0%, #1f6666 100%);
+  }
+
+  // Subtle corner accents
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, transparent 50%, rgba(42, 125, 125, 0.08) 50%);
+  }
+
+  &__content {
+    flex: 1;
+    text-align: left;
+  }
 
   &__badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     padding: 8px 16px;
-    background: rgba(42, 125, 125, 0.1);
+    background: rgba(42, 125, 125, 0.12);
     border-radius: 20px;
     margin-bottom: 20px;
 
@@ -1741,9 +2028,6 @@ $services-bg: #faf9f7;
     line-height: 1.7;
     color: #333333;
     margin: 0 0 16px 0;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
 
     em {
       font-family: 'Fraunces', Georgia, serif;
@@ -1759,6 +2043,114 @@ $services-bg: #faf9f7;
     font-weight: 600;
     color: #2a7d7d;
   }
+
+  &__image {
+    flex: 0 0 280px;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow:
+        0 8px 24px rgba(42, 125, 125, 0.15),
+        0 4px 8px rgba(0, 0, 0, 0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    &:hover img {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow:
+        0 12px 32px rgba(42, 125, 125, 0.2),
+        0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &__caption {
+    display: block;
+    margin-top: 12px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #666666;
+    text-align: center;
+  }
+
+  // Image carousel
+  &__carousel {
+    flex: 0 0 400px;
+    position: relative;
+  }
+
+  &__slides {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+  &__slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+
+    &.is-active {
+      opacity: 1;
+    }
+
+    img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow:
+        0 8px 24px rgba(42, 125, 125, 0.15),
+        0 4px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    span {
+      display: block;
+      margin-top: 10px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #2a7d7d;
+      text-align: center;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(42, 125, 125, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+
+    &:hover {
+      background: rgba(42, 125, 125, 0.4);
+    }
+
+    &.is-active {
+      background: #2a7d7d;
+      transform: scale(1.2);
+    }
+  }
 }
 
 // Services section responsive
@@ -1768,13 +2160,685 @@ $services-bg: #faf9f7;
   }
 
   .services-group {
+    flex-direction: column;
     padding: 30px 24px;
+    text-align: center;
+
+    &__content {
+      text-align: center;
+    }
+
+    &__image {
+      flex: none;
+      width: 100%;
+      max-width: 320px;
+
+      img {
+        height: 180px;
+      }
+    }
+
+    &__carousel {
+      flex: none;
+      width: 100%;
+      max-width: 350px;
+    }
+
+    &__slides {
+      height: 250px;
+    }
+
+    &__slide img {
+      height: 210px;
+    }
   }
 }
 
 // ============================================
 // END SERVICES SECTION
 // ============================================
+
+// ============================================
+// PHILOSOPHY QUOTE SECTION
+// ============================================
+.philosophy-section {
+  padding: 100px 0;
+  background: linear-gradient(
+    145deg,
+    #d4e4e1 0%,
+    #e8eeec 20%,
+    #f5f4f2 50%,
+    #ebe5df 80%,
+    #ddd5cc 100%
+  );
+}
+
+.philosophy-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.philosophy-card {
+  position: relative;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 8px;
+
+  // Dark background image
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%) brightness(0.35);
+    z-index: 0;
+  }
+
+  // Teal accent bar on right edge
+  &__accent {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 12px;
+    background: linear-gradient(180deg, #2a7d7d 0%, #1f6666 100%);
+    z-index: 2;
+  }
+
+  // Content overlay
+  &__content {
+    position: relative;
+    z-index: 1;
+    padding: 60px;
+    width: 100%;
+  }
+
+  // Large quotation mark
+  &__quote-mark {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 6rem;
+    font-weight: 300;
+    color: #2a7d7d;
+    line-height: 0.6;
+    margin-bottom: 20px;
+    opacity: 0.9;
+  }
+
+  // Quote text
+  &__quote {
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  &__line {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+
+    em {
+      font-style: italic;
+      color: #7bc9c9;
+    }
+
+    &--spacer {
+      height: 24px;
+    }
+
+    &--highlight {
+      color: #7bc9c9;
+      font-weight: 400;
+    }
+  }
+
+  // Attribution
+  &__attribution {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  &__author {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #2a7d7d;
+    margin-bottom: 4px;
+  }
+
+  &__role {
+    display: block;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+// Philosophy responsive
+@media (max-width: 768px) {
+  .philosophy-section {
+    padding: 60px 0;
+  }
+
+  .philosophy-card {
+    min-height: 450px;
+
+    &__content {
+      padding: 40px 32px;
+    }
+
+    &__quote-mark {
+      font-size: 4rem;
+    }
+
+    &__line {
+      font-size: 1.35rem;
+    }
+
+    &__accent {
+      width: 8px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .philosophy-card {
+    min-height: 400px;
+
+    &__content {
+      padding: 32px 24px;
+    }
+
+    &__line {
+      font-size: 1.2rem;
+
+      &--spacer {
+        height: 16px;
+      }
+    }
+
+    &__attribution {
+      margin-top: 28px;
+    }
+  }
+}
+
+// ============================================
+// BOOKING SECTION
+// ============================================
+.booking-section {
+  padding: 100px 0;
+  background: linear-gradient(
+    160deg,
+    #1a2420 0%,
+    #243530 50%,
+    #1a2420 100%
+  );
+  position: relative;
+  overflow: hidden;
+
+  // Subtle texture overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+  }
+
+  // Tree texture background
+  &__bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../images/tree.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.08;
+    filter: grayscale(60%) brightness(0.7);
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+.booking-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.booking-layout {
+  display: flex;
+  gap: 60px;
+  align-items: stretch;
+}
+
+// Left content column
+.booking-content {
+  flex: 1;
+  padding: 20px 0;
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: rgba(42, 125, 125, 0.15);
+    border: 1px solid rgba(42, 125, 125, 0.3);
+    border-radius: 4px;
+    margin-bottom: 28px;
+
+    i {
+      font-size: 18px;
+      color: #7bc9c9;
+    }
+
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #7bc9c9;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  &__title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  &__desc {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 36px;
+    max-width: 440px;
+  }
+
+  &__features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+
+      i {
+        font-size: 20px;
+        color: #2a7d7d;
+        margin-top: 2px;
+      }
+
+      span {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.85);
+      }
+    }
+  }
+
+  &__contact {
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__contact-label {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    i {
+      font-size: 20px;
+      color: #2a7d7d;
+      transition: color 0.3s ease;
+    }
+
+    &:hover {
+      color: #7bc9c9;
+
+      i {
+        color: #7bc9c9;
+      }
+    }
+  }
+}
+
+// Right calendar column
+.booking-calendar {
+  flex: 0 0 480px;
+
+  &__card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.3),
+      0 8px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, #2a7d7d 0%, #1f6666 100%);
+    color: #ffffff;
+
+    i {
+      font-size: 20px;
+    }
+
+    span {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+  }
+}
+
+// Booking responsive
+@media (max-width: 1000px) {
+  .booking-layout {
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .booking-calendar {
+    flex: none;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .booking-section {
+    padding: 60px 0;
+  }
+
+  .booking-content {
+    &__title {
+      font-size: 2rem;
+    }
+
+    &__features li {
+      margin-bottom: 12px;
+    }
+  }
+
+  .booking-calendar {
+    &__card {
+      border-radius: 8px;
+    }
+  }
+}
+
+// ============================================
+// WELLBEING WHEEL SECTION
+// ============================================
+.wellbeing-section {
+  padding: 100px 0;
+  background: linear-gradient(180deg, #f8f7f5 0%, #ffffff 100%);
+}
+
+.wellbeing-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.wellbeing-card {
+  display: flex;
+  align-items: stretch;
+  background: #ffffff;
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.08),
+    0 4px 16px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+
+  &__image {
+    flex: 0 0 380px;
+    position: relative;
+    background: #f0ede8;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    // Subtle overlay gradient
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent 70%, rgba(255, 255, 255, 0.1) 100%);
+      pointer-events: none;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(42, 125, 125, 0.1);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    width: fit-content;
+
+    i {
+      font-size: 16px;
+      color: #2a7d7d;
+    }
+
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #2a7d7d;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  &__title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 400;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+
+  &__quote {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #555555;
+    margin: 0 0 24px 0;
+    padding-left: 20px;
+    border-left: 3px solid #2a7d7d;
+  }
+
+  &__desc {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #666666;
+    margin-bottom: 32px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+
+    i {
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    &--primary {
+      background: linear-gradient(135deg, #2a7d7d 0%, #1f6666 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 16px rgba(42, 125, 125, 0.25);
+
+      &:hover {
+        background: linear-gradient(135deg, #358f8f 0%, #2a7d7d 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(42, 125, 125, 0.35);
+        color: #ffffff;
+      }
+    }
+
+    &--secondary {
+      background: transparent;
+      color: #2a7d7d;
+      border: 2px solid rgba(42, 125, 125, 0.3);
+
+      &:hover {
+        background: rgba(42, 125, 125, 0.08);
+        border-color: #2a7d7d;
+        color: #2a7d7d;
+
+        i {
+          transform: translateX(4px);
+        }
+      }
+    }
+  }
+}
+
+// Wellbeing responsive
+@media (max-width: 900px) {
+  .wellbeing-card {
+    flex-direction: column;
+
+    &__image {
+      flex: none;
+      height: 350px;
+    }
+
+    &__content {
+      padding: 36px 28px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .wellbeing-section {
+    padding: 60px 0;
+  }
+
+  .wellbeing-card {
+    &__image {
+      height: 280px;
+    }
+
+    &__content {
+      padding: 28px 20px;
+    }
+
+    &__title {
+      font-size: 1.5rem;
+    }
+
+    &__quote {
+      font-size: 1rem;
+    }
+
+    &__actions {
+      flex-direction: column;
+    }
+
+    &__btn {
+      justify-content: center;
+      width: 100%;
+    }
+  }
+}
 
 // ============================================
 // RESULTS SECTION
@@ -3589,26 +4653,31 @@ hr {
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  transition: all 0.4s ease;
 }
 
 .logo .logo-icon {
   display: inline-block;
   vertical-align: middle;
   transform: translateY(2px);
+  height: 70px;
+  transition: all 0.4s ease;
 }
 
 .logo .logo-text {
   display: inline-block;
   vertical-align: middle;
+  height: 36px;
+  transition: all 0.4s ease;
 }
 
 .nav-sticky .logo .logo-icon {
-  height: 38px !important;
+  height: 48px !important;
 }
 
 .nav-sticky .logo .logo-text {
-  height: 18px !important;
+  height: 24px !important;
 }
 
 .nav-button {
