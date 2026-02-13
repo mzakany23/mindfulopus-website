@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindfulOpus Brand Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --teal: #2a7d7d;
+    --teal-dark: #1f6666;
+    --teal-light: #358f8f;
+    --sage: #b5bfb6;
+    --navy: #1e304d;
+    --cream: #fafaf8;
+    --divider: #f0ede8;
+    --canvas: #d4d0cb;
+    --text-dark: #1a1a1a;
+    --text-body: #555;
+    --white: #ffffff;
+  }
+
+  body {
+    background: var(--canvas);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+    color: var(--text-body);
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 40px auto;
+    background: var(--white);
+    box-shadow: 0 25px 80px rgba(0,0,0,0.18);
+    overflow: hidden;
+  }
+
+  /* --- HERO --- */
+  .hero {
+    position: relative;
+    padding: 80px 60px 72px;
+    background-image: url('images/hero-redwoods.png');
+    background-size: cover;
+    background-position: center 30%;
+    overflow: hidden;
+    min-height: 400px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(170deg, rgba(20,50,48,0.88) 0%, rgba(30,70,68,0.82) 30%, rgba(42,125,125,0.72) 65%, rgba(42,125,125,0.65) 100%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to top, rgba(255,255,255,0.06) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-overline {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 16px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+
+  .hero-logo {
+    height: 38px;
+    margin-bottom: 24px;
+    filter: brightness(0) invert(1);
+    opacity: 0.95;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 46px;
+    line-height: 1.12;
+    color: var(--white);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.35), 0 0 24px rgba(20,50,55,0.4);
+    margin-bottom: 18px;
+    max-width: 520px;
+  }
+
+  .hero-tagline {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12.5px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 0.3px;
+    max-width: 400px;
+    line-height: 1.7;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+
+  .hero-badge {
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    z-index: 2;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 10px;
+    padding: 5px 14px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .hero-lotus {
+    position: absolute;
+    bottom: -20px;
+    right: 40px;
+    height: 180px;
+    opacity: 0.12;
+    filter: brightness(0) invert(1);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* --- SECTIONS --- */
+  .section {
+    padding: 48px 60px;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .section:last-child { border-bottom: none; }
+
+  .section--cream { background: var(--cream); }
+
+  .section-label {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 28px;
+    color: var(--text-dark);
+    line-height: 1.2;
+    margin-bottom: 28px;
+  }
+
+  .section-title--sm {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  /* --- INTRO BAR --- */
+  .intro-bar {
+    display: flex;
+    padding: 32px 60px;
+    border-bottom: 1px solid var(--divider);
+    background: var(--cream);
+  }
+
+  .intro-item {
+    flex: 1;
+    text-align: center;
+    padding: 0 20px;
+    border-right: 1px solid #e8e5e0;
+  }
+
+  .intro-item:last-child { border-right: none; }
+
+  .intro-item .label {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 8.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--teal);
+    margin-bottom: 6px;
+  }
+
+  .intro-item .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--text-dark);
+  }
+
+  /* --- BLOCKQUOTE --- */
+  .brand-quote {
+    border-left: 3px solid var(--teal);
+    border-radius: 0 4px 4px 0;
+    background: rgba(42,125,125,0.03);
+    padding: 16px 24px;
+    margin: 24px 0;
+  }
+
+  .brand-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: #4a4a4a;
+    line-height: 1.5;
+  }
+
+  /* --- TWO COLUMN --- */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .two-col--reverse {
+    grid-template-columns: 280px 1fr;
+  }
+
+  /* --- FOUNDER --- */
+  .founder-photo {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    object-position: center 20%;
+    border-radius: 4px;
+  }
+
+  .founder-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+
+  .founder-title {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .body-text {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px;
+    color: var(--text-body);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  .body-text:last-child { margin-bottom: 0; }
+
+  /* --- COLOR SWATCHES --- */
+  .color-group {
+    margin-bottom: 28px;
+  }
+
+  .color-group:last-child { margin-bottom: 0; }
+
+  .color-group-title {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--teal);
+    margin-bottom: 14px;
+  }
+
+  .swatches {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .swatch-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .swatch-name {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+  }
+
+  .swatch-hex {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--text-body);
+    text-align: center;
+    margin-top: -4px;
+  }
+
+  /* --- GRADIENT BARS --- */
+  .gradient-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .gradient-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .gradient-strip {
+    width: 180px;
+    height: 28px;
+    border-radius: 14px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+
+  .gradient-label {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-body);
+  }
+
+  /* --- TYPOGRAPHY SAMPLES --- */
+  .type-samples {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .type-sample {
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .type-sample:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .type-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .type-role {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--teal);
+  }
+
+  .type-spec {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    color: #999;
+  }
+
+  .type-preview {
+    color: var(--text-dark);
+    line-height: 1.3;
+  }
+
+  .type-context {
+    margin-top: 24px;
+    padding: 20px 24px;
+    background: var(--cream);
+    border-radius: 4px;
+  }
+
+  .type-context-title {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+
+  .type-context-item {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px;
+    color: var(--text-body);
+  }
+
+  .type-context-item:last-child { margin-bottom: 0; }
+
+  .type-context-label {
+    font-weight: 600;
+    color: var(--text-dark);
+    min-width: 100px;
+  }
+
+  /* --- LOGO GALLERY --- */
+  .logo-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .logo-card {
+    background: var(--cream);
+    border-radius: 4px;
+    padding: 24px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-card--wide {
+    grid-column: span 2;
+  }
+
+  .logo-card--full {
+    grid-column: span 3;
+  }
+
+  .logo-card img {
+    max-width: 100%;
+    max-height: 100px;
+    object-fit: contain;
+  }
+
+  .logo-card--wide img {
+    max-height: 80px;
+  }
+
+  .logo-card--full img {
+    max-height: 100px;
+  }
+
+  .logo-card-label {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--teal);
+    text-align: center;
+  }
+
+  .logo-card-desc {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 10px;
+    color: var(--text-body);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .logo-usage {
+    margin-top: 20px;
+    display: flex;
+    gap: 24px;
+  }
+
+  .logo-usage-item {
+    flex: 1;
+    padding: 16px 20px;
+    border-left: 3px solid var(--teal);
+    border-radius: 0 4px 4px 0;
+    background: rgba(42,125,125,0.03);
+  }
+
+  .logo-usage-label {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--teal);
+    margin-bottom: 4px;
+  }
+
+  .logo-usage-text {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 11px;
+    color: var(--text-body);
+    line-height: 1.6;
+  }
+
+  /* --- MEDIA GALLERY --- */
+  .media-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .media-card {
+    background: var(--cream);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .media-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+  }
+
+  .media-card--square img {
+    height: 260px;
+    object-fit: contain;
+    background: #f0f0ee;
+    padding: 16px;
+  }
+
+  .media-card-info {
+    padding: 12px 16px;
+  }
+
+  .media-card-label {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--teal);
+  }
+
+  .media-card-desc {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 10px;
+    color: var(--text-body);
+    margin-top: 2px;
+  }
+
+  /* --- VOICE & PHRASES --- */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .voice-card {
+    padding: 20px 24px;
+    border-left: 3px solid var(--teal);
+    border-radius: 0 4px 4px 0;
+    background: rgba(42,125,125,0.03);
+  }
+
+  .voice-card-title {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+
+  .voice-card-desc {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 11px;
+    color: var(--text-body);
+    line-height: 1.5;
+  }
+
+  .phrase-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+  }
+
+  .phrase-pill {
+    background: var(--cream);
+    border: 1px solid var(--divider);
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--text-dark);
+    transition: all 0.2s;
+  }
+
+  .phrase-pill--accent {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  /* --- TONE TABLE --- */
+  .tone-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .tone-table th {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--teal);
+    text-align: left;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--divider);
+  }
+
+  .tone-table td {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .tone-table td:first-child {
+    font-weight: 600;
+    color: var(--text-dark);
+    width: 140px;
+  }
+
+  .tone-table td:last-child {
+    color: var(--text-body);
+  }
+
+  /* --- SERVICES --- */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .service-card {
+    padding: 24px;
+    background: var(--cream);
+    border-radius: 4px;
+  }
+
+  .service-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+
+  .service-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .service-list li {
+    position: relative;
+    padding-left: 14px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px;
+    color: var(--text-body);
+    line-height: 1.8;
+  }
+
+  .service-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--teal);
+    opacity: 0.5;
+  }
+
+  /* --- CONTACT --- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .contact-item {
+    text-align: center;
+    padding: 16px 8px;
+  }
+
+  .contact-platform {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--teal);
+    margin-bottom: 6px;
+  }
+
+  .contact-handle {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px;
+    color: var(--text-dark);
+    font-weight: 500;
+  }
+
+  /* --- FOOTER --- */
+  .footer {
+    background: linear-gradient(135deg, #1c3d3d 0%, #1a2f2f 100%);
+    padding: 28px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    height: 20px;
+    filter: brightness(0) invert(1);
+  }
+
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .footer-right {
+    text-align: right;
+  }
+
+  .footer-url {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #5abfbf;
+    letter-spacing: 0.5px;
+  }
+
+  .footer-email {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 2px;
+  }
+
+  /* --- SIGNATURE --- */
+  .signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 22px;
+    color: var(--teal);
+  }
+
+  /* --- PRINT --- */
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; margin: 0; max-width: 100%; }
+    .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .section { break-inside: avoid; }
+    .footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 768px) {
+    .page { margin: 0; }
+    .hero, .section, .intro-bar { padding-left: 28px; padding-right: 28px; }
+    .footer { padding-left: 28px; padding-right: 28px; }
+    .two-col, .two-col--reverse { grid-template-columns: 1fr; }
+    .logo-gallery { grid-template-columns: repeat(2, 1fr); }
+    .logo-card--wide, .logo-card--full { grid-column: span 2; }
+    .voice-grid, .services-grid, .media-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero h1 { font-size: 34px; }
+    .footer { flex-direction: column; gap: 16px; text-align: center; }
+    .footer-right { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">Brand Kit</div>
+    <img src="logos/logo-icon-lotus.png" class="hero-lotus" alt="">
+    <div class="hero-content">
+      <div class="hero-overline">Performance &amp; Well-Being Coaching</div>
+      <img src="logos/logo-wordmark.png" class="hero-logo" alt="MindfulOpus">
+      <h1>Create your own mindful life, one opus at a time.</h1>
+      <p class="hero-tagline">The complete brand identity guide for MindfulOpus &mdash; visual assets, voice guidelines, typography, and everything needed to represent the brand with consistency and care.</p>
+    </div>
+  </div>
+
+  <!-- INTRO BAR -->
+  <div class="intro-bar">
+    <div class="intro-item">
+      <div class="label">Founded</div>
+      <div class="value">2022</div>
+    </div>
+    <div class="intro-item">
+      <div class="label">Founder</div>
+      <div class="value">Jo Zakany</div>
+    </div>
+    <div class="intro-item">
+      <div class="label">Industry</div>
+      <div class="value">Wellness Coaching</div>
+    </div>
+    <div class="intro-item">
+      <div class="label">Audience</div>
+      <div class="value">Classical Musicians</div>
+    </div>
+  </div>
+
+  <!-- BRAND IDENTITY -->
+  <div class="section">
+    <div class="section-label">Brand Identity</div>
+    <div class="section-title">Who We Are</div>
+    <div class="two-col">
+      <div>
+        <p class="body-text">MindfulOpus was created by <strong>Jo Zakany</strong> (Joanna P. Zakany) as a way to help fellow musicians, artists and creatives find more balance in their lives. Born out of her own journey of recovery from burnout, Jo found deep healing in the mental practice of mindfulness and the physical practice of yoga, meditation, and breathwork.</p>
+        <div class="brand-quote">
+          <p>&ldquo;Music isn&rsquo;t WHO you are, it&rsquo;s WHAT you do.<br>HOW you are at WHAT you do becomes WHO you are&hellip;&rdquo;</p>
+        </div>
+        <p class="body-text"><strong>Mission:</strong> To help musicians, artists, and creatives find more balance in their lives by offering an alternative to &ldquo;toxic grind culture&rdquo; &mdash; helping them develop a kinder process in their work that ultimately leads to better results.</p>
+      </div>
+      <div>
+        <img src="headshots/headshot-2.png" class="founder-photo" alt="Jo Zakany">
+        <div style="padding: 16px 0;">
+          <div class="founder-name">Jo Zakany</div>
+          <div class="founder-title">Violist, The Cleveland Orchestra</div>
+          <p class="body-text" style="font-size: 11px;">Certified Yoga Instructor RYT-200 and Certified Health and Well-Being Coach DHWCT through Duke Integrative Medicine.</p>
+          <div class="signature" style="margin-top: 8px;">&mdash; Jo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLOR PALETTE -->
+  <div class="section section--cream">
+    <div class="section-label">Visual Identity</div>
+    <div class="section-title">Color Palette</div>
+
+    <div class="color-group">
+      <div class="color-group-title">Primary</div>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="swatch-circle" style="background: #b5bfb6;"></div>
+          <div class="swatch-name">Sage Green</div>
+          <div class="swatch-hex">#b5bfb6</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-circle" style="background: #2a7d7d;"></div>
+          <div class="swatch-name">Deep Teal</div>
+          <div class="swatch-hex">#2a7d7d</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-circle" style="background: #1f6666;"></div>
+          <div class="swatch-name">Dark Teal</div>
+          <div class="swatch-hex">#1f6666</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-title">Secondary</div>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="swatch-circle" style="background: #1e304d;"></div>
+          <div class="swatch-name">Navy Blue</div>
+          <div class="swatch-hex">#1e304d</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-circle" style="background: #358f8f;"></div>
+          <div class="swatch-name">Light Teal</div>
+          <div class="swatch-hex">#358f8f</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-title">Neutrals</div>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="swatch-circle" style="background: #ffffff;"></div>
+          <div class="swatch-name">White</div>
+          <div class="swatch-hex">#ffffff</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-circle" style="background: #fafbfc;"></div>
+          <div class="swatch-name">Light Gray</div>
+          <div class="swatch-hex">#fafbfc</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-circle" style="background: #f8f9fa;"></div>
+          <div class="swatch-name">Soft Gray</div>
+          <div class="swatch-hex">#f8f9fa</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-circle" style="background: #000000;"></div>
+          <div class="swatch-name">Black</div>
+          <div class="swatch-hex">#000000</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-title">Gradients</div>
+      <div class="gradient-bars">
+        <div class="gradient-bar">
+          <div class="gradient-strip" style="background: linear-gradient(135deg, #2a7d7d 0%, #1f6666 100%);"></div>
+          <div class="gradient-label">Primary CTA &mdash; Deep Teal to Dark Teal</div>
+        </div>
+        <div class="gradient-bar">
+          <div class="gradient-strip" style="background: linear-gradient(135deg, #358f8f 0%, #2a7d7d 100%);"></div>
+          <div class="gradient-label">Hover State &mdash; Light Teal to Deep Teal</div>
+        </div>
+        <div class="gradient-bar">
+          <div class="gradient-strip" style="background: linear-gradient(to right, #4763cb, #b5bfb6);"></div>
+          <div class="gradient-label">Accent &mdash; Blue to Sage</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TYPOGRAPHY -->
+  <div class="section">
+    <div class="section-label">Typography</div>
+    <div class="section-title">Font System</div>
+
+    <div class="type-samples">
+      <div class="type-sample">
+        <div class="type-meta">
+          <span class="type-role">Display / Headlines</span>
+          <span class="type-spec">Quicksand &middot; Medium-Bold</span>
+        </div>
+        <div class="type-preview" style="font-family: 'Quicksand', sans-serif; font-size: 32px; font-weight: 500;">
+          Progress over Perfection
+        </div>
+      </div>
+
+      <div class="type-sample">
+        <div class="type-meta">
+          <span class="type-role">Serif Headlines</span>
+          <span class="type-spec">Fraunces &middot; SemiBold</span>
+        </div>
+        <div class="type-preview" style="font-family: 'Fraunces', serif; font-size: 32px; font-weight: 600;">
+          Thriving On &amp; Off Stage
+        </div>
+      </div>
+
+      <div class="type-sample">
+        <div class="type-meta">
+          <span class="type-role">Editorial Accent</span>
+          <span class="type-spec">Cormorant Garamond &middot; Italic</span>
+        </div>
+        <div class="type-preview" style="font-family: 'Cormorant Garamond', serif; font-size: 28px; font-style: italic; font-weight: 400;">
+          &ldquo;What if your best playing came from kindness, not grind?&rdquo;
+        </div>
+      </div>
+
+      <div class="type-sample">
+        <div class="type-meta">
+          <span class="type-role">Cursive Signature</span>
+          <span class="type-spec">Dancing Script &middot; Regular &middot; &ldquo;&mdash; Jo&rdquo; only</span>
+        </div>
+        <div class="type-preview" style="font-family: 'Dancing Script', cursive; font-size: 28px; color: var(--teal);">
+          &mdash; Jo
+        </div>
+      </div>
+
+      <div class="type-sample">
+        <div class="type-meta">
+          <span class="type-role">Body Text</span>
+          <span class="type-spec">Source Sans Pro &middot; Regular (400)</span>
+        </div>
+        <div class="type-preview" style="font-family: 'Source Sans 3', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.7; color: var(--text-body);">
+          MindfulOpus helps musicians shift from toxic hustle culture to self-compassion, offering coaching, yoga, meditation, and breathwork for artists seeking balance.
+        </div>
+      </div>
+
+      <div class="type-sample">
+        <div class="type-meta">
+          <span class="type-role">Body Headings</span>
+          <span class="type-spec">Source Sans Pro &middot; SemiBold (600)</span>
+        </div>
+        <div class="type-preview" style="font-family: 'Source Sans 3', sans-serif; font-size: 16px; font-weight: 600; color: var(--text-dark);">
+          The Well-Being Wheel Framework
+        </div>
+      </div>
+    </div>
+
+    <div class="type-context">
+      <div class="type-context-title">Context Guide</div>
+      <div class="type-context-item">
+        <span class="type-context-label">Print / Flyers</span>
+        <span>Quicksand (headlines) + Cormorant Garamond (quotes) + Source Sans Pro (body)</span>
+      </div>
+      <div class="type-context-item">
+        <span class="type-context-label">Website</span>
+        <span>Fraunces (headlines) + Dancing Script (signature) + Source Sans Pro (body)</span>
+      </div>
+      <div class="type-context-item">
+        <span class="type-context-label">Podcast / General</span>
+        <span>Source Sans Pro (primary) + context-appropriate display font</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGOS -->
+  <div class="section section--cream">
+    <div class="section-label">Visual Identity</div>
+    <div class="section-title">Logo System</div>
+
+    <div class="logo-gallery">
+      <div class="logo-card logo-card--wide">
+        <img src="logos/logo-wordmark.png" alt="MindfulOpus Wordmark">
+        <div class="logo-card-label">Primary Wordmark</div>
+        <div class="logo-card-desc">&ldquo;MindfulOpus&rdquo; with dot above O &mdash; main logo for print, web, flyers</div>
+      </div>
+      <div class="logo-card">
+        <img src="logos/logo-icon-lotus.png" alt="Lotus Icon" style="max-height: 80px;">
+        <div class="logo-card-label">Lotus Icon</div>
+        <div class="logo-card-desc">Standalone accent element</div>
+      </div>
+      <div class="logo-card logo-card--full">
+        <img src="logos/logo-v2-lotus-wordmark.png" alt="Lotus + Wordmark" style="max-height: 70px;">
+        <div class="logo-card-label">Lotus + Wordmark</div>
+        <div class="logo-card-desc">Newer variant &mdash; lotus flower icon combined with MindfulOpus text</div>
+      </div>
+      <div class="logo-card">
+        <img src="logos/logo-square-solid-sage.png" alt="Square Sage" style="max-height: 80px;">
+        <div class="logo-card-label">Square Sage</div>
+        <div class="logo-card-desc">Social media avatar</div>
+      </div>
+      <div class="logo-card">
+        <img src="logos/logo-square-watercolor-blue.png" alt="Square Blue" style="max-height: 80px;">
+        <div class="logo-card-label">Square Blue</div>
+        <div class="logo-card-desc">Social media variant</div>
+      </div>
+      <div class="logo-card">
+        <img src="logos/logo-square-watercolor-sage.png" alt="Square Sage WC" style="max-height: 80px;">
+        <div class="logo-card-label">Square Sage WC</div>
+        <div class="logo-card-desc">Social media variant</div>
+      </div>
+    </div>
+
+    <div class="logo-usage">
+      <div class="logo-usage-item">
+        <div class="logo-usage-label">Primary</div>
+        <div class="logo-usage-text">The dot-above-O wordmark is the main logo for flyers, website header, and print materials.</div>
+      </div>
+      <div class="logo-usage-item">
+        <div class="logo-usage-label">Lotus</div>
+        <div class="logo-usage-text">Used as a graphic accent element &mdash; website section indicators, decorative flourishes.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COVER ART & HEADSHOTS -->
+  <div class="section">
+    <div class="section-label">Media Assets</div>
+    <div class="section-title">Cover Art &amp; Photography</div>
+
+    <div class="media-grid">
+      <div class="media-card media-card--square">
+        <img src="cover-art/podcast-cover-art-3000.png" alt="Podcast Cover Art">
+        <div class="media-card-info">
+          <div class="media-card-label">Podcast Cover Art</div>
+          <div class="media-card-desc">3000 &times; 3000px &mdash; primary podcast artwork</div>
+        </div>
+      </div>
+      <div class="media-card media-card--square">
+        <img src="cover-art/episode-artwork-template.png" alt="Episode Artwork Template">
+        <div class="media-card-info">
+          <div class="media-card-label">Episode Template</div>
+          <div class="media-card-desc">Customizable per-episode artwork</div>
+        </div>
+      </div>
+      <div class="media-card">
+        <img src="headshots/headshot-1.png" alt="Jo Zakany Headshot 1">
+        <div class="media-card-info">
+          <div class="media-card-label">Headshot 1</div>
+          <div class="media-card-desc">Professional portrait &mdash; warm, indoor</div>
+        </div>
+      </div>
+      <div class="media-card">
+        <img src="headshots/headshot-2.png" alt="Jo Zakany Headshot 2">
+        <div class="media-card-info">
+          <div class="media-card-label">Headshot 2</div>
+          <div class="media-card-desc">Natural portrait &mdash; outdoor, candid</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BRAND VOICE -->
+  <div class="section section--cream">
+    <div class="section-label">Brand Voice</div>
+    <div class="section-title">Voice &amp; Tone</div>
+
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-card-title">Warm &amp; Compassionate</div>
+        <div class="voice-card-desc">Creates a safe, judgment-free space for artists to explore their well-being journey.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-title">Professional &amp; Knowledgeable</div>
+        <div class="voice-card-desc">Backed by certifications, orchestral experience, and years of coaching practice.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-title">Empowering</div>
+        <div class="voice-card-desc">Focuses on partnership and client-driven goals &mdash; never preachy or prescriptive.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-title">Honest &amp; Authentic</div>
+        <div class="voice-card-desc">Real conversations about real struggles. Vulnerability as strength.</div>
+      </div>
+    </div>
+
+    <table class="tone-table">
+      <thead>
+        <tr><th>Context</th><th>Tone</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Website</td><td>Warm, inviting, professional</td></tr>
+        <tr><td>Podcast</td><td>Conversational, honest, supportive</td></tr>
+        <tr><td>Social Media</td><td>Approachable, inspiring, relatable</td></tr>
+        <tr><td>Coaching</td><td>Compassionate, empowering, non-judgmental</td></tr>
+        <tr><td>Newsletter</td><td>Reflective, insightful, practical</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- KEY PHRASES -->
+  <div class="section">
+    <div class="section-label">Brand Language</div>
+    <div class="section-title">Key Phrases</div>
+
+    <ul class="phrase-list">
+      <li class="phrase-pill phrase-pill--accent">&ldquo;Grind to Kind&rdquo;</li>
+      <li class="phrase-pill">&ldquo;Progress over Perfection&rdquo;</li>
+      <li class="phrase-pill">&ldquo;Artist+&rdquo;</li>
+      <li class="phrase-pill phrase-pill--accent">&ldquo;The Well-Being Wheel&rdquo;</li>
+      <li class="phrase-pill">&ldquo;Thriving, not just surviving&rdquo;</li>
+      <li class="phrase-pill">&ldquo;On and off stage&rdquo;</li>
+      <li class="phrase-pill">&ldquo;Inner critic to inner coach&rdquo;</li>
+      <li class="phrase-pill">&ldquo;Kicking toxic grind culture to the curb&rdquo;</li>
+    </ul>
+
+    <div class="brand-quote" style="margin-top: 28px;">
+      <p>&ldquo;Create your own mindful life, one opus at a time.&rdquo;</p>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="section section--cream">
+    <div class="section-label">Offerings</div>
+    <div class="section-title">Products &amp; Services</div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-card-title">1-on-1 Coaching</div>
+        <ul class="service-list">
+          <li>Mindset training</li>
+          <li>Performance coaching</li>
+          <li>Time-management</li>
+          <li>Decision-making</li>
+          <li>Yoga, meditation, and breathwork</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-card-title">Group Programs</div>
+        <p class="body-text" style="font-size: 12px;">Workshops for colleges, universities, and conservatories &mdash; the first all-in-one music, coaching, and yoga workshops for classical music students.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-card-title">The Well-Being Wheel</div>
+        <ul class="service-list">
+          <li>Emotional wellness</li>
+          <li>Physical wellness</li>
+          <li>Creative wellness</li>
+          <li>Work/life balance</li>
+          <li>&ldquo;Artist+&rdquo; exploration</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-card-title">Free Resources</div>
+        <ul class="service-list">
+          <li>Well-Being Workbook (PDF)</li>
+          <li>MindfulOpus Podcast</li>
+          <li>MindfulOpus Newsletter (Medium)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section">
+    <div class="section-label">Connect</div>
+    <div class="section-title">Social Media &amp; Contact</div>
+
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-platform">Website</div>
+        <div class="contact-handle">mindfulopus.com</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-platform">Email</div>
+        <div class="contact-handle">contact@mindfulopus.com</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-platform">Instagram</div>
+        <div class="contact-handle">@mindfulopus</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-platform">YouTube</div>
+        <div class="contact-handle">@mindfulopus</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-platform">Medium</div>
+        <div class="contact-handle">@MindfulOpus</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-platform">Spotify</div>
+        <div class="contact-handle">MindfulOpus Podcast</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-platform">Apple Podcasts</div>
+        <div class="contact-handle">MindfulOpus</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-platform">Calendly</div>
+        <div class="contact-handle">mindfulopus/30min</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">
+      <img src="logos/logo-wordmark.png" class="footer-logo" alt="MindfulOpus">
+      <span class="footer-tagline">Performance &amp; Well-Being Coaching for Classical Musicians</span>
+    </div>
+    <div class="footer-right">
+      <div class="footer-url">mindfulopus.com</div>
+      <div class="footer-email">contact@mindfulopus.com</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
