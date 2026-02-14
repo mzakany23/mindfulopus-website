@@ -8,13 +8,13 @@ BRAND: MindfulOpus (one word)
 
 TAGLINE: Performance and Well-Being Coaching for Classical Musicians
 
-FOUNDER: Jo Zakany — Violist with The Cleveland Orchestra, certified yoga instructor (RYT-200), and Duke-certified Health and Well-Being Coach
+FOUNDER: Jo Zakany — Performance & Well-Being Coach | Violist with The Cleveland Orchestra. Certified yoga instructor (RYT-200) and Duke-certified Health and Well-Being Coach.
 
 INDUSTRY: Wellness coaching for classical musicians and creatives
 
 VIBE: Calming, minimal, warm, professional, approachable
 
-MISSION: Help musicians shift from "Grind to Kind" — replacing toxic hustle culture with self-compassion for better results and balanced living.
+MISSION: To help musicians, artists, and creatives find more balance in their lives by offering an alternative to "toxic grind culture". By focusing on their well-being, we help them develop a kinder process in their work that ultimately leads to better results, and helps them thrive on and off stage.
 
 TARGET AUDIENCE: Classical musicians (students & professionals), artists, creatives dealing with burnout, performance anxiety, or work/life imbalance.
 
@@ -84,12 +84,14 @@ BRAND VOICE:
 KEY PHRASES:
 
 - "Grind to Kind"
-- "Progress over Perfection"
+- "Excellence over Perfection"
 - "Thriving on and off stage"
 - "Inner critic to inner coach"
 - "The Well-Being Wheel"
 - "Artist+" (diverse life beyond craft)
 - "Kicking toxic grind culture to the curb"
+- "Fellow Opus Creator"
+- "Your artistry shouldn't come at the cost of your humanity"
 - "Create your own mindful life, one opus at a time."
 
 ---
