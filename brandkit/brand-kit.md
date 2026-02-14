@@ -22,11 +22,11 @@ MindfulOpus was created by **Jo Zakany** (Joanna P. Zakany) as a way to help fel
 
 ### Founder Bio
 
-**Jo Zakany** — Violist with The Cleveland Orchestra, Certified Yoga Instructor RYT-200, and Certified Health and Well-Being Coach DHWCT through Duke Integrative Medicine. Helping performers thrive on and off stage by kicking toxic grind culture to the curb.
+**Jo Zakany** — Performance & Well-Being Coach, Certified Yoga Instructor RYT-200, and Violist with The Cleveland Orchestra. Certified Health and Well-Being Coach DHWCT through Duke Integrative Medicine.
 
 ### Mission
 
-To help musicians, artists, and creatives find more balance in their lives by offering an alternative to "toxic grind culture" — helping them develop a kinder process in their work that ultimately leads to better results, so they can live a more balanced and thriving life.
+To help musicians, artists, and creatives find more balance in their lives by offering an alternative to "toxic grind culture". By focusing on their well-being, we help them develop a kinder process in their work that ultimately leads to better results, and helps them thrive on and off stage.
 
 ### Core Philosophy
 
@@ -60,13 +60,15 @@ To help musicians, artists, and creatives find more balance in their lives by of
 ### Key Phrases & Vocabulary
 
 - "Grind to Kind" — The shift from toxic hustle to self-compassion
-- "Progress over Perfection" — A shame-free mindset
+- "Excellence over Perfection" — A shame-free mindset
 - "Artist+" — Living a diverse life beyond your primary craft
 - "The Well-Being Wheel" — Holistic development framework
 - "Thriving, not just surviving"
 - "Kicking toxic grind culture to the curb"
 - "On and off stage"
 - "Inner critic to inner coach"
+- "Fellow Opus Creator"
+- "Your artistry shouldn't come at the cost of your humanity"
 - "Create your own mindful life, one opus at a time."
 
 ### Tone Variations
@@ -88,7 +90,6 @@ To help musicians, artists, and creatives find more balance in their lives by of
 | Logo | File | Usage |
 |------|------|-------|
 | Primary Wordmark | [`logos/logo-wordmark.png`](logos/logo-wordmark.png) | Primary logo — "MindfulOpus" with dot above O |
-| Lotus + Wordmark | [`logos/logo-v2-lotus-wordmark.png`](logos/logo-v2-lotus-wordmark.png) | Newer variant — lotus flower icon + MindfulOpus text |
 | Lotus Icon | [`logos/logo-icon-lotus.png`](logos/logo-icon-lotus.png) | Standalone lotus — section indicators, favicon, accents |
 | Podcast Logo | [`logos/podcast-logo-small.png`](logos/podcast-logo-small.png) | Podcast artwork — includes tagline (640x360) |
 | Podcast Header | [`logos/podcast-logo-wide-2048.png`](logos/podcast-logo-wide-2048.png) | Wide format — podcast header with tagline (2048x1152) |
@@ -112,9 +113,12 @@ To help musicians, artists, and creatives find more balance in their lives by of
 
 | File | Usage |
 |------|-------|
-| [`headshots/headshot-1.png`](headshots/headshot-1.png) | Headshot variant 1 |
-| [`headshots/headshot-2.png`](headshots/headshot-2.png) | Headshot variant 2 |
-| [`headshots/headshot-full.png`](headshots/headshot-full.png) | Full-length headshot |
+| [`headshots/main.jpg`](headshots/main.jpg) | Primary headshot |
+| [`headshots/outside-smile-main.jpg`](headshots/outside-smile-main.jpg) | Outdoor portrait |
+| [`headshots/smile-with-computer.jpg`](headshots/smile-with-computer.jpg) | At work |
+| [`headshots/jo-looking-down-computer.jpg`](headshots/jo-looking-down-computer.jpg) | Candid |
+| [`headshots/mug-lean-in.jpg`](headshots/mug-lean-in.jpg) | Portrait |
+| [`headshots/stairs-look-up.jpg`](headshots/stairs-look-up.jpg) | Lifestyle |
 
 ### Color Palette
 
@@ -285,7 +289,6 @@ brandkit/
 ├── brand-kit-canva.md          (Canva-optimized quick reference)
 ├── logos/
 │   ├── logo-wordmark.png              (441x96 — primary wordmark, dot above O)
-│   ├── logo-v2-lotus-wordmark.png     (lotus + MindfulOpus text)
 │   ├── logo-icon-lotus.png            (standalone lotus icon)
 │   ├── logo-square-solid-sage.png     (500x500 sage bg, white text)
 │   ├── logo-square-watercolor-blue.png  (500x500 watercolor blue)
@@ -297,8 +300,11 @@ brandkit/
 │   ├── podcast-cover-art-3000.png     (3000x3000 podcast cover)
 │   └── episode-artwork-template.png   (episode artwork template)
 ├── headshots/
-│   ├── headshot-1.png
-│   ├── headshot-2.png
-│   └── headshot-full.png
+│   ├── main.jpg
+│   ├── outside-smile-main.jpg
+│   ├── smile-with-computer.jpg
+│   ├── jo-looking-down-computer.jpg
+│   ├── mug-lean-in.jpg
+│   └── stairs-look-up.jpg
 └── audio/                             (pending — intro, outro, music)
 ```
