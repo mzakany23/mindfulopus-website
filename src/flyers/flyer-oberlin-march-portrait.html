@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindfulOpus - Part 2: From Inner-Critic to Inner-Coach (Portrait)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #d4d0cb;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  .flyer {
+    width: 816px;
+    height: 1056px;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* =============================================
+     HERO
+     ============================================= */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .hero-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+    filter: brightness(0.85);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(
+      170deg,
+      rgba(20, 60, 58, 0.82) 0%,
+      rgba(42, 125, 125, 0.55) 45%,
+      rgba(20, 50, 55, 0.7) 100%
+    );
+    pointer-events: none;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 90px;
+    background: linear-gradient(to top, #ffffff 0%, transparent 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .logo-container {
+    position: absolute;
+    top: 28px;
+    left: 40px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-container img {
+    height: 38px;
+    filter: brightness(0) invert(1);
+    opacity: 0.95;
+  }
+
+  .series-badge {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    z-index: 10;
+    color: rgba(255,255,255,0.9);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 7px 18px;
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    background: rgba(255,255,255,0.08);
+  }
+
+  .hero-text {
+    position: absolute;
+    bottom: 34px;
+    left: 40px;
+    right: 40px;
+    z-index: 10;
+  }
+
+  .hero-text .overline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: 1px;
+    text-transform: none;
+    color: rgba(255,255,255,0.88);
+    margin-bottom: 6px;
+    text-shadow:
+      0 1px 4px rgba(0, 0, 0, 0.4),
+      0 0 14px rgba(20, 50, 55, 0.45);
+  }
+
+  .hero-text h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 1.08;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    text-shadow:
+      0 2px 6px rgba(0, 0, 0, 0.3),
+      0 0 20px rgba(20, 50, 55, 0.35);
+  }
+
+  .hero-text h1 em {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .hero-text .hero-sub {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.93);
+    margin-top: 10px;
+    letter-spacing: 0.4px;
+    line-height: 1.55;
+    text-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.35),
+      0 0 14px rgba(20, 50, 55, 0.45);
+  }
+
+  /* =============================================
+     INTRO BAR — 4-column with teal background
+     ============================================= */
+  .intro-bar {
+    display: flex;
+    align-items: stretch;
+    padding: 14px 40px 12px 48px;
+    gap: 0;
+    background: #f2fafa;
+    border-bottom: 2px solid #2a7d7d;
+    flex-shrink: 0;
+  }
+
+  .intro-item {
+    flex: 1;
+    padding: 0 20px;
+    border-right: 1px solid #d4e8e8;
+  }
+
+  .intro-item:first-child { padding-left: 0; }
+  .intro-item:last-child { border-right: none; padding-right: 0; }
+
+  .intro-label {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #2a7d7d;
+    margin-bottom: 3px;
+  }
+
+  .intro-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #1a1a1a;
+    line-height: 1.4;
+  }
+
+  .intro-detail {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 9px;
+    color: #888;
+    margin-top: 2px;
+    font-weight: 400;
+  }
+
+  /* =============================================
+     MAIN CONTENT - Text left, Photos right
+     ============================================= */
+  .main-content {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 0;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  /* Left column */
+  .workshops {
+    padding: 18px 24px 14px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .workshop-intro {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #555;
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+
+  .workshop-intro strong {
+    color: #2a7d7d;
+    font-weight: 600;
+  }
+
+  .workshop {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0ede8;
+  }
+
+  .workshop:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .workshop-header {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 5px;
+  }
+
+  .workshop-part {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: #2a7d7d;
+    padding: 3px 9px;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+
+  .workshop-date {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 11px;
+    color: #999;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+
+  .workshop-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 6px;
+    line-height: 1.2;
+    font-style: italic;
+  }
+
+  .workshop-desc {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #555;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .workshop-takeaways {
+    list-style: none;
+  }
+
+  .workshop-takeaways li {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 11.5px;
+    color: #555;
+    line-height: 1.55;
+    padding-left: 13px;
+    position: relative;
+    margin-bottom: 3px;
+    font-weight: 400;
+  }
+
+  .workshop-takeaways li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 4.5px;
+    height: 4.5px;
+    border-radius: 50%;
+    background: #2a7d7d;
+    opacity: 0.5;
+  }
+
+  /* Right column - photo strip */
+  .photo-strip {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #ffffff;
+    padding-bottom: 4px;
+  }
+
+  .photo-strip-img {
+    flex: 1 1 0;
+    overflow: hidden;
+    position: relative;
+    min-height: 0;
+  }
+
+  .photo-strip-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .photo-strip-img::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(42, 125, 125, 0.03) 0%,
+      rgba(42, 125, 125, 0.06) 100%
+    );
+    pointer-events: none;
+  }
+
+  .photo-divider {
+    height: 3px;
+    background: #ffffff;
+    flex-shrink: 0;
+  }
+
+  /* =============================================
+     FOOTER
+     ============================================= */
+  .footer {
+    height: 72px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #1c3d3d 0%, #1a2f2f 100%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 10;
+  }
+
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .footer-logo img {
+    height: 20px;
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+  }
+
+  .footer-cta {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+  }
+
+  .footer-cta strong {
+    color: rgba(255,255,255,0.95);
+    font-weight: 600;
+  }
+
+  .footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+  }
+
+  .footer-link {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #5abfbf;
+    letter-spacing: 0.5px;
+  }
+
+  .footer-social {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.5px;
+  }
+
+  /* Deco */
+  .deco-line {
+    position: absolute;
+    top: 300px;
+    left: 40px;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, #2a7d7d, transparent);
+    z-index: 5;
+    opacity: 0.4;
+  }
+</style>
+</head>
+<body>
+
+<div class="flyer">
+
+  <!-- HERO SECTION -->
+  <div class="hero">
+    <img class="hero-bg"
+         src="/assets/images/nature.jpeg"
+         alt="Balanced stones - mindfulness">
+
+    <div class="logo-container">
+      <img src="/assets/images/logo-transparent.png" alt="MindfulOpus">
+    </div>
+
+    <div class="series-badge">Oberlin 2026</div>
+
+    <div class="hero-text">
+      <div class="overline">From Grind to Kind</div>
+      <h1>Part 2: From Inner-Critic<br>to Inner-Coach</h1>
+      <div class="hero-sub">
+        Tools and frameworks to help you practice smarter, perform freer,<br>
+        and honor your well-being.
+      </div>
+    </div>
+  </div>
+
+  <div class="deco-line"></div>
+
+  <!-- INTRO BAR — 4 columns -->
+  <div class="intro-bar">
+    <div class="intro-item">
+      <div class="intro-label">Led By</div>
+      <div class="intro-value">Jo Zakany</div>
+      <div class="intro-detail">Founder of MindfulOpus Coaching</div>
+    </div>
+    <div class="intro-item">
+      <div class="intro-label">Date</div>
+      <div class="intro-value">Monday, March 16</div>
+    </div>
+    <div class="intro-item">
+      <div class="intro-label">Time</div>
+      <div class="intro-value">5:30&ndash;6:30 pm</div>
+    </div>
+    <div class="intro-item">
+      <div class="intro-label">Location</div>
+      <div class="intro-value">Bibbins 238, Oberlin</div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- Left: Workshop details -->
+    <div class="workshops">
+      <div class="workshop-intro">
+        Rooted in the work Jo does with musicians in her private coaching practice, this session builds toward a more <strong>grounded, sustainable, and empowered</strong> experience&mdash;both on and off stage.
+      </div>
+
+      <!-- Part 2 -->
+      <div class="workshop">
+        <div class="workshop-header">
+          <span class="workshop-part">Part 2</span>
+          <span class="workshop-date">Monday, March 16th</span>
+        </div>
+        <div class="workshop-title">From Inner-Critic to Inner-Coach</div>
+        <div class="workshop-desc">
+          Learn how to cultivate an inner-coach that offers you refuge from the pain
+          of beating yourself up, and allows instead for the freedom of supporting yourself
+          towards your goals.
+        </div>
+        <ul class="workshop-takeaways">
+          <li>Distinguish between critical and constructive self-talk</li>
+          <li>Interrupt negative self-talk in real time</li>
+          <li>Cultivate an inner coach that keeps you grounded, motivated, and self-respecting&mdash;even under pressure</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right: Photo strip (2 photos) -->
+    <div class="photo-strip">
+      <div class="photo-strip-img" style="flex: 1.5 1 0;">
+        <img src="/assets/images/headshot-full.png"
+             alt="Jo Zakany"
+             style="object-position: center 18%;">
+      </div>
+      <div class="photo-divider"></div>
+      <div class="photo-strip-img" style="flex: 1 1 0;">
+        <img src="/assets/images/orchestra.png"
+             alt="The Cleveland Orchestra at Severance Hall"
+             style="object-position: center 100%;">
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">
+      <div class="footer-logo">
+        <img src="/assets/images/logo-transparent.png" alt="MindfulOpus">
+      </div>
+      <div class="footer-cta">
+        <strong>Hope to see you there!</strong>
+      </div>
+    </div>
+    <div class="footer-right">
+      <div class="footer-link">mindfulopus.com</div>
+      <div class="footer-social">@Mindfulopus &middot; The MindfulOpus Podcast</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
