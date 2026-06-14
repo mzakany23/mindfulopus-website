@@ -3,7 +3,3 @@ dist
 .DS_Store
 .prettierrc
 conversation
-# Conversation logs (local development tracking)
-conversation/
-.playwright-mcp/
-*.zip
