@@ -21,6 +21,8 @@ permalink: /
       --teal-deep: #1f6666;
       --sage: #8f9c92;
       --foam: #f4f7f5;
+      --ember: #c45c4a;
+      --ember-deep: #a84838;
       --paper: #ffffff;
       --line: rgba(16, 24, 22, 0.07);
       --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -43,7 +45,43 @@ permalink: /
       -webkit-font-smoothing: antialiased;
     }
     img { max-width: 100%; display: block; }
+    /* Soft paper grain — last-mile texture without heavy assets */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+      mix-blend-mode: multiply;
+    }
+    .podcast {
+      isolation: isolate;
+    }
+    .podcast::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.07;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 160px 160px;
+      mix-blend-mode: soft-light;
+    }
+    .podcast > .wrap { position: relative; z-index: 1; }
     a { color: inherit; }
+    ::selection {
+      background: rgba(42, 125, 125, 0.28);
+      color: var(--ink);
+    }
+    .podcast ::selection,
+    .band ::selection {
+      background: rgba(196, 92, 74, 0.45);
+      color: #fff;
+    }
     .wrap {
       width: min(var(--max), calc(100% - 2.75rem));
       margin-inline: auto;
@@ -85,19 +123,36 @@ permalink: /
       padding: 0;
     }
     .nav-links a {
+      position: relative;
       text-decoration: none;
       font-size: 0.92rem;
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--ink-soft);
-      border-bottom: 1.5px solid transparent;
-      padding-bottom: 0.15rem;
+      padding-bottom: 0.2rem;
+      border-bottom: none;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1.5px;
+      background: var(--teal);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 280ms var(--ease);
     }
     .nav-links a:hover { color: var(--teal-deep); }
+    .nav-links a:hover::after { transform: scaleX(0.55); opacity: 0.55; }
     .nav-links a.is-active {
       color: var(--teal-deep);
-      border-bottom-color: var(--teal);
+    }
+    .nav-links a.is-active::after {
+      transform: scaleX(1);
+      opacity: 1;
     }
     .nav-cta {
       color: var(--teal-deep) !important;
@@ -251,6 +306,16 @@ permalink: /
       color: var(--ink);
       line-height: 1;
     }
+    .name-opus {
+      color: var(--teal);
+    }
+    .btn .name-opus {
+      color: #d7f0ec;
+    }
+    .podcast .name-opus,
+    .nav-links .name-opus {
+      color: #8fd0c8;
+    }
     .brand-inline {
       display: inline-block;
       height: 1.15em;
@@ -388,6 +453,10 @@ permalink: /
       margin-left: 0.35rem;
       transition: transform 180ms var(--ease);
     }
+    .offer-go {
+      transition: color 160ms var(--ease), transform 180ms var(--ease);
+    }
+    .offer:hover .offer-go { transform: translateY(-1px); }
     .offer:hover .offer-go span { transform: translateX(3px); }
     @media (max-width: 800px) {
       .offer-layout { grid-template-columns: 1fr; }
@@ -485,7 +554,7 @@ permalink: /
       font-size: clamp(2rem, 3.6vw, 2.75rem);
       letter-spacing: -0.02em;
     }
-    .studentopus-band h2 .opus { color: var(--teal); }
+    .studentopus-band h2 .name-opus { color: var(--teal); }
     .studentopus-band p {
       margin: 0 0 1.25rem;
       color: var(--ink-soft);
@@ -566,23 +635,33 @@ permalink: /
     /* —— Podcast —— */
     .podcast-top {
       display: grid;
-      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.25fr);
-      gap: clamp(1.75rem, 4vw, 3.25rem);
-      align-items: center;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
+      gap: clamp(1.5rem, 3.5vw, 2.75rem);
+      align-items: start;
       margin-bottom: 2.5rem;
     }
     .podcast-about {
       display: flex;
       flex-direction: column;
-      gap: 1.15rem;
-      max-width: 28rem;
+      gap: 0.85rem;
+      min-width: 0; /* prevent text bleed into right column */
+      max-width: 34rem;
     }
-    .podcast-about .platform-row { margin-top: 0.35rem; }
-    .podcast-blurb {
+    .podcast-about .section-title {
+      margin-bottom: 0;
+    }
+    .podcast-about .section-lede {
       margin: 0;
-      color: rgba(244,247,245,0.9);
-      max-width: none;
-      font-size: clamp(1.2rem, 2.2vw, 1.4rem);
+      max-width: 100%;
+      color: rgba(244,247,245,0.78);
+      font-size: 1.05rem;
+    }
+    .podcast-about .platform-row { margin-top: 0.55rem; }
+    .podcast-blurb {
+      margin: 0.35rem 0 0;
+      color: rgba(244,247,245,0.92);
+      max-width: 100%;
+      font-size: clamp(1.15rem, 2vw, 1.32rem);
       line-height: 1.45;
       font-family: var(--display);
       font-weight: 400;
@@ -785,6 +864,7 @@ permalink: /
     .article-year:first-child .year-label { margin-top: 0.25rem; }
     .article-year + .article-year { margin-top: 1.5rem; }
     .podcast {
+      position: relative;
       background:
         radial-gradient(900px 420px at 12% 0%, rgba(143, 208, 200, 0.18), transparent 55%),
         radial-gradient(700px 380px at 100% 30%, rgba(42, 125, 125, 0.35), transparent 50%),
@@ -794,12 +874,13 @@ permalink: /
     .podcast .section-lede { color: rgba(244,247,245,0.78); }
     .podcast .brand-heading .brand-suffix { color: #f4f7f5; }
     .podcast .platform {
-      border-color: rgba(255,255,255,0.22);
+      border-color: rgba(255,255,255,0.28);
       color: #f4f7f5;
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.08);
     }
     .podcast .platform:hover {
-      border-color: #8fd0c8;
+      border-color: #fff;
+      background: rgba(255,255,255,0.16);
       color: #fff;
     }
     .podcast .season-label {
@@ -814,8 +895,22 @@ permalink: /
     .podcast .episode-body .stack-meta strong { color: #8fd0c8; }
     .podcast .episode-links a { color: #8fd0c8; }
     .podcast .btn-show-more {
-      color: #f4f7f5;
-      border-color: rgba(255,255,255,0.28);
+      color: #fff;
+      background: var(--ember);
+      border-color: var(--ember);
+      padding: 0.8rem 1.35rem;
+      font-size: 0.84rem;
+      box-shadow: 0 12px 28px rgba(196, 92, 74, 0.28);
+    }
+    .podcast .btn-show-more {
+      transition: background 160ms var(--ease), border-color 160ms var(--ease), color 160ms var(--ease), transform 180ms var(--ease), box-shadow 180ms var(--ease);
+    }
+    .podcast .btn-show-more:hover {
+      background: var(--ember-deep);
+      border-color: var(--ember-deep);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(196, 92, 74, 0.38);
     }
     .podcast .podcast-latest {
       background: rgba(255,255,255,0.12);
@@ -882,7 +977,15 @@ permalink: /
       color: var(--ink-soft);
       transition: border-color 160ms var(--ease), color 160ms var(--ease), background 160ms var(--ease);
     }
-    .platform:hover { border-color: var(--teal); color: var(--teal-deep); }
+    .platform {
+      transition: border-color 160ms var(--ease), color 160ms var(--ease), background 160ms var(--ease), transform 180ms var(--ease), box-shadow 180ms var(--ease);
+    }
+    .platform:hover {
+      border-color: var(--teal);
+      color: var(--teal-deep);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(16, 24, 22, 0.08);
+    }
     .platform svg { width: 1rem; height: 1rem; flex-shrink: 0; }
     .episode-list {
       list-style: none;
@@ -1178,6 +1281,14 @@ permalink: /
         filter: none;
         transition: none;
       }
+      .nav-links a::after,
+      .platform, .btn, .offer-go, .podcast .btn-show-more {
+        transition: none !important;
+      }
+      .platform:hover, .btn:hover, .offer:hover .offer-go, .podcast .btn-show-more:hover {
+        transform: none !important;
+        box-shadow: none !important;
+      }
     }
 
     .about, .offerings, .contact { background: var(--paper); }
@@ -1251,7 +1362,15 @@ permalink: /
       border: 1.5px solid var(--teal);
       transition: background 180ms var(--ease), border-color 180ms var(--ease);
     }
-    .btn:hover { background: var(--teal-deep); border-color: var(--teal-deep); }
+    .btn {
+      transition: background 160ms var(--ease), border-color 160ms var(--ease), transform 180ms var(--ease), box-shadow 180ms var(--ease);
+    }
+    .btn:hover {
+      background: var(--teal-deep);
+      border-color: var(--teal-deep);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(31, 102, 102, 0.28);
+    }
     .btn svg { width: 1rem; height: 1rem; }
     .btn-ghost {
       background: transparent;
@@ -1405,7 +1524,7 @@ permalink: /
       <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#offerings">Work</a></li>
-        <li><a href="#studentopus">StudentOpus</a></li>
+        <li><a href="#studentopus">Student<span class="name-opus">Opus</span></a></li>
         <li><a href="#podcast">Podcast</a></li>
         <li><a href="#newsletter">Newsletter</a></li>
         <li><a class="nav-cta" href="#contact">Work with me</a></li>
@@ -1504,12 +1623,12 @@ permalink: /
     <section class="studentopus-band reveal" id="studentopus">
       <div class="wrap">
         <div>
-          <h2 class="anim anim-d1">Student<span class="opus">Opus</span></h2>
+          <h2 class="anim anim-d1">Student<span class="name-opus">Opus</span></h2>
           <p class="anim anim-d2">
             A monthly drop-in space for college and conservatory musicians —
             community, coaching, and a kinder pace when school culture pushes grind.
           </p>
-          <a class="btn anim anim-d3" href="/studentopus/">Visit StudentOpus</a>
+          <a class="btn anim anim-d3" href="/studentopus/">Visit Student<span class="name-opus">Opus</span></a>
         </div>
         <figure class="studentopus-photo anim anim-d2">
           <img src="/assets/images/jpz-standing.jpg" alt="Jo Zakany" />
@@ -1544,14 +1663,13 @@ permalink: /
     </section>
 <section class="podcast reveal" id="podcast">
       <div class="wrap">
-        <h2 class="section-title brand-heading anim anim-d1">
-          <img class="brand-mark" src="/assets/images/logos/wordmark-duo-light.png" alt="MindfulOpus" />
-          <span class="brand-suffix">Podcast</span>
-        </h2>
-        <p class="section-lede anim anim-d2">{{ podcast.tagline }}</p>
-
         <div class="podcast-top">
-          <div class="podcast-about anim anim-d3">
+          <div class="podcast-about anim anim-d1">
+            <h2 class="section-title brand-heading">
+              <img class="brand-mark" src="/assets/images/logos/wordmark-duo-light.png" alt="MindfulOpus" />
+              <span class="brand-suffix">Podcast</span>
+            </h2>
+            <p class="section-lede">{{ podcast.tagline }}</p>
             <p class="podcast-blurb">
               Conversations and tools for classical musicians who want to thrive on and off stage —
               without the toxic grind.
@@ -1574,7 +1692,7 @@ permalink: /
           </div>
 
           {% set latest = episodes.episodes[0] %}
-          <div class="anim anim-d4">
+          <div class="anim anim-d2">
             <p class="podcast-latest-label">Most recent episode</p>
             <a class="podcast-latest" href="{{ latest.links.youtube }}" target="_blank" rel="noopener noreferrer">
               <div class="podcast-latest-thumb">
