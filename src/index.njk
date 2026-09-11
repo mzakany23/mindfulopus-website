@@ -226,15 +226,27 @@ permalink: /
       z-index: 1;
       width: min(44rem, calc(100% - 2.5rem));
       padding: 0 0 clamp(4.5rem, 12vh, 7rem);
-      opacity: 0;
-      transform: translateY(1.25rem);
-      transition: opacity 900ms var(--ease), transform 900ms var(--ease);
       will-change: opacity, transform;
     }
-    .hero.is-ready .hero-copy {
+    /* Same fade-up language as .reveal .anim, staggered on load */
+    .hero-copy > * {
+      opacity: 0;
+      transform: translate3d(0, 1.35rem, 0);
+      filter: blur(6px);
+      transition:
+        opacity 900ms var(--ease),
+        transform 900ms var(--ease),
+        filter 900ms var(--ease);
+      will-change: opacity, transform, filter;
+    }
+    .hero.is-ready .hero-copy > * {
       opacity: 1;
       transform: none;
+      filter: blur(0);
     }
+    .hero.is-ready .hero-copy > *:nth-child(1) { transition-delay: 80ms; }
+    .hero.is-ready .hero-copy > *:nth-child(2) { transition-delay: 200ms; }
+    .hero.is-ready .hero-copy > *:nth-child(3) { transition-delay: 320ms; }
     .hero h1 {
       margin: 0 0 1rem;
       font-family: var(--display);
@@ -1266,9 +1278,23 @@ permalink: /
     .photo-strip.reveal.is-in figure:nth-child(1) { transition-delay: 60ms; }
     .photo-strip.reveal.is-in figure:nth-child(2) { transition-delay: 160ms; }
     .photo-strip.reveal.is-in figure:nth-child(3) { transition-delay: 260ms; }
+    /* Full-bleed band image uses the same reveal language as photo-strip figures */
+    .band.reveal .band-media img {
+      opacity: 0;
+      transform: translate3d(0, 1.5rem, 0) scale(1.06);
+      filter: blur(8px);
+      transition: opacity 1000ms var(--ease), transform 1000ms var(--ease), filter 1000ms var(--ease);
+    }
+    .band.reveal.is-in .band-media img {
+      opacity: 1;
+      transform: none;
+      filter: blur(0);
+    }
     @media (prefers-reduced-motion: reduce) {
       .reveal .anim,
-      .photo-strip.reveal figure {
+      .photo-strip.reveal figure,
+      .band.reveal .band-media img,
+      .hero-copy > * {
         opacity: 1;
         transform: none;
         filter: none;
@@ -1491,7 +1517,7 @@ permalink: /
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .hero-copy { opacity: 1; transform: none; transition: none; }
+      .hero-copy > * { opacity: 1; transform: none; filter: none; transition: none; }
       .hero-media, .band-media { transform: none !important; will-change: auto; }
       .episode-thumb img { transition: none; }
       .story-track { animation: none; }
@@ -1657,18 +1683,18 @@ permalink: /
 <section class="podcast reveal" id="podcast">
       <div class="wrap">
         <div class="podcast-top">
-          <div class="podcast-about anim anim-d1">
-            <h2 class="section-title brand-heading">
+          <div class="podcast-about">
+            <h2 class="section-title brand-heading anim anim-d1">
               <img class="brand-mark" src="/assets/images/logos/wordmark-duo-light.png" alt="MindfulOpus" />
               <span class="brand-suffix">Podcast</span>
             </h2>
-            <p class="section-lede">{{ podcast.tagline }}</p>
-            <p class="podcast-blurb">
+            <p class="section-lede anim anim-d2">{{ podcast.tagline }}</p>
+            <p class="podcast-blurb anim anim-d3">
               Conversations and tools for classical musicians who want to thrive on and off stage —
               without the toxic grind.
             </p>
-            <p class="podcast-host-line">Hosted by <strong>{{ podcast.host.name }}</strong></p>
-            <div class="platform-row" aria-label="Listen on">
+            <p class="podcast-host-line anim anim-d4">Hosted by <strong>{{ podcast.host.name }}</strong></p>
+            <div class="platform-row anim anim-d5" aria-label="Listen on">
               <a class="platform" href="{{ site.podcast.spotify }}" target="_blank" rel="noopener noreferrer">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
                 Spotify
@@ -1685,7 +1711,7 @@ permalink: /
           </div>
 
           {% set latest = episodes.episodes[0] %}
-          <div class="anim anim-d2">
+          <div class="anim anim-d3">
             <p class="podcast-latest-label">Most recent episode</p>
             <a class="podcast-latest" href="{{ latest.links.youtube }}" target="_blank" rel="noopener noreferrer">
               <div class="podcast-latest-thumb">
@@ -1711,7 +1737,7 @@ permalink: /
         </div>
 
         {% for group in episodes.episodes | groupBySeason %}
-        <div class="season-block anim anim-d5">
+        <div class="season-block anim anim-d6">
           <h3 class="season-label">{{ group.label }}</h3>
           <ul class="episode-list">
             {% for episode in group.episodes %}
@@ -1749,7 +1775,7 @@ permalink: /
         {% endfor %}
 
         {% if episodes.episodes.length > 5 %}
-        <div class="show-more-wrap">
+        <div class="show-more-wrap anim anim-d7">
           <button type="button" class="btn-show-more" id="show-more-episodes" data-expanded="false">
             Show more episodes
           </button>
@@ -1788,13 +1814,13 @@ permalink: /
         {% endfor %}
 
         {% if articles.articles.length > 5 %}
-        <div class="show-more-wrap">
+        <div class="show-more-wrap anim anim-d4">
           <button type="button" class="btn-show-more" id="show-more-articles" data-expanded="false">
             Show more articles
           </button>
         </div>
         {% endif %}
-        <div class="newsletter-actions anim anim-d4">
+        <div class="newsletter-actions anim anim-d5">
           <a class="btn" href="{{ site.newsletter.subscribe }}" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/></svg>
             Subscribe to newsletter
@@ -1823,11 +1849,11 @@ permalink: /
       <div class="wrap">
         <h2 class="section-title anim anim-d1">Work with me</h2>
         <p class="section-lede anim anim-d2">Complimentary consultation — email, Instagram, or book a Zoom call below.</p>
-        <p class="contact-meta">
+        <p class="contact-meta anim anim-d3">
           <a href="mailto:contact@mindfulopus.com">contact@mindfulopus.com</a>
           <a href="https://instagram.com/mindfulopus" target="_blank" rel="noopener noreferrer">@mindfulopus</a>
         </p>
-        <div class="calendly-shell anim anim-d3">
+        <div class="calendly-shell anim anim-d4">
           <div class="calendly-inline-widget" data-url="https://calendly.com/mindfulopus/30min" style="min-width:320px;height:630px;"></div>
         </div>
         <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
@@ -1835,13 +1861,13 @@ permalink: /
     </section>
   </main>
 
-  <footer class="footer">
+  <footer class="footer reveal">
     <div class="wrap footer-inner">
-      <a class="footer-brand" href="#top" aria-label="MindfulOpus home">
+      <a class="footer-brand anim anim-d1" href="#top" aria-label="MindfulOpus home">
         <img src="/assets/images/logos/wordmark-duo.png" alt="MindfulOpus" />
       </a>
-      <span class="footer-tag">Performance &amp; well-being coaching for classical musicians</span>
-      <span class="footer-year">© {{ page.date.getFullYear() }}</span>
+      <span class="footer-tag anim anim-d2">Performance &amp; well-being coaching for classical musicians</span>
+      <span class="footer-year anim anim-d3">© {{ page.date.getFullYear() }}</span>
     </div>
   </footer>
 
