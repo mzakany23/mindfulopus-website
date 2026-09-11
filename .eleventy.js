@@ -10,6 +10,7 @@ module.exports = function (config) {
 
   // PASSTHROUGHS
   config.addPassthroughCopy("src/assets/images/");
+  config.addPassthroughCopy("src/studentopus/assets/");
   config.addPassthroughCopy("src/assets/vendor/css/bootstrap.min.css");
   config.addPassthroughCopy("src/assets/vendor/css/materialdesignicons.min.css");
   config.addPassthroughCopy("src/assets/vendor/css/pe-icon-7-stroke.css");
