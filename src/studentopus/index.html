@@ -93,7 +93,6 @@
     .brand-student {
       display: inline-flex;
       align-items: baseline;
-      padding-top: 0.42em;
       font-size: clamp(1.75rem, 2.8vw, 2.2rem);
       letter-spacing: -0.01em;
       white-space: nowrap;
@@ -110,43 +109,6 @@
       font-size: 1.12em;
       letter-spacing: 0.08em;
       color: var(--teal);
-    }
-    .brand-o {
-      position: relative;
-      display: inline-block;
-    }
-    .brand-crown {
-      position: absolute;
-      left: 50%;
-      top: -0.3em;
-      width: 0.58em;
-      height: 0.36em;
-      transform: translateX(-50%);
-      pointer-events: none;
-    }
-    .brand-crown::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 0.06em;
-      width: 0.13em;
-      height: 0.13em;
-      border-radius: 50%;
-      background: var(--teal-night);
-      transform: translateX(-50%);
-    }
-    .brand-crown::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 0;
-      width: 0.52em;
-      height: 0.24em;
-      border: 1.6px solid var(--teal-night);
-      border-bottom: 0;
-      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-      transform: translateX(-50%);
-      box-sizing: border-box;
     }
     .brand-by {
       display: flex;
@@ -899,7 +861,14 @@
       .brand-student { font-size: 1.65rem; }
       .hero h1 { max-width: none; }
       .photo-frame { max-height: 420px; aspect-ratio: 5 / 4; }
-      .hero-quote { margin: -2.4rem 0.75rem 0; transform: none; }
+      /* Keep quote below the photo — no overlap covering Jo on stacked layouts */
+      .hero-quote {
+        margin: 1.15rem 0 0;
+        transform: none;
+        border-radius: 22px;
+        padding: 1.15rem 1.2rem 1.05rem;
+      }
+      .hero-quote p { font-size: 1rem; }
       .month { padding: 5rem 0 5.5rem; }
       .month-intro { margin-bottom: 2rem; }
       .journey-label { font-size: 0.7rem; }
@@ -913,6 +882,12 @@
       section { padding: 3.75rem 0; }
       .month { padding: 4.5rem 0 5rem; }
       .month-card { border-radius: 24px; min-height: 0; }
+      .photo-frame { max-height: 360px; border-radius: 22px; }
+      .hero-quote { margin-top: 1rem; padding: 1rem 1.05rem 0.95rem; }
+      .hero-quote .quote-mark { font-size: 2.4rem; }
+      .hero-quote p { font-size: 0.98rem; }
+      .actions { flex-direction: column; align-items: stretch; }
+      .actions .btn { width: 100%; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -936,7 +911,7 @@
       <a class="brand" href="#start" id="top" aria-label="StudentOpus by MindfulOpus">
         <span class="brand-lockup">
           <span class="brand-student" aria-hidden="true">
-            <span class="s-student">Student</span><span class="s-opus"><span class="brand-o">O<span class="brand-crown"></span></span>pus</span>
+            <span class="s-student">Student</span><span class="s-opus">Opus</span>
           </span>
           <span class="brand-by">
             <span class="brand-by-text">by</span>
