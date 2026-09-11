@@ -9,7 +9,6 @@
         </div>
 
         <div class="row align-items-center">
-            <!-- Podcast Trailer Video -->
             <div class="col-lg-5 col-md-5 mb-4 mb-lg-0">
                 <div class="podcast-video-wrapper">
                     <div class="podcast-video">
@@ -25,19 +24,16 @@
                 </div>
             </div>
 
-            <!-- Podcast Description -->
             <div class="col-lg-7 col-md-7">
                 <div class="podcast-content">
                     <h4 class="mb-4">About the Podcast</h4>
                     <p class="podcast-description">{{ podcast.description }}</p>
 
-                    <!-- Host Info -->
                     <div class="podcast-host mt-4">
                         <h5>Hosted by {{ podcast.host.name }}</h5>
                         <p class="text-muted">{{ podcast.host.bio }}</p>
                     </div>
 
-                    <!-- Listen Buttons -->
                     <div class="podcast-listen-buttons mt-4">
                         <h5 class="mb-3">Listen Now</h5>
                         <div class="d-flex flex-wrap gap-3">
@@ -59,41 +55,27 @@
             </div>
         </div>
 
-        <!-- Episodes Section -->
-        <div class="row justify-content-center mt-5 pt-5">
-            <div class="col-lg-12">
-                <h4 class="text-center mb-5">Recent Episodes</h4>
-                <div class="row" id="episodes-container">
+        <div class="row justify-content-center mt-5 pt-4">
+            <div class="col-lg-10">
+                <h4 class="mb-4">Recent Episodes</h4>
+                <ul class="stack-list" id="episodes-container">
                     {% for episode in episodes.episodes %}
-                    <div class="col-lg-6 mb-4 episode-item{% if loop.index > 6 %} episode-paginated episode-hidden{% endif %}">
-                        <div class="episode-card">
-                            <div class="episode-header">
-                                <div class="episode-meta">
-                                    <span class="episode-number">{% if episode.isTrailer %}Trailer{% else %}Episode {{ episode.episodeNumber }}{% endif %}</span>
-                                    <span class="episode-duration">
-                                        <i class="mdi mdi-clock-outline"></i>
-                                        {{ episode.duration }}
-                                    </span>
-                                </div>
-                                <div class="episode-date">{{ episode.date | dateFilter }}</div>
-                            </div>
-                            <h5 class="episode-title">{{ episode.title }}</h5>
-                            <p class="episode-description">{{ episode.description }}</p>
-                            <div class="episode-links">
-                                <a href="{{ episode.links.spotify }}" target="_blank" rel="noopener noreferrer" class="episode-link episode-link-spotify" title="Listen on Spotify">
-                                    <i class="mdi mdi-spotify"></i>
-                                </a>
-                                <a href="{{ episode.links.youtube }}" target="_blank" rel="noopener noreferrer" class="episode-link episode-link-youtube" title="Watch on YouTube">
-                                    <i class="mdi mdi-youtube"></i>
-                                </a>
-                                <a href="{{ episode.links.applePodcast }}" target="_blank" rel="noopener noreferrer" class="episode-link episode-link-apple" title="Listen on Apple Podcasts">
-                                    <i class="mdi mdi-podcast"></i>
-                                </a>
-                            </div>
+                    <li class="stack-item episode-item{% if loop.index > 6 %} episode-paginated episode-hidden{% endif %}">
+                        <div class="stack-meta">
+                            <span class="stack-meta-strong">{% if episode.isTrailer %}Trailer{% else %}Episode {{ episode.episodeNumber }}{% endif %}</span>
+                            <span>{{ episode.duration }}</span>
+                            <span>{{ episode.date | dateFilter }}</span>
                         </div>
-                    </div>
+                        <h5 class="stack-title">{{ episode.title }}</h5>
+                        <p class="stack-excerpt">{{ episode.description }}</p>
+                        <div class="stack-actions">
+                            <a href="{{ episode.links.spotify }}" target="_blank" rel="noopener noreferrer" class="stack-platform">Spotify</a>
+                            <a href="{{ episode.links.youtube }}" target="_blank" rel="noopener noreferrer" class="stack-platform">YouTube</a>
+                            <a href="{{ episode.links.applePodcast }}" target="_blank" rel="noopener noreferrer" class="stack-platform">Apple Podcasts</a>
+                        </div>
+                    </li>
                     {% endfor %}
-                </div>
+                </ul>
                 {% if episodes.episodes.length > 6 %}
                 <div class="text-center mt-4">
                     <button class="btn btn-outline-secondary btn-show-more" id="show-more-episodes" onclick="toggleEpisodes()">
@@ -111,18 +93,14 @@
 
                         paginatedEpisodes.forEach(ep => {
                             if (isExpanded) {
-                                // Collapse: hide the episodes
                                 ep.classList.add('episode-hidden');
                             } else {
-                                // Expand: show the episodes
                                 ep.classList.remove('episode-hidden');
                             }
                         });
 
-                        // Toggle button state
                         btn.classList.toggle('expanded');
 
-                        // Toggle button text/icons
                         const showMoreText = btn.querySelector('.show-more-text');
                         const showLessText = btn.querySelector('.show-less-text');
                         const showMoreIcon = btn.querySelector('.show-more-icon');
