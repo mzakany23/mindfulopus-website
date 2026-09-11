@@ -12,7 +12,7 @@
       /* Dark type on light grounds — never invert this relationship for body copy */
       --ink: #14201d;
       --ink-soft: #243632;
-      --muted: #314642;
+      --muted: #2a3c38;
       --teal: #2f8585;
       --teal-mid: #3a9494;
       --teal-deep: #246e6e;
@@ -40,8 +40,8 @@
     body {
       margin: 0;
       font-family: "Source Sans Pro", sans-serif;
-      font-size: 18px;
-      line-height: 1.75;
+      font-size: 19.5px;
+      line-height: 1.78;
       color: var(--ink);
       background: var(--foam);
       font-weight: 400;
@@ -392,16 +392,16 @@
     }
     .hero .lede {
       margin: 1.4rem 0 1.85rem;
-      font-size: clamp(1.08rem, 1.6vw, 1.22rem);
+      font-size: clamp(1.16rem, 1.75vw, 1.32rem);
       font-weight: 400;
       color: var(--muted);
       max-width: 42ch;
-      line-height: 1.7;
+      line-height: 1.72;
     }
     .actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
     .meta {
       margin-top: 1.15rem;
-      font-size: 0.98rem;
+      font-size: 1.06rem;
       color: var(--muted);
     }
 
@@ -443,8 +443,8 @@
     }
     .hero-quote p {
       margin: 0.55rem 0 0;
-      font-size: 1.05rem;
-      line-height: 1.55;
+      font-size: 1.12rem;
+      line-height: 1.6;
       color: var(--ink-soft);
       font-weight: 400;
     }
@@ -499,11 +499,12 @@
       color: var(--ink);
     }
     .copy {
-      font-size: 1.12rem;
+      font-size: 1.2rem;
       font-weight: 400;
       color: var(--muted);
       max-width: 62ch;
       margin: 0;
+      line-height: 1.72;
     }
 
     .month {
@@ -527,9 +528,9 @@
     .month-intro p {
       margin: 0;
       color: var(--muted);
-      font-size: 1.15rem;
+      font-size: 1.22rem;
       max-width: 48ch;
-      line-height: 1.65;
+      line-height: 1.7;
     }
     .month-card {
       display: grid;
@@ -575,9 +576,9 @@
     }
     .month-main .copy {
       color: var(--muted);
-      font-size: 1.12rem;
+      font-size: 1.2rem;
       max-width: 38ch;
-      line-height: 1.65;
+      line-height: 1.7;
     }
     .session {
       padding: clamp(2rem, 4vw, 3rem);
@@ -680,7 +681,7 @@
       font-size: 1.12rem;
       color: var(--ink);
     }
-    .point p { margin: 0; color: var(--muted); font-size: 1rem; }
+    .point p { margin: 0; color: var(--muted); font-size: 1.08rem; line-height: 1.65; }
     .point-mark {
       width: 28px;
       height: 2px;
@@ -745,9 +746,10 @@
     .step p {
       margin: 0 auto;
       color: var(--muted);
-      font-size: 1rem;
+      font-size: 1.08rem;
       text-align: center;
       max-width: 22ch;
+      line-height: 1.65;
     }
 
     .faq {
@@ -761,8 +763,8 @@
       border-top: 1px solid var(--line);
       background: transparent;
     }
-    .faq-item h3 { margin: 0 0 0.4rem; font-size: 1.12rem; font-weight: 600; color: var(--ink); }
-    .faq-item p { margin: 0; color: var(--muted); }
+    .faq-item h3 { margin: 0 0 0.4rem; font-size: 1.16rem; font-weight: 600; color: var(--ink); }
+    .faq-item p { margin: 0; color: var(--muted); font-size: 1.1rem; line-height: 1.7; }
 
     .closing {
       position: relative;
