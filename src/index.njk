@@ -633,17 +633,26 @@ permalink: /
       display: block;
       text-decoration: none;
       color: inherit;
-      border: 1px solid var(--line);
-      background: var(--paper);
+      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.12);
       overflow: hidden;
-      transition: border-color 160ms var(--ease);
+      border-radius: 1.4rem;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform 220ms var(--ease), box-shadow 220ms var(--ease), border-color 220ms var(--ease);
     }
-    .podcast-latest:hover { border-color: var(--teal); }
+    .podcast-latest:hover {
+      border-color: rgba(143, 208, 200, 0.6);
+      transform: translateY(-5px);
+      box-shadow: 0 36px 84px rgba(0, 0, 0, 0.48);
+    }
     .podcast-latest-thumb {
       position: relative;
       aspect-ratio: 16 / 9;
       background: #dfe6e2;
       overflow: hidden;
+      border-radius: 1.4rem 1.4rem 0 0;
     }
     .podcast-latest-thumb img {
       width: 100%;
@@ -758,16 +767,19 @@ permalink: /
     }
 
     .year-label {
-      margin: 1.35rem 0 0.35rem;
-      padding-bottom: 0.45rem;
-      border-bottom: 1px solid var(--line);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      margin: 2.1rem 0 0.85rem;
+      padding: 0 0 0.7rem;
+      border-bottom: 2px solid rgba(42, 125, 125, 0.3);
+      font-family: var(--display);
+      font-size: clamp(1.7rem, 3.2vw, 2.2rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      text-transform: none;
       color: var(--teal-deep);
+      line-height: 1;
     }
-    .article-year:first-child .year-label { margin-top: 0; }
+    .article-year:first-child .year-label { margin-top: 0.25rem; }
+    .article-year + .article-year { margin-top: 1.5rem; }
     .podcast {
       background:
         radial-gradient(900px 420px at 12% 0%, rgba(143, 208, 200, 0.18), transparent 55%),
@@ -802,8 +814,8 @@ permalink: /
       border-color: rgba(255,255,255,0.28);
     }
     .podcast .podcast-latest {
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.24);
     }
     .podcast .podcast-latest-body h3 { color: #fff; }
     .podcast .podcast-latest-body p { color: rgba(244,247,245,0.75); }
@@ -985,16 +997,41 @@ permalink: /
     }
     /* Seamless section bridges — pure gradient, no blur band / hard edge */
     .bridge {
-      height: clamp(4.5rem, 10vw, 7.5rem);
+      height: clamp(7rem, 15vw, 12rem);
       pointer-events: none;
       margin: 0;
       border: 0;
+      position: relative;
+      overflow: hidden;
     }
     .bridge-to-podcast {
-      background: linear-gradient(180deg, var(--foam) 0%, #102422 100%);
+      background: linear-gradient(
+        180deg,
+        var(--foam) 0%,
+        rgba(244,247,245,0.8) 20%,
+        rgba(16,36,34,0.28) 52%,
+        rgba(16,36,34,0.82) 78%,
+        #102422 100%
+      );
     }
     .bridge-from-podcast {
-      background: linear-gradient(180deg, #1a4f4b 0%, var(--foam) 100%);
+      background: linear-gradient(
+        180deg,
+        #1a4f4b 0%,
+        rgba(26,79,75,0.88) 16%,
+        rgba(26,79,75,0.4) 40%,
+        rgba(244,247,245,0.5) 70%,
+        var(--foam) 100%
+      );
+    }
+    .bridge-from-podcast::before {
+      content: "";
+      position: absolute;
+      inset: -18% 0;
+      background: inherit;
+      filter: blur(18px);
+      opacity: 0.65;
+      pointer-events: none;
     }
     .bridge-soft {
       background: linear-gradient(180deg, var(--paper) 0%, var(--foam) 100%);
@@ -1092,48 +1129,51 @@ permalink: /
       .feature-episode-media { min-height: 200px; }
     }
 
-    .reveal {
+    /* Content rises into view; section shells stay fully opaque (no white flash) */
+    .reveal .anim {
       opacity: 0;
-      transform: translateY(40px) scale(0.985);
-      transition: opacity 1100ms var(--ease), transform 1100ms var(--ease);
+      transform: translate3d(0, 2.75rem, 0);
+      filter: blur(8px);
+      transition:
+        opacity 950ms var(--ease),
+        transform 950ms var(--ease),
+        filter 950ms var(--ease);
+      will-change: opacity, transform, filter;
     }
-    .reveal.is-in {
-      opacity: 1 !important;
-      transform: none;
-    }
-    #about.reveal {
-      transform: translateY(56px);
-      transition-duration: 1300ms;
-    }
-    #about.reveal.is-in { transform: none; }
-    #about .about-photo {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 1200ms var(--ease) 120ms, transform 1200ms var(--ease) 120ms;
-    }
-    #about.reveal.is-in .about-photo {
+    .reveal.is-in .anim {
       opacity: 1;
       transform: none;
+      filter: blur(0);
     }
-    #about .about-copy > * {
+    .reveal.is-in .anim-d1 { transition-delay: 90ms; }
+    .reveal.is-in .anim-d2 { transition-delay: 180ms; }
+    .reveal.is-in .anim-d3 { transition-delay: 270ms; }
+    .reveal.is-in .anim-d4 { transition-delay: 360ms; }
+    .reveal.is-in .anim-d5 { transition-delay: 450ms; }
+    .reveal.is-in .anim-d6 { transition-delay: 540ms; }
+    .reveal.is-in .anim-d7 { transition-delay: 630ms; }
+    .photo-strip.reveal figure {
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 900ms var(--ease), transform 900ms var(--ease);
+      transform: translate3d(0, 2rem, 0);
+      filter: blur(6px);
+      transition: opacity 900ms var(--ease), transform 900ms var(--ease), filter 900ms var(--ease);
     }
-    #about.reveal.is-in .about-copy > *:nth-child(1) { transition-delay: 180ms; }
-    #about.reveal.is-in .about-copy > *:nth-child(2) { transition-delay: 280ms; }
-    #about.reveal.is-in .about-copy > *:nth-child(3) { transition-delay: 380ms; }
-    #about.reveal.is-in .about-copy > *:nth-child(4) { transition-delay: 480ms; }
-    #about.reveal.is-in .about-copy > *:nth-child(5) { transition-delay: 580ms; }
-    #about.reveal.is-in .about-copy > *:nth-child(6) { transition-delay: 680ms; }
-    #about.reveal.is-in .about-copy > * {
+    .photo-strip.reveal.is-in figure {
       opacity: 1;
       transform: none;
+      filter: blur(0);
     }
-    .reveal-delay-1 { transition-delay: 80ms; }
-    .reveal-delay-2 { transition-delay: 160ms; }
+    .photo-strip.reveal.is-in figure:nth-child(1) { transition-delay: 60ms; }
+    .photo-strip.reveal.is-in figure:nth-child(2) { transition-delay: 160ms; }
+    .photo-strip.reveal.is-in figure:nth-child(3) { transition-delay: 260ms; }
     @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; transform: none; transition: none; }
+      .reveal .anim,
+      .photo-strip.reveal figure {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+      }
     }
 
     .about, .offerings, .contact { background: var(--paper); }
@@ -1141,6 +1181,8 @@ permalink: /
 
     /* —— Newsletter —— */
     .newsletter { background: var(--foam); }
+    .newsletter .section-lede { font-size: 1.22rem; max-width: 40rem; }
+    .newsletter .brand-heading .brand-suffix { font-size: clamp(1.9rem, 3.4vw, 2.55rem); }
     .article-list {
       list-style: none;
       margin: 0;
@@ -1151,7 +1193,7 @@ permalink: /
     .article.is-hidden { display: none; }
     .article a {
       display: block;
-      padding: 1rem 0;
+      padding: 1.25rem 0 1.35rem;
       text-decoration: none;
       color: inherit;
     }
@@ -1382,29 +1424,29 @@ permalink: /
 
     <section class="about reveal" id="about">
       <div class="wrap about-grid">
-        <figure class="about-photo">
+        <figure class="about-photo anim anim-d1">
           <img src="/assets/images/jpz-standing.jpg" alt="Jo Zakany" />
         </figure>
         <div class="about-copy">
-          <p class="about-hello">Hi — I’m Jo</p>
-          <h2>Joanna P. Zakany</h2>
-          <p>
+          <p class="about-hello anim anim-d2">Hi — I’m Jo</p>
+          <h2 class="anim anim-d3">Joanna P. Zakany</h2>
+          <p class="anim anim-d4">
             Violist with The Cleveland Orchestra. Certified yoga instructor (RYT-200).
             Health and well-being coach (DHWCT) through Duke Integrative Medicine.
           </p>
-          <p>
+          <p class="anim anim-d5">
             I created
             <img class="brand-inline" src="/assets/images/logos/wordmark-duo.png" alt="MindfulOpus" />
             as a way to help fellow musicians, artists, and creatives find more balance in their lives —
             born out of my own journey recovering from burnout, and built on mental skills,
             body awareness, and a kinder relationship with the work.
           </p>
-          <p>
+          <p class="anim anim-d6">
             I dove deeper into the science and psychology behind mindfulness in my coaching certification,
             and it’s the combination of all these offerings that I bring into my work with clients.
             I want to be of service to anyone who considers their work to be in the artistic or creative field.
           </p>
-          <p>
+          <p class="anim anim-d7">
             If this is you, I offer an alternative to toxic grind culture — a kinder process in your work
             that leads to better results, so you can live a more balanced and thriving life.
           </p>
@@ -1412,45 +1454,45 @@ permalink: /
       </div>
     </section>
 
-    <div class="photo-strip" aria-hidden="true">
+    <div class="photo-strip reveal" aria-hidden="true">
       <figure data-parallax-deep><img src="/assets/images/jpz-computer.jpg" alt="" /></figure>
       <figure data-parallax-deep><img src="/assets/images/jpz-standing.jpg" alt="" /></figure>
       <figure data-parallax-deep><img src="/assets/images/jpz-bench.jpg" alt="" /></figure>
     </div>
 <section class="mission reveal" aria-label="Mission">
       <div class="wrap">
-        <blockquote>“An alternative to toxic grind culture — a kinder process in your work that leads to better results, so you can live a more balanced and thriving life.”</blockquote>
+        <blockquote class="anim">“An alternative to toxic grind culture — a kinder process in your work that leads to better results, so you can live a more balanced and thriving life.”</blockquote>
       </div>
     </section>
 
         <section class="work reveal" id="offerings">
       <div class="wrap work-grid">
-        <figure class="work-photo">
+        <figure class="work-photo anim anim-d1">
           <img src="/assets/images/jpz-bench.jpg" alt="" />
         </figure>
         <div class="work-copy">
-          <h2 class="section-title">How I work</h2>
-          <p class="section-lede">1:1 coaching for musicians who want better results without the toxic grind.</p>
-          <p>
+          <h2 class="section-title anim anim-d2">How I work</h2>
+          <p class="section-lede anim anim-d3">1:1 coaching for musicians who want better results without the toxic grind.</p>
+          <p class="anim anim-d4">
             I work one-on-one with clients (in person or over Zoom) to empower you through the process of coaching.
             Coaching is a partnership: I provide the strategies and thought work, while you provide the direction
             and goals we set. Together, we explore what’s getting in the way — and what supports a kinder,
             smarter path to the work you care about.
           </p>
-          <p>
+          <p class="anim anim-d5">
             Sessions are fully customizable and can include mindset training, performance coaching,
             time-management, decision-making, and well-being practices — plus yoga, meditation, and breathwork
             when they serve the work.
           </p>
-          <h3 class="work-sub">What clients often take with them</h3>
-          <ul class="work-list">
+          <h3 class="work-sub anim anim-d6">What clients often take with them</h3>
+          <ul class="work-list anim anim-d7">
             <li>Self-acceptance and self-compassion as tools for better results</li>
             <li>Stress management from both a mental and physical approach</li>
             <li>Less performance-related anxiety; more resilient audition prep</li>
             <li>Mindful practicing tips, posture, and stronger mind/body connection</li>
             <li>Clearer navigation through burnout and life transitions</li>
           </ul>
-          <a class="offer-go" href="#contact">Book a consultation<span aria-hidden="true">→</span></a>
+          <a class="offer-go anim anim-d7" href="#contact">Book a consultation<span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -1458,14 +1500,14 @@ permalink: /
     <section class="studentopus-band reveal" id="studentopus">
       <div class="wrap">
         <div>
-          <h2>Student<span class="opus">Opus</span></h2>
-          <p>
+          <h2 class="anim anim-d1">Student<span class="opus">Opus</span></h2>
+          <p class="anim anim-d2">
             A monthly drop-in space for college and conservatory musicians —
             community, coaching, and a kinder pace when school culture pushes grind.
           </p>
-          <a class="btn" href="/studentopus/">Visit StudentOpus</a>
+          <a class="btn anim anim-d3" href="/studentopus/">Visit StudentOpus</a>
         </div>
-        <figure class="studentopus-photo">
+        <figure class="studentopus-photo anim anim-d2">
           <img src="/assets/images/jpz-standing.jpg" alt="Jo Zakany" />
         </figure>
       </div>
@@ -1473,9 +1515,9 @@ permalink: /
 
 <section class="stories reveal" id="stories">
       <div class="wrap">
-        <h2 class="section-title">What clients are saying</h2>
-        <p class="section-lede">Musicians who’ve worked with Jo.</p>
-        <div class="story-marquee" aria-label="Client testimonials">
+        <h2 class="section-title anim anim-d1">What clients are saying</h2>
+        <p class="section-lede anim anim-d2">Musicians who’ve worked with Jo.</p>
+        <div class="story-marquee anim anim-d3" aria-label="Client testimonials">
           <div class="story-track">
             {% for pass in [1, 2] %}
               {% for testimonial in testimonials.testimonials %}
@@ -1498,14 +1540,14 @@ permalink: /
     </section>
 <section class="podcast reveal" id="podcast">
       <div class="wrap">
-        <h2 class="section-title brand-heading">
+        <h2 class="section-title brand-heading anim anim-d1">
           <img class="brand-mark" src="/assets/images/logos/wordmark-duo-light.png" alt="MindfulOpus" />
           <span class="brand-suffix">Podcast</span>
         </h2>
-        <p class="section-lede">{{ podcast.tagline }}</p>
+        <p class="section-lede anim anim-d2">{{ podcast.tagline }}</p>
 
         <div class="podcast-top">
-          <div class="podcast-about">
+          <div class="podcast-about anim anim-d3">
             <figure class="podcast-cover">
               <img src="/{{ podcast.coverImage }}" alt="" width="320" height="320" />
             </figure>
@@ -1539,7 +1581,7 @@ permalink: /
           </div>
 
           {% set latest = episodes.episodes[0] %}
-          <div>
+          <div class="anim anim-d4">
             <p class="podcast-latest-label">Most recent episode</p>
             <a class="podcast-latest" href="{{ latest.links.youtube }}" target="_blank" rel="noopener noreferrer">
               <div class="podcast-latest-thumb">
@@ -1565,7 +1607,7 @@ permalink: /
         </div>
 
         {% for group in episodes.episodes | groupBySeason %}
-        <div class="season-block">
+        <div class="season-block anim anim-d5">
           <h3 class="season-label">{{ group.label }}</h3>
           <ul class="episode-list">
             {% for episode in group.episodes %}
@@ -1613,14 +1655,14 @@ permalink: /
     </section>
 <section class="newsletter reveal" id="newsletter">
       <div class="wrap">
-        <h2 class="section-title brand-heading">
+        <h2 class="section-title brand-heading anim anim-d1">
           <img class="brand-mark" src="/assets/images/logos/wordmark-duo.png" alt="MindfulOpus" />
           <span class="brand-suffix">Newsletter</span>
         </h2>
-        <p class="section-lede">{{ site.newsletter.tagline }}</p>
+        <p class="section-lede anim anim-d2">{{ site.newsletter.tagline }}</p>
 
         {% for group in articles.articles | groupByYear %}
-        <div class="article-year">
+        <div class="article-year anim anim-d3">
           <h3 class="year-label">{{ group.year }}</h3>
           <ul class="article-list">
             {% for article in group.articles %}
@@ -1648,7 +1690,7 @@ permalink: /
           </button>
         </div>
         {% endif %}
-        <div class="newsletter-actions">
+        <div class="newsletter-actions anim anim-d4">
           <a class="btn" href="{{ site.newsletter.subscribe }}" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/></svg>
             Subscribe to newsletter
@@ -1661,27 +1703,27 @@ permalink: /
       </div>
     </section>
 
-    <section class="band" id="workbook">
+    <section class="band reveal" id="workbook">
       <div class="band-media" data-parallax aria-hidden="true">
         <img src="/assets/images/nature.jpeg" alt="" />
         <div class="band-veil"></div>
       </div>
       <div class="band-copy">
-        <h2>The Well-Being Wheel</h2>
-        <p>A free workbook for creatives — map where you are and where you want more balance.</p>
-        <a class="btn" href="https://6b81c6e8.sibforms.com/serve/MUIFAEPSBgIKqZ7ijhaGGC9Kg3O4789opPPLDAjFHnUZ9wmGaJ4dxqEqFKxOa50aCnOvRaPxSaudOJL2s_Hu_JPKG5rECwQQNGLj1b5GQUz0tjfr9BcAwJov-J2v3vXBYmV1jhlEndqjrMs-Nlg0VFqPS9ksumkUZHzGCuNXKxx1NyOpH6sRmx7d_ekm7AyhiG6vrcgb2h7P-iqO" target="_blank" rel="noopener noreferrer">Get the free workbook</a>
+        <h2 class="anim anim-d1">The Well-Being Wheel</h2>
+        <p class="anim anim-d2">A free workbook for creatives — map where you are and where you want more balance.</p>
+        <a class="btn anim anim-d3" href="https://6b81c6e8.sibforms.com/serve/MUIFAEPSBgIKqZ7ijhaGGC9Kg3O4789opPPLDAjFHnUZ9wmGaJ4dxqEqFKxOa50aCnOvRaPxSaudOJL2s_Hu_JPKG5rECwQQNGLj1b5GQUz0tjfr9BcAwJov-J2v3vXBYmV1jhlEndqjrMs-Nlg0VFqPS9ksumkUZHzGCuNXKxx1NyOpH6sRmx7d_ekm7AyhiG6vrcgb2h7P-iqO" target="_blank" rel="noopener noreferrer">Get the free workbook</a>
       </div>
     </section>
 
-    <section class="contact" id="contact">
+    <section class="contact reveal" id="contact">
       <div class="wrap">
-        <h2 class="section-title">Work with me</h2>
-        <p class="section-lede">Complimentary consultation — email, Instagram, or book a Zoom call below.</p>
+        <h2 class="section-title anim anim-d1">Work with me</h2>
+        <p class="section-lede anim anim-d2">Complimentary consultation — email, Instagram, or book a Zoom call below.</p>
         <p class="contact-meta">
           <a href="mailto:contact@mindfulopus.com">contact@mindfulopus.com</a>
           <a href="https://instagram.com/mindfulopus" target="_blank" rel="noopener noreferrer">@mindfulopus</a>
         </p>
-        <div class="calendly-shell">
+        <div class="calendly-shell anim anim-d3">
           <div class="calendly-inline-widget" data-url="https://calendly.com/mindfulopus/30min" style="min-width:320px;height:630px;"></div>
         </div>
         <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
@@ -1793,10 +1835,13 @@ permalink: /
 
       var reveals = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
       function revealInView() {
+        var vh = window.innerHeight || 800;
         reveals.forEach(function (el) {
           if (el.classList.contains("is-in")) return;
           var rect = el.getBoundingClientRect();
-          if (rect.top < window.innerHeight * 0.9 && rect.bottom > 64) {
+          // Fire when ~18% of the section has entered the lower viewport
+          var visible = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
+          if (visible > Math.min(rect.height * 0.18, vh * 0.18) && rect.top < vh * 0.92) {
             el.classList.add("is-in");
           }
         });
@@ -1805,14 +1850,15 @@ permalink: /
         if ("IntersectionObserver" in window) {
           var io = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
+              if (entry.isIntersecting && entry.intersectionRatio >= 0.12) {
                 entry.target.classList.add("is-in");
                 io.unobserve(entry.target);
               }
             });
-          }, { threshold: 0.01, rootMargin: "0px 0px -2% 0px" });
+          }, { threshold: [0, 0.12, 0.2, 0.35], rootMargin: "0px 0px -8% 0px" });
           reveals.forEach(function (el) { io.observe(el); });
         }
+        // Do NOT pre-mark below-fold sections on load — wait for scroll
         revealInView();
       } else {
         reveals.forEach(function (el) { el.classList.add("is-in"); });
