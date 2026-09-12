@@ -147,6 +147,58 @@
     }
     .brand:hover .brand-by img { opacity: 1; }
 
+
+    /* Inline StudentOpus wordmark — black Student + teal Opus, inherits size */
+    .so-mark {
+      display: inline;
+      white-space: nowrap;
+    }
+    .so-mark .so-s {
+      font-family: "Source Sans Pro", sans-serif;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+    }
+    .so-mark .so-o {
+      font-family: Quicksand, "Source Sans Pro", sans-serif;
+      font-weight: 500;
+      color: var(--teal-deep);
+      letter-spacing: 0.04em;
+    }
+    h1 .so-mark .so-s,
+    h2 .so-mark .so-s,
+    h3 .so-mark .so-s {
+      font-weight: 700;
+    }
+    h1 .so-mark .so-o,
+    h2 .so-mark .so-o,
+    h3 .so-mark .so-o {
+      font-weight: 600;
+    }
+    .btn .so-mark .so-s { color: inherit; font-weight: 600; }
+    .btn .so-mark .so-o { color: var(--teal-deep); }
+    .btn.ghost:hover .so-mark .so-s,
+    .btn.ghost:hover .so-mark .so-o,
+    .btn.spotlight .so-mark .so-s,
+    .btn.spotlight .so-mark .so-o {
+      color: #fff;
+    }
+    .so-mark--on-dark .so-s { color: #fff; }
+    .so-mark--on-dark .so-o { color: #9fd4cf; }
+    .footer-brand .so-mark {
+      font-size: 1.05rem;
+      letter-spacing: 0.05em;
+    }
+    .footer-brand .so-mark .so-s {
+      font-family: Quicksand, "Source Sans Pro", sans-serif;
+      font-weight: 500;
+      color: #fff;
+    }
+    .footer-brand .so-mark .so-o {
+      font-weight: 500;
+      color: #9fd4cf;
+    }
+
     .journey {
       display: none;
     }
@@ -1093,14 +1145,14 @@
           <p class="hero-eyebrow reveal">First Tuesday each month · 12–1 PM ET</p>
           <h1 class="reveal reveal-delay-1">You don’t have to figure all of this out alone.</h1>
           <p class="lede reveal reveal-delay-1">
-            StudentOpus is a monthly, drop-in coaching space for college and conservatory music students:
+            <span class="so-mark"><span class="so-s">Student</span><span class="so-o">Opus</span></span> is a monthly, drop-in coaching space for college and conservatory music students:
             a place to talk honestly about your well-being, and how to let it support you with practicing,
             performing, confidence, burnout, schedules, the inner critic, tending fully to the human being
             behind the art.
           </p>
           <div class="actions reveal reveal-delay-2">
             <a class="btn" href="#this-month">See this month’s topic</a>
-            <a class="btn ghost" href="#about">What is StudentOpus?</a>
+            <a class="btn ghost" href="#about">What is <span class="so-mark"><span class="so-s">Student</span><span class="so-o">Opus</span></span>?</a>
           </div>
           <p class="meta reveal reveal-delay-3">
             <span class="zoom-brand">
@@ -1138,7 +1190,7 @@
       <div class="section-glow month-glow-b" data-parallax="-0.08" aria-hidden="true"></div>
       <div class="wrap section-content">
         <div class="month-intro scroll-rise">
-          <h2>This month at StudentOpus</h2>
+          <h2>This month at <span class="so-mark"><span class="so-s">Student</span><span class="so-o">Opus</span></span></h2>
         </div>
         <div class="month-card scroll-rise scroll-rise-delay-1" id="month-card">
           <div class="month-main">
@@ -1182,7 +1234,7 @@
       <div class="section-glow about-glow" data-parallax="-0.1" aria-hidden="true"></div>
       <div class="wrap two section-content">
         <div class="scroll-rise">
-          <h2>What is StudentOpus?</h2>
+          <h2>What is <span class="so-mark"><span class="so-s">Student</span><span class="so-o">Opus</span></span>?</h2>
           <p class="section-lede">
             Support for the parts of music school nobody teaches you how to navigate.
           </p>
@@ -1192,7 +1244,7 @@
         </div>
         <div class="scroll-rise scroll-rise-delay-1">
           <p class="copy">
-            StudentOpus is live group coaching created specifically for college and conservatory music students.
+            <span class="so-mark"><span class="so-s">Student</span><span class="so-o">Opus</span></span> is live group coaching created specifically for college and conservatory music students.
             Each month centers around one topic of my choosing, with room for real questions, coaching, discussion,
             and learning from what other students are experiencing too.
           </p>
@@ -1281,7 +1333,7 @@
           </div>
           <div class="faq-item scroll-rise scroll-rise-delay-2">
             <h3>Is this a membership?</h3>
-            <p>No. StudentOpus is completely drop-in. There’s no subscription and no ongoing commitment.</p>
+            <p>No. <span class="so-mark"><span class="so-s">Student</span><span class="so-o">Opus</span></span> is completely drop-in. There’s no subscription and no ongoing commitment.</p>
           </div>
         </div>
       </div>
@@ -1292,7 +1344,7 @@
       <div class="wrap">
         <h2>Come as you are. Bring what’s actually going on.</h2>
         <p class="copy">
-          StudentOpus is here to make sure your artistry doesn’t come at the cost of your humanity,
+          <span class="so-mark so-mark--on-dark"><span class="so-s">Student</span><span class="so-o">Opus</span></span> is here to make sure your artistry doesn’t come at the cost of your humanity,
           so you can thrive — on and off stage.
         </p>
         <a class="btn spotlight" href="https://buy.stripe.com/14A6oz9eEh2je1NelzgIo01" target="_blank" rel="noopener noreferrer">Reserve my spot — $25</a>
@@ -1303,7 +1355,7 @@
   <footer class="site-footer">
     <div class="wrap">
       <a class="footer-brand" href="/" aria-label="StudentOpus by MindfulOpus — back to MindfulOpus home">
-        <span class="footer-student">StudentOpus</span>
+        <span class="so-mark so-mark--on-dark"><span class="so-s">Student</span><span class="so-o">Opus</span></span>
         <span class="footer-by">by</span>
         <img src="assets/mindfulopus-wordmark-light.png" alt="MindfulOpus" />
       </a>
