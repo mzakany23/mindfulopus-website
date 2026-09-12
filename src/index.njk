@@ -359,7 +359,7 @@ permalink: /
       line-height: 1;
     }
     .name-opus {
-      color: var(--teal);
+      color: inherit;
     }
     .brand-inline {
       display: inline-block;
@@ -617,7 +617,7 @@ permalink: /
       font-size: clamp(2rem, 3.6vw, 2.75rem);
       letter-spacing: -0.02em;
     }
-    .studentopus-band h2 .name-opus { color: var(--teal); }
+    .studentopus-band h2 .name-opus { color: inherit; }
     .studentopus-band p {
       margin: 0 0 1.25rem;
       color: var(--ink-soft);
@@ -1643,7 +1643,7 @@ permalink: /
           </p>
           <p class="anim anim-d5">
             I created
-            <img class="brand-inline" src="/assets/images/logos/wordmark-duo.png" alt="MindfulOpus" />
+            <img class="brand-inline" src="/assets/images/logos/wordmark.png" alt="MindfulOpus" />
             as a way to help fellow musicians, artists and creatives find more balance in their lives.
             Born out of my own journey of recovery from burnout, I found deep healing in the mental practice
             of mindfulness and the physical practice of yoga, meditation, and breathwork.
@@ -1751,7 +1751,7 @@ permalink: /
         <div class="podcast-top">
           <div class="podcast-about">
             <h2 class="section-title brand-heading anim anim-d1">
-              <img class="brand-mark" src="/assets/images/logos/wordmark-duo-light.png" alt="MindfulOpus" />
+              <img class="brand-mark" src="/assets/images/logos/wordmark-light.png" alt="MindfulOpus" />
               <span class="brand-suffix">Podcast</span>
             </h2>
             <p class="section-lede anim anim-d2">{{ podcast.tagline }}</p>
@@ -1853,8 +1853,8 @@ permalink: /
 <section class="newsletter reveal" id="newsletter">
       <div class="wrap">
         <h2 class="section-title brand-heading anim anim-d1">
-          <img class="brand-mark" src="/assets/images/logos/wordmark-duo.png" alt="MindfulOpus" />
-          <span class="brand-suffix">Newsletter</span>
+          <img class="brand-mark" src="/assets/images/logos/wordmark.png" alt="MindfulOpus" />
+          <span class="brand-suffix">Musings</span>
         </h2>
         <p class="section-lede anim anim-d2">{{ site.newsletter.tagline }}</p>
 
@@ -1890,7 +1890,7 @@ permalink: /
         <div class="newsletter-actions anim anim-d5">
           <a class="btn" href="{{ site.newsletter.subscribe }}" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/></svg>
-            Subscribe to newsletter
+            Subscribe to Mindful Musings
           </a>
           <a class="btn btn-medium" href="{{ site.newsletter.medium }}" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
@@ -1938,20 +1938,20 @@ permalink: /
   <footer class="footer reveal">
     <div class="wrap footer-inner">
       <a class="footer-brand anim anim-d1" href="#top" aria-label="MindfulOpus home">
-        <img src="/assets/images/logos/wordmark-duo.png" alt="MindfulOpus" />
+        <img src="/assets/images/logos/wordmark.png" alt="MindfulOpus" />
       </a>
       <span class="footer-tag anim anim-d2">Performance and Well-Being Coaching for Classical Musicians</span>
       <span class="footer-year anim anim-d3">© {{ page.date.getFullYear() }}</span>
     </div>
   </footer>
 
-  <aside class="nl-toast" id="nl-toast" role="dialog" aria-label="Subscribe to newsletter" aria-hidden="true">
+  <aside class="nl-toast" id="nl-toast" role="dialog" aria-label="Subscribe to Mindful Musings" aria-hidden="true">
     <button type="button" class="nl-toast-close" id="nl-toast-close" aria-label="Dismiss">×</button>
-    <h3>MindfulOpus Newsletter</h3>
+    <h3>Mindful Musings</h3>
     <p>{{ site.newsletter.tagline }}</p>
     <div class="nl-toast-actions">
-      <a class="btn" href="{{ site.newsletter.subscribe }}" target="_blank" rel="noopener noreferrer">Subscribe</a>
-      <a class="btn btn-ghost" href="#newsletter">Browse the newsletter</a>
+      <a class="btn" href="{{ site.newsletter.subscribe }}" target="_blank" rel="noopener noreferrer">Subscribe to Mindful Musings</a>
+      <a class="btn btn-ghost" href="#newsletter">Browse Mindful Musings</a>
     </div>
   </aside>
 
