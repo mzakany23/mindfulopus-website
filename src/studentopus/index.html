@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>StudentOpus | Monthly Live Coaching for Music Students</title>
   <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
   <link rel="icon" href="/favicon.ico?v=2" sizes="any" />
@@ -53,7 +53,11 @@
     .wrap {
       width: min(var(--max), 100%);
       margin: 0 auto;
-      padding-inline: clamp(1.1rem, 4.5vw, 1.6rem);
+      /* Plain rem first — some mobile browsers drop max()/env() declarations entirely */
+      padding-left: 1.35rem;
+      padding-right: 1.35rem;
+      padding-left: max(1.35rem, env(safe-area-inset-left));
+      padding-right: max(1.35rem, env(safe-area-inset-right));
       box-sizing: border-box;
     }
     html, body { overflow-x: clip; }
@@ -64,6 +68,7 @@
       top: 0;
       z-index: 40;
       background: transparent;
+      padding-top: env(safe-area-inset-top, 0px);
       transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
       border-bottom: 1px solid transparent;
     }
@@ -955,10 +960,17 @@
       }
       .step p { margin: 0; max-width: none; }
       .session { border-left: 0; border-top: 1px solid rgba(255,255,255,0.14); }
-      .hero { padding-top: 3.25rem; }
+      .hero { padding-top: 2.75rem; padding-bottom: 4.5rem; }
       .nav-cta { display: none; }
-      .brand-student { font-size: 1.65rem; }
+      .nav-inner { padding: 1.05rem 0 0.95rem; }
+      .brand-student { font-size: 1.55rem; }
+      .brand-by img { height: 15px; }
       .hero h1 { max-width: none; }
+      .hero-eyebrow {
+        font-size: 0.86rem;
+        letter-spacing: 0.03em;
+        line-height: 1.4;
+      }
       .photo-frame { max-height: 420px; aspect-ratio: 5 / 4; }
       /* Keep quote below the photo — no overlap covering Jo on stacked layouts */
       .hero-visual { display: flex; flex-direction: column; gap: 0; }
@@ -971,25 +983,51 @@
         padding: 1.15rem 1.2rem 1.05rem;
       }
       .hero-quote p { font-size: 1rem; }
-      .month { padding: 5rem 0 5.5rem; }
-      .month-intro { margin-bottom: 2rem; }
+      .month { padding: 4.5rem 0 5rem; }
+      .month-intro { margin-bottom: 1.75rem; }
+      .month-main,
+      .session { padding: 1.85rem 1.45rem; }
+      .session-cadence { font-size: 0.88rem; margin-bottom: 1rem; }
       .journey-label { font-size: 0.7rem; }
+      .points { gap: 1.75rem 1.5rem; margin-top: 2.25rem; }
+      .closing { padding: 4.75rem 0; }
+      .closing h2 { max-width: 18ch; }
+      .site-footer .wrap {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+        gap: 1rem;
+      }
     }
     @media (max-width: 720px) {
       .journey-list, .journey-track { display: none; }
       .journey-now { display: flex; }
     }
     @media (max-width: 560px) {
+      .wrap {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        padding-left: max(1.5rem, env(safe-area-inset-left));
+        padding-right: max(1.5rem, env(safe-area-inset-right));
+      }
+      .nav-inner { padding: 1.15rem 0 1rem; }
+      .brand-student { font-size: 1.42rem; letter-spacing: 0; }
+      .brand-student .s-student { letter-spacing: 0.03em; }
+      .brand-student .s-opus { letter-spacing: 0.04em; }
       .steps { grid-template-columns: 1fr; }
-      section { padding: 3.75rem 0; }
-      .month { padding: 4.5rem 0 5rem; }
+      section { padding: 3.5rem 0; }
+      .month { padding: 4rem 0 4.5rem; }
       .month-card { border-radius: 24px; min-height: 0; }
+      .month-main h3 { font-size: clamp(1.85rem, 8vw, 2.4rem); }
       .photo-frame { max-height: 360px; border-radius: 22px; }
       .hero-quote { margin-top: 1rem; padding: 1rem 1.05rem 0.95rem; }
       .hero-quote .quote-mark { font-size: 2.4rem; }
       .hero-quote p { font-size: 0.98rem; }
       .actions { flex-direction: column; align-items: stretch; }
       .actions .btn { width: 100%; }
+      .meta { font-size: 0.98rem; gap: 0.35rem 0.45rem; }
+      .faq { gap: 0; }
+      .footer-tag { font-size: 0.88rem; line-height: 1.45; }
     }
 
     @media (prefers-reduced-motion: reduce) {
