@@ -400,13 +400,22 @@
     .session .row strong.zoom-brand {
       justify-content: flex-end;
     }
-    .step .zoom-brand {
+    .step b.zoom-brand {
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
-      gap: 0.45rem;
+      gap: 0.4rem;
+      width: max-content;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      white-space: nowrap;
     }
-    .step .zoom-icon {
-      width: 1.05em;
-      height: 1.05em;
+    .step b.zoom-brand .zoom-icon {
+      width: 1.15em;
+      height: 1.15em;
+      position: relative;
+      top: 0.02em;
     }
 
     .hero-visual {
@@ -939,6 +948,11 @@
         grid-row: 1 / span 2;
       }
       .step b, .step p { text-align: left; }
+      .step b.zoom-brand {
+        margin-left: 0;
+        margin-right: 0;
+        justify-content: flex-start;
+      }
       .step p { margin: 0; max-width: none; }
       .session { border-left: 0; border-top: 1px solid rgba(255,255,255,0.14); }
       .hero { padding-top: 3.25rem; }
