@@ -158,6 +158,11 @@ permalink: /
     .nav-cta {
       color: var(--teal-deep) !important;
     }
+    /* Nav stays monochrome; teal Opus lives only in the StudentOpus section. */
+    .nav-links .so-mark .name-opus,
+    .nav-links .name-opus {
+      color: inherit;
+    }
     .nav-toggle {
       display: none;
       border: 0;
@@ -1617,7 +1622,7 @@ permalink: /
       <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#offerings">Work</a></li>
-        <li><a href="#studentopus"><span class="so-mark">Student<span class="name-opus">Opus</span></span></a></li>
+        <li><a href="#studentopus">StudentOpus</a></li>
         <li><a href="#podcast">Podcast</a></li>
         <li><a href="#musings">Musings</a></li>
         <li><a class="nav-cta" href="#contact">Work with me</a></li>
