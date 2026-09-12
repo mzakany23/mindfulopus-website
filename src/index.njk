@@ -358,10 +358,15 @@ permalink: /
       color: var(--ink);
       line-height: 1;
     }
-    /* Teal Opus is StudentOpus-only — MindfulOpus uses solid wordmarks. */
+    /* StudentOpus is one word; only Opus is teal. Never split across flex gaps. */
+    .so-mark {
+      white-space: nowrap;
+    }
+    .so-mark .name-opus,
     .name-opus {
       color: var(--teal);
     }
+    .btn .so-mark .name-opus,
     .btn .name-opus {
       color: #d7f0ec;
     }
@@ -1612,7 +1617,7 @@ permalink: /
       <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#offerings">Work</a></li>
-        <li><a href="#studentopus">Student<span class="name-opus">Opus</span></a></li>
+        <li><a href="#studentopus"><span class="so-mark">Student<span class="name-opus">Opus</span></span></a></li>
         <li><a href="#podcast">Podcast</a></li>
         <li><a href="#musings">Musings</a></li>
         <li><a class="nav-cta" href="#contact">Work with me</a></li>
@@ -1713,13 +1718,13 @@ permalink: /
     <section class="studentopus-band reveal" id="studentopus">
       <div class="wrap">
         <div>
-          <h2 class="anim anim-d1">Student<span class="name-opus">Opus</span></h2>
+          <h2 class="anim anim-d1"><span class="so-mark">Student<span class="name-opus">Opus</span></span></h2>
           <p class="anim anim-d2">
             In addition to my 1-1 sessions, I also work with colleges, universities and conservatories
-            in my group programs — and it’s this work that has inspired Student<span class="name-opus">Opus</span>:
+            in my group programs — and it’s this work that has inspired <span class="so-mark">Student<span class="name-opus">Opus</span></span>:
             an online monthly group experience for college music students everywhere.
           </p>
-          <a class="btn anim anim-d3" href="/studentopus/">Visit Student<span class="name-opus">Opus</span></a>
+          <a class="btn anim anim-d3" href="/studentopus/">Visit <span class="so-mark">Student<span class="name-opus">Opus</span></span></a>
         </div>
         <figure class="studentopus-photo anim anim-d2">
           <img src="/assets/images/jpz-standing.jpg" alt="Jo Zakany" />
