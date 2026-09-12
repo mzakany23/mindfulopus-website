@@ -11,7 +11,10 @@ permalink: /
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
-  <link rel="icon" href="/assets/images/favicon.ico" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <style>
     :root {
       --ink: #101816;
@@ -21,8 +24,6 @@ permalink: /
       --teal-deep: #1f6666;
       --sage: #8f9c92;
       --foam: #f4f7f5;
-      --ember: #c45c4a;
-      --ember-deep: #a84838;
       --paper: #ffffff;
       --line: rgba(16, 24, 22, 0.07);
       --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -79,7 +80,7 @@ permalink: /
     }
     .podcast ::selection,
     .band ::selection {
-      background: rgba(196, 92, 74, 0.45);
+      background: rgba(143, 208, 200, 0.45);
       color: #fff;
     }
     .wrap {
@@ -208,6 +209,10 @@ permalink: /
       object-fit: cover;
       /* Face is mid-frame; low % showed only ceiling / top of head on wide desktops */
       object-position: 48% 56%;
+      opacity: 0;
+      filter: blur(28px);
+      transform: scale(1.14);
+      will-change: opacity, transform, filter;
     }
     @media (max-width: 900px) {
       .hero-media img { object-position: 46% 48%; }
@@ -215,12 +220,46 @@ permalink: /
     @media (min-width: 1200px) {
       .hero-media img { object-position: 47% 58%; }
     }
+    /* Hero-only sizzle: fade soft → sharpen into focus → slight pop */
+    .hero.is-ready .hero-media img {
+      animation: hero-sizzle 1.9s var(--ease) forwards;
+    }
+    @keyframes hero-sizzle {
+      0% {
+        opacity: 0;
+        filter: blur(28px);
+        transform: scale(1.14);
+      }
+      28% {
+        opacity: 1;
+        filter: blur(16px);
+        transform: scale(1.1);
+      }
+      62% {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1.02);
+      }
+      78% {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1.055);
+      }
+      100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1.04);
+      }
+    }
     .hero-veil {
       position: absolute;
       inset: 0;
       background:
         linear-gradient(180deg, rgba(16,24,22,0.12) 0%, rgba(16,24,22,0.28) 45%, rgba(16,24,22,0.78) 100%);
+      opacity: 0;
+      transition: opacity 1.1s var(--ease) 0.35s;
     }
+    .hero.is-ready .hero-veil { opacity: 1; }
     .hero-copy {
       position: relative;
       z-index: 1;
@@ -244,9 +283,10 @@ permalink: /
       transform: none;
       filter: blur(0);
     }
-    .hero.is-ready .hero-copy > *:nth-child(1) { transition-delay: 80ms; }
-    .hero.is-ready .hero-copy > *:nth-child(2) { transition-delay: 200ms; }
-    .hero.is-ready .hero-copy > *:nth-child(3) { transition-delay: 320ms; }
+    /* Copy waits for the image to mostly focus, then rises */
+    .hero.is-ready .hero-copy > *:nth-child(1) { transition-delay: 780ms; }
+    .hero.is-ready .hero-copy > *:nth-child(2) { transition-delay: 920ms; }
+    .hero.is-ready .hero-copy > *:nth-child(3) { transition-delay: 1060ms; }
     .hero h1 {
       margin: 0 0 1rem;
       font-family: var(--display);
@@ -900,22 +940,22 @@ permalink: /
     .podcast .episode-body .stack-meta strong { color: #8fd0c8; }
     .podcast .episode-links a { color: #8fd0c8; }
     .podcast .btn-show-more {
-      color: #fff;
-      background: var(--ember);
-      border-color: var(--ember);
+      color: #f4f7f5;
+      background: transparent;
+      border-color: rgba(255,255,255,0.28);
       padding: 0.8rem 1.35rem;
       font-size: 0.84rem;
-      box-shadow: 0 12px 28px rgba(196, 92, 74, 0.28);
+      box-shadow: none;
     }
     .podcast .btn-show-more {
-      transition: background 160ms var(--ease), border-color 160ms var(--ease), color 160ms var(--ease), transform 180ms var(--ease), box-shadow 180ms var(--ease);
+      transition: background 160ms var(--ease), border-color 160ms var(--ease), color 160ms var(--ease), transform 180ms var(--ease);
     }
     .podcast .btn-show-more:hover {
-      background: var(--ember-deep);
-      border-color: var(--ember-deep);
+      background: rgba(255,255,255,0.12);
+      border-color: #fff;
       color: #fff;
-      transform: translateY(-2px);
-      box-shadow: 0 16px 32px rgba(196, 92, 74, 0.38);
+      transform: translateY(-1px);
+      box-shadow: none;
     }
     .podcast .podcast-latest {
       background: rgba(255,255,255,0.12);
@@ -1518,6 +1558,13 @@ permalink: /
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .hero-copy > * { opacity: 1; transform: none; filter: none; transition: none; }
+      .hero-media img {
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none !important;
+        animation: none !important;
+      }
+      .hero-veil { opacity: 1 !important; transition: none !important; }
       .hero-media, .band-media { transform: none !important; will-change: auto; }
       .episode-thumb img { transition: none; }
       .story-track { animation: none; }
@@ -1537,7 +1584,7 @@ permalink: /
   <header class="nav" id="site-nav">
     <div class="wrap nav-inner">
       <a class="nav-brand" href="#top" aria-label="MindfulOpus home">
-        <img src="/assets/images/logos/wordmark-duo.png" alt="MindfulOpus" />
+        <img src="/assets/images/logos/wordmark.png" alt="MindfulOpus" />
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" id="nav-toggle">☰</button>
       <ul class="nav-links" id="nav-links">
