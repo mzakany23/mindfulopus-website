@@ -84,7 +84,10 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      padding: 1rem 0 0.85rem;
+      /* Vertical only — horizontal gutters come from .wrap; a 3-value
+         padding shorthand here was wiping left/right to 0. */
+      padding-top: 1rem;
+      padding-bottom: 0.85rem;
     }
     .brand {
       display: inline-flex;
@@ -1014,7 +1017,7 @@
       .session { border-left: 0; border-top: 1px solid rgba(255,255,255,0.14); }
       .hero { padding-top: 2.75rem; padding-bottom: 4.5rem; }
       .nav-cta { display: none; }
-      .nav-inner { padding: 1.05rem 0 0.95rem; }
+      .nav-inner { padding-top: 1.05rem; padding-bottom: 0.95rem; }
       .brand-student { font-size: 1.55rem; }
       .brand-by img { height: 15px; }
       .hero h1 { max-width: none; }
@@ -1062,7 +1065,7 @@
         padding-left: max(1.5rem, env(safe-area-inset-left));
         padding-right: max(1.5rem, env(safe-area-inset-right));
       }
-      .nav-inner { padding: 1.15rem 0 1rem; }
+      .nav-inner { padding-top: 1.15rem; padding-bottom: 1rem; }
       .brand-student { font-size: 1.42rem; letter-spacing: 0; }
       .brand-student .s-student { letter-spacing: 0.03em; }
       .brand-student .s-opus { letter-spacing: 0.04em; }
