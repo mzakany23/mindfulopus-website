@@ -1863,27 +1863,23 @@ permalink: /
         </h2>
         <p class="section-lede anim anim-d2">{{ site.newsletter.tagline }}</p>
 
-        {% for group in articles.articles | groupByYear %}
-        <div class="article-year anim anim-d3">
-          <h3 class="year-label">{{ group.year }}</h3>
-          <ul class="article-list">
-            {% for article in group.articles %}
-            <li class="article{% if article._n > 5 %} is-hidden article-paginated{% endif %}">
-              <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer">
-                <div class="stack-meta">
-                  {% for category in article.categories %}
-                    {% if loop.index <= 2 %}<strong>{{ category }}</strong>{% endif %}
-                  {% endfor %}
-                  <span>{{ article.date | dateFilter }}</span>
-                </div>
-                <h3>{{ article.title }}</h3>
-                <p>{{ article.excerpt }}</p>
-              </a>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-        {% endfor %}
+        <ul class="article-list anim anim-d3">
+          {% for article in articles.articles %}
+          <li class="article{% if loop.index > 5 %} is-hidden article-paginated{% endif %}">
+            <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer">
+              {% if article.categories and article.categories.length %}
+              <div class="stack-meta">
+                {% for category in article.categories %}
+                  {% if loop.index <= 2 %}<strong>{{ category }}</strong>{% endif %}
+                {% endfor %}
+              </div>
+              {% endif %}
+              <h3>{{ article.title }}</h3>
+              <p>{{ article.excerpt }}</p>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
 
         {% if articles.articles.length > 5 %}
         <div class="show-more-wrap anim anim-d4">
@@ -2007,12 +2003,10 @@ permalink: /
       }
 
       function syncEpisodes() { syncGroupVisibility(".season-block", ".episode"); }
-      function syncArticles() { syncGroupVisibility(".article-year", ".article"); }
 
       wireShowMore("show-more-episodes", ".episode-paginated", "Show more episodes", "Show fewer episodes", syncEpisodes);
-      wireShowMore("show-more-articles", ".article-paginated", "Show more articles", "Show fewer articles", syncArticles);
+      wireShowMore("show-more-articles", ".article-paginated", "Show more articles", "Show fewer articles");
       syncEpisodes();
-      syncArticles();
 
       var toast = document.getElementById("nl-toast");
       var toastClose = document.getElementById("nl-toast-close");
