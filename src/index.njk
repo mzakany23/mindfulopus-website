@@ -7,7 +7,7 @@ permalink: /
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MindfulOpus — Performance & Well-Being Coaching for Classical Musicians</title>
-  <meta name="description" content="Performance and well-being coaching for classical musicians. 1:1 coaching, StudentOpus, podcast, and newsletter with Jo Zakany." />
+  <meta name="description" content="Performance and well-being coaching for classical musicians. 1:1 coaching, StudentOpus, podcast, and Mindful Musings with Jo Zakany." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
@@ -358,8 +358,12 @@ permalink: /
       color: var(--ink);
       line-height: 1;
     }
+    /* Teal Opus is StudentOpus-only — MindfulOpus uses solid wordmarks. */
     .name-opus {
-      color: inherit;
+      color: var(--teal);
+    }
+    .btn .name-opus {
+      color: #d7f0ec;
     }
     .brand-inline {
       display: inline-block;
@@ -617,7 +621,7 @@ permalink: /
       font-size: clamp(2rem, 3.6vw, 2.75rem);
       letter-spacing: -0.02em;
     }
-    .studentopus-band h2 .name-opus { color: inherit; }
+    .studentopus-band h2 .name-opus { color: var(--teal); }
     .studentopus-band p {
       margin: 0 0 1.25rem;
       color: var(--ink-soft);
@@ -856,7 +860,7 @@ permalink: /
       .podcast-top { grid-template-columns: 1fr; }
     }
 
-    /* Newsletter scroll popup */
+    /* Musings scroll popup */
     .nl-toast {
       position: fixed;
       right: 1.25rem;
@@ -1369,12 +1373,12 @@ permalink: /
     }
 
     .about, .offerings, .contact { background: var(--paper); }
-    .stories, .newsletter, .mission { background: rgba(244,247,245,0.9); }
+    .stories, .musings, .mission { background: rgba(244,247,245,0.9); }
 
-    /* —— Newsletter —— */
-    .newsletter { background: var(--foam); }
-    .newsletter .section-lede { font-size: 1.22rem; max-width: 40rem; }
-    .newsletter .brand-heading .brand-suffix { font-size: clamp(1.9rem, 3.4vw, 2.55rem); }
+    /* —— Musings —— */
+    .musings { background: var(--foam); }
+    .musings .section-lede { font-size: 1.22rem; max-width: 40rem; }
+    .musings .brand-heading .brand-suffix { font-size: clamp(1.9rem, 3.4vw, 2.55rem); }
     .article-list {
       list-style: none;
       margin: 0;
@@ -1416,7 +1420,7 @@ permalink: /
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    .newsletter-actions {
+    .musings-actions {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -1608,9 +1612,9 @@ permalink: /
       <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#offerings">Work</a></li>
-        <li><a href="#studentopus">StudentOpus</a></li>
+        <li><a href="#studentopus">Student<span class="name-opus">Opus</span></a></li>
         <li><a href="#podcast">Podcast</a></li>
-        <li><a href="#newsletter">Newsletter</a></li>
+        <li><a href="#musings">Musings</a></li>
         <li><a class="nav-cta" href="#contact">Work with me</a></li>
       </ul>
     </div>
@@ -1712,9 +1716,10 @@ permalink: /
           <h2 class="anim anim-d1">Student<span class="name-opus">Opus</span></h2>
           <p class="anim anim-d2">
             In addition to my 1-1 sessions, I also work with colleges, universities and conservatories
-            in my group programs — all-in-one music, coaching and yoga workshops for classical music students.
+            in my group programs — and it’s this work that has inspired Student<span class="name-opus">Opus</span>:
+            an online monthly group experience for college music students everywhere.
           </p>
-          <a class="btn anim anim-d3" href="/studentopus/">Visit StudentOpus</a>
+          <a class="btn anim anim-d3" href="/studentopus/">Visit Student<span class="name-opus">Opus</span></a>
         </div>
         <figure class="studentopus-photo anim anim-d2">
           <img src="/assets/images/jpz-standing.jpg" alt="Jo Zakany" />
@@ -1850,7 +1855,7 @@ permalink: /
         {% endif %}
       </div>
     </section>
-<section class="newsletter reveal" id="newsletter">
+<section class="musings reveal" id="musings">
       <div class="wrap">
         <h2 class="section-title brand-heading anim anim-d1">
           <img class="brand-mark" src="/assets/images/logos/wordmark.png" alt="MindfulOpus" />
@@ -1887,7 +1892,7 @@ permalink: /
           </button>
         </div>
         {% endif %}
-        <div class="newsletter-actions anim anim-d5">
+        <div class="musings-actions anim anim-d5">
           <a class="btn" href="{{ site.newsletter.subscribe }}" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/></svg>
             Subscribe to Mindful Musings
@@ -1951,7 +1956,7 @@ permalink: /
     <p>{{ site.newsletter.tagline }}</p>
     <div class="nl-toast-actions">
       <a class="btn" href="{{ site.newsletter.subscribe }}" target="_blank" rel="noopener noreferrer">Subscribe to Mindful Musings</a>
-      <a class="btn btn-ghost" href="#newsletter">Browse Mindful Musings</a>
+      <a class="btn btn-ghost" href="#musings">Browse Mindful Musings</a>
     </div>
   </aside>
 
@@ -2068,7 +2073,7 @@ permalink: /
         reveals.forEach(function (el) { el.classList.add("is-in"); });
       }
 
-      var spyIds = ["about", "offerings", "studentopus", "podcast", "newsletter", "contact"];
+      var spyIds = ["about", "offerings", "studentopus", "podcast", "musings", "contact"];
       var spyLinks = {};
       if (links) {
         links.querySelectorAll("a[href^='#']").forEach(function (a) {
