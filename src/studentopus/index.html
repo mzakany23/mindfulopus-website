@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&family=Source+Sans+Pro:wght@200;300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --ink: #101816;
@@ -108,16 +108,16 @@
     }
     .brand-student .s-student {
       font-family: "Source Sans Pro", sans-serif;
-      font-weight: 200;
-      color: #3a4a45;
-      letter-spacing: 0.06em;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: 0.04em;
     }
     .brand-student .s-opus {
       font-family: Quicksand, "Source Sans Pro", sans-serif;
-      font-weight: 300;
+      font-weight: 500;
       font-size: 1.12em;
-      letter-spacing: 0.08em;
-      color: var(--teal);
+      letter-spacing: 0.06em;
+      color: var(--teal-deep);
     }
     .brand-by {
       display: flex;
@@ -125,19 +125,19 @@
       gap: 0.45rem;
       width: 100%;
       padding-top: 0.28rem;
-      border-top: 1px solid rgba(22, 79, 79, 0.28);
+      border-top: 1px solid rgba(22, 79, 79, 0.4);
     }
     .brand-by-text {
       font-size: 0.68rem;
-      font-weight: 400;
+      font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: lowercase;
-      color: var(--muted);
+      color: var(--ink-soft);
     }
     .brand-by img {
       height: 16px;
       width: auto;
-      opacity: 0.85;
+      opacity: 0.95;
       transition: opacity 0.25s ease;
     }
     .brand:hover .brand-by img { opacity: 1; }
@@ -871,8 +871,8 @@
     }
     .footer-brand .footer-student {
       font-family: Quicksand, "Source Sans Pro", sans-serif;
-      font-weight: 300;
-      letter-spacing: 0.06em;
+      font-weight: 500;
+      letter-spacing: 0.05em;
       font-size: 1.05rem;
     }
     .footer-brand .footer-by {
