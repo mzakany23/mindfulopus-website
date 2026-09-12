@@ -26,10 +26,6 @@ module.exports = function (config) {
   config.addPassthroughCopy("src/assets/vendor/js");
   config.addPassthroughCopy("src/assets/js");
   config.addPassthroughCopy({"src/assets/fonts" : "assets/vendor/fonts"});
-  config.addPassthroughCopy({"src/flyers/*.html" : "flyers"});
-
-  // Exclude raw flyer HTML files from template processing (passthrough only)
-  config.ignores.add("src/flyers/*.html");
 
   // LAYOUTS //
   config.addLayoutAlias("base", "layouts/base.njk");
