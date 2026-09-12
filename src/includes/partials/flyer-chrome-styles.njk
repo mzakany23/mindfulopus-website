@@ -1,0 +1,383 @@
+{# Shared chrome for client-facing flyer pages — topbar + footer + base styles #}
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    font-family: 'Quicksand', sans-serif;
+    background: #f7f6f3;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+
+  a { color: #2a7d7d; }
+
+  .flyer-topbar {
+    background: linear-gradient(135deg, #1c3d3d 0%, #1a2f2f 100%);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .flyer-topbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+  }
+
+  .flyer-topbar-brand img {
+    height: 30px;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+  }
+
+  .flyer-topbar-brand span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+
+  .flyer-topbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .flyer-topbar-nav a {
+    font-size: 13px;
+    font-weight: 500;
+    color: #5abfbf;
+    text-decoration: none;
+    letter-spacing: 0.4px;
+    transition: color 0.2s;
+  }
+
+  .flyer-topbar-nav a:hover { color: #fff; }
+
+  .flyer-page {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 48px 24px 72px;
+  }
+
+  .flyer-breadcrumb {
+    font-size: 13px;
+    font-weight: 500;
+    color: #888;
+    margin: 0 0 28px;
+    letter-spacing: 0.3px;
+  }
+
+  .flyer-breadcrumb a {
+    color: #2a7d7d;
+    text-decoration: none;
+  }
+
+  .flyer-breadcrumb a:hover { text-decoration: underline; }
+
+  .flyer-breadcrumb span { color: #bbb; margin: 0 8px; }
+
+  .flyer-page-header {
+    margin: 0 0 40px;
+  }
+
+  .flyer-page-header .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #2a7d7d;
+    margin: 0 0 10px;
+  }
+
+  .flyer-page-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    font-style: italic;
+    color: #1c3d3d;
+    margin: 0 0 12px;
+    line-height: 1.15;
+  }
+
+  .flyer-page-header .lede {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666;
+    margin: 0;
+    max-width: 540px;
+    line-height: 1.55;
+  }
+
+  .flyer-section {
+    margin: 0 0 40px;
+  }
+
+  .flyer-section-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #999;
+    margin: 0 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e2dc;
+  }
+
+  .flyer-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .flyer-list-item a {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: 16px;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    padding: 18px 20px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+  }
+
+  .flyer-list-item a:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    border-color: rgba(42,125,125,0.25);
+  }
+
+  .flyer-list-date {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2a7d7d;
+    letter-spacing: 0.2px;
+  }
+
+  .flyer-list-copy .series {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #999;
+    margin: 0 0 4px;
+  }
+
+  .flyer-list-copy .title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    font-style: italic;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  .flyer-list-copy .part {
+    font-size: 13px;
+    color: #888;
+    margin: 4px 0 0;
+  }
+
+  .flyer-list-arrow {
+    color: #2a7d7d;
+    font-size: 20px;
+    opacity: 0.7;
+  }
+
+  .school-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .school-card {
+    display: block;
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 24px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .school-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+  }
+
+  .school-card h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: #1c3d3d;
+    margin: 0 0 10px;
+  }
+
+  .school-card .meta {
+    font-size: 14px;
+    color: #777;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .school-card .cta {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2a7d7d;
+    letter-spacing: 0.4px;
+  }
+
+  .empty-note {
+    font-size: 15px;
+    color: #888;
+    font-style: italic;
+    margin: 0;
+  }
+
+  .event-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    margin: 0 0 24px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .event-meta-row strong {
+    color: #1c3d3d;
+    font-weight: 600;
+  }
+
+  .event-summary {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    margin: 0 0 32px;
+    max-width: 640px;
+  }
+
+  .flyer-variants {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 20px;
+  }
+
+  .flyer-variant {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid rgba(42,125,125,0.3);
+    color: #2a7d7d;
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .flyer-variant.active,
+  .flyer-variant:hover {
+    background: #2a7d7d;
+    color: #fff;
+    border-color: #2a7d7d;
+  }
+
+  .flyer-preview-shell {
+    background: #eae8e4;
+    border-radius: 12px;
+    padding: 20px;
+    overflow: auto;
+    text-align: center;
+  }
+
+  .flyer-preview-shell iframe {
+    border: none;
+    background: #fff;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    max-width: 100%;
+  }
+
+  .flyer-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0 0;
+  }
+
+  .flyer-action-btn {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .flyer-action-btn-primary {
+    background: #2a7d7d;
+    color: #fff;
+  }
+
+  .flyer-action-btn-primary:hover { background: #1c5c5c; color: #fff; }
+
+  .flyer-action-btn-secondary {
+    background: rgba(42,125,125,0.1);
+    color: #2a7d7d;
+  }
+
+  .flyer-action-btn-secondary:hover { background: rgba(42,125,125,0.18); }
+
+  .flyer-footer {
+    text-align: center;
+    padding: 24px;
+    color: #bbb;
+    font-size: 13px;
+  }
+
+  .flyer-footer a {
+    color: #2a7d7d;
+    text-decoration: none;
+  }
+
+  @media (max-width: 700px) {
+    .flyer-page-header h1 { font-size: 32px; }
+
+    .flyer-list-item a {
+      grid-template-columns: 1fr auto;
+      gap: 8px 12px;
+    }
+
+    .flyer-list-date {
+      grid-column: 1 / -1;
+    }
+
+    .flyer-list-arrow { align-self: start; }
+  }
+</style>

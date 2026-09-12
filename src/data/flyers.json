@@ -1,58 +1,107 @@
-[
-  {
-    "id": "oberlin-fall-2027-workshop-1",
-    "title": "The Empowered Artist — Workshop 1",
-    "school": "Oberlin Conservatory",
-    "date": "2027-09-28",
-    "format": "landscape",
-    "file": "flyer-oberlin-fall-2027-workshop-1.html"
-  },
-  {
-    "id": "oberlin-april-portrait",
-    "title": "Three-Part Performance Series",
-    "school": "Oberlin Conservatory",
-    "date": "2026-04-20",
-    "format": "portrait",
-    "file": "flyer-oberlin-april-portrait.html"
-  },
-  {
-    "id": "oberlin-april-tv-agenda",
-    "title": "Oberlin April Agenda Display",
-    "school": "Oberlin Conservatory",
-    "date": "2026-04-20",
-    "format": "landscape",
-    "file": "flyer-oberlin-april-tv-agenda.html"
-  },
-  {
-    "id": "oberlin-march-portrait",
-    "title": "From Inner-Critic to Inner-Coach",
-    "school": "Oberlin Conservatory",
-    "date": "2026-03-16",
-    "format": "portrait",
-    "file": "flyer-oberlin-march-portrait.html"
-  },
-  {
-    "id": "oberlin-march-tv-agenda",
-    "title": "Oberlin March Agenda Display",
-    "school": "Oberlin Conservatory",
-    "date": "2026-03-16",
-    "format": "landscape",
-    "file": "flyer-oberlin-march-tv-agenda.html"
-  },
-  {
-    "id": "cim-march-portrait",
-    "title": "Performance-Day Reset",
-    "school": "Cleveland Institute of Music",
-    "date": "2026-03-12",
-    "format": "portrait",
-    "file": "flyer-cim-march-portrait.html"
-  },
-  {
-    "id": "cim-march-tv-agenda",
-    "title": "CIM March Agenda Display",
-    "school": "Cleveland Institute of Music",
-    "date": "2026-03-12",
-    "format": "landscape",
-    "file": "flyer-cim-march-tv-agenda.html"
-  }
-]
+{
+  "schools": [
+    {
+      "slug": "oberlin",
+      "name": "Oberlin Conservatory",
+      "shortName": "Oberlin",
+      "events": [
+        {
+          "slug": "empowered-artist-workshop-1",
+          "series": "The Empowered Artist",
+          "title": "Empowered in the practice room",
+          "part": "Workshop 1",
+          "date": "2027-09-28",
+          "summary": "Practical tools for performance and well-being — starting with how to work in the practice room with more empowerment and less burnout.",
+          "flyers": [
+            {
+              "id": "landscape",
+              "label": "Event flyer",
+              "format": "landscape",
+              "file": "flyer-oberlin-fall-2027-workshop-1.html",
+              "primary": true
+            }
+          ]
+        },
+        {
+          "slug": "from-grind-to-kind-part-3",
+          "series": "From Grind to Kind",
+          "title": "Your Personalized Performance Process",
+          "part": "Part 3",
+          "date": "2026-04-20",
+          "summary": "The closing workshop in the three-part performance series — building a personalized process you can carry on and off stage.",
+          "flyers": [
+            {
+              "id": "landscape",
+              "label": "Agenda display",
+              "format": "landscape",
+              "file": "flyer-oberlin-april-tv-agenda.html",
+              "primary": true
+            },
+            {
+              "id": "portrait",
+              "label": "Print flyer",
+              "format": "portrait",
+              "file": "flyer-oberlin-april-portrait.html",
+              "primary": false
+            }
+          ]
+        },
+        {
+          "slug": "from-grind-to-kind-part-2",
+          "series": "From Grind to Kind",
+          "title": "From Inner-Critic to Inner-Coach",
+          "part": "Part 2",
+          "date": "2026-03-16",
+          "summary": "Learn to interrupt harsh self-talk and cultivate an inner coach that keeps you grounded under pressure.",
+          "flyers": [
+            {
+              "id": "landscape",
+              "label": "Agenda display",
+              "format": "landscape",
+              "file": "flyer-oberlin-march-tv-agenda.html",
+              "primary": true
+            },
+            {
+              "id": "portrait",
+              "label": "Print flyer",
+              "format": "portrait",
+              "file": "flyer-oberlin-march-portrait.html",
+              "primary": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cim",
+      "name": "Cleveland Institute of Music",
+      "shortName": "CIM",
+      "events": [
+        {
+          "slug": "performance-day-reset",
+          "series": "From Grind to Kind",
+          "title": "A Performance-Day Reset for Classical Musicians",
+          "part": null,
+          "date": "2026-03-12",
+          "summary": "A day of yoga, mental training, and live coaching — well-being as fuel for artistic excellence.",
+          "flyers": [
+            {
+              "id": "landscape",
+              "label": "Agenda display",
+              "format": "landscape",
+              "file": "flyer-cim-march-tv-agenda.html",
+              "primary": true
+            },
+            {
+              "id": "portrait",
+              "label": "Print flyer",
+              "format": "portrait",
+              "file": "flyer-cim-march-portrait.html",
+              "primary": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
