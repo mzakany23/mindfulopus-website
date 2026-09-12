@@ -5,7 +5,11 @@
       "title": "Equanimity: Where It Can All Be True",
       "excerpt": "What is equanimity, and why is it important? Instead of avoiding the bad and craving the good, we learn to be with what is. Here are practical suggestions for developing this powerful skill.",
       "date": "2023-12-22",
-      "categories": ["mindfulness", "equanimity", "mindset"],
+      "categories": [
+        "mindfulness",
+        "equanimity",
+        "mindset"
+      ],
       "link": "https://medium.com/@MindfulOpus/equanimity-where-it-can-all-be-true-7711b84fce0a"
     },
     {
@@ -13,15 +17,47 @@
       "title": "Mindfulness: Broken Bone vs. Bugging Brain?",
       "excerpt": "How do you check your thoughts, shift the feeling, and change the course of your human experience? By becoming aware of what's happening in the present moment.",
       "date": "2023-04-15",
-      "categories": ["mindfulness", "wellbeing", "classical-music"],
+      "categories": [
+        "mindfulness",
+        "wellbeing",
+        "classical-music"
+      ],
       "link": "https://medium.com/@MindfulOpus/mindfulness-broken-bone-vs-bugging-brain-cb76370452ed"
+    },
+    {
+      "id": "77dcf3c3c59d",
+      "title": "Snow, Sun and Music: A Musing On Opinions…",
+      "excerpt": "I will be going on vacay with my hub next week to a warm sunny beach, and as it snows outside my window today, I have to say I can’t wait… I’m personally not a snow bunny, not my thing. Now, my…",
+      "date": "2023-03-20",
+      "categories": [
+        "opinion",
+        "mindset",
+        "wellbeing"
+      ],
+      "link": "https://medium.com/@MindfulOpus/snow-sun-and-music-a-musing-on-opinions-77dcf3c3c59d"
+    },
+    {
+      "id": "790333c80cf2",
+      "title": "A POEM ON REST",
+      "excerpt": "inspired by having a cold, on this cold day, written from my couch, where I will be for a while… with no shame. Why is rest so hard to take, When we know it’s what we need? We tell others “take it…",
+      "date": "2023-02-06",
+      "categories": [
+        "rest",
+        "wellbeing",
+        "balance"
+      ],
+      "link": "https://medium.com/@MindfulOpus/a-poem-on-rest-790333c80cf2"
     },
     {
       "id": "d25a1a6a86c0",
       "title": "Winter Blues: Recognizing and Tending to Yourself This Season",
       "excerpt": "Practical tips for managing winter blues: getting outside for sunlight, using a happy light, moving your body, resting, and reaching out to loved ones.",
       "date": "2023-01-18",
-      "categories": ["wellbeing", "self-care", "mental-health"],
+      "categories": [
+        "wellbeing",
+        "self-care",
+        "mental-health"
+      ],
       "link": "https://medium.com/@MindfulOpus/winter-blues-recognizing-and-tending-to-yourself-this-season-d25a1a6a86c0"
     },
     {
@@ -29,7 +65,11 @@
       "title": "Progress over Perfection: A Shame-Free Mindset That Works",
       "excerpt": "Perfectionism isn't the best way to achieve success. Self-criticism shuts down learning centers of the brain. Learn how celebrating progress cultivates a kinder relationship with yourself.",
       "date": "2022-12-07",
-      "categories": ["mindset", "performance", "classical-music"],
+      "categories": [
+        "mindset",
+        "performance",
+        "classical-music"
+      ],
       "link": "https://medium.com/@MindfulOpus/progress-over-perfection-a-shame-free-mindset-that-works-811e959c05a8"
     },
     {
@@ -37,7 +77,10 @@
       "title": "Pleasant, Unpleasant or Neutral — Which Is It?",
       "excerpt": "A simple trick for mindfulness beginners: categorize feelings into pleasant, unpleasant, or neutral. This builds a foundation for self-compassion without needing the perfect emotional vocabulary.",
       "date": "2022-09-27",
-      "categories": ["mindfulness", "awareness"],
+      "categories": [
+        "mindfulness",
+        "awareness"
+      ],
       "link": "https://medium.com/@MindfulOpus/pleasant-unpleasant-or-neutral-which-is-it-4d7ebb8463ea"
     },
     {
@@ -45,7 +88,11 @@
       "title": "Are You Getting Results 'Because Of' or 'In Spite Of' How You Treat Yourself?",
       "excerpt": "Self-criticism isn't a sustainable motivator. Self-compassion allows us to reach our full potential by nurturing ourselves. Which option would you choose to run a race?",
       "date": "2022-06-14",
-      "categories": ["coaching", "performance", "mindfulness"],
+      "categories": [
+        "coaching",
+        "performance",
+        "mindfulness"
+      ],
       "link": "https://medium.com/@MindfulOpus/are-you-getting-the-results-you-want-because-of-or-in-spite-of-how-youre-treating-yourself-40b1d500c7f5"
     },
     {
@@ -53,7 +100,11 @@
       "title": "What Does Balance Look Like for You?",
       "excerpt": "Balance doesn't mean 'do less.' A mosaic-inspired life has each piece serving and strengthening the other. When you choose your version of balance, you show up as the best version of yourself.",
       "date": "2022-06-07",
-      "categories": ["balance", "coaching", "classical-music"],
+      "categories": [
+        "balance",
+        "coaching",
+        "classical-music"
+      ],
       "link": "https://medium.com/@MindfulOpus/what-does-balance-look-like-for-you-f925e50c8636"
     }
   ]

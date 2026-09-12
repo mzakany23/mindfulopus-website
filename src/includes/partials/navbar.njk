@@ -1,13 +1,7 @@
-<nav
-    class="navbar navbar-expand-lg  navbar-white fixed-top navbar-custom sticky sticky-light"
-    id="navbar"
->
+<nav class="navbar navbar-expand-lg fixed-top mo-nav" id="navbar">
     <div class="container">
-
-        <!-- LOGO -->
-        <a class="navbar-brand logo text-uppercase" href="#home">
-            <img src="{{ 'assets/images/logos/5.png' }}" class="logo-light" alt="" height="50">
-            <img src="{{ 'assets/images/logos/5.png' }}" class="logo-dark" alt="" height="25">
+        <a class="navbar-brand mo-nav-brand" href="#home">
+            <img src="{{ 'assets/images/logos/5.png' }}" alt="MindfulOpus" height="28">
         </a>
 
         <button class="navbar-toggler hamburger-menu" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -18,63 +12,14 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav ms-auto" id="navbar-navlist">
-                <li class="nav-item">
-                    <a class="nav-link" href="#me">
-                        <i class="mdi mdi-account-outline"></i>
-                        About
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#mission">
-                        <i class="mdi mdi-compass-outline"></i>
-                        Mission
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#services">
-                        <i class="mdi mdi-hand-heart"></i>
-                        What I Offer
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#testimonials">
-                        <i class="mdi mdi-format-quote-close"></i>
-                        Testimonials
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="mdi mdi-view-grid-outline"></i>
-                        Content
-                    </a>
-                    <ul class="dropdown-menu content-dropdown">
-                        <li>
-                            <a class="dropdown-item content-dropdown-item" href="#podcast">
-                                <i class="mdi mdi-podcast"></i>
-                                <span>Podcast</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item content-dropdown-item" href="#newsletter">
-                                <i class="mdi mdi-email-newsletter"></i>
-                                <span>Newsletter</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item content-dropdown-item" href="#wellbeing">
-                                <i class="mdi mdi-chart-donut"></i>
-                                <span>Well-Being Wheel</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contact">
-                        <i class="mdi mdi-calendar-heart"></i>
-                        Work with Me
-                    </a>
-                </li>
+            <ul class="navbar-nav ms-auto mo-nav-list" id="navbar-navlist">
+                <li class="nav-item"><a class="nav-link" href="#me">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">Offerings</a></li>
+                <li class="nav-item"><a class="nav-link" href="/studentopus/">StudentOpus</a></li>
+                <li class="nav-item"><a class="nav-link" href="#podcast">Podcast</a></li>
+                <li class="nav-item"><a class="nav-link" href="#newsletter">Newsletter</a></li>
+                <li class="nav-item"><a class="nav-link" href="#testimonials">Stories</a></li>
+                <li class="nav-item"><a class="nav-link mo-nav-cta" href="#contact">Work with me</a></li>
             </ul>
         </div>
     </div>

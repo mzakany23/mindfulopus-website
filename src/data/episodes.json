@@ -1,102 +1,512 @@
 {
   "episodes": [
     {
+      "id": 27,
+      "title": "Let The Path Curve: Yoga, Agency & The Artist+ Life with Elena Urioste & Melissa White",
+      "description": "S3 Ep.3: Violinists Elena Urioste and Melissa White of Intermission join me for a conversation about yoga, performance nerves, ditching perfection, healthier practice, artistic agency, and allowing a musical career to become bigger than one prescribed path. This episode feels a little full-circle for me… I first…",
+      "date": "2026-09-08",
+      "duration": "01:12:04",
+      "season": 3,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=hGFy6n8OfQw",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      },
+      "youtubeId": "hGFy6n8OfQw",
+      "thumbnail": "/assets/images/episodes/hGFy6n8OfQw.jpg",
+      "youtubeTitle": "Let The Path Curve: Yoga, Agency & The Artist+ Life with Elena Urioste & Melissa White",
+      "youtubePublished": "2026-09-08",
+      "thumbnailRemote": "https://i.ytimg.com/vi/hGFy6n8OfQw/hqdefault.jpg",
+      "thumbnailWidth": 480,
+      "thumbnailHeight": 360,
+      "episodeNumber": 3,
+      "views": 63
+    },
+    {
+      "id": 26,
+      "title": "Chasing Confidence: Why It Doesn't Work, and What To Do Instead",
+      "description": "S3 Ep. 2: What if confidence isn’t what you actively need to cultivate to show up boldly on stage? In this solo episode, I’m breaking down confidence by working backward from the outcome most of us want. We often tell ourselves that we need to feel confident before an audition or big performance, but confidence…",
+      "date": "2026-08-25",
+      "duration": "11:57",
+      "season": 3,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=VqVVQZzxBlA",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      },
+      "youtubeId": "VqVVQZzxBlA",
+      "thumbnail": "/assets/images/episodes/VqVVQZzxBlA.jpg",
+      "youtubeTitle": "Chasing Confidence: Why It Doesn't Work, and What To Do Instead",
+      "youtubePublished": "2026-08-25",
+      "thumbnailRemote": "https://i.ytimg.com/vi/VqVVQZzxBlA/hqdefault.jpg",
+      "thumbnailWidth": 480,
+      "thumbnailHeight": 360,
+      "episodeNumber": 2,
+      "views": 56
+    },
+    {
+      "id": 25,
+      "title": "Season 3: The Evolving Opus",
+      "description": "A conversation about outgrowing old structures, choosing curiosity over control, and creating frameworks that support who you are today. Season 3 is here, and in a fitting way, I’m kicking it off by changing the structure of the podcast itself. After two seasons with clear timelines, missions, and end dates, I’m…",
+      "date": "2026-08-11",
+      "duration": "17:49",
+      "season": 3,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=csPG-FcGw3s",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      },
+      "youtubeId": "csPG-FcGw3s",
+      "thumbnail": "/assets/images/episodes/csPG-FcGw3s.jpg",
+      "youtubeTitle": "Season 3: The Evolving Opus",
+      "youtubePublished": "2026-08-11",
+      "thumbnailRemote": "https://i.ytimg.com/vi/csPG-FcGw3s/hqdefault.jpg",
+      "thumbnailWidth": 480,
+      "thumbnailHeight": 360,
+      "episodeNumber": 1,
+      "views": 31
+    },
+    {
+      "id": 24,
+      "title": "Plot Twist: I’m the Guest! Interviewed by my Life and Business Coach...",
+      "description": "Bonus Ep 2: A conversation about career transitions, perfectionism, identity, and creating your life one mindful opus at a time. In this special episode, the microphone is turned on me as I sit down with my coach, Lindsay Dotzlaf, who interviews me! We unpack the journey that brought me from a 20-year career with…",
+      "date": "2026-07-28",
+      "duration": "01:07:51",
+      "season": 2,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=nGSMGshUS0w",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      },
+      "youtubeId": "nGSMGshUS0w",
+      "thumbnail": "/assets/images/episodes/nGSMGshUS0w.jpg",
+      "youtubeTitle": "Plot Twist: I’m the Guest! Interviewed by my Life and Business Coach...",
+      "youtubePublished": "2026-07-28",
+      "thumbnailRemote": "https://i.ytimg.com/vi/nGSMGshUS0w/hqdefault.jpg",
+      "thumbnailWidth": 480,
+      "thumbnailHeight": 360,
+      "isBonus": true,
+      "views": 21
+    },
+    {
+      "id": 23,
+      "title": "What Blue Jays Taught Me About Life, Music and Transitions",
+      "description": "In this reflective bonus episode of the MindfulOpus Podcast, I share the surprisingly powerful lessons I learned by watching two blue jays, Harry and Sally, build a nest, incubate their babies, and eventually leave the nest. What unfolds…",
+      "date": "2026-07-14",
+      "duration": "15:01",
+      "season": 2,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=AxgnG1QTif4",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      },
+      "youtubeId": "AxgnG1QTif4",
+      "thumbnail": "/assets/images/episodes/AxgnG1QTif4.jpg",
+      "youtubeTitle": "What Blue Jays Taught Me About Life, Music and Transitions",
+      "youtubePublished": "2026-07-14",
+      "thumbnailRemote": "https://i.ytimg.com/vi/AxgnG1QTif4/maxresdefault.jpg",
+      "thumbnailWidth": 1280,
+      "thumbnailHeight": 720,
+      "isBonus": true
+    },
+    {
+      "id": 22,
+      "title": "My Next Opus: A New Chapter After 20 Years with The Cleveland Orchestra",
+      "description": "S2 Ep #10: This is one of those episodes I've been sitting with for a while. I have some big news to share, and honestly, even typing that feels surreal. After more than 20 years as a violist with the Cleveland Orchestra, I have officially…",
+      "date": "2026-06-30",
+      "duration": "22:19",
+      "season": 2,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=BGHqHSzAGKI",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      },
+      "youtubeId": "BGHqHSzAGKI",
+      "thumbnail": "/assets/images/episodes/BGHqHSzAGKI.jpg",
+      "youtubeTitle": "My Next Opus: A New Chapter After 20 Years with The Cleveland Orchestra",
+      "youtubePublished": "2026-06-30",
+      "thumbnailRemote": "https://i.ytimg.com/vi/BGHqHSzAGKI/maxresdefault.jpg",
+      "thumbnailWidth": 1280,
+      "thumbnailHeight": 720,
+      "episodeNumber": 10
+    },
+    {
+      "id": 21,
+      "title": "Self-Trust for Musicians: How We Lose It and Begin to Rebuild It",
+      "description": "S2 Ep #9: Self-trust might be one of the most quietly radical acts we can practice as artists — and honestly, as humans. It sounds simple, but for so many of us in this field, it's anything but. This episode is a reflection on something…",
+      "date": "2026-06-16",
+      "duration": "22:31",
+      "season": 2,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=KRvuDf9MG4M",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      },
+      "youtubeId": "KRvuDf9MG4M",
+      "thumbnail": "/assets/images/episodes/KRvuDf9MG4M.jpg",
+      "youtubeTitle": "Self-Trust for Musicians: How We Lose It and Begin to Rebuild It",
+      "youtubePublished": "2026-06-16",
+      "thumbnailRemote": "https://i.ytimg.com/vi/KRvuDf9MG4M/maxresdefault.jpg",
+      "thumbnailWidth": 1280,
+      "thumbnailHeight": 720,
+      "episodeNumber": 9
+    },
+    {
+      "id": 20,
+      "title": "Kayleigh Miller: Speaking Up for Musicians’ Health and Well-Being",
+      "description": "S2 Ep #8: Kayleigh Miller is someone I've wanted to have on the podcast since the beginning. And our conversation today doesn't disappoint: we talk about musicians' body health, injury prevention, and what it means to use your voice to…",
+      "date": "2026-06-02",
+      "duration": "01:00:36",
+      "season": 2,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=Z6-Ja2NLLYg",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      },
+      "youtubeId": "Z6-Ja2NLLYg",
+      "thumbnail": "/assets/images/episodes/Z6-Ja2NLLYg.jpg",
+      "youtubeTitle": "Kayleigh Miller: Speaking Up for Musicians’ Health and Well-Being",
+      "youtubePublished": "2026-06-02",
+      "thumbnailRemote": "https://i.ytimg.com/vi/Z6-Ja2NLLYg/maxresdefault.jpg",
+      "thumbnailWidth": 1280,
+      "thumbnailHeight": 720,
+      "episodeNumber": 8
+    },
+    {
+      "id": 19,
+      "title": "Finding Your Inner Compass When Life Gets Hard",
+      "description": "S2 Ep #7: There are moments in life when the map disappears. You thought you knew where you were headed, and then something shifts — a loss, a disappointment, an unexpected turn — and suddenly you're navigating without a clear north star.…",
+      "date": "2026-05-19",
+      "duration": "21:01",
+      "season": 2,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=vLwvq3KmTX4",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      },
+      "youtubeId": "vLwvq3KmTX4",
+      "thumbnail": "/assets/images/episodes/vLwvq3KmTX4.jpg",
+      "youtubeTitle": "Finding Your Inner Compass When Life Gets Hard",
+      "youtubePublished": "2026-05-19",
+      "thumbnailRemote": "https://i.ytimg.com/vi/vLwvq3KmTX4/maxresdefault.jpg",
+      "thumbnailWidth": 1280,
+      "thumbnailHeight": 720,
+      "episodeNumber": 7
+    },
+    {
+      "id": 18,
+      "title": "Theresa Rudolph: Learning to Trust Yourself Again",
+      "description": "S2 Ep #6: This episode felt like a conversation I'd been wanting to have for a long time — one that goes beyond the highlight reel and into the real, sometimes messy, always human experience of building a sustainable life as a professional…",
+      "date": "2026-05-05",
+      "duration": "51:45",
+      "season": 2,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=2OEaI5TEPGA",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      },
+      "youtubeId": "2OEaI5TEPGA",
+      "thumbnail": "/assets/images/episodes/2OEaI5TEPGA.jpg",
+      "youtubeTitle": "Theresa Rudolph: Learning to Trust Yourself Again",
+      "youtubePublished": "2026-05-05",
+      "thumbnailRemote": "https://i.ytimg.com/vi/2OEaI5TEPGA/maxresdefault.jpg",
+      "thumbnailWidth": 1280,
+      "thumbnailHeight": 720,
+      "episodeNumber": 6
+    },
+    {
+      "id": 17,
+      "title": "Transformational Change: Create Lasting Well-Being On and Off Stage",
+      "description": "S2 Ep #5: The Four Pillars of Well-Being for Performers Most of us who pursue music or are seeking excellence in any endeavour have been told at some point that it has to be everything. That if you're not living, eating, and breathing the…",
+      "date": "2026-04-21",
+      "duration": "29:24",
+      "season": 2,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=8kw78DotaNM",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      },
+      "youtubeId": "8kw78DotaNM",
+      "thumbnail": "/assets/images/episodes/8kw78DotaNM.jpg",
+      "youtubeTitle": "Transformational Change: Create Lasting Well-Being On and Off Stage",
+      "youtubePublished": "2026-04-21",
+      "thumbnailRemote": "https://i.ytimg.com/vi/8kw78DotaNM/maxresdefault.jpg",
+      "thumbnailWidth": 1280,
+      "thumbnailHeight": 720,
+      "episodeNumber": 5
+    },
+    {
+      "id": 16,
+      "title": "Finding Alignment: Saeunn Thorsteinsdottir on Creativity, Authenticity & Change",
+      "description": "S2 Ep #4: There comes a point in any creative life where pushing harder stops working. Where the effort that once felt necessary begins to feel depleting, and the question starts to shift from \"How do I make this work?\" to \"Is this…",
+      "date": "2026-04-07",
+      "duration": "55:11",
+      "season": 2,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=N3ZuweHfyxA",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      },
+      "youtubeId": "N3ZuweHfyxA",
+      "thumbnail": "/assets/images/episodes/N3ZuweHfyxA.jpg",
+      "youtubeTitle": "Finding Alignment: Saeunn Thorsteinsdottir on Creativity, Authenticity & Change",
+      "youtubePublished": "2026-04-07",
+      "thumbnailRemote": "https://i.ytimg.com/vi/N3ZuweHfyxA/maxresdefault.jpg",
+      "thumbnailWidth": 1280,
+      "thumbnailHeight": 720,
+      "episodeNumber": 4
+    },
+    {
+      "id": 15,
+      "title": "Grit Over Grind: How To Work Hard Without Burning Out",
+      "description": "S2 Ep #3: How To Work Hard Without Beating Yourself Up Hard work is something most artists know intimately. But the way we relate to that hard work can make the difference between sustainable growth and eventual burnout. In this solo…",
+      "date": "2026-03-24",
+      "duration": "18:31",
+      "season": 2,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=0P4jYqCnIzA",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      },
+      "youtubeId": "0P4jYqCnIzA",
+      "thumbnail": "/assets/images/episodes/0P4jYqCnIzA.jpg",
+      "youtubeTitle": "Grit Over Grind: How To Work Hard Without Burning Out",
+      "youtubePublished": "2026-03-24",
+      "thumbnailRemote": "https://i.ytimg.com/vi/0P4jYqCnIzA/maxresdefault.jpg",
+      "thumbnailWidth": 1280,
+      "thumbnailHeight": 720,
+      "episodeNumber": 3
+    },
+    {
+      "id": 14,
+      "title": "Jonathan Biss: “Perfection Is Stagnation”",
+      "description": "S2 Ep #2: On Perfectionism, Performance Anxiety, and the Purpose of Music Perfectionism and performance anxiety are two forces that so many artists struggle with, often quietly and alone. In this conversation, I sit down with concert…",
+      "date": "2026-03-10",
+      "duration": "44:31",
+      "season": 2,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=Qp-hfETRLC8",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      },
+      "youtubeId": "Qp-hfETRLC8",
+      "thumbnail": "/assets/images/episodes/Qp-hfETRLC8.jpg",
+      "youtubeTitle": "Jonathan Biss: “Perfection Is Stagnation”",
+      "youtubePublished": "2026-03-10",
+      "thumbnailRemote": "https://i.ytimg.com/vi/Qp-hfETRLC8/maxresdefault.jpg",
+      "thumbnailWidth": 1280,
+      "thumbnailHeight": 720,
+      "episodeNumber": 2
+    },
+    {
+      "id": 13,
+      "title": "Let Your Values Guide You, On and Off Stage",
+      "description": "S2 Ep #1: As artists, it's easy to get caught up in the pressure to meet others' expectations, which can lead us to create in ways that feel disconnected from our true selves. In this episode, I'll guide you through a practical framework…",
+      "date": "2026-02-24",
+      "duration": "13:21",
+      "season": 2,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=LRGz2TMTnMg",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      },
+      "youtubeId": "LRGz2TMTnMg",
+      "thumbnail": "/assets/images/episodes/LRGz2TMTnMg.jpg",
+      "youtubeTitle": "Let Your Values Guide You, On and Off Stage",
+      "youtubePublished": "2026-02-24",
+      "thumbnailRemote": "https://i.ytimg.com/vi/LRGz2TMTnMg/maxresdefault.jpg",
+      "thumbnailWidth": 1280,
+      "thumbnailHeight": 720,
+      "episodeNumber": 1
+    },
+    {
+      "id": 12,
+      "title": "Welcome to Season 2 of The MindfulOpus Podcast!",
+      "description": "In this season, we're diving even deeper into the human behind the art, exploring how mindfulness, well-being, and authenticity are essential for creatives like you. If you're ready to move away from toxic grind culture and embrace a more…",
+      "date": "2026-02-24",
+      "duration": "01:40",
+      "season": 2,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=_LCChhw1gVE",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      },
+      "youtubeId": "_LCChhw1gVE",
+      "thumbnail": "/assets/images/episodes/_LCChhw1gVE.jpg",
+      "youtubeTitle": "Welcome to Season 2 of The MindfulOpus Podcast!",
+      "youtubePublished": "2026-02-24",
+      "thumbnailRemote": "https://i.ytimg.com/vi/_LCChhw1gVE/maxresdefault.jpg",
+      "thumbnailWidth": 1280,
+      "thumbnailHeight": 720,
+      "isTrailer": true
+    },
+    {
+      "id": 11,
+      "title": "Stay in Your Boat: Stories on Life and Music with Ron Patterson",
+      "description": "S1 Ep #10: A concertmaster's perspective on perfectionism, nerves, and the permission to be human In the season 1 finale of The MindfulOpus Podcast, I'm joined by my dad, Ron Patterson — world-class violinist, former concertmaster of the…",
+      "date": "2026-01-27",
+      "duration": "01:08:53",
+      "season": 1,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=2oPgl6QiM8o",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
+      },
+      "youtubeId": "2oPgl6QiM8o",
+      "thumbnail": "/assets/images/episodes/2oPgl6QiM8o.jpg",
+      "youtubeTitle": "Stay in Your Boat: Stories on Life and Music with Ron Patterson",
+      "youtubePublished": "2026-01-27",
+      "thumbnailRemote": "https://i.ytimg.com/vi/2oPgl6QiM8o/maxresdefault.jpg",
+      "thumbnailWidth": 1280,
+      "thumbnailHeight": 720,
+      "episodeNumber": 10
+    },
+    {
       "id": 10,
       "title": "Befriending Performance Nerves",
       "description": "7 tools to help you actually enjoy performing again. Performance nerves are universal, unavoidable… and often hard to manage. In this episode, I share a compassionate, practical, and research-informed approach to one of the biggest challenges we face as performers.",
       "date": "2026-01-13",
       "duration": "18:51",
       "season": 1,
-      "episodeNumber": 9,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=04yws5zTewA",
         "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
-      }
+      },
+      "youtubeId": "04yws5zTewA",
+      "thumbnail": "/assets/images/episodes/04yws5zTewA.jpg",
+      "youtubeTitle": "Befriending Performance Nerves",
+      "youtubePublished": "2026-01-13",
+      "thumbnailRemote": "https://i.ytimg.com/vi/04yws5zTewA/hqdefault.jpg",
+      "thumbnailWidth": 480,
+      "thumbnailHeight": 360,
+      "episodeNumber": 9
     },
     {
       "id": 9,
       "title": "Stuck, Scattered, or Overthinking Your Prep?",
       "description": "My two-part process to help you find clarity, confidence, and calm before any big artistic event. What if preparing for a big performance didn't have to feel overwhelming, rigid, or all-consuming?",
       "date": "2025-12-30",
-      "duration": "17:47",
+      "duration": "17:46",
       "season": 1,
-      "episodeNumber": 8,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=IZ5sYGJwhbI",
         "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
-      }
+      },
+      "youtubeId": "IZ5sYGJwhbI",
+      "thumbnail": "/assets/images/episodes/IZ5sYGJwhbI.jpg",
+      "youtubeTitle": "Stuck, Scattered, or Overthinking Your Prep?",
+      "youtubePublished": "2025-12-30",
+      "thumbnailRemote": "https://i.ytimg.com/vi/IZ5sYGJwhbI/hqdefault.jpg",
+      "thumbnailWidth": 480,
+      "thumbnailHeight": 360,
+      "episodeNumber": 8
     },
     {
       "id": 8,
-      "title": "Finding Freedom: Lauren Roth-Gómez's Journey of Self-Worth",
+      "title": "Finding Freedom: Lauren Roth-Gómez’s Journey of Self-Worth",
       "description": "A story of reconnection, self-belief, and coming home to your art. What happens when you've spent years feeling like your playing is never good enough? Violinist Lauren Roth-Gómez, Acting Associate Concertmaster of the Atlanta Symphony, shares the inner transformation that led her back to herself and her artistry.",
       "date": "2025-12-16",
-      "duration": "49:24",
+      "duration": "49:23",
       "season": 1,
-      "episodeNumber": 7,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=Q1BCS2VysJg",
         "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
-      }
+      },
+      "youtubeId": "Q1BCS2VysJg",
+      "thumbnail": "/assets/images/episodes/Q1BCS2VysJg.jpg",
+      "youtubeTitle": "Finding Freedom: Lauren Roth-Gómez’s Journey of Self-Worth",
+      "youtubePublished": "2025-12-16",
+      "thumbnailRemote": "https://i.ytimg.com/vi/Q1BCS2VysJg/hqdefault.jpg",
+      "thumbnailWidth": 480,
+      "thumbnailHeight": 360,
+      "episodeNumber": 7
     },
     {
       "id": 7,
       "title": "The Cost of Being Your Own Worst Critic",
       "description": "When your worth depends on your results, and how that pressure leads to burnout. If your inner-critic has been running the show — the one that tells you you're only as worthy as your latest performance, audition result, or practice session — this episode is for you. We explore the real cost of being your own worst critic and how to shift from inner-critic to inner-coach.",
       "date": "2025-12-02",
-      "duration": "24:00",
+      "duration": "23:43",
       "season": 1,
-      "episodeNumber": 6,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=aMueqqmJYsw",
         "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
-      }
+      },
+      "youtubeId": "aMueqqmJYsw",
+      "thumbnail": "/assets/images/episodes/aMueqqmJYsw.jpg",
+      "youtubeTitle": "The Cost of Being Your Own Worst Critic",
+      "youtubePublished": "2025-12-02",
+      "thumbnailRemote": "https://i.ytimg.com/vi/aMueqqmJYsw/hqdefault.jpg",
+      "thumbnailWidth": 480,
+      "thumbnailHeight": 360,
+      "episodeNumber": 6
     },
     {
       "id": 6,
       "title": "Inside the Genius of Joshua Smith",
       "description": "A conversation around vulnerability, long-haul artistry, and the case for communication over perfection — through the lens of a 35-year run in one of the most high-pressure chairs in the orchestral world. I sit down with Joshua Smith, Grammy-nominated Principal Flute of The Cleveland Orchestra, to explore curiosity, freedom, and sustainable excellence.",
       "date": "2025-11-18",
-      "duration": "1:03:00",
+      "duration": "01:02:55",
       "season": 1,
-      "episodeNumber": 5,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=4iRLuVkVpC4",
         "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
-      }
+      },
+      "youtubeId": "4iRLuVkVpC4",
+      "thumbnail": "/assets/images/episodes/4iRLuVkVpC4.jpg",
+      "youtubeTitle": "Inside the Genius of Joshua Smith",
+      "youtubePublished": "2025-11-18",
+      "thumbnailRemote": "https://i.ytimg.com/vi/4iRLuVkVpC4/hqdefault.jpg",
+      "thumbnailWidth": 480,
+      "thumbnailHeight": 360,
+      "episodeNumber": 5
     },
     {
       "id": 5,
       "title": "The Well-Being Wheel: A Whole-Human Approach to Music",
       "description": "If you've ever felt like music has taken over your entire life — the long hours, the pressure, the constant fear of not doing enough — this episode is for you. I introduce The MindfulOpus Well-Being Wheel — a framework designed to help musicians move from burnout to balance by nurturing all parts of your life.",
       "date": "2025-11-04",
-      "duration": "25:00",
+      "duration": "25:28",
       "season": 1,
-      "episodeNumber": 4,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=w85ec4r-Usc",
         "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
-      }
+      },
+      "youtubeId": "w85ec4r-Usc",
+      "thumbnail": "/assets/images/episodes/w85ec4r-Usc.jpg",
+      "youtubeTitle": "The Well-Being Wheel: A Whole-Human Approach to Music",
+      "youtubePublished": "2025-11-04",
+      "thumbnailRemote": "https://i.ytimg.com/vi/w85ec4r-Usc/hqdefault.jpg",
+      "thumbnailWidth": 480,
+      "thumbnailHeight": 360,
+      "episodeNumber": 4
     },
     {
       "id": 4,
-      "title": "The Mindful Audition: How Feeling Good Became James Patterson's Secret to Winning",
+      "title": "The Mindful Audition: How Feeling Good Became James Patterson’s Secret to Winning",
       "description": "A conversation around mindfulness, perfectionism, well-being, and rewriting the audition story from the inside out. I sit down with James Patterson, Tredjestilling Horn (3rd/1st horn) player with the Oslo Philharmonic, to explore how he completely reimagined his approach to auditions — with his well-being front and center.",
       "date": "2025-10-21",
-      "duration": "1:05:00",
+      "duration": "01:04:32",
       "season": 1,
-      "episodeNumber": 3,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=O70Hr3r-pKQ",
         "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
-      }
+      },
+      "youtubeId": "O70Hr3r-pKQ",
+      "thumbnail": "/assets/images/episodes/O70Hr3r-pKQ.jpg",
+      "youtubeTitle": "The Mindful Audition: How Feeling Good Became James Patterson’s Secret to Winning",
+      "youtubePublished": "2025-10-21",
+      "thumbnailRemote": "https://i.ytimg.com/vi/O70Hr3r-pKQ/hqdefault.jpg",
+      "thumbnailWidth": 480,
+      "thumbnailHeight": 360,
+      "episodeNumber": 3
     },
     {
       "id": 3,
@@ -105,40 +515,61 @@
       "date": "2025-10-07",
       "duration": "19:00",
       "season": 1,
-      "episodeNumber": 2,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=C5XoOJ6Xc5o",
         "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
-      }
+      },
+      "youtubeId": "C5XoOJ6Xc5o",
+      "thumbnail": "/assets/images/episodes/C5XoOJ6Xc5o.jpg",
+      "youtubeTitle": "The Perfection Trap",
+      "youtubePublished": "2025-10-07",
+      "thumbnailRemote": "https://i.ytimg.com/vi/C5XoOJ6Xc5o/hqdefault.jpg",
+      "thumbnailWidth": 480,
+      "thumbnailHeight": 360,
+      "episodeNumber": 2
     },
     {
       "id": 2,
       "title": "Winning, But at What Cost?",
       "description": "In the classical music world, we're often taught that struggle is the price of greatness. But what if our artistry didn't have to come at the cost of our humanity? I take you behind the curtain of my own journey — from grueling childhood auditions in France, to winning my dream job at 21 and facing career-threatening injuries.",
       "date": "2025-10-07",
-      "duration": "13:00",
+      "duration": "13:25",
       "season": 1,
-      "episodeNumber": 1,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=-87ViiwM2y4",
         "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
-      }
+      },
+      "youtubeId": "-87ViiwM2y4",
+      "thumbnail": "/assets/images/episodes/-87ViiwM2y4.jpg",
+      "youtubeTitle": "Winning, But at What Cost?",
+      "youtubePublished": "2025-10-07",
+      "thumbnailRemote": "https://i.ytimg.com/vi/-87ViiwM2y4/hqdefault.jpg",
+      "thumbnailWidth": 480,
+      "thumbnailHeight": 360,
+      "episodeNumber": 1
     },
     {
       "id": 1,
       "title": "MindfulOpus Podcast Trailer",
-      "description": "Hello and welcome to the MindfulOpus podcast! I'm your host, Jo Zakany — violist with The Cleveland Orchestra, yoga teacher, and coach for classical musicians. Here, we switch from Grind to Kind in our artistic process – so that artists like you can avoid burnout, ditch performance anxiety, and create a thriving, healthy life - on and off stage.",
-      "date": "2025-10-07",
-      "duration": "3:00",
+      "description": "Hello and welcome to the MindulOpus podcast! I'm your host, Jo Zakany — former violist with The Cleveland Orchestra, yoga teacher, and coach for classical musicians. Here, we switch from Grind to Kind in our artistic process – so that artists…",
+      "date": "2025-09-30",
+      "duration": "02:34",
       "season": 1,
-      "isTrailer": true,
       "links": {
         "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
         "youtube": "https://www.youtube.com/watch?v=n74KezrDJ_A",
         "applePodcast": "https://podcasts.apple.com/us/podcast/mindfulopus/id1843249943"
-      }
+      },
+      "youtubeId": "n74KezrDJ_A",
+      "thumbnail": "/assets/images/episodes/n74KezrDJ_A.jpg",
+      "youtubeTitle": "MindfulOpus Podcast Trailer",
+      "youtubePublished": "2025-09-30",
+      "thumbnailRemote": "https://i.ytimg.com/vi/n74KezrDJ_A/maxresdefault.jpg",
+      "thumbnailWidth": 480,
+      "thumbnailHeight": 360,
+      "isTrailer": true
     }
   ]
 }

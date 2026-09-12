@@ -1,0 +1,86 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      TAG: ${{ steps.tag.outputs.TAG }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Generate tag
+        id: tag
+        run: |
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+          VERSION=$(cat package.json | python3 -c "import sys,json; print(json.load(sys.stdin)['version'])")
+          TAG="${VERSION}-${SHORT_SHA}"
+          echo "TAG=${TAG}" >> "$GITHUB_OUTPUT"
+          echo "Tag: ${TAG}"
+
+      - name: Build and push with Kaniko
+        uses: docker://registry.home.mcztest.com/mirror/kaniko-executor:latest
+        with:
+          args: >
+            --dockerfile=Dockerfile
+            --context=.
+            --destination=registry.home.mcztest.com/homelab/mindfulopus-website:${{ steps.tag.outputs.TAG }}
+            --destination=registry.home.mcztest.com/homelab/mindfulopus-website:latest
+            --insecure
+            --skip-tls-verify
+            --cache=true
+            --cache-repo=registry.home.mcztest.com/cache
+            --cache-ttl=168h
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: always() && needs.build.result == 'success'
+    steps:
+      - name: Deploy
+        run: |
+          TAG="${{ needs.build.outputs.TAG }}"
+
+          # Verify image exists in registry
+          if ! curl -sL "http://registry.home.mcztest.com/v2/homelab/mindfulopus-website/tags/list" | grep -q "${TAG}"; then
+            echo "Image ${TAG} not found in registry, skipping deploy"
+            exit 1
+          fi
+
+          echo "Image ${TAG} verified in registry, deploying..."
+
+          # Fetch current values.yaml from proxmox repo via Gitea API
+          CURRENT=$(curl -s \
+            -H "Authorization: token ${{ secrets.DEPLOY_TOKEN }}" \
+            "https://gitea.home.mcztest.com/api/v1/repos/homelab/proxmox/contents/cluster/apps/mindfulopus-website/values.yaml")
+
+          SHA=$(echo "$CURRENT" | python3 -c "import sys,json; print(json.load(sys.stdin)['sha'])")
+          CONTENT=$(echo "$CURRENT" | python3 -c "import sys,json,base64; print(base64.b64decode(json.load(sys.stdin)['content']).decode())")
+
+          UPDATED=$(echo "$CONTENT" | sed "s/tag: \".*\"/tag: \"${TAG}\"/")
+          ENCODED=$(echo "$UPDATED" | python3 -c "import sys,base64; print(base64.b64encode(sys.stdin.buffer.read()).decode())")
+
+          curl -s -X PUT \
+            -H "Authorization: token ${{ secrets.DEPLOY_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"message\": \"ci: update mindfulopus-website image tag to ${TAG}\", \"content\": \"${ENCODED}\", \"sha\": \"${SHA}\"}" \
+            "https://gitea.home.mcztest.com/api/v1/repos/homelab/proxmox/contents/cluster/apps/mindfulopus-website/values.yaml"
+
+          # Trigger ArgoCD sync
+          ARGOCD_TOKEN=$(curl -s -k -m 10 \
+            -X POST \
+            -H "Content-Type: application/json" \
+            -d '{"username":"admin","password":"${{ secrets.ARGOCD_PASSWORD }}"}' \
+            "http://argocd-server.argocd.svc.cluster.local/api/v1/session" | python3 -c "import sys,json; print(json.load(sys.stdin)['token'])")
+
+          curl -s -k -m 10 \
+            -X GET \
+            -H "Authorization: Bearer ${ARGOCD_TOKEN}" \
+            "http://argocd-server.argocd.svc.cluster.local/api/v1/applications/mindfulopus-website?refresh=hard" > /dev/null
+
+          echo "Deployed: ${TAG}"

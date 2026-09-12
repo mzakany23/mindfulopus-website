@@ -1,0 +1,32 @@
+// MindfulOpus shared brand tokens
+// Keep Main + StudentOpus in one family. Do not invent a second palette here.
+
+:root {
+  --mo-ink: #101816;
+  --mo-ink-soft: #24332f;
+  --mo-muted: #2a3c38;
+  --mo-teal: #2a7d7d;
+  --mo-teal-mid: #318989;
+  --mo-teal-deep: #1f6666;
+  --mo-teal-night: #164f4f;
+  --mo-sage: #b5bfb6;
+  --mo-sage-deep: #8f9c92;
+  --mo-mist: #e8efeb;
+  --mo-foam: #f4f7f5;
+  --mo-paper: #ffffff;
+  --mo-line: rgba(16, 24, 22, 0.12);
+  --mo-shadow: 0 12px 32px rgba(22, 79, 79, 0.14);
+  --mo-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --mo-max: 1120px;
+  --mo-radius-btn: 999px;
+}
+
+// Sass aliases for stylesheets that still compile against hex literals
+$mo-ink: #101816;
+$mo-teal: #2a7d7d;
+$mo-teal-deep: #1f6666;
+$mo-teal-mid: #318989;
+$mo-sage: #b5bfb6;
+$mo-foam: #f4f7f5;
+$mo-paper: #ffffff;
+$mo-line: rgba(16, 24, 22, 0.12);

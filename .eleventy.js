@@ -1,6 +1,8 @@
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const svgSprite = require("eleventy-plugin-svg-sprite");
 const dateFilter = require('./src/filters/dateFilter.js');
+const { youtubeId, youtubeThumb } = require('./src/filters/youtube.js');
+const { groupBySeason, groupByYear } = require('./src/filters/groupBy.js');
 
 module.exports = function (config) {
   // RELOAD ON SCSS COMPILE
@@ -10,6 +12,12 @@ module.exports = function (config) {
 
   // PASSTHROUGHS
   config.addPassthroughCopy("src/assets/images/");
+  // Root favicons — Chrome asks /favicon.ico first; SVG stays crisp in modern tabs
+  config.addPassthroughCopy("src/favicon.ico");
+  config.addPassthroughCopy("src/favicon.svg");
+  config.addPassthroughCopy("src/favicon-32.png");
+  config.addPassthroughCopy("src/apple-touch-icon.png");
+  config.addPassthroughCopy("src/studentopus/assets/");
   config.addPassthroughCopy("src/assets/vendor/css/bootstrap.min.css");
   config.addPassthroughCopy("src/assets/vendor/css/materialdesignicons.min.css");
   config.addPassthroughCopy("src/assets/vendor/css/pe-icon-7-stroke.css");
@@ -24,6 +32,10 @@ module.exports = function (config) {
 
   // FILTERS //
   config.addFilter('dateFilter', dateFilter);
+  config.addFilter('youtubeId', youtubeId);
+  config.addFilter('youtubeThumb', youtubeThumb);
+  config.addFilter('groupBySeason', groupBySeason);
+  config.addFilter('groupByYear', groupByYear);
 
   // TRANSFORMS //
   // minify HTML

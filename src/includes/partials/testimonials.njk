@@ -1,73 +1,35 @@
-<!-- Start Testimonials -->
-<section class="testimonial-section section bg-lightan bg-home-np" id="testimonials">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 text-center">
-                <h3>Testimonials</h3>
-            </div>
-        </div>
-
-        <div class="testimonial-carousel">
-            <!-- Navigation Dots -->
-            <div class="carousel-dots"></div>
-
-            <!-- Testimonial Container -->
-            <div class="carousel-container">
-                <div class="testimonial-track">
-                    {% for testimonial in testimonials.testimonials %}
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <blockquote class="testimonial-text">
-                                "{{ testimonial.quote }}"
-                            </blockquote>
-                            <div class="testimonial-author">
-                                {% if testimonial.author == "Anonymous" %}
-                                    <h4>{{ testimonial.role }}</h4>
-                                {% else %}
-                                    {% if testimonial.author %}
-                                        <h4>{{ testimonial.author }}</h4>
-                                    {% endif %}
-                                    {% if testimonial.role %}
-                                        <p>{{ testimonial.role }}</p>
-                                    {% endif %}
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-
-            <!-- Navigation Buttons -->
-            <button class="carousel-nav prev" aria-label="Previous">‹</button>
-            <button class="carousel-nav next" aria-label="Next">›</button>
-        </div>
+<section class="mo-stories section" id="testimonials">
+  <div class="container">
+    <div class="mo-stories-head">
+      <h3>Stories from the room</h3>
+      <p>Musicians who’ve worked with Jo.</p>
     </div>
+
+    <div class="testimonial-carousel mo-stories-carousel">
+      <div class="carousel-dots"></div>
+      <div class="carousel-container">
+        <div class="testimonial-track">
+          {% for testimonial in testimonials.testimonials %}
+          <div class="testimonial-card mo-story">
+            <div class="testimonial-content">
+              <blockquote class="testimonial-text mo-story-quote">
+                “{{ testimonial.quote }}”
+              </blockquote>
+              <div class="testimonial-author mo-story-author">
+                {% if testimonial.author == "Anonymous" %}
+                  <strong>{{ testimonial.role }}</strong>
+                {% else %}
+                  {% if testimonial.author %}<strong>{{ testimonial.author }}</strong>{% endif %}
+                  {% if testimonial.role %}<span>{{ testimonial.role }}</span>{% endif %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <button class="carousel-nav prev" aria-label="Previous">‹</button>
+      <button class="carousel-nav next" aria-label="Next">›</button>
+    </div>
+  </div>
 </section>
-<!-- End Testimonials -->
-
-<style>
-.tiny-three-item {
-    position: relative;
-}
-
-.tiny-slide {
-    padding: 1rem;
-}
-
-.card {
-    transition: all 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.text-muted {
-    color: #6c757d;
-}
-
-.fst-italic {
-    font-style: italic;
-}
-</style>

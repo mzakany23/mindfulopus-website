@@ -8,36 +8,31 @@
             </div>
         </div>
 
-        <!-- Articles Section -->
         <div class="row justify-content-center">
-            <div class="col-lg-12">
+            <div class="col-lg-10">
                 {% if articles.articles.length > 0 %}
-                <div class="row" id="articles-container">
+                <ul class="stack-list" id="articles-container">
                     {% for article in articles.articles %}
-                    <div class="col-lg-6 col-md-6 mb-4 article-item{% if loop.index > 4 %} article-paginated article-hidden{% endif %}">
-                        <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="article-card-link">
-                            <div class="article-card">
-                                <div class="article-header">
-                                    <div class="article-categories">
-                                        {% for category in article.categories %}
-                                        {% if loop.index <= 2 %}
-                                        <span class="article-category">{{ category }}</span>
-                                        {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                    <div class="article-date">{{ article.date | dateFilter }}</div>
-                                </div>
-                                <h5 class="article-title">{{ article.title }}</h5>
-                                <p class="article-excerpt">{{ article.excerpt }}</p>
-                                <div class="article-read-more">
-                                    <span>Read on Medium</span>
-                                    <i class="mdi mdi-arrow-right"></i>
-                                </div>
+                    <li class="stack-item article-item{% if loop.index > 4 %} article-paginated article-hidden{% endif %}">
+                        <a href="{{ article.link }}" target="_blank" rel="noopener noreferrer" class="stack-item-link">
+                            <div class="stack-meta">
+                                {% for category in article.categories %}
+                                {% if loop.index <= 2 %}
+                                <span class="stack-meta-strong">{{ category }}</span>
+                                {% endif %}
+                                {% endfor %}
+                                <span>{{ article.date | dateFilter }}</span>
                             </div>
+                            <h5 class="stack-title">{{ article.title }}</h5>
+                            <p class="stack-excerpt">{{ article.excerpt }}</p>
+                            <span class="stack-more">
+                                Read on Medium
+                                <i class="mdi mdi-arrow-right" aria-hidden="true"></i>
+                            </span>
                         </a>
-                    </div>
+                    </li>
                     {% endfor %}
-                </div>
+                </ul>
                 {% if articles.articles.length > 4 %}
                 <div class="text-center mt-4">
                     <button class="btn btn-outline-secondary btn-show-more" id="show-more-articles" onclick="toggleArticles()">
@@ -83,17 +78,15 @@
                 </script>
                 {% endif %}
                 {% else %}
-                <!-- No articles yet - show Medium link -->
                 <div class="text-center">
                     <p class="text-muted mb-4">Explore mindfulness insights, well-being tips, and stories from the classical music world.</p>
                 </div>
                 {% endif %}
 
-                <!-- Newsletter Buttons -->
                 <div class="text-center mt-5 newsletter-buttons">
                     <a href="{{ site.newsletter.subscribe }}" target="_blank" rel="noopener noreferrer" class="btn btn-newsletter btn-subscribe">
                         <i class="mdi mdi-email-outline"></i>
-                        Subscribe to Newsletter
+                        Subscribe to Mindful Musings
                     </a>
                     <a href="{{ site.newsletter.medium }}" target="_blank" rel="noopener noreferrer" class="btn btn-newsletter btn-medium">
                         <i class="mdi mdi-medium"></i>
