@@ -1,6 +1,6 @@
 /**
  * Flatten school → event data into linkable event records with upcoming/past.
- * Used by Eleventy pagination for /flyers/{school}/{event}/ pages.
+ * Used by Eleventy pagination for /flyers/{school}/{yyyy}/{mm}/{dd}/{slug}/ pages.
  */
 const { DateTime } = require("luxon");
 const flyers = require("./flyers.json");
@@ -11,6 +11,14 @@ function todayISO() {
 
 function formatDate(iso) {
   return DateTime.fromISO(iso).toFormat("MMMM d, yyyy");
+}
+
+function eventUrl(schoolSlug, dateIso, slug) {
+  const dt = DateTime.fromISO(dateIso);
+  const y = dt.toFormat("yyyy");
+  const m = dt.toFormat("MM");
+  const d = dt.toFormat("dd");
+  return `/flyers/${schoolSlug}/${y}/${m}/${d}/${slug}/`;
 }
 
 module.exports = function () {
@@ -29,7 +37,7 @@ module.exports = function () {
         status: event.date >= today ? "upcoming" : "past",
         dateLabel: formatDate(event.date),
         primaryFlyer: primary,
-        url: `/flyers/${school.slug}/${event.slug}/`,
+        url: eventUrl(school.slug, event.date, event.slug),
         schoolUrl: `/flyers/${school.slug}/`,
       });
     }
