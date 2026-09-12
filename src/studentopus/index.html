@@ -375,6 +375,38 @@
       margin-top: 1.15rem;
       font-size: 1.05rem;
       color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem 0.55rem;
+    }
+    .meta-sep {
+      color: rgba(42, 60, 56, 0.45);
+      font-weight: 600;
+    }
+    .zoom-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+    }
+    .zoom-icon {
+      width: 1.15em;
+      height: 1.15em;
+      flex-shrink: 0;
+      border-radius: 0.28em;
+      display: block;
+    }
+    .session .row strong.zoom-brand {
+      justify-content: flex-end;
+    }
+    .step .zoom-brand {
+      justify-content: center;
+      gap: 0.45rem;
+    }
+    .step .zoom-icon {
+      width: 1.05em;
+      height: 1.05em;
     }
 
     .hero-visual {
@@ -1018,7 +1050,19 @@
             <a class="btn" href="#this-month">See this month’s topic</a>
             <a class="btn ghost" href="#about">What is StudentOpus?</a>
           </div>
-          <p class="meta reveal reveal-delay-3">Live on Zoom · $25 drop-in · No membership</p>
+          <p class="meta reveal reveal-delay-3">
+            <span class="zoom-brand">
+              <svg class="zoom-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+                <rect width="48" height="48" rx="10" fill="#2D8CFF"></rect>
+                <path fill="#fff" d="M13.5 16.8c0-1.2.98-2.2 2.2-2.2h12.1c1.22 0 2.2.98 2.2 2.2v4.35l5.85-3.5c.72-.43 1.65.09 1.65.93v14.04c0 .84-.93 1.36-1.65.93l-5.85-3.5v4.35c0 1.22-.98 2.2-2.2 2.2H15.7c-1.22 0-2.2-.98-2.2-2.2V16.8z"></path>
+              </svg>
+              Live on Zoom
+            </span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span>$25 drop-in</span>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <span>No membership</span>
+          </p>
         </div>
         <aside class="hero-visual">
           <div class="photo-frame reveal-photo">
@@ -1064,7 +1108,16 @@
             <p class="session-cadence">First Tuesday of every month · 12–1 PM ET</p>
             <div class="row"><span>This month</span><strong>Tuesday, October 6</strong></div>
             <div class="row"><span>Time</span><strong>12–1 PM ET</strong></div>
-            <div class="row"><span>Where</span><strong>Live on Zoom</strong></div>
+            <div class="row">
+              <span>Where</span>
+              <strong class="zoom-brand">
+                <svg class="zoom-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+                  <rect width="48" height="48" rx="10" fill="#2D8CFF"></rect>
+                  <path fill="#fff" d="M13.5 16.8c0-1.2.98-2.2 2.2-2.2h12.1c1.22 0 2.2.98 2.2 2.2v4.35l5.85-3.5c.72-.43 1.65.09 1.65.93v14.04c0 .84-.93 1.36-1.65.93l-5.85-3.5v4.35c0 1.22-.98 2.2-2.2 2.2H15.7c-1.22 0-2.2-.98-2.2-2.2V16.8z"></path>
+                </svg>
+                Live on Zoom
+              </strong>
+            </div>
             <div class="row"><span>Price</span><strong>$25 · drop-in</strong></div>
             <a class="btn spotlight" href="https://buy.stripe.com/14A6oz9eEh2je1NelzgIo01" target="_blank" rel="noopener noreferrer">Reserve my spot — $25</a>
           </div>
@@ -1138,7 +1191,13 @@
             <p>Pay $25 through the secure registration link.</p>
           </div>
           <div class="step scroll-rise scroll-rise-delay-2">
-            <b>Register for Zoom</b>
+            <b class="zoom-brand">
+              <svg class="zoom-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+                <rect width="48" height="48" rx="10" fill="#2D8CFF"></rect>
+                <path fill="#fff" d="M13.5 16.8c0-1.2.98-2.2 2.2-2.2h12.1c1.22 0 2.2.98 2.2 2.2v4.35l5.85-3.5c.72-.43 1.65.09 1.65.93v14.04c0 .84-.93 1.36-1.65.93l-5.85-3.5v4.35c0 1.22-.98 2.2-2.2 2.2H15.7c-1.22 0-2.2-.98-2.2-2.2V16.8z"></path>
+              </svg>
+              Register for Zoom
+            </b>
             <p>After payment, register to receive your personal Zoom link.</p>
           </div>
           <div class="step scroll-rise scroll-rise-delay-2">
