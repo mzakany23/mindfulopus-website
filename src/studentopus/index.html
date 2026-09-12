@@ -342,6 +342,14 @@
       align-items: center;
     }
     .hero-copy { max-width: 36rem; }
+    .hero-eyebrow {
+      margin: 0 0 0.85rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--teal-deep);
+    }
     .hero h1 {
       margin: 0;
       font-size: clamp(2.55rem, 5.4vw, 3.85rem);
@@ -408,6 +416,26 @@
       line-height: 1.55;
       color: var(--ink-soft);
       font-weight: 400;
+    }
+    .hero-quote .quote-title {
+      margin: 0.35rem 0 0;
+      font-size: 1.12rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--ink);
+    }
+    .hero-quote .quote-title + p { margin-top: 0.55rem; }
+
+    .section-lede {
+      margin: 0.65rem 0 0;
+      color: var(--muted);
+      font-size: 1.12rem;
+      max-width: 42ch;
+      line-height: 1.6;
+    }
+    #how-it-works .section-lede,
+    #faq .section-lede {
+      margin-bottom: 0.35rem;
     }
 
     .reveal { animation: rise-in 0.85s var(--ease) both; }
@@ -930,7 +958,7 @@
           </span>
         </span>
       </a>
-      <a class="btn nav-cta" href="#this-month">See this month’s topic</a>
+      <a class="btn nav-cta" href="#this-month">See this month’s session</a>
     </div>
     <nav class="journey wrap" aria-label="Page journey">
       <div class="journey-collapse">
@@ -961,15 +989,17 @@
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <h1 class="reveal">You don’t have to figure all of this out alone.</h1>
+          <p class="hero-eyebrow reveal">Monthly live group coaching for music students</p>
+          <h1 class="reveal reveal-delay-1">You don’t have to figure all of this out alone.</h1>
           <p class="lede reveal reveal-delay-1">
-            StudentOpus is a monthly, live group coaching experience for college and conservatory music students:
+            StudentOpus is a monthly, drop-in coaching space for college and conservatory music students:
             a place to talk honestly about your well-being, and how to let it support you with practicing,
             performing, confidence, burnout, schedules, the inner critic, tending fully to the human being
             behind the art.
           </p>
           <div class="actions reveal reveal-delay-2">
             <a class="btn" href="#this-month">See this month’s topic</a>
+            <a class="btn ghost" href="#about">What is StudentOpus?</a>
           </div>
           <p class="meta reveal reveal-delay-3">60 minutes · Live on Zoom · $25 · No membership or commitment</p>
         </div>
@@ -979,9 +1009,10 @@
           </div>
           <blockquote class="hero-quote">
             <div class="quote-mark" aria-hidden="true">“</div>
+            <p class="quote-title">A different kind of music-school support</p>
             <p>
-              Bring a question if you’d like — and know that while I may not be able to coach everyone
-              individually, there’s a lot to gain from listening to and learning from the room.
+              Bring a question. Bring what’s actually going on. Or simply listen, learn, and realize
+              you’re probably not the only one navigating it.
             </p>
           </blockquote>
         </aside>
@@ -994,8 +1025,7 @@
       <div class="section-glow month-glow-b" data-parallax="-0.08" aria-hidden="true"></div>
       <div class="wrap section-content">
         <div class="month-intro scroll-rise">
-          <h2>This month</h2>
-          <p>Topic, date, and registration for the current session.</p>
+          <h2>This month at StudentOpus</h2>
         </div>
         <div class="month-card scroll-rise scroll-rise-delay-1" id="month-card">
           <div class="month-main">
@@ -1030,6 +1060,9 @@
       <div class="wrap two section-content">
         <div class="scroll-rise">
           <h2>What is StudentOpus?</h2>
+          <p class="section-lede">
+            Support for the parts of music school nobody teaches you how to navigate.
+          </p>
           <div class="about-photo">
             <img src="assets/jo-computer.jpg" id="about-photo" alt="Joanna P. Zakany" />
           </div>
@@ -1037,7 +1070,7 @@
         <div class="scroll-rise scroll-rise-delay-1">
           <p class="copy">
             StudentOpus is live group coaching created specifically for college and conservatory music students.
-            Each month centers around one topic, with room for real questions, coaching, discussion,
+            Each month centers around one topic of my choosing, with room for real questions, coaching, discussion,
             and learning from what other students are experiencing too.
           </p>
           <ul class="topics">
@@ -1076,6 +1109,7 @@
       <div class="section-glow works-glow" data-parallax="0.09" aria-hidden="true"></div>
       <div class="wrap section-content">
         <h2 class="scroll-rise">How it works</h2>
+        <p class="section-lede scroll-rise">Simple, affordable, community-focused</p>
         <div class="steps">
           <div class="step scroll-rise scroll-rise-delay-1">
             <b>Choose this month’s session</b>
@@ -1101,19 +1135,20 @@
       <div class="section-sky" data-parallax="0.15" aria-hidden="true"></div>
       <div class="section-glow faq-glow" data-parallax="-0.08" aria-hidden="true"></div>
       <div class="wrap section-content">
-        <h2 class="scroll-rise">FAQ</h2>
+        <h2 class="scroll-rise">A few good things to know</h2>
+        <p class="section-lede scroll-rise">Real conversations. True problem-solving.</p>
         <div class="faq">
           <div class="faq-item scroll-rise scroll-rise-delay-1">
             <h3>Do I have to be coached?</h3>
-            <p>No. You’re welcome to bring a question, but you can also simply listen and learn.</p>
+            <p>No. You’re welcome to bring a question, but you can also sit back, be part of the community and learn from your peers.</p>
           </div>
           <div class="faq-item scroll-rise scroll-rise-delay-1">
             <h3>Do cameras have to be on?</h3>
-            <p>Cameras on is encouraged because it helps the room feel connected, but you’re still welcome if you need yours off.</p>
+            <p>Cameras on is highly encouraged because it helps the room feel connected in that sense of community. But you’re of course welcome to keep it off if that feels right to you.</p>
           </div>
           <div class="faq-item scroll-rise scroll-rise-delay-2">
-            <h3>Will I definitely get coached?</h3>
-            <p>Not necessarily. Depending on the size of the group and the flow of the conversation, I may not be able to coach every student individually. You’ll still be able to learn from the coaching, questions, and discussion happening in the room.</p>
+            <h3>Will I definitely get coached if I sign up?</h3>
+            <p>Not necessarily. Depending on the size of the group and the flow of the conversation, I may not be able to coach every student individually. But, you’ll still be able to learn from the coaching, questions, and discussion happening in the room on our shared topic!</p>
           </div>
           <div class="faq-item scroll-rise scroll-rise-delay-2">
             <h3>Is this a membership?</h3>
@@ -1128,7 +1163,8 @@
       <div class="wrap">
         <h2>Come as you are. Bring what’s actually going on.</h2>
         <p class="copy">
-          StudentOpus is here to make music school feel a little more human — one honest conversation at a time.
+          StudentOpus is here to make sure your artistry doesn’t come at the cost of your humanity,
+          so you can thrive — on and off stage.
         </p>
         <a class="btn spotlight" href="#">Reserve my spot — $25</a>
       </div>
