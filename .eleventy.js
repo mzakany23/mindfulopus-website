@@ -12,6 +12,11 @@ module.exports = function (config) {
 
   // PASSTHROUGHS
   config.addPassthroughCopy("src/assets/images/");
+  // Root favicons — Chrome asks /favicon.ico first; SVG stays crisp in modern tabs
+  config.addPassthroughCopy("src/favicon.ico");
+  config.addPassthroughCopy("src/favicon.svg");
+  config.addPassthroughCopy("src/favicon-32.png");
+  config.addPassthroughCopy("src/apple-touch-icon.png");
   config.addPassthroughCopy("src/studentopus/assets/");
   config.addPassthroughCopy("src/assets/vendor/css/bootstrap.min.css");
   config.addPassthroughCopy("src/assets/vendor/css/materialdesignicons.min.css");
