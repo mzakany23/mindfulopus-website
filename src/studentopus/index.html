@@ -313,7 +313,7 @@
     /* ——— Hero ——— */
     .hero {
       position: relative;
-      padding: 4.5rem 0 5.5rem;
+      padding: 4.5rem 0 6.5rem;
       overflow: hidden;
       isolation: isolate;
     }
@@ -374,7 +374,12 @@
       color: var(--muted);
     }
 
-    .hero-visual { position: relative; }
+    .hero-visual {
+      position: relative;
+      /* Room for the tilted quote’s corners — don’t let section/hero overflow chew them */
+      padding-bottom: 0.75rem;
+      overflow: visible;
+    }
     .photo-frame {
       position: relative;
       border-radius: 28px;
@@ -402,6 +407,7 @@
       box-shadow: var(--shadow);
       color: var(--ink);
       transform: rotate(-1.25deg);
+      transform-origin: center center;
     }
     .quote-mark {
       font-family: Quicksand, sans-serif;
@@ -449,7 +455,7 @@
     }
     @keyframes photo-in {
       from { opacity: 0.001; clip-path: inset(8% 8% 8% 8% round 28px); transform: translateY(24px); }
-      to { opacity: 1; clip-path: inset(0 0 0 0 round 28px); transform: none; }
+      to { opacity: 1; clip-path: none; transform: none; }
     }
 
     section { padding: 5.25rem 0; position: relative; overflow: hidden; isolation: isolate; }
@@ -1003,11 +1009,11 @@
           </div>
           <p class="meta reveal reveal-delay-3">60 minutes · Live on Zoom · $25 · No membership or commitment</p>
         </div>
-        <aside class="hero-visual reveal-photo">
-          <div class="photo-frame">
+        <aside class="hero-visual">
+          <div class="photo-frame reveal-photo">
             <img src="assets/jo-standing.jpg" id="hero-photo" alt="Joanna P. Zakany" />
           </div>
-          <blockquote class="hero-quote">
+          <blockquote class="hero-quote reveal reveal-delay-3">
             <div class="quote-mark" aria-hidden="true">“</div>
             <p class="quote-title">A different kind of music-school support</p>
             <p>
