@@ -1,6 +1,28 @@
 {
   "episodes": [
     {
+      "id": 28,
+      "title": "The Myth of Having It All Figured Out: Impostor Syndrome and The Pressures Of Being A Performing Artist",
+      "description": "S3 Ep.4: What happens when, from the outside, you look like you’re thriving and have it all figured out—but on the inside, you’re riddled with self-doubt, a noisy inner critic, and the fear that one mistake could expose you? In this solo episode, I’m exploring imposter syndrome and the unique pressures that come with being a performing artist, especially in classical music.",
+      "date": "2026-09-21",
+      "duration": "26:36",
+      "season": 3,
+      "links": {
+        "spotify": "https://open.spotify.com/search/MindfulOpus%20podcast",
+        "youtube": "https://www.youtube.com/watch?v=ZdnsybvJWMs",
+        "applePodcast": "https://podcasts.apple.com/us/podcast/the-myth-of-having-it-all-figured-out-impostor/id1843249943?i=1000791050647"
+      },
+      "youtubeId": "ZdnsybvJWMs",
+      "thumbnail": "/assets/images/episodes/ZdnsybvJWMs.jpg",
+      "youtubeTitle": "The Myth Of Having It All Figured Out: Impostor Syndrome & Pressures Of Being A Performing Artist",
+      "youtubePublished": "2026-09-22",
+      "thumbnailRemote": "https://i.ytimg.com/vi/ZdnsybvJWMs/hqdefault.jpg",
+      "thumbnailWidth": 480,
+      "thumbnailHeight": 360,
+      "episodeNumber": 4,
+      "views": 2
+    },
+    {
       "id": 27,
       "title": "Let The Path Curve: Yoga, Agency & The Artist+ Life with Elena Urioste & Melissa White",
       "description": "S3 Ep.3: Violinists Elena Urioste and Melissa White of Intermission join me for a conversation about yoga, performance nerves, ditching perfection, healthier practice, artistic agency, and allowing a musical career to become bigger than one prescribed path. This episode feels a little full-circle for me… I first…",
