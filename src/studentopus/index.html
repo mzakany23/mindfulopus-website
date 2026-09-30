@@ -371,6 +371,26 @@
       transform: translateY(-3px);
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.32);
     }
+    /* Secondary path on dark surfaces: a text link, not a second button — Reserve stays the one CTA */
+    .interest-note {
+      margin: 1rem 0 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      text-align: center;
+      color: #d5ece8;
+    }
+    .interest-note a {
+      color: #9fe0d2;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px;
+      white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+    .interest-note a:hover { color: #fff; }
+    .interest-note a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; border-radius: 2px; }
+    .closing .interest-note { margin-top: 1.2rem; color: #e6f0ed; }
     .nav-cta { min-height: 44px; padding: 0 1.2rem; font-size: 0.95rem; }
 
     /* ——— Hero ——— */
@@ -1227,6 +1247,7 @@
             </div>
             <div class="row"><span>Price</span><strong>$25 · drop-in</strong></div>
             <a class="btn spotlight" href="https://buy.stripe.com/14A6oz9eEh2je1NelzgIo01" target="_blank" rel="noopener noreferrer">Reserve my spot — $25</a>
+            <p class="interest-note">Can’t make it this month? <a href="https://6b81c6e8.sibforms.com/serve/MUIFAB7EnGp54SxvtgR0dTgWR04ulZeiM9Yb_qsvttjwkBqBPXXP33K5hfMRRLZ5r0Yr6WZpd1nUsYbG4r-QQQwf2tkoh2wVjUkVw_k5-q0W3MKVoWMd04JL9Xi3l7N9ph0znsl1zpwSVrYmWTmjBtd8pvxDLb9urvXSbz8_n_qGjhe2hUovE8TnLnII9XOQf41nnhDX9K0NfnAd" target="_blank" rel="noopener noreferrer">Join the interest list&nbsp;→</a></p>
           </div>
         </div>
       </div>
@@ -1351,6 +1372,7 @@
           so you can thrive — on and off stage.
         </p>
         <a class="btn spotlight" href="https://buy.stripe.com/14A6oz9eEh2je1NelzgIo01" target="_blank" rel="noopener noreferrer">Reserve my spot — $25</a>
+        <p class="interest-note">Can’t make it this month? <a href="https://6b81c6e8.sibforms.com/serve/MUIFAB7EnGp54SxvtgR0dTgWR04ulZeiM9Yb_qsvttjwkBqBPXXP33K5hfMRRLZ5r0Yr6WZpd1nUsYbG4r-QQQwf2tkoh2wVjUkVw_k5-q0W3MKVoWMd04JL9Xi3l7N9ph0znsl1zpwSVrYmWTmjBtd8pvxDLb9urvXSbz8_n_qGjhe2hUovE8TnLnII9XOQf41nnhDX9K0NfnAd" target="_blank" rel="noopener noreferrer">Join the interest list&nbsp;→</a></p>
       </div>
     </section>
   </main>
