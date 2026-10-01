@@ -1,0 +1,7 @@
+{
+    "posthog": {
+        "projectKey": "phc_Dh3sZmEw6c7W5weTSRnLUjCYSzBBoV3UZuLvq8gKdcvx",
+        "apiHost": "https://us.i.posthog.com",
+        "productionHosts": ["mindfulopus.com", "www.mindfulopus.com"]
+    }
+}
