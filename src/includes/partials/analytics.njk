@@ -1,0 +1,50 @@
+{#- PostHog with its standard first-party cookie. Cookieless mode was rejected on
+    2026-10-01: PostHog strips the IP in that mode, which loses country/city and bot
+    detection. Only the hosts in data/analytics.json report, and every event carries
+    an environment (production or homelab) so cluster testing filters out of the
+    real numbers; Netlify previews and localhost send nothing. The project key is PostHog's public browser key, not a secret. -#}
+{%- set ph = analytics.posthog %}
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  var moEnvironment = ({{ ph.reportingHosts | dump | safe }})[location.hostname];
+  if (moEnvironment) {
+    posthog.init('{{ ph.projectKey }}', {
+      api_host: '{{ ph.apiHost }}',
+      defaults: '2026-05-30',
+      person_profiles: 'identified_only'
+    });
+    posthog.register({ environment: moEnvironment });
+  }
+  // capture exists only after init, so off the reporting hosts this is a no-op.
+  window.moTrack = function (name, props) {
+    if (window.posthog && typeof posthog.capture === 'function') posthog.capture(name, props);
+  };
+  // Stripe sends payers straight on to Zoom, so the site never sees the payment. Instead the
+  // Reserve link carries this visitor's PostHog id as client_reference_id, Stripe stores it on
+  // the checkout session, and payments are joined back to visits from Stripe's own records.
+  function tagCheckout(link) {
+    var id = window.posthog && typeof posthog.get_distinct_id === 'function' && posthog.get_distinct_id();
+    if (!id) return;
+    var url = new URL(link.href);
+    // Stripe accepts letters, digits, dashes and underscores, up to 200 characters.
+    url.searchParams.set('client_reference_id', String(id).replace(/[^A-Za-z0-9_-]/g, '_').slice(0, 200));
+    link.href = url.toString();
+  }
+  // Story steps, one event per thing a visitor can choose to do:
+  //   reserve_click   - StudentOpus Reserve (to Stripe); payment itself is read from Stripe
+  //   interest_click  - StudentOpus "can't make it this month" list (Brevo)
+  //   workbook_click  - free Well-Being Wheel signup on the homepage (Brevo)
+  // Brevo links name their event with data-track, since every Brevo form shares one host.
+  // Everything else (other clicks, pageviews, scroll depth, referrer and UTM) is PostHog's own.
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest && event.target.closest('a[href]');
+    if (!link) return;
+    var section = link.closest('section[id]');
+    var props = { placement: section ? section.id : null, page: location.pathname };
+    if (link.hostname === 'buy.stripe.com') {
+      moTrack('reserve_click', props);
+      tagCheckout(link);
+    }
+    else if (link.dataset.track) moTrack(link.dataset.track, props);
+  }, true);
+</script>

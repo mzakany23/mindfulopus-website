@@ -1,0 +1,11 @@
+{
+    "posthog": {
+        "projectKey": "phc_Dh3sZmEw6c7W5weTSRnLUjCYSzBBoV3UZuLvq8gKdcvx",
+        "apiHost": "https://us.i.posthog.com",
+        "reportingHosts": {
+            "mindfulopus.com": "production",
+            "www.mindfulopus.com": "production",
+            "mindfulopus-website.home.mcztest.com": "homelab"
+        }
+    }
+}
