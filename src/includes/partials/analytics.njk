@@ -19,13 +19,27 @@
   window.moTrack = function (name, props) {
     if (window.posthog && typeof posthog.capture === 'function') posthog.capture(name, props);
   };
+  // Stripe sends payers straight on to Zoom, so the site never sees the payment. Instead the
+  // Reserve link carries this visitor's PostHog id as client_reference_id, Stripe stores it on
+  // the checkout session, and payments are joined back to visits from Stripe's own records.
+  function tagCheckout(link) {
+    var id = window.posthog && typeof posthog.get_distinct_id === 'function' && posthog.get_distinct_id();
+    if (!id) return;
+    var url = new URL(link.href);
+    // Stripe accepts letters, digits, dashes and underscores, up to 200 characters.
+    url.searchParams.set('client_reference_id', String(id).replace(/[^A-Za-z0-9_-]/g, '_').slice(0, 200));
+    link.href = url.toString();
+  }
   // Funnel steps: a Reserve click (to Stripe) and an interest-list click (to Brevo).
   document.addEventListener('click', function (event) {
     var link = event.target.closest && event.target.closest('a[href]');
     if (!link) return;
     var section = link.closest('section[id]');
     var props = { placement: section ? section.id : null, page: location.pathname };
-    if (link.hostname === 'buy.stripe.com') moTrack('reserve_click', props);
+    if (link.hostname === 'buy.stripe.com') {
+      moTrack('reserve_click', props);
+      tagCheckout(link);
+    }
     else if (/\.sibforms\.com$/.test(link.hostname)) moTrack('interest_click', props);
   }, true);
 </script>
