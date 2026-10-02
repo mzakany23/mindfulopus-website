@@ -30,7 +30,12 @@
     url.searchParams.set('client_reference_id', String(id).replace(/[^A-Za-z0-9_-]/g, '_').slice(0, 200));
     link.href = url.toString();
   }
-  // Funnel steps: a Reserve click (to Stripe) and an interest-list click (to Brevo).
+  // Story steps, one event per thing a visitor can choose to do:
+  //   reserve_click   - StudentOpus Reserve (to Stripe); payment itself is read from Stripe
+  //   interest_click  - StudentOpus "can't make it this month" list (Brevo)
+  //   workbook_click  - free Well-Being Wheel signup on the homepage (Brevo)
+  // Brevo links name their event with data-track, since every Brevo form shares one host.
+  // Everything else (other clicks, pageviews, scroll depth, referrer and UTM) is PostHog's own.
   document.addEventListener('click', function (event) {
     var link = event.target.closest && event.target.closest('a[href]');
     if (!link) return;
@@ -40,6 +45,6 @@
       moTrack('reserve_click', props);
       tagCheckout(link);
     }
-    else if (/\.sibforms\.com$/.test(link.hostname)) moTrack('interest_click', props);
+    else if (link.dataset.track) moTrack(link.dataset.track, props);
   }, true);
 </script>
