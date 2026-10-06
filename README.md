@@ -170,3 +170,29 @@ git push -u origin feature/your-update
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
+## StudentOpus registration cutoff
+
+The advertised occurrence lives in `src/data/studentopus.json`. Set `startsAt`
+and `registrationClosesAt` with explicit Eastern offsets (`-04:00` in daylight
+time, `-05:00` in standard time), the session's Stripe payment URL, and the
+interest-list URL when publishing a new session. The noon October 6 occurrence
+closes registration at 11:59 AM ET, one minute before it starts. The displayed
+month, date, and closing time come from that configuration.
+
+Both primary controls change from Reserve to “Join the interest list for the next
+session” at the cutoff, including in open tabs and on click. They then open the
+existing Brevo interest form, where visitors must submit their email to subscribe.
+The same interest-list destination is available without JavaScript. The secondary
+interest links are hidden after closing to avoid duplicate actions.
+
+Expired occurrences stay closed until a new occurrence is deliberately published;
+the page never silently sells a new month against an old session description.
+`npm test` checks the boundary, stale tabs/clicks, invalid configuration, timezone
+handling, the interest-list fallback, and preservation of checkout attribution.
+
+This is a website guard using the visitor's clock. It does **not** deactivate the
+shared Stripe payment link, expire a checkout already opened in Stripe, observe
+Zoom attendance, or revoke a Zoom URL. Full payment enforcement still needs a
+separate Stripe credential with Payment Links and Checkout Sessions read/write
+permissions and a server-side cutoff job. Use a dedicated payment link per
+occurrence so old shared links cannot later sell a different session.

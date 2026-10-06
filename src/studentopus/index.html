@@ -776,6 +776,14 @@
     .session .row strong { font-weight: 700; text-align: right; color: #fff; }
     .session .btn { width: 100%; margin-top: 1.25rem; }
 
+    [data-session-reserve] { text-align: center; padding-block: 0.65rem; }
+    .registration-note {
+      color: #d5ece8;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0.75rem 0 0;
+    }
+
     .two {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1218,7 +1226,7 @@
         </div>
         <div class="month-card scroll-rise scroll-rise-delay-1" id="month-card">
           <div class="month-main">
-            <div class="month-label">October · first Tuesday</div>
+            <div class="month-label">{{ sessionMonth }} · first Tuesday</div>
             <h3>Excellence over Perfection</h3>
             <p class="copy">
               Are you feeling like you’re always behind? Never feeling like the work is “good enough”?
@@ -1234,7 +1242,7 @@
           </div>
           <div class="session">
             <p class="session-cadence">First Tuesday of every month · 12–1 PM ET</p>
-            <div class="row"><span>This month</span><strong>Tuesday, October 6</strong></div>
+            <div class="row"><span>This month</span><strong>{{ sessionDate }}</strong></div>
             <div class="row"><span>Time</span><strong>12–1 PM ET</strong></div>
             <div class="row">
               <span>Where</span>
@@ -1247,8 +1255,10 @@
               </strong>
             </div>
             <div class="row"><span>Price</span><strong>$25 · drop-in</strong></div>
-            <a class="btn spotlight" href="https://buy.stripe.com/14A6oz9eEh2je1NelzgIo01" target="_blank" rel="noopener noreferrer">Reserve my spot — $25</a>
-            <p class="interest-note">Can’t make it this month? <a data-track="interest_click" href="https://6b81c6e8.sibforms.com/serve/MUIFAB7EnGp54SxvtgR0dTgWR04ulZeiM9Yb_qsvttjwkBqBPXXP33K5hfMRRLZ5r0Yr6WZpd1nUsYbG4r-QQQwf2tkoh2wVjUkVw_k5-q0W3MKVoWMd04JL9Xi3l7N9ph0znsl1zpwSVrYmWTmjBtd8pvxDLb9urvXSbz8_n_qGjhe2hUovE8TnLnII9XOQf41nnhDX9K0NfnAd" target="_blank" rel="noopener noreferrer">Join the interest list&nbsp;→</a></p>
+            <a class="btn spotlight" data-session-reserve data-registration-state="closed" data-track="interest_click" href="{{ studentopus.interestUrl }}" target="_blank" rel="noopener noreferrer">Join the interest list for the next session</a>
+            <p class="registration-note" data-session-status role="status" aria-live="polite">Register by {{ sessionCutoff }} — before the session starts.</p>
+            <noscript><p class="registration-note">Enable JavaScript to check registration availability.</p></noscript>
+            <p class="interest-note">Can’t make it this month? <a data-track="interest_click" href="{{ studentopus.interestUrl }}" target="_blank" rel="noopener noreferrer">Join the interest list&nbsp;→</a></p>
           </div>
         </div>
       </div>
@@ -1372,8 +1382,10 @@
           <span class="so-mark so-mark--on-dark"><span class="so-s">Student</span><span class="so-o">Opus</span></span> is here to make sure your artistry doesn’t come at the cost of your humanity,
           so you can thrive — on and off stage.
         </p>
-        <a class="btn spotlight" href="https://buy.stripe.com/14A6oz9eEh2je1NelzgIo01" target="_blank" rel="noopener noreferrer">Reserve my spot — $25</a>
-        <p class="interest-note">Can’t make it this month? <a data-track="interest_click" href="https://6b81c6e8.sibforms.com/serve/MUIFAB7EnGp54SxvtgR0dTgWR04ulZeiM9Yb_qsvttjwkBqBPXXP33K5hfMRRLZ5r0Yr6WZpd1nUsYbG4r-QQQwf2tkoh2wVjUkVw_k5-q0W3MKVoWMd04JL9Xi3l7N9ph0znsl1zpwSVrYmWTmjBtd8pvxDLb9urvXSbz8_n_qGjhe2hUovE8TnLnII9XOQf41nnhDX9K0NfnAd" target="_blank" rel="noopener noreferrer">Join the interest list&nbsp;→</a></p>
+        <a class="btn spotlight" data-session-reserve data-registration-state="closed" data-track="interest_click" href="{{ studentopus.interestUrl }}" target="_blank" rel="noopener noreferrer">Join the interest list for the next session</a>
+            <p class="registration-note" data-session-status role="status" aria-live="polite">Register by {{ sessionCutoff }} — before the session starts.</p>
+            <noscript><p class="registration-note">Enable JavaScript to check registration availability.</p></noscript>
+        <p class="interest-note">Can’t make it this month? <a data-track="interest_click" href="{{ studentopus.interestUrl }}" target="_blank" rel="noopener noreferrer">Join the interest list&nbsp;→</a></p>
       </div>
     </section>
   </main>
@@ -1389,6 +1401,8 @@
     </div>
   </footer>
 
+  <script id="studentopus-session" type="application/json">{{ studentopus | dump | safe }}</script>
+  <script src="/assets/js/studentopus-registration.js?v=1.0.2"></script>
   <script>
     (function () {
       var nav = document.getElementById("nav");
