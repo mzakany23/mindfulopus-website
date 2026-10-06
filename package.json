@@ -1,6 +1,6 @@
 {
   "name": "mindfulopus-website",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "scripts": {
     "run:dev": "cross-env ELEVENTY_ENV=development npx @11ty/eleventy --serve",
@@ -10,7 +10,8 @@
     "build:app": "run-p build:sass build:eleventy",
     "install:app": "rm -rf dist & npm install",
     "develop": "run-p watch:sass run:dev",
-    "build": "npm install npm-run-all && run-s install:app build:app"
+    "build": "npm install npm-run-all && run-s install:app build:app",
+    "test": "node --test tests/*.test.js"
   },
   "author": "",
   "license": "",
