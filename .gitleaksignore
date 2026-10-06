@@ -1,0 +1,4 @@
+# Public PostHog browser ingestion keys intentionally shipped in the website.
+# Exceptions apply only to these existing historical commits and lines.
+47256bef76aa24460ec688aa0898ecd6e4d9d68c:src/data/analytics.json:generic-api-key:3
+857ff73bb5be9b0fd89e8d84072b98f746c61561:src/data/analytics.json:generic-api-key:3
