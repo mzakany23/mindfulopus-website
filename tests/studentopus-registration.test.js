@@ -6,10 +6,10 @@ const vm = require("node:vm");
 const fs = require("node:fs");
 
 test("registration remains open until, but not at, the 11:59 AM cutoff", () => {
-  assert.equal(registrationOpen(session, Date.parse("2026-10-06T11:00:00-04:00")), true);
-  assert.equal(registrationOpen(session, Date.parse("2026-10-06T11:58:59.999-04:00")), true);
-  assert.equal(registrationOpen(session, Date.parse("2026-10-06T11:59:00-04:00")), false);
-  assert.equal(registrationOpen(session, Date.parse("2026-10-06T12:30:00-04:00")), false);
+  assert.equal(registrationOpen(session, Date.parse("2026-11-03T11:00:00-05:00")), true);
+  assert.equal(registrationOpen(session, Date.parse("2026-11-03T11:58:59.999-05:00")), true);
+  assert.equal(registrationOpen(session, Date.parse("2026-11-03T11:59:00-05:00")), false);
+  assert.equal(registrationOpen(session, Date.parse("2026-11-03T12:30:00-05:00")), false);
 });
 
 function pageAt(time, config = session) {
@@ -41,10 +41,10 @@ function pageAt(time, config = session) {
 }
 
 test("open tabs switch both destinations to the interest form at the cutoff", () => {
-  const page = pageAt("2026-10-06T11:58:59-04:00");
+  const page = pageAt("2026-11-03T11:58:59-05:00");
   assert.ok(page.buttons.every(b => b.attrs.href === session.paymentUrl));
   assert.equal(page.timer.delay, 1001);
-  page.now = Date.parse("2026-10-06T11:59:00-04:00");
+  page.now = Date.parse("2026-11-03T11:59:00-05:00");
   page.timer.callback();
   assert.ok(page.buttons.every(b => b.attrs.href === session.interestUrl && b.attrs["data-track"] === "interest_click"));
   assert.ok(page.buttons.every(b => b.textContent === "Join the interest list for the next session"));
@@ -53,8 +53,8 @@ test("open tabs switch both destinations to the interest form at the cutoff", ()
 
 test("a stale click switches to the interest form before navigation and analytics", () => {
   for (const kind of ["click", "auxclick"]) {
-    const page = pageAt("2026-10-06T11:58:59-04:00");
-    page.now = Date.parse("2026-10-06T11:59:00-04:00");
+    const page = pageAt("2026-11-03T11:58:59-05:00");
+    page.now = Date.parse("2026-11-03T11:59:00-05:00");
     page.events[kind]({ target: { closest: () => page.buttons[0] } });
     assert.equal(page.buttons[0].attrs.href, session.interestUrl);
     assert.equal(page.buttons[0].attrs["data-track"], "interest_click");
@@ -62,7 +62,7 @@ test("a stale click switches to the interest form before navigation and analytic
 });
 
 test("a normal refresh preserves the Stripe analytics reference", () => {
-  const page = pageAt("2026-10-06T11:58:00-04:00");
+  const page = pageAt("2026-11-03T11:58:00-05:00");
   const tagged = session.paymentUrl + "?client_reference_id=visitor123";
   page.buttons[0].attrs.href = tagged;
   page.timer.callback();
@@ -70,12 +70,12 @@ test("a normal refresh preserves the Stripe analytics reference", () => {
 });
 
 test("invalid configuration retains the HTML interest-list fallback", () => {
-  const page = pageAt("2026-10-06T11:00:00-04:00", null);
+  const page = pageAt("2026-11-03T11:00:00-05:00", null);
   assert.ok(page.buttons.every(b => b.attrs.href === session.interestUrl));
 });
 test("old sessions never reopen on the following Tuesday or month", () => {
-  assert.equal(registrationOpen(session, Date.parse("2026-10-13T11:00:00-04:00")), false);
-  assert.equal(registrationOpen(session, Date.parse("2026-11-03T11:00:00-05:00")), false);
+  assert.equal(registrationOpen(session, Date.parse("2026-11-10T11:00:00-05:00")), false);
+  assert.equal(registrationOpen(session, Date.parse("2026-12-01T11:00:00-05:00")), false);
 });
 test("a winter session observes Eastern standard time regardless of visitor timezone", () => {
   const winter = { ...session, registrationClosesAt: "2026-11-03T11:59:00-05:00" };
@@ -84,7 +84,7 @@ test("a winter session observes Eastern standard time regardless of visitor time
 });
 test("missing, invalid, or timezone-ambiguous configuration fails closed", () => {
   for (const broken of [null, {}, { ...session, registrationClosesAt: "invalid" },
-    { ...session, registrationClosesAt: "2026-10-06T11:59:00" }, { ...session, registrationClosesAt: undefined }]) {
+    { ...session, registrationClosesAt: "2026-11-03T11:59:00" }, { ...session, registrationClosesAt: undefined }]) {
     assert.equal(registrationOpen(broken, Date.now()), false);
   }
 });
