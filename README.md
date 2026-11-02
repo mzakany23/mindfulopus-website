@@ -176,7 +176,7 @@ The advertised occurrence lives in `src/data/studentopus.json`. Set `startsAt`
 and `registrationClosesAt` with explicit Eastern offsets (`-04:00` in daylight
 time, `-05:00` in standard time), the session's Stripe payment URL, and the
 interest-list URL when publishing a new session. The noon November 3, 2026 occurrence
-closes registration at 11:59 AM ET, one minute before it starts. The displayed
+closes registration at 11:45 AM ET, fifteen minutes before it starts. The displayed
 month, date, and closing time come from that configuration.
 
 Both primary controls change from Reserve to “Join the interest list for the next
