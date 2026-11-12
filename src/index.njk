@@ -661,27 +661,24 @@ permalink: /
     }
     .stories .section-lede { margin-bottom: 1.25rem; }
     .stories .wrap { margin-bottom: 0.35rem; }
-    .story-marquee {
-      overflow: hidden;
-      mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
-      -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
-    }
-    .story-track {
-      display: flex;
+    /* Keep every full testimonial in normal reading order at every width. */
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: start;
       gap: 1rem;
-      width: max-content;
-      animation: story-scroll 70s linear infinite;
-      padding-inline: 1rem;
     }
-    .story-marquee:hover .story-track { animation-play-state: paused; }
-    @keyframes story-scroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
+    @media (max-width: 900px) {
+      .story-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 600px) {
+      .story-grid { grid-template-columns: minmax(0, 1fr); }
     }
     .story {
-      flex: 0 0 min(320px, 78vw);
+      min-width: 0;
       background: var(--paper);
       padding: 1.35rem 1.25rem 1.25rem;
+      overflow-wrap: anywhere;
     }
     .story blockquote {
       margin: 0 0 1rem;
@@ -1599,8 +1596,6 @@ permalink: /
       .hero-veil { opacity: 1 !important; transition: none !important; }
       .hero-media, .band-media { transform: none !important; will-change: auto; }
       .episode-thumb img { transition: none; }
-      .story-track { animation: none; }
-      .story-marquee { overflow-x: auto; }
     }
   </style>
   {% include "partials/analytics.njk" %}
@@ -1738,15 +1733,13 @@ permalink: /
       </div>
     </section>
 
-<section class="stories reveal" id="stories">
+<section class="stories" id="stories" aria-labelledby="stories-title">
       <div class="wrap">
-        <h2 class="section-title anim anim-d1">Testimonials</h2>
-        <div class="story-marquee anim anim-d2" aria-label="Client testimonials">
-          <div class="story-track">
-            {% for pass in [1, 2] %}
+        <h2 class="section-title" id="stories-title">Testimonials</h2>
+        <div class="story-grid" aria-label="Client testimonials">
               {% for testimonial in testimonials.testimonials %}
               <article class="story">
-                <blockquote>“{{ testimonial.quote | truncate(180) }}”</blockquote>
+                <blockquote>“{{ testimonial.quote }}”</blockquote>
                 <cite>
                   {% if testimonial.author and testimonial.author != "Anonymous" %}
                     {{ testimonial.author }}
@@ -1757,8 +1750,6 @@ permalink: /
                 </cite>
               </article>
               {% endfor %}
-            {% endfor %}
-          </div>
         </div>
       </div>
     </section>
