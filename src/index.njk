@@ -661,25 +661,40 @@ permalink: /
     }
     .stories .section-lede { margin-bottom: 1.25rem; }
     .stories .wrap { margin-bottom: 0.35rem; }
-    /* Keep every full testimonial in normal reading order at every width. */
-    .story-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      align-items: start;
+    .story-marquee {
+      overflow-x: auto;
+      mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+    }
+    .story-track {
+      display: flex;
       gap: 1rem;
+      width: max-content;
+      animation: story-scroll 70s linear infinite;
+      padding-inline: 1rem;
     }
-    @media (max-width: 900px) {
-      .story-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 600px) {
-      .story-grid { grid-template-columns: minmax(0, 1fr); }
+    .story-marquee:hover .story-track { animation-play-state: paused; }
+    @keyframes story-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
     .story {
+      flex: 0 0 min(320px, 78vw);
       min-width: 0;
+      overflow-wrap: anywhere;
       background: var(--paper);
       padding: 1.35rem 1.25rem 1.25rem;
-      overflow-wrap: anywhere;
     }
+    .story-pause-label { display: inline-block; margin-bottom: 1rem; font-size: 0.9rem; }
+    .story-pause { accent-color: var(--teal-deep); }
+    /* A persistent, keyboard-accessible reading mode also works without JS. */
+    .story-pause:checked ~ .story-marquee,
+    .story-marquee:focus { mask-image: none; -webkit-mask-image: none; }
+    .story-pause:checked ~ .story-marquee .story-track,
+    .story-marquee:focus .story-track { animation: none; transform: none; }
+    .story-pause:checked ~ .story-marquee .story-copy,
+    .story-marquee:focus .story-copy { display: none; }
+    .story-marquee:focus-visible { outline: 2px solid var(--teal-deep); outline-offset: 4px; }
     .story blockquote {
       margin: 0 0 1rem;
       font-family: var(--display);
@@ -1596,6 +1611,9 @@ permalink: /
       .hero-veil { opacity: 1 !important; transition: none !important; }
       .hero-media, .band-media { transform: none !important; will-change: auto; }
       .episode-thumb img { transition: none; }
+      .story-track { animation: none; transform: none; }
+      .story-copy, .story-pause, .story-pause-label { display: none; }
+      .story-marquee { mask-image: none; -webkit-mask-image: none; }
     }
   </style>
   {% include "partials/analytics.njk" %}
@@ -1736,9 +1754,13 @@ permalink: /
 <section class="stories" id="stories" aria-labelledby="stories-title">
       <div class="wrap">
         <h2 class="section-title" id="stories-title">Testimonials</h2>
-        <div class="story-grid" aria-label="Client testimonials">
+        <input type="checkbox" class="story-pause" id="story-pause">
+        <label class="story-pause-label" for="story-pause">Pause scrolling to read</label>
+        <div class="story-marquee" role="region" tabindex="0" aria-label="Client testimonials. Scroll horizontally to read all testimonials.">
+          <div class="story-track">
+            {% for pass in [1, 2] %}
               {% for testimonial in testimonials.testimonials %}
-              <article class="story">
+              <article class="story{% if pass == 2 %} story-copy{% endif %}"{% if pass == 2 %} aria-hidden="true"{% endif %}>
                 <blockquote>“{{ testimonial.quote }}”</blockquote>
                 <cite>
                   {% if testimonial.author and testimonial.author != "Anonymous" %}
@@ -1750,6 +1772,8 @@ permalink: /
                 </cite>
               </article>
               {% endfor %}
+            {% endfor %}
+          </div>
         </div>
       </div>
     </section>
