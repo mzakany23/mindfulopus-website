@@ -1128,6 +1128,7 @@
     }
   </style>
   {% include "partials/analytics.njk" %}
+<noscript><style>.scroll-rise { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
 <body>
   <header class="nav" id="nav">
@@ -1143,7 +1144,7 @@
           </span>
         </span>
       </a>
-      <a class="btn nav-cta" href="#this-month">See this month’s session</a>
+      <a class="btn nav-cta" href="#this-month">See the featured session</a>
     </div>
     <nav class="journey wrap" aria-label="Page journey">
       <div class="journey-collapse">
@@ -1153,7 +1154,7 @@
           </div>
           <ol class="journey-list" id="journey-list">
             <li><a href="#start" data-section="start"><span class="journey-dot" aria-hidden="true"></span><span class="journey-label">Start</span></a></li>
-            <li><a href="#this-month" data-section="this-month"><span class="journey-dot" aria-hidden="true"></span><span class="journey-label">This month</span></a></li>
+            <li><a href="#this-month" data-section="this-month"><span class="journey-dot" aria-hidden="true"></span><span class="journey-label">Session details</span></a></li>
             <li><a href="#about" data-section="about"><span class="journey-dot" aria-hidden="true"></span><span class="journey-label">About</span></a></li>
             <li><a href="#how-it-works" data-section="how-it-works"><span class="journey-dot" aria-hidden="true"></span><span class="journey-label">How it works</span></a></li>
             <li><a href="#faq" data-section="faq"><span class="journey-dot" aria-hidden="true"></span><span class="journey-label">FAQ</span></a></li>
@@ -1183,7 +1184,7 @@
             behind the art.
           </p>
           <div class="actions reveal reveal-delay-2">
-            <a class="btn" href="#this-month">See this month’s topic</a>
+            <a class="btn" href="#this-month">See the featured topic</a>
             <a class="btn ghost" href="#about">What is <span class="so-mark"><span class="so-s">Student</span><span class="so-o">Opus</span></span>?</a>
           </div>
           <p class="meta reveal reveal-delay-3">
@@ -1216,13 +1217,13 @@
       </div>
     </section>
 
-    <section class="month" id="this-month" data-journey="This month">
+    <section class="month" id="this-month" data-journey="Session details">
       <div class="section-sky" data-parallax="0.18" aria-hidden="true"></div>
       <div class="section-glow month-glow-a" data-parallax="0.1" aria-hidden="true"></div>
       <div class="section-glow month-glow-b" data-parallax="-0.08" aria-hidden="true"></div>
       <div class="wrap section-content">
         <div class="month-intro scroll-rise">
-          <h2>This month at <span class="so-mark"><span class="so-s">Student</span><span class="so-o">Opus</span></span></h2>
+          <h2><span data-session-heading>{% if sessionEnded %}Previous session{% else %}Featured session{% endif %}</span> at <span class="so-mark"><span class="so-s">Student</span><span class="so-o">Opus</span></span></h2>
         </div>
         <div class="month-card scroll-rise scroll-rise-delay-1" id="month-card">
           <div class="month-main">
@@ -1240,7 +1241,7 @@
           </div>
           <div class="session">
             <p class="session-cadence">First Tuesday of every month · 12–1 PM ET</p>
-            <div class="row"><span>This month</span><strong>{{ sessionDate }}</strong></div>
+            <div class="row"><span data-session-date-label>{% if sessionEnded %}Previous session{% else %}Session date{% endif %}</span><strong>{{ sessionDate }}</strong></div>
             <div class="row"><span>Time</span><strong>12–1 PM ET</strong></div>
             <div class="row">
               <span>Where</span>
@@ -1254,9 +1255,9 @@
             </div>
             <div class="row"><span>Price</span><strong>$25 · drop-in</strong></div>
             <a class="btn spotlight" data-session-reserve data-registration-state="closed" data-track="interest_click" href="{{ studentopus.interestUrl }}" target="_blank" rel="noopener noreferrer">Join the interest list for the next session</a>
-            <p class="registration-note" data-session-status role="status" aria-live="polite">Register by {{ sessionCutoff }} — before the session starts.</p>
+            <p class="registration-note" data-session-status data-session-month="{{ sessionMonth }}" data-session-cutoff="{{ sessionCutoff }}" role="status" aria-live="polite">{% if sessionEnded %}The {{ sessionMonth }} session has ended. Join the interest list to hear about the next session.{% else %}Join the interest list for session updates.{% endif %}</p>
             <noscript><p class="registration-note">Enable JavaScript to check registration availability.</p></noscript>
-            <p class="interest-note">Can’t make it this month? <a data-track="interest_click" href="{{ studentopus.interestUrl }}" target="_blank" rel="noopener noreferrer">Join the interest list&nbsp;→</a></p>
+            <p class="interest-note" hidden>Can’t make it this month? <a data-track="interest_click" href="{{ studentopus.interestUrl }}" target="_blank" rel="noopener noreferrer">Join the interest list&nbsp;→</a></p>
           </div>
         </div>
       </div>
@@ -1297,7 +1298,7 @@
         <div class="point">
           <div class="point-mark" aria-hidden="true"></div>
           <b>Come with a question</b>
-          <p>Bring something you’re genuinely working through right now, inspired by this month’s topic.</p>
+          <p>Bring something you’re genuinely working through right now, inspired by the featured topic.</p>
         </div>
         <div class="point">
           <div class="point-mark" aria-hidden="true"></div>
@@ -1320,8 +1321,8 @@
         <p class="section-lede scroll-rise">Simple, affordable, community-focused</p>
         <div class="steps">
           <div class="step scroll-rise scroll-rise-delay-1">
-            <b>Choose this month’s session</b>
-            <p>Read this month’s topic and let it guide your coaching question.</p>
+            <b>Choose the featured session</b>
+            <p>Read the featured topic and let it guide your coaching question.</p>
           </div>
           <div class="step scroll-rise scroll-rise-delay-1">
             <b>Reserve your spot</b>
@@ -1381,9 +1382,9 @@
           so you can thrive — on and off stage.
         </p>
         <a class="btn spotlight" data-session-reserve data-registration-state="closed" data-track="interest_click" href="{{ studentopus.interestUrl }}" target="_blank" rel="noopener noreferrer">Join the interest list for the next session</a>
-            <p class="registration-note" data-session-status role="status" aria-live="polite">Register by {{ sessionCutoff }} — before the session starts.</p>
+            <p class="registration-note" data-session-status data-session-month="{{ sessionMonth }}" data-session-cutoff="{{ sessionCutoff }}" role="status" aria-live="polite">{% if sessionEnded %}The {{ sessionMonth }} session has ended. Join the interest list to hear about the next session.{% else %}Join the interest list for session updates.{% endif %}</p>
             <noscript><p class="registration-note">Enable JavaScript to check registration availability.</p></noscript>
-        <p class="interest-note">Can’t make it this month? <a data-track="interest_click" href="{{ studentopus.interestUrl }}" target="_blank" rel="noopener noreferrer">Join the interest list&nbsp;→</a></p>
+        <p class="interest-note" hidden>Can’t make it this month? <a data-track="interest_click" href="{{ studentopus.interestUrl }}" target="_blank" rel="noopener noreferrer">Join the interest list&nbsp;→</a></p>
       </div>
     </section>
   </main>
@@ -1400,7 +1401,7 @@
   </footer>
 
   <script id="studentopus-session" type="application/json">{{ studentopus | dump | safe }}</script>
-  <script src="/assets/js/studentopus-registration.js?v=1.0.2"></script>
+  <script src="/assets/js/studentopus-registration.js?v=1.0.3"></script>
   <script>
     (function () {
       var nav = document.getElementById("nav");
