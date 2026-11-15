@@ -1,6 +1,6 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { registrationOpen } = require("../src/assets/js/studentopus-registration.js");
+const { registrationOpen, sessionEnded } = require("../src/assets/js/studentopus-registration.js");
 const session = require("../src/data/studentopus.json");
 const vm = require("node:vm");
 const fs = require("node:fs");
@@ -27,7 +27,7 @@ function pageAt(time, config = session) {
   const document = {
     getElementById: () => ({ textContent: JSON.stringify(config) }),
     querySelectorAll: selector => selector === "[data-session-reserve]" ? buttons :
-      selector === ".interest-note" ? notes : [{ textContent: "Register by 11:45 AM ET." }],
+      selector === ".interest-note" ? notes : selector === "[data-session-status]" ? [{ textContent: "", getAttribute: name => name === "data-session-month" ? "November" : "11:45 AM ET" }] : [],
     addEventListener: (name, callback) => { events[name] = callback; },
   };
   const window = {
@@ -88,4 +88,11 @@ test("missing, invalid, or timezone-ambiguous configuration fails closed", () =>
     { ...session, registrationClosesAt: "2026-11-03T11:45:00" }, { ...session, registrationClosesAt: undefined }]) {
     assert.equal(registrationOpen(broken, Date.now()), false);
   }
+});
+
+test("session ended boundary is distinct from registration close", () => {
+  assert.equal(sessionEnded(session, Date.parse("2026-11-03T12:59:59.999-05:00")), false);
+  assert.equal(sessionEnded(session, Date.parse("2026-11-03T13:00:00-05:00")), true);
+  assert.equal(sessionEnded(session, Date.parse("2026-11-15T13:00:00Z")), true);
+  assert.equal(sessionEnded({ endsAt: "2026-11-03T13:00:00" }, Date.now()), false);
 });

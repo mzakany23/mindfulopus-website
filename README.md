@@ -173,7 +173,7 @@ git push -u origin feature/your-update
 ## StudentOpus registration cutoff
 
 The advertised occurrence lives in `src/data/studentopus.json`. Set `startsAt`
-and `registrationClosesAt` with explicit Eastern offsets (`-04:00` in daylight
+, `endsAt`, and `registrationClosesAt` with explicit Eastern offsets (`-04:00` in daylight
 time, `-05:00` in standard time), the session's Stripe payment URL, and the
 interest-list URL when publishing a new session. The noon November 3, 2026 occurrence
 closes registration at 11:45 AM ET, fifteen minutes before it starts. The displayed
@@ -196,3 +196,5 @@ Zoom attendance, or revoke a Zoom URL. Full payment enforcement still needs a
 separate Stripe credential with Payment Links and Checkout Sessions read/write
 permissions and a server-side cutoff job. Use a dedicated payment link per
 occurrence so old shared links cannot later sell a different session.
+
+Session presentation switches to “Previous session” at `endsAt`, independently of the registration cutoff. The build emits ended-session copy for expired sessions; no-JavaScript visitors get a visible, interest-list-only fallback without a stale registration deadline. Browser refresh, focus, visibility, and timers update open pages. Configure a real end time when publishing a new session. Run `node tests/studentopus-browser.cjs` against a local build served on port 8876 for mobile/no-JS and time-boundary checks (requires Playwright).

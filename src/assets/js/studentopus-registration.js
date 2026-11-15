@@ -8,7 +8,13 @@
     return Number.isFinite(cutoff) && Number.isFinite(now) && now < cutoff;
   }
 
-  if (typeof module === "object" && module.exports) module.exports = { registrationOpen: registrationOpen };
+  function sessionEnded(session, now) {
+    if (!session || !/(Z|[+-]\d{2}:\d{2})$/.test(session.endsAt || "")) return false;
+    var end = Date.parse(session.endsAt);
+    return Number.isFinite(end) && Number.isFinite(now) && now >= end;
+  }
+
+  if (typeof module === "object" && module.exports) module.exports = { registrationOpen: registrationOpen, sessionEnded: sessionEnded };
   if (!root.document) return;
   var config = root.document.getElementById("studentopus-session");
   var session;
@@ -16,6 +22,8 @@
   var buttons = Array.prototype.slice.call(root.document.querySelectorAll("[data-session-reserve]"));
   var statuses = Array.prototype.slice.call(root.document.querySelectorAll("[data-session-status]"));
   var interestNotes = Array.prototype.slice.call(root.document.querySelectorAll(".interest-note"));
+  var headings = Array.prototype.slice.call(root.document.querySelectorAll("[data-session-heading]"));
+  var dateLabels = Array.prototype.slice.call(root.document.querySelectorAll("[data-session-date-label]"));
   var timer;
 
   function refresh() {
@@ -36,11 +44,21 @@
       }
     });
     interestNotes.forEach(function (note) { note.hidden = !open; });
-    if (!open) statuses.forEach(function (status) {
-      status.textContent = "Registration for this session has closed.";
+    var ended = sessionEnded(session, Date.now());
+    headings.forEach(function (heading) { heading.textContent = ended ? "Previous session" : "Featured session"; });
+    dateLabels.forEach(function (label) { label.textContent = ended ? "Previous session" : "Session date"; });
+    statuses.forEach(function (status) {
+      var month = status.getAttribute("data-session-month");
+      status.textContent = ended
+        ? "The " + month + " session has ended. Join the interest list to hear about the next session."
+        : open ? "Register by " + status.getAttribute("data-session-cutoff") + " — before the session starts."
+        : "Registration for this session has closed.";
     });
-    if (open) timer = root.setTimeout(refresh, Math.min(60000,
-      Date.parse(session.registrationClosesAt) - Date.now() + 1));
+    // Keep watching the end boundary even after registration has closed.
+    var nextBoundary = open ? Date.parse(session.registrationClosesAt) : session && Date.parse(session.endsAt);
+    if (Number.isFinite(nextBoundary) && nextBoundary > Date.now()) {
+      timer = root.setTimeout(refresh, Math.min(60000, nextBoundary - Date.now() + 1));
+    }
     return open;
   }
 
