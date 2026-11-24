@@ -188,10 +188,11 @@ permalink: /
         padding: 0.5rem 1.25rem 1rem;
       }
       .nav-links.is-open { display: flex; }
-      .nav-links a { padding: 0.75rem 0; border-bottom: 1px solid var(--line); }
-      .nav-links a { border-bottom: 1px solid var(--line); }
+      .nav-links a { display: block; min-height: 44px; padding: 0.75rem 0; border-bottom: 1px solid var(--line); }
       .nav-links a.is-active { border-bottom-color: var(--teal); }
     }
+
+    #workbook { scroll-margin-top: 1.25rem; }
 
     /* —— Hero (Jillian craft: photo + serif display) —— */
     .hero {
@@ -1632,13 +1633,14 @@ permalink: /
       <a class="nav-brand" href="#top" aria-label="MindfulOpus home">
         <img src="/assets/images/logos/wordmark.png" alt="MindfulOpus" />
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" id="nav-toggle">☰</button>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links" id="nav-toggle">☰</button>
       <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#offerings">Work</a></li>
         {% if not studentopus.registrationPaused %}<li><a href="#studentopus">StudentOpus</a></li>{% endif %}
         <li><a href="#podcast">Podcast</a></li>
         <li><a href="#musings">Musings</a></li>
+        <li><a href="#workbook">Well-Being Wheel</a></li>
         <li><a class="nav-cta" href="#contact">Work with me</a></li>
       </ul>
     </div>
@@ -2002,6 +2004,11 @@ permalink: /
           var open = links.classList.toggle("is-open");
           toggle.setAttribute("aria-expanded", open ? "true" : "false");
         });
+        links.addEventListener("click", function (event) {
+          if (!event.target.closest("a") || !links.classList.contains("is-open")) return;
+          links.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
       }
 
       if (hero) {
@@ -2100,7 +2107,7 @@ permalink: /
         reveals.forEach(function (el) { el.classList.add("is-in"); });
       }
 
-      var spyIds = ["about", "offerings", {% if not studentopus.registrationPaused %}"studentopus", {% endif %}"podcast", "musings", "contact"];
+      var spyIds = ["workbook", "about", "offerings", {% if not studentopus.registrationPaused %}"studentopus", {% endif %}"podcast", "musings", "contact"];
       var spyLinks = {};
       if (links) {
         links.querySelectorAll("a[href^='#']").forEach(function (a) {
