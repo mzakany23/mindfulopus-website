@@ -5,6 +5,14 @@ const { youtubeId, youtubeThumb } = require('./src/filters/youtube.js');
 const { groupBySeason, groupByYear } = require('./src/filters/groupBy.js');
 
 module.exports = function (config) {
+  if (process.env.STUDENTOPUS_PREVIEW_MODE) {
+    const mode = process.env.STUDENTOPUS_PREVIEW_MODE;
+    if (!['on', 'off'].includes(mode)) throw new Error('Invalid StudentOpus preview mode');
+    config.addGlobalData('studentopus', {
+      ...require('./src/data/studentopus.json'),
+      registrationPaused: mode === 'off',
+    });
+  }
   // RELOAD ON SCSS COMPILE
   config.setBrowserSyncConfig({
     files: './src/assets/styles/*.css'
