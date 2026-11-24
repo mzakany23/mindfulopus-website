@@ -890,12 +890,14 @@ permalink: /
       transform: translateY(120%);
       opacity: 0;
       pointer-events: none;
+      visibility: hidden;
       transition: transform 420ms var(--ease), opacity 420ms var(--ease);
     }
     .nl-toast.is-open {
       transform: none;
       opacity: 1;
       pointer-events: auto;
+      visibility: visible;
     }
     .nl-toast h3 {
       margin: 0 0 0.35rem;
@@ -1654,6 +1656,24 @@ permalink: /
       </div>
     </section>
 
+    <section class="band reveal" id="workbook">
+      <div class="band-media" data-parallax aria-hidden="true">
+        <img src="/assets/images/nature.jpeg" alt="" />
+        <div class="band-veil"></div>
+      </div>
+      <div class="band-copy">
+        <h2 class="anim anim-d1">Discover The Well-Being Wheel</h2>
+        <p class="anim anim-d2">
+          Unlock your full artistic potential with “The Well-Being Wheel,” a thoughtful approach to holistic development
+          crafted specifically for creatives. Whether that’s working towards an artistic or creative goal, trying to find
+          more work/life balance, or exploring what other interests outside of your field might help you live a more diverse
+          life (or what I call “Artist+”), learn to master the balance of emotional, physical, and creative wellness,
+          fostering an environment where your artistry can truly flourish.
+        </p>
+        <a class="btn anim anim-d3" data-track="workbook_click" href="{{ site.wellbeingWheel.download }}" target="_blank" rel="noopener noreferrer">Get Your Free Well-Being Workbook</a>
+      </div>
+    </section>
+
     <section class="about reveal" id="about">
       <div class="wrap about-grid">
         <figure class="about-photo anim anim-d1">
@@ -1739,7 +1759,7 @@ permalink: /
           <p class="anim anim-d2">
             In addition to my 1-1 sessions, I also work with colleges, universities and conservatories
             in my group programs — and it’s this work that has inspired <span class="so-mark">Student<span class="name-opus">Opus</span></span>:
-            an online monthly group experience for college music students everywhere.
+            an online {% if not studentopus.registrationPaused %}monthly {% endif %}group experience for college music students everywhere.
           </p>
           <a class="btn anim anim-d3" href="/studentopus/">Visit <span class="so-mark">Student<span class="name-opus">Opus</span></span></a>
         </div>
@@ -1930,24 +1950,6 @@ permalink: /
       </div>
     </section>
 
-    <section class="band reveal" id="workbook">
-      <div class="band-media" data-parallax aria-hidden="true">
-        <img src="/assets/images/nature.jpeg" alt="" />
-        <div class="band-veil"></div>
-      </div>
-      <div class="band-copy">
-        <h2 class="anim anim-d1">Discover The Well-Being Wheel</h2>
-        <p class="anim anim-d2">
-          Unlock your full artistic potential with “The Well-Being Wheel,” a thoughtful approach to holistic development
-          crafted specifically for creatives. Whether that’s working towards an artistic or creative goal, trying to find
-          more work/life balance, or exploring what other interests outside of your field might help you live a more diverse
-          life (or what I call “Artist+”), learn to master the balance of emotional, physical, and creative wellness,
-          fostering an environment where your artistry can truly flourish.
-        </p>
-        <a class="btn anim anim-d3" data-track="workbook_click" href="https://6b81c6e8.sibforms.com/serve/MUIFAEPSBgIKqZ7ijhaGGC9Kg3O4789opPPLDAjFHnUZ9wmGaJ4dxqEqFKxOa50aCnOvRaPxSaudOJL2s_Hu_JPKG5rECwQQNGLj1b5GQUz0tjfr9BcAwJov-J2v3vXBYmV1jhlEndqjrMs-Nlg0VFqPS9ksumkUZHzGCuNXKxx1NyOpH6sRmx7d_ekm7AyhiG6vrcgb2h7P-iqO" target="_blank" rel="noopener noreferrer">Get Your Free Well-Being Workbook</a>
-      </div>
-    </section>
-
     <section class="contact reveal" id="contact">
       <div class="wrap">
         <h2 class="section-title anim anim-d1">Work with me</h2>
@@ -1975,13 +1977,13 @@ permalink: /
     </div>
   </footer>
 
-  <aside class="nl-toast" id="nl-toast" role="dialog" aria-label="Subscribe to Mindful Musings" aria-hidden="true">
+  <aside class="nl-toast" id="nl-toast" role="dialog" aria-label="Newsletter and free Well-Being Wheel" aria-hidden="true">
     <button type="button" class="nl-toast-close" id="nl-toast-close" aria-label="Dismiss">×</button>
     <h3>Mindful Musings</h3>
     <p>{{ site.newsletter.tagline }}</p>
     <div class="nl-toast-actions">
-      <a class="btn" href="{{ site.newsletter.subscribe }}" target="_blank" rel="noopener noreferrer">Subscribe to Mindful Musings</a>
-      <a class="btn btn-ghost" href="#musings">Browse Mindful Musings</a>
+      <a class="btn" href="{{ site.newsletter.subscribe }}" target="_blank" rel="noopener noreferrer">Subscribe to my newsletter</a>
+      <a class="btn btn-ghost" data-track="workbook_click" href="{{ site.wellbeingWheel.download }}" target="_blank" rel="noopener noreferrer">Download my free well-being wheel</a>
     </div>
   </aside>
 
