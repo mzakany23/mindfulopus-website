@@ -1289,8 +1289,9 @@
         <div class="scroll-rise scroll-rise-delay-1">
           <p class="copy">
             <span class="so-mark"><span class="so-s">Student</span><span class="so-o">Opus</span></span> is live group coaching created specifically for college and conservatory music students.
+            {% if studentopus.registrationPaused %}There’s room for real questions, coaching, and learning from what other students are experiencing too.{% else %}
             Each month centers around one topic of my choosing, with room for real questions, coaching, discussion,
-            and learning from what other students are experiencing too.
+            and learning from what other students are experiencing too.{% endif %}
           </p>
           <ul class="topics">
             <li>Performance anxiety</li>
@@ -1308,7 +1309,7 @@
         <div class="point">
           <div class="point-mark" aria-hidden="true"></div>
           <b>Come with a question</b>
-          <p>Bring something you’re genuinely working through right now, inspired by the featured topic.</p>
+          <p>Bring something you’re genuinely working through right now{% if not studentopus.registrationPaused %}, inspired by the featured topic{% endif %}.</p>
         </div>
         <div class="point">
           <div class="point-mark" aria-hidden="true"></div>
