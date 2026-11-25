@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>StudentOpus | Monthly Live Coaching for Music Students</title>
+  {% if studentopus.registrationPaused %}<meta name="robots" content="noindex" />{% endif %}
+  <title>StudentOpus | {% if not studentopus.registrationPaused %}Monthly {% endif %}Live Coaching for Music Students</title>
   <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
   <link rel="icon" href="/favicon.ico?v=2" sizes="any" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
@@ -1144,7 +1145,7 @@
           </span>
         </span>
       </a>
-      <a class="btn nav-cta" href="#this-month">See the featured session</a>
+      <a class="btn nav-cta" href="#this-month">{% if studentopus.registrationPaused %}Join the interest list{% else %}See the featured session{% endif %}</a>
     </div>
     <nav class="journey wrap" aria-label="Page journey">
       <div class="journey-collapse">
@@ -1154,11 +1155,11 @@
           </div>
           <ol class="journey-list" id="journey-list">
             <li><a href="#start" data-section="start"><span class="journey-dot" aria-hidden="true"></span><span class="journey-label">Start</span></a></li>
-            <li><a href="#this-month" data-section="this-month"><span class="journey-dot" aria-hidden="true"></span><span class="journey-label">Session details</span></a></li>
+            <li><a href="#this-month" data-section="this-month"><span class="journey-dot" aria-hidden="true"></span><span class="journey-label">{% if studentopus.registrationPaused %}Interest list{% else %}Session details{% endif %}</span></a></li>
             <li><a href="#about" data-section="about"><span class="journey-dot" aria-hidden="true"></span><span class="journey-label">About</span></a></li>
             <li><a href="#how-it-works" data-section="how-it-works"><span class="journey-dot" aria-hidden="true"></span><span class="journey-label">How it works</span></a></li>
             <li><a href="#faq" data-section="faq"><span class="journey-dot" aria-hidden="true"></span><span class="journey-label">FAQ</span></a></li>
-            <li><a href="#join" data-section="join"><span class="journey-dot" aria-hidden="true"></span><span class="journey-label">Reserve</span></a></li>
+            <li><a href="#join" data-section="join"><span class="journey-dot" aria-hidden="true"></span><span class="journey-label">{% if studentopus.registrationPaused %}Join{% else %}Reserve{% endif %}</span></a></li>
           </ol>
           <div class="journey-now" aria-live="polite">
             <span class="journey-now-mark" aria-hidden="true"></span>
@@ -1175,16 +1176,16 @@
       <div class="hero-glow" aria-hidden="true"></div>
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <p class="hero-eyebrow reveal">First Tuesday each month · 12–1 PM ET</p>
+          <p class="hero-eyebrow reveal">{% if studentopus.registrationPaused %}Coaching for music students{% else %}First Tuesday each month · 12–1 PM ET{% endif %}</p>
           <h1 class="reveal reveal-delay-1">You don’t have to figure all of this out alone.</h1>
           <p class="lede reveal reveal-delay-1">
-            <span class="so-mark"><span class="so-s">Student</span><span class="so-o">Opus</span></span> is a monthly, drop-in coaching space for college and conservatory music students:
+            <span class="so-mark"><span class="so-s">Student</span><span class="so-o">Opus</span></span> is a {% if not studentopus.registrationPaused %}monthly, {% endif %}drop-in coaching space for college and conservatory music students:
             a place to talk honestly about your well-being, and how to let it support you with practicing,
             performing, confidence, burnout, schedules, the inner critic, tending fully to the human being
             behind the art.
           </p>
           <div class="actions reveal reveal-delay-2">
-            <a class="btn" href="#this-month">See the featured topic</a>
+            <a class="btn" href="#this-month">{% if studentopus.registrationPaused %}Join the interest list{% else %}See the featured topic{% endif %}</a>
             <a class="btn ghost" href="#about">What is <span class="so-mark"><span class="so-s">Student</span><span class="so-o">Opus</span></span>?</a>
           </div>
           <p class="meta reveal reveal-delay-3">
@@ -1195,8 +1196,8 @@
               </svg>
               Live on Zoom
             </span>
-            <span class="meta-sep" aria-hidden="true">·</span>
-            <span>$25 drop-in</span>
+            {% if not studentopus.registrationPaused %}<span class="meta-sep" aria-hidden="true">·</span>
+            <span>$25 drop-in</span>{% endif %}
             <span class="meta-sep" aria-hidden="true">·</span>
             <span>No membership</span>
           </p>
@@ -1217,6 +1218,15 @@
       </div>
     </section>
 
+    {% if studentopus.registrationPaused %}
+    <section class="section-paper" id="this-month" data-journey="Interest list">
+      <div class="wrap section-content">
+        <h2 class="scroll-rise">StudentOpus interest list</h2>
+        <p class="section-lede scroll-rise">The waitlist is currently closed. Join the interest list to hear when registration opens.</p>
+        <a class="btn spotlight" data-track="interest_click" href="{{ studentopus.interestUrl }}" target="_blank" rel="noopener noreferrer">Join the interest list</a>
+      </div>
+    </section>
+    {% else %}
     <section class="month" id="this-month" data-journey="Session details">
       <div class="section-sky" data-parallax="0.18" aria-hidden="true"></div>
       <div class="section-glow month-glow-a" data-parallax="0.1" aria-hidden="true"></div>
@@ -1262,6 +1272,7 @@
         </div>
       </div>
     </section>
+    {% endif %}
 
     <section class="section-mist" id="about" data-journey="About">
       <div class="section-sky" data-parallax="0.16" aria-hidden="true"></div>
@@ -1279,8 +1290,9 @@
         <div class="scroll-rise scroll-rise-delay-1">
           <p class="copy">
             <span class="so-mark"><span class="so-s">Student</span><span class="so-o">Opus</span></span> is live group coaching created specifically for college and conservatory music students.
+            {% if studentopus.registrationPaused %}There’s room for real questions, coaching, and learning from what other students are experiencing too.{% else %}
             Each month centers around one topic of my choosing, with room for real questions, coaching, discussion,
-            and learning from what other students are experiencing too.
+            and learning from what other students are experiencing too.{% endif %}
           </p>
           <ul class="topics">
             <li>Performance anxiety</li>
@@ -1298,7 +1310,7 @@
         <div class="point">
           <div class="point-mark" aria-hidden="true"></div>
           <b>Come with a question</b>
-          <p>Bring something you’re genuinely working through right now, inspired by the featured topic.</p>
+          <p>Bring something you’re genuinely working through right now{% if not studentopus.registrationPaused %}, inspired by the featured topic{% endif %}.</p>
         </div>
         <div class="point">
           <div class="point-mark" aria-hidden="true"></div>
@@ -1319,6 +1331,9 @@
       <div class="wrap section-content">
         <h2 class="scroll-rise">How it works</h2>
         <p class="section-lede scroll-rise">Simple, affordable, community-focused</p>
+        {% if studentopus.registrationPaused %}
+        <p class="copy">Come with a question, listen and learn, or bring what’s actually going on. Join the interest list for registration updates.</p>
+        {% else %}
         <div class="steps">
           <div class="step scroll-rise scroll-rise-delay-1">
             <b>Choose the featured session</b>
@@ -1343,6 +1358,7 @@
             <p>Bring a question, a notebook, or just yourself.</p>
           </div>
         </div>
+        {% endif %}
       </div>
     </section>
 
@@ -1381,10 +1397,15 @@
           <span class="so-mark so-mark--on-dark"><span class="so-s">Student</span><span class="so-o">Opus</span></span> is here to make sure your artistry doesn’t come at the cost of your humanity,
           so you can thrive — on and off stage.
         </p>
+        {% if studentopus.registrationPaused %}
+        <p class="registration-note">The waitlist is currently closed. Join the interest list to hear when registration opens.</p>
+        <a class="btn spotlight" data-track="interest_click" href="{{ studentopus.interestUrl }}" target="_blank" rel="noopener noreferrer">Join the interest list</a>
+        {% else %}
         <a class="btn spotlight" data-session-reserve data-registration-state="closed" data-track="interest_click" href="{{ studentopus.interestUrl }}" target="_blank" rel="noopener noreferrer">Join the interest list for the next session</a>
             <p class="registration-note" data-session-status data-session-month="{{ sessionMonth }}" data-session-cutoff="{{ sessionCutoff }}" role="status" aria-live="polite">{% if sessionEnded %}The {{ sessionMonth }} session has ended. Join the interest list to hear about the next session.{% else %}Join the interest list for session updates.{% endif %}</p>
             <noscript><p class="registration-note">Enable JavaScript to check registration availability.</p></noscript>
         <p class="interest-note" hidden>Can’t make it this month? <a data-track="interest_click" href="{{ studentopus.interestUrl }}" target="_blank" rel="noopener noreferrer">Join the interest list&nbsp;→</a></p>
+        {% endif %}
       </div>
     </section>
   </main>
@@ -1400,8 +1421,10 @@
     </div>
   </footer>
 
+  {% if not studentopus.registrationPaused %}
   <script id="studentopus-session" type="application/json">{{ studentopus | dump | safe }}</script>
   <script src="/assets/js/studentopus-registration.js?v=1.0.3"></script>
+  {% endif %}
   <script>
     (function () {
       var nav = document.getElementById("nav");

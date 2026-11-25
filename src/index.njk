@@ -7,7 +7,7 @@ permalink: /
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MindfulOpus — Performance & Well-Being Coaching for Classical Musicians</title>
-  <meta name="description" content="Performance and well-being coaching for classical musicians. 1:1 coaching, StudentOpus, podcast, and Mindful Musings with Jo Zakany." />
+  <meta name="description" content="Performance and well-being coaching for classical musicians. 1:1 coaching, {% if not studentopus.registrationPaused %}StudentOpus, {% endif %}podcast, and Mindful Musings with Jo Zakany." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
@@ -188,10 +188,11 @@ permalink: /
         padding: 0.5rem 1.25rem 1rem;
       }
       .nav-links.is-open { display: flex; }
-      .nav-links a { padding: 0.75rem 0; border-bottom: 1px solid var(--line); }
-      .nav-links a { border-bottom: 1px solid var(--line); }
+      .nav-links a { display: block; min-height: 44px; padding: 0.75rem 0; border-bottom: 1px solid var(--line); }
       .nav-links a.is-active { border-bottom-color: var(--teal); }
     }
+
+    #workbook { scroll-margin-top: 1.25rem; }
 
     /* —— Hero (Jillian craft: photo + serif display) —— */
     .hero {
@@ -890,12 +891,14 @@ permalink: /
       transform: translateY(120%);
       opacity: 0;
       pointer-events: none;
+      visibility: hidden;
       transition: transform 420ms var(--ease), opacity 420ms var(--ease);
     }
     .nl-toast.is-open {
       transform: none;
       opacity: 1;
       pointer-events: auto;
+      visibility: visible;
     }
     .nl-toast h3 {
       margin: 0 0 0.35rem;
@@ -1620,7 +1623,7 @@ permalink: /
   <!--
     THESIS: Magazine-cover coaching home — photo + serif voice first; refuse Bootstrap hero + card stack.
     OWN-WORLD: Source Serif 4 display + Source Sans 3 UI; teal/sage/foam; Jo photography as plane.
-    STORY: Meet Jo → pick an entry (1:1 / StudentOpus / listen) → proof → book.
+    STORY: Meet Jo → pick an entry (1:1 / {% if not studentopus.registrationPaused %}StudentOpus / {% endif %}listen) → proof → book.
     FIRST VIEWPORT: Full-bleed portrait, serif headline with italic stress, tracked lede, one text link.
     FORM: Jillian Bremer craft bar (canon match) + Kortney offering rhythm, distilled.
     FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
@@ -1630,13 +1633,14 @@ permalink: /
       <a class="nav-brand" href="#top" aria-label="MindfulOpus home">
         <img src="/assets/images/logos/wordmark.png" alt="MindfulOpus" />
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" id="nav-toggle">☰</button>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links" id="nav-toggle">☰</button>
       <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#offerings">Work</a></li>
-        <li><a href="#studentopus">StudentOpus</a></li>
+        {% if not studentopus.registrationPaused %}<li><a href="#studentopus">StudentOpus</a></li>{% endif %}
         <li><a href="#podcast">Podcast</a></li>
         <li><a href="#musings">Musings</a></li>
+        <li><a href="#workbook">Well-Being Wheel</a></li>
         <li><a class="nav-cta" href="#contact">Work with me</a></li>
       </ul>
     </div>
@@ -1651,6 +1655,24 @@ permalink: /
       <div class="hero-copy">
         <h1>Performance and Well-Being Coaching for <em>Classical Musicians</em></h1>
         <a class="hero-link" href="#about">Tell me more!</a>
+      </div>
+    </section>
+
+    <section class="band reveal" id="workbook">
+      <div class="band-media" data-parallax aria-hidden="true">
+        <img src="/assets/images/nature.jpeg" alt="" />
+        <div class="band-veil"></div>
+      </div>
+      <div class="band-copy">
+        <h2 class="anim anim-d1">Discover The Well-Being Wheel</h2>
+        <p class="anim anim-d2">
+          Unlock your full artistic potential with “The Well-Being Wheel,” a thoughtful approach to holistic development
+          crafted specifically for creatives. Whether that’s working towards an artistic or creative goal, trying to find
+          more work/life balance, or exploring what other interests outside of your field might help you live a more diverse
+          life (or what I call “Artist+”), learn to master the balance of emotional, physical, and creative wellness,
+          fostering an environment where your artistry can truly flourish.
+        </p>
+        <a class="btn anim anim-d3" data-track="workbook_click" href="{{ site.wellbeingWheel.download }}" target="_blank" rel="noopener noreferrer">Get Your Free Well-Being Workbook</a>
       </div>
     </section>
 
@@ -1732,6 +1754,7 @@ permalink: /
       </div>
     </section>
 
+    {% if not studentopus.registrationPaused %}
     <section class="studentopus-band reveal" id="studentopus">
       <div class="wrap">
         <div>
@@ -1748,6 +1771,7 @@ permalink: /
         </figure>
       </div>
     </section>
+    {% endif %}
 
 <section class="stories" id="stories" aria-labelledby="stories-title">
       <div class="wrap">
@@ -1930,24 +1954,6 @@ permalink: /
       </div>
     </section>
 
-    <section class="band reveal" id="workbook">
-      <div class="band-media" data-parallax aria-hidden="true">
-        <img src="/assets/images/nature.jpeg" alt="" />
-        <div class="band-veil"></div>
-      </div>
-      <div class="band-copy">
-        <h2 class="anim anim-d1">Discover The Well-Being Wheel</h2>
-        <p class="anim anim-d2">
-          Unlock your full artistic potential with “The Well-Being Wheel,” a thoughtful approach to holistic development
-          crafted specifically for creatives. Whether that’s working towards an artistic or creative goal, trying to find
-          more work/life balance, or exploring what other interests outside of your field might help you live a more diverse
-          life (or what I call “Artist+”), learn to master the balance of emotional, physical, and creative wellness,
-          fostering an environment where your artistry can truly flourish.
-        </p>
-        <a class="btn anim anim-d3" data-track="workbook_click" href="https://6b81c6e8.sibforms.com/serve/MUIFAEPSBgIKqZ7ijhaGGC9Kg3O4789opPPLDAjFHnUZ9wmGaJ4dxqEqFKxOa50aCnOvRaPxSaudOJL2s_Hu_JPKG5rECwQQNGLj1b5GQUz0tjfr9BcAwJov-J2v3vXBYmV1jhlEndqjrMs-Nlg0VFqPS9ksumkUZHzGCuNXKxx1NyOpH6sRmx7d_ekm7AyhiG6vrcgb2h7P-iqO" target="_blank" rel="noopener noreferrer">Get Your Free Well-Being Workbook</a>
-      </div>
-    </section>
-
     <section class="contact reveal" id="contact">
       <div class="wrap">
         <h2 class="section-title anim anim-d1">Work with me</h2>
@@ -1975,13 +1981,13 @@ permalink: /
     </div>
   </footer>
 
-  <aside class="nl-toast" id="nl-toast" role="dialog" aria-label="Subscribe to Mindful Musings" aria-hidden="true">
+  <aside class="nl-toast" id="nl-toast" role="dialog" aria-label="Newsletter and free Well-Being Wheel" aria-hidden="true">
     <button type="button" class="nl-toast-close" id="nl-toast-close" aria-label="Dismiss">×</button>
     <h3>Mindful Musings</h3>
     <p>{{ site.newsletter.tagline }}</p>
     <div class="nl-toast-actions">
-      <a class="btn" href="{{ site.newsletter.subscribe }}" target="_blank" rel="noopener noreferrer">Subscribe to Mindful Musings</a>
-      <a class="btn btn-ghost" href="#musings">Browse Mindful Musings</a>
+      <a class="btn" href="{{ site.newsletter.subscribe }}" target="_blank" rel="noopener noreferrer">Subscribe to my newsletter</a>
+      <a class="btn btn-ghost" data-track="workbook_click" href="{{ site.wellbeingWheel.download }}" target="_blank" rel="noopener noreferrer">Download my free well-being wheel</a>
     </div>
   </aside>
 
@@ -1997,6 +2003,11 @@ permalink: /
         toggle.addEventListener("click", function () {
           var open = links.classList.toggle("is-open");
           toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+        links.addEventListener("click", function (event) {
+          if (!event.target.closest("a") || !links.classList.contains("is-open")) return;
+          links.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
         });
       }
 
@@ -2096,7 +2107,7 @@ permalink: /
         reveals.forEach(function (el) { el.classList.add("is-in"); });
       }
 
-      var spyIds = ["about", "offerings", "studentopus", "podcast", "musings", "contact"];
+      var spyIds = ["workbook", "about", "offerings", {% if not studentopus.registrationPaused %}"studentopus", {% endif %}"podcast", "musings", "contact"];
       var spyLinks = {};
       if (links) {
         links.querySelectorAll("a[href^='#']").forEach(function (a) {
